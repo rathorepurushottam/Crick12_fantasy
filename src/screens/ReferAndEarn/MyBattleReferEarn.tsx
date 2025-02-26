@@ -80,12 +80,14 @@ const MyBattleReferEarn = () => {
       });
   };
   return (
-    <AppSafeAreaView>
-      <StatusBar
-        backgroundColor={'transparent'}
-        translucent={true}
-        networkActivityIndicatorVisible={true}
-      />
+    <AppSafeAreaView
+      style={{backgroundColor: NewColor.backGroundDark,paddingBottom:'15%'}}>
+        <StatusBar
+          backgroundColor={'#111019'}
+          translucent={true}
+          networkActivityIndicatorVisible={true}
+          barStyle={"light-content"}
+        />
       <KeyBoardAware style={{ backgroundColor: 'white' }}>
         <ImageBackground
           source={MyBattleReferBackground}

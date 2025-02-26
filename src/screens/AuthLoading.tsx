@@ -5,7 +5,7 @@ import { getUserProfile } from '../actions/profileAction';
 import { AppSafeAreaView } from '../common/AppSafeAreaView';
 import { SpinnerSecond } from '../common/SpinnerSecond';
 import NavigationService from '../navigation/NavigationService';
-import { AUTHSTACK, LOGIN, OTP } from '../navigation/routes';
+import { AUTHSTACK, LOGIN, MYBATTLEOTP, OTP } from '../navigation/routes';
 import { USER_TOKEN_KEY } from '../helper/Constants';
 import FastImage from 'react-native-fast-image';
 import { splashScreen } from '../helper/image';

@@ -31,6 +31,7 @@ const CommonImageBackground = props => {
 const styles = StyleSheet.create({
   image: {
     flex: 1,
+    tintColor:"#111019"
   },
 });
 

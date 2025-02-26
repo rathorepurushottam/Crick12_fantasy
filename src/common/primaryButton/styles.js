@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   buttonText:{
-    color:'white',
+    color:'#222',
     fontWeight:"700",
     textTransform:"uppercase"
 

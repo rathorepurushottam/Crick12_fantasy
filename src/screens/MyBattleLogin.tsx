@@ -16,7 +16,9 @@ import {
   Nlglogo,
   Nlglogo2,
   Referboxicon,
+  backLogo,
   callIcon,
+  frontLogo,
 } from '../helper/image';
 import {
   AppText,
@@ -25,8 +27,11 @@ import {
   NORMAL,
   POPPINS_MEDIUM,
   POPPINS_SEMI_BOLD,
+  RED,
   REDTEXT,
   TWELVE,
+  WHITE,
+  YellowText,
 } from '../common/AppText';
 import InputBox from '../common/InputBox';
 import {NLCColor, NewColor, colors} from '../theme/color';
@@ -70,19 +75,21 @@ const MyBattleLogin = () => {
   return (
     <AppSafeAreaView
       statusColor={true}
-      style={{backgroundColor: NewColor.linerWhitefifty}}
+      style={{backgroundColor: NewColor.backGroundDark}}
+      light={true}
       hidden={false}>
-      <StatusBar
+      {/* <StatusBar
         barStyle={'dark-content'}
         backgroundColor={'transparent'}
         translucent={true}
         networkActivityIndicatorVisible={true}
-      />
-      {/* <ImageBackground
-        source={MyBattleScreen}
+      /> */}
+      <ImageBackground
+        source={backLogo}
         resizeMode="cover"
-        style={styles.MyBattleScreen}> */}
-      <FastImage resizeMode="stretch" style={styles.logo} source={Nlglogo2} />
+        style={styles.MyBattleScreen}>
+      <FastImage resizeMode="stretch" style={styles.logo} source={frontLogo} />
+      </ImageBackground>
       <View
         style={{
           paddingHorizontal: universalPaddingHorizontal,
@@ -93,6 +100,7 @@ const MyBattleLogin = () => {
           value={number}
           keyboardType="numeric"
           placeholder={'Enter you number'}
+          placeholderTextColor={'#999999'}
           onChange={(value: any) => {
             setNumber(value);
           }}
@@ -103,7 +111,7 @@ const MyBattleLogin = () => {
         />
         {referral && (
           <InputBox
-            placeholderTextColor={NLCColor.textColor}
+            placeholderTextColor={'#999999'}
             value={code}
             keyboardType="default"
             placeholder={'Enter referral code (Optional)'}
@@ -122,11 +130,12 @@ const MyBattleLogin = () => {
           <AppText
             type={TWELVE}
             weight={NORMAL}
-            color={REDTEXT}
+            color={YellowText}
             style={{
               alignSelf: 'flex-end',
               textDecorationLine: 'underline',
               marginTop: 5,
+              
             }}>
             Have a referral code?
           </AppText>
@@ -141,7 +150,8 @@ const MyBattleLogin = () => {
           <AppText
             type={TWELVE}
             weight={POPPINS_MEDIUM}
-            style={{marginHorizontal: 10}}>
+            style={{marginHorizontal: 10}}
+            color={WHITE}>
             I confirm that I am 18+ years in age
           </AppText>
         </TouchableOpacityView>
@@ -179,15 +189,15 @@ const MyBattleLogin = () => {
             resizeMode="contain"
             style={styles.AgeIcon}
           />
-          <AppText type={ELEVEN} style={{marginHorizontal: 10}}>
+          <AppText type={ELEVEN} style={{marginHorizontal: 10}} color={WHITE}>
             I have read and agree to NLG Fantasy{' '}
-            <AppText type={ELEVEN} onPress={()=>{
+            <AppText type={ELEVEN}color={WHITE} onPress={()=>{
               NavigationService.navigate(MYBATTLETERM)
             }} style={{textDecorationLine: 'underline'}}>
               Terms of Service
             </AppText>
-            <AppText type={ELEVEN}> and </AppText>
-            <AppText onPress={()=>{
+            <AppText type={ELEVEN} color={WHITE}> and </AppText>
+            <AppText color={WHITE} onPress={()=>{
               NavigationService.navigate(MYBATTLEPOLICY)
             }}  type={ELEVEN} style={{textDecorationLine: 'underline'}}>
               Privacy Policy
@@ -204,8 +214,10 @@ export default MyBattleLogin;
 
 const styles = StyleSheet.create({
   MyBattleScreen: {
-    height: '100%',
     width: '100%',
+    height:278,
+    alignItems:"center",
+    justifyContent:'flex-end'
   },
   main: {
     flex: 0.1,
@@ -218,7 +230,7 @@ const styles = StyleSheet.create({
     fontFamily: fontFamilyPoppins,
     fontSize: 12,
     flex: 1,
-    color: NLCColor.black,
+    color: '#fff',
     fontWeight: '600',
   },
   textview: {
@@ -248,7 +260,7 @@ const styles = StyleSheet.create({
     height: 1,
   },
   logo: {
-    width: '100%',
-    height: 278,
+    width: 150,
+    height: 208,
   },
 });

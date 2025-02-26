@@ -12,6 +12,7 @@ import {
   LATO_BOLD,
   LATO_HEAVY,
   LATO_SEMI_BOLD,
+  LIGHTGRAY,
   POPPINS_BOLD,
   POPPINS_EXTRA_BOLD_ITALIC,
   POPPINS_MEDIUM,
@@ -52,6 +53,7 @@ const ContestCard = ({ details, totalTeamCount }) => {
     return state.profile.kycDetails;
   });
   const [isAdd, setIsAdd] = useState(false);
+
   const onClickContest = () => {
     console.log('in contestCard')
     console.log(" ",
@@ -149,11 +151,11 @@ const ContestCard = ({ details, totalTeamCount }) => {
     <Pressable style={styles.container} onPress={onClickContest}>
       <View style={styles.topContainer}>
         <View style={styles.top}>
-          <AppText type={TEN} weight={LATO_BOLD} color={BLACK}>
+          <AppText type={TEN} weight={LATO_BOLD} color={LIGHTGRAY}>
             PRIZE POOL
           </AppText>
           {details?.JoinWithMULT && (
-            <AppText type={TEN} weight={LATO_BOLD} color={BLACK}>
+            <AppText type={TEN} weight={LATO_BOLD} color={WHITE}>
               Multiple Entries
             </AppText>
           )}
@@ -164,12 +166,12 @@ const ContestCard = ({ details, totalTeamCount }) => {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <AppText type={FIFTEEN} weight={LATO_HEAVY} color={BLACK}>
+          <AppText type={FIFTEEN} weight={LATO_HEAVY} color={WHITE}>
             ₹{numberWithCommas(details?.winning_amount)}
           </AppText>
           <AppText
             type={TEN}
-            color={BLACK}
+            color={WHITE}
             weight={LATO_BOLD}
             style={{
               marginLeft: 10,
@@ -186,6 +188,7 @@ const ContestCard = ({ details, totalTeamCount }) => {
                 numberOfLines={1}
                 style={{ color: 'white', marginHorizontal: 5, marginTop: 0, fontWeight: "800" }}
                 weight={LATO_BOLD}
+                color={WHITE}
                 type={THIRTEEN}>
                 ₹{numberWithCommas(details?.EnteryFee)}
               </AppText>
@@ -197,14 +200,14 @@ const ContestCard = ({ details, totalTeamCount }) => {
             style={{ width: `${percentage}%`, height: '100%', borderRadius: 4 }}
             start={{ x: 0, y: 0 }}
             colors={[
-              NLCColor.LightRed
+              '#DBA73E'
               ,
-              NLCColor.shadeRed]}></LinearGradient>
+              '#E0C77D']}></LinearGradient>
         </View>
         <View style={styles.flex}>
           <AppText type={TEN}
             weight={POPPINS_MEDIUM}
-            color={BLACK}>
+            color={WHITE}>
             {`${numberWithCommas(details?.Contestsize)} spots`}
           </AppText>
           <AppText type={TEN} weight={LATO_BOLD} color={BUTTONCOLOR}>
@@ -215,10 +218,10 @@ const ContestCard = ({ details, totalTeamCount }) => {
       <View style={styles.bottomContainer}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <View style={styles.commonViewStyle}>
-            <FastImage tintColor={NLCColor.Red} source={GLORY} style={styles.gloryIcon} />
+            <FastImage tintColor={'#DBA63D'} source={GLORY} style={styles.gloryIcon} />
             <AppText
               type={TEN}
-              color={BLACK}
+              color={WHITE}
               weight={POPPINS_SEMI_BOLD}
               style={styles.commonTextStyle}>
               {details?.EnteryType !== 'Paid' ||
@@ -228,10 +231,10 @@ const ContestCard = ({ details, totalTeamCount }) => {
             </AppText>
           </View>
           <View style={styles.commonViewStyle}>
-            <FastImage tintColor={NLCColor.Red} source={WINNER} style={styles.gloryIcon} />
+            <FastImage tintColor={'#DBA63D'} source={WINNER} style={styles.gloryIcon} />
             <AppText
               type={TEN}
-              color={BLACK}
+              color={WHITE}
               weight={POPPINS_SEMI_BOLD}
               style={styles.commonTextStyle}>
               {details?.Winning_percent
@@ -242,7 +245,7 @@ const ContestCard = ({ details, totalTeamCount }) => {
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <FastImage
-              tintColor={NLCColor.Red}
+              tintColor={'#DBA63D'}
               source={details?.JoinWithMULT ? m : SINGLE}
               resizeMode="contain"
               style={styles.gloryIcon}
@@ -250,7 +253,7 @@ const ContestCard = ({ details, totalTeamCount }) => {
             />
             <AppText
               type={TEN}
-              color={BLACK}
+              color={WHITE}
               weight={POPPINS_SEMI_BOLD}
               style={[styles.commonTextStyle, {
                 marginLeft: 4,
@@ -263,10 +266,10 @@ const ContestCard = ({ details, totalTeamCount }) => {
         </View>
         {details?.ConfirmedWin && (
           <View style={styles.flex}>
-            <FastImage tintColor={NLCColor.Red} source={GURANTEE} style={styles.gloryIcon} />
+            <FastImage tintColor={'#DBA63D'} source={GURANTEE} style={styles.gloryIcon} />
             <AppText
               type={TEN}
-              color={BLACK}
+              color={WHITE}
               style={styles.commonTextStyle}>
               Guaranteed
             </AppText>

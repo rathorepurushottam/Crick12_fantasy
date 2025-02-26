@@ -5,15 +5,16 @@ import { NLCColor, colors } from '../../../theme/color';
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get('window').width,
-    marginBottom: 15,
+    paddingBottom: 15,
     marginTop: '5%',
+    backgroundColor:"#111019"
   },
   top: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
-    backgroundColor:"#282828",
+    backgroundColor:"#111019",
     height:70,
   },
   walletView: {
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 80,
     borderWidth: 1,
-    borderColor: NLCColor.lightPink,
+    borderColor:'#C1AA9966',
     marginLeft: 30
   },
   leftArrow: {
@@ -34,13 +35,15 @@ const styles = StyleSheet.create({
   },
   walletbox: {
     height: 28,
-    width: 28, backgroundColor: NLCColor.Red,
+     width: 28, 
+    //  backgroundColor: NLCColor.Red,
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
     borderWidth: 1,
-    borderColor:NLCColor.lightPink,
+    borderColor:'#C1AA9926',
+    backgroundColor: '#FFFFFF80',
   },
   text: {
     color: 'white',
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     paddingHorizontal: 20,
-    backgroundColor: colors.white,
+    backgroundColor: '#1E1C2A',
     marginTop: 10
   },
   entryTitle: {
@@ -135,6 +138,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
     height: 52,
     marginTop: 10
+  },
+  filtermainbackground:{
+    alignItems:'center',
+    flexDirection:"row",
+    justifyContent:"space-evenly",
   }
 });
 

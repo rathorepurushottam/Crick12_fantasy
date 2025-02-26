@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import {AppSafeAreaView} from '../common/AppSafeAreaView';
 import {KeyBoardAware} from '../common/KeyboardAware';
-import {MyBattleIcon, MyBattleScreen, Nlglogo, Nlglogo2} from '../helper/image';
+import {backLogo, frontLogo, MyBattleIcon, MyBattleScreen, Nlglogo, Nlglogo2} from '../helper/image';
 import {StatusBar} from 'native-base';
 import {NLCColor, NewColor, colors} from '../theme/color';
 import {Logo, universalPaddingHorizontal} from '../theme/dimens';
@@ -20,6 +20,8 @@ import {
   REDTEXT,
   THIRTEEN,
   TWELVE,
+  WHITE,
+  YellowText,
 } from '../common/AppText';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {useDispatch} from 'react-redux';
@@ -69,17 +71,25 @@ const MyBattleOtp = ({route}: any) => {
   };
   return (
     <AppSafeAreaView
-      statusColor={true}
-      style={{backgroundColor: NewColor.linerWhitefifty}}
-      hidden={false}>
-      <StatusBar
+        statusColor={true}
+        style={{backgroundColor: NewColor.backGroundDark}}
+        light={true}
+        hidden={false}
+      >
+      {/* <StatusBar
         barStyle={'dark-content'}
         backgroundColor={'transparent'}
         translucent={true}
         networkActivityIndicatorVisible={true}
-      />
+      /> */}
       <View>
-        <FastImage source={Nlglogo2} resizeMode="stretch" style={styles.logo} />
+      <ImageBackground
+        source={backLogo}
+        resizeMode="cover"
+        style={styles.MyBattleScreen}>
+      <FastImage resizeMode="stretch" style={styles.logo} source={frontLogo} />
+      </ImageBackground>
+        {/* <FastImage source={Nlglogo2} resizeMode="stretch" style={styles.logo} /> */}
       </View>
       <View style={styles.main}>
         <View
@@ -87,7 +97,7 @@ const MyBattleOtp = ({route}: any) => {
             paddingHorizontal: universalPaddingHorizontal,
           }}>
           <View>
-            <AppText weight={POPPINS_MEDIUM} type={THIRTEEN}>
+            <AppText weight={POPPINS_MEDIUM} type={THIRTEEN} color={WHITE}>
               Verify with OTP
             </AppText>
             <AppText
@@ -140,7 +150,7 @@ const MyBattleOtp = ({route}: any) => {
               onPress={onResend}
               type={FORTEEN}
               weight={POPPINS_SEMI_BOLD}
-              color={REDTEXT}>
+              color={YellowText}>
               Resend
             </AppText>
           </AppText>
@@ -159,8 +169,10 @@ export default MyBattleOtp;
 
 const styles = StyleSheet.create({
   MyBattleScreen: {
-    height: '100%',
     width: '100%',
+    height:278,
+    alignItems:"center",
+    justifyContent:'flex-end'
   },
   main: {
     paddingHorizontal: universalPaddingHorizontal,
@@ -170,19 +182,20 @@ const styles = StyleSheet.create({
     marginTop:50
   },
   underlineStyleBase: {
-    width: 46,
-    height: 40,
+    width: 50,
+    height: 50,
     borderRadius: 10,
-    backgroundColor: colors.bottomBackgroundColor,
-    color: colors.black,
+    backgroundColor: '#1E1C2A',
+    color: '#fff',
     borderWidth: 1,
+    borderColor:"#1E1C2A"
   },
   underlineStyleHighLighted: {
-    borderColor: '#DDDDDD',
+    // borderColor: '#DDDDDD',
   },
   logo: {
-    width: '100%',
-    height: 278,
+    width: 150,
+    height: 208,
   },
   button: {
     marginTop: 40,

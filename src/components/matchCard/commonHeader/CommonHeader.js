@@ -9,6 +9,7 @@ import {
   FIFTEEN,
   GREEN,
   GRY,
+  LIGHTGRAY,
   POPPINS,
   POPPINS_BOLD,
   POPPINS_LIGHT,
@@ -21,7 +22,7 @@ import {
   WHITE,
 } from '../../../common/AppText';
 import { TouchableOpacityView } from '../../../common/TouchableOpacityView';
-import { FILTER_ICON, LEFT_ARROW, wallet, notified, rightArrow, backIconMain, WalletIcon, headerIner, VS } from '../../../helper/image';
+import { FILTER_ICON, LEFT_ARROW, wallet, notified, rightArrow, backIconMain, WalletIcon, headerIner, VS, headerBack } from '../../../helper/image';
 import moment from 'moment';
 import NavigationService from '../../../navigation/NavigationService';
 import styles from './styles';
@@ -32,6 +33,7 @@ import { NLCColor, NewColor, colors } from '../../../theme/color';
 import { LiveTime } from '../../../common/LiveTime';
 import { getFilterSortby, setAllContest, setLoading } from '../../../slices/matchSlice';
 import LinearGradient from 'react-native-linear-gradient';
+import { poppinsMedium } from '../../../theme/typography';
 const DATA = [
   {
     id: 1,
@@ -310,7 +312,7 @@ const CommonHeader = ({
           setSelectedFilter(item?.title),
             allContest ? filterDataTwo(item) : filterData(item);
         }}>
-        <AppText type={TEN} weight={POPPINS_MEDIUM} style={styles.entryTitle}>
+        <AppText type={TEN} weight={POPPINS_MEDIUM} color={LIGHTGRAY} style={styles.entryTitle}>
           {item?.title}
         </AppText>
         {item?.title == selectedFilter ? (
@@ -382,7 +384,8 @@ const CommonHeader = ({
           </LinearGradient>
         </TouchableOpacityView>
       </View>
-      <ImageBackground source={headerIner} resizeMode='contain' style={styles.header} >
+
+      <ImageBackground source={headerBack} resizeMode='contain' style={styles.header} >
         <FastImage
           source={{ uri: details?.TeamAlogo }}
           style={styles.teamImage}
@@ -391,15 +394,16 @@ const CommonHeader = ({
         <View style={{ alignItems: "center" }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <AppText
-              color={WHITE}
+              color={BLACK}
               weight={POPPINS_BOLD}>
               {details?.TeamsShortNames && details?.TeamsShortNames[0]}
             </AppText>
             <FastImage source={VS}
               resizeMode='contain'
+              tintColor={'#222'}
               style={{ height: 27, width: 15, marginRight: 5, marginLeft: 5 }} />
             <AppText
-              color={WHITE}
+              color={BLACK}
               weight={POPPINS_BOLD}>
               {details?.TeamsShortNames && details?.TeamsShortNames[1]}
             </AppText>
@@ -408,7 +412,7 @@ const CommonHeader = ({
             view={true}
             top={true}
             details={details}
-            color={completeMatch ? WHITE : timeDifference >= 1 ? WHITE : WHITE}
+            color={completeMatch ? BLACK : timeDifference >= 1 ? BLACK : BLACK}
             type={TEN}
             completeMatch={completeMatch}
             setRemoveTabs={setRemoveTabs}
@@ -443,10 +447,10 @@ const CommonHeader = ({
        */}
         <View style={[styles.filterContainer, { otherContainer }]}>
           <AppText
-            weight={POPPINS_LIGHT}
+            weight={POPPINS_MEDIUM}
             style={{ marginRight: 20, opacity: 0.8 }}
-            type={ELEVEN}
-            color={BLACK}>
+            type={TWELVE}
+            color={WHITE}>
             Sort By:
           </AppText>
           <FlatList
@@ -458,9 +462,11 @@ const CommonHeader = ({
           <TouchableOpacityView onPress={showFilter} style={styles.filtermainbackground}>
             <FastImage
               source={FILTER_ICON}
-              tintColor={colors.black}
+              tintColor={colors.white}
               style={styles.filterIcon}
             />
+            <AppText color={WHITE} weight={POPPINS_MEDIUM}
+            type={TWELVE}>Filter</AppText>
           </TouchableOpacityView>
 
         </View>

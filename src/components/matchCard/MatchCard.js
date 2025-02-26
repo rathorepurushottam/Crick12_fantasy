@@ -92,13 +92,12 @@ const MatchCard = ({
       onPress={onNavigateContest}>
       <View style={styles.matchImage}>
         <View>
-          <View style={styles.seriesNametext} >
+          <View style={styles.seriesNametext}>
             <AppText
               numberOfLines={1}
               weight={POPPINS_SEMI_BOLD}
-              color={BLACK}
+              color={WHITE}
               style={{ bottom: 22 }} >{details?.SeriesName}</AppText>
-
           </View>
           {details?.line_up_out && (
             <View style={{ flexDirection: "row", alignItems: "center", alignSelf: "flex-end", marginRight: 10 }}>
@@ -114,7 +113,7 @@ const MatchCard = ({
           <View
             style={{ flex: flexOne, flexDirection: 'row', alignItems: 'center' }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <AppText weight={POPPINS_MEDIUM} type={TEN} numberOfLines={1} color={BLACK}>
+              <AppText weight={POPPINS_MEDIUM} type={TEN} numberOfLines={1} color={WHITE}>
                 {details?.TeamA && nameSlice(details?.TeamA)}
               </AppText>
               <FastImage
@@ -128,7 +127,7 @@ const MatchCard = ({
                 marginLeft: 5,
                 marginTop: 20,
               }}
-              weight={POPPINS_MEDIUM} color={BLACK}>
+              weight={POPPINS_MEDIUM} color={WHITE}>
               {details?.TeamsShortNames[0]}
             </AppText>
           </View>
@@ -148,10 +147,9 @@ const MatchCard = ({
                 top={true}
                 details={details}
                 setRemoveTabs={setRemoveTabs}
-
               />
             </View>
-            <AppText color={BLACK}>{formattedTime}</AppText>
+            <AppText color={WHITE}>{formattedTime}</AppText>
           </View>
           <View style={{ alignItems: 'flex-end', flex: 1 }}>
             <View
@@ -161,7 +159,7 @@ const MatchCard = ({
                 alignItems: 'center',
               }}>
               <AppText
-                color={BLACK}
+                color={WHITE}
                 style={{
                   marginRight: 5,
                   marginTop: 20,
@@ -174,7 +172,7 @@ const MatchCard = ({
               {/* <View style={styles.teamShortNameTextTwo}> */}
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <AppText
-                  color={BLACK}
+                  color={WHITE}
                   style={{
                     marginRight: 5,
                   }}
@@ -193,12 +191,13 @@ const MatchCard = ({
           </View>
         </View>
       </View>
+
       {
         myMatches !== undefined ? (
           <View style={styles.bottom}>
             <View style={styles.teamConunt}>
               <View style={styles.teamConunt}>
-                <AppText weight={POPPINS_MEDIUM}>{details?.countTeam} </AppText>
+                <AppText weight={POPPINS_MEDIUM} color={WHITE}>{details?.countTeam} </AppText>
                 <AppText weight={POPPINS_MEDIUM}>Team</AppText>
               </View>
               <View
@@ -208,10 +207,10 @@ const MatchCard = ({
                     marginLeft: 20,
                   },
                 ]}>
-                <AppText weight={POPPINS_MEDIUM}>
+                <AppText weight={POPPINS_MEDIUM} color={WHITE}>
                   {details?.countContest}{' '}
                 </AppText>
-                <AppText weight={POPPINS_MEDIUM}>Contests</AppText>
+                <AppText weight={POPPINS_MEDIUM} color={WHITE}>Contests</AppText>
               </View>
             </View>
           </View>
@@ -220,9 +219,10 @@ const MatchCard = ({
             {details?.contest_details?.length == 0 ? <></> :
               <View style={[styles.bottom,{height:34}]}>
                 {contestDetails?.contest_type && contestDetails?.contest_type ? (
-                  <ImageBackground
-                    source={headLine}
-                    style={styles.contestName}>
+                  // <ImageBackground
+                  //   source={headLine}
+                  //   style={styles.contestName}>
+                  <>
                     <AppText
                       color={BUTTONCOLOR}
                       style={{ fontSize: 11, }}
@@ -242,21 +242,17 @@ const MatchCard = ({
                     <AppText color={BUTTONCOLOR} weight={POPPINS_MEDIUM} style={[styles.textStyle, { marginTop: 2 }]}>
                       {contestDetails?.winning_amount}
                     </AppText>
-                  </ImageBackground>
+                    </>
+                  // </ImageBackground>
                 ) : <View style={{ flex: 1 }}></View>}
 
-                {/* <View style={styles.lineUpOut}>
-                  <FastImage source={Newarrow} resizeMode='contain'
-                    style={{
-                      height: 43,
-                      width: 43
-                    }} tintColor={NLCColor.Red} />
-                </View> */}
+        
               </View>
             }
           </>
         )
       }
+
       <RBSheet
         ref={sheet}
         closeOnDragDown={true}
@@ -281,3 +277,10 @@ const MatchCard = ({
 };
 
 export default MatchCard;
+        {/* <View style={styles.lineUpOut}>
+                  <FastImage source={Newarrow} resizeMode='contain'
+                    style={{
+                      height: 43,
+                      width: 43
+                    }} tintColor={NLCColor.Red} />
+                </View> */}

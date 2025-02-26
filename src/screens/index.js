@@ -91,12 +91,13 @@ const ReferAndEarn = () => {
 
   return (
     <>
-      <AppSafeAreaView statusColor={'transparent'} hidden={false}>
-        <StatusBar
-          backgroundColor={'transparent'}
-          translucent={true}
-          networkActivityIndicatorVisible={true}
-        />
+      <AppSafeAreaView style={{ backgroundColor: "#111019" ,paddingBottom:'15%'}}>
+       <StatusBar
+        backgroundColor={'#111019'}
+        translucent={true}
+        networkActivityIndicatorVisible={true}
+        barStyle={"light-content"}
+       />
         <KeyBoardAware style={styles.bottomContainer}>
           <HomeTopHeader
             walletIcon={true}
@@ -109,7 +110,7 @@ const ReferAndEarn = () => {
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
-              colors={[NLCColor.shadeSkuBlue, NLCColor.lightSkyBlue]}
+              colors={[ '#DBA63D39','#DBA63D99']}
               style={styles.mainbox}>
               {data?.map(item => {
                 return (
@@ -122,10 +123,10 @@ const ReferAndEarn = () => {
 
                       }}>
                       <View style={{ marginTop: 10 }}>
-                        <AppText type={THIRTEEN} weight={POPPINS_MEDIUM}>
+                        <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} color={WHITE}>
                           {item.title}
                         </AppText>
-                        <AppText type={TWENTY_FIVE} weight={POPPINS_SEMI_BOLD}>
+                        <AppText type={TWENTY_FIVE} weight={POPPINS_SEMI_BOLD} color={WHITE}>
                           {item.balance}
                         </AppText>
                       </View>
@@ -146,7 +147,7 @@ const ReferAndEarn = () => {
                       }}>
                       <LinearGradient
                         colors={[
-                          NLCColor.Red,NLCColor.LightRed
+                          '#DBA73E','#D89D3A','#D0AB5B','#E0C77D'
                         ]}
                         start={{ x: 1, y: 0 }}
                         end={{ x: 0, y: 1 }}
@@ -154,14 +155,14 @@ const ReferAndEarn = () => {
                         <AppText
                           type={TWELVE}
                           weight={POPPINS_LIGHT}
-                          color={WHITE}>
+                          color={BLACK}>
                           {item.titletwo}
                         </AppText>
                         <AppText
                           style={{ marginTop: 3 }}
                           type={FIFTEEN}
                           weight={SEMI_BOLD}
-                          color={WHITE}>
+                          color={BLACK}>
                           {item.deposit}
                         </AppText>
                         <TouchableOpacityView style={styles.depositbutton} onPress={() => NavigationService.navigate(ADD_MONEY_SCREEN)}>
@@ -182,14 +183,14 @@ const ReferAndEarn = () => {
                         <AppText
                           type={TWELVE}
                           weight={POPPINS_LIGHT}
-                          color={BLACK}>
+                          color={WHITE}>
                           {item.titlethree}
                         </AppText>
                         <AppText
                           style={{ marginTop: 3 }}
                           type={FIFTEEN}
                           weight={SEMI_BOLD}
-                          color={BLACK}>
+                          color={WHITE}>
                           {item.deposit}
                         </AppText>
                         <TouchableOpacityView
@@ -223,14 +224,14 @@ const ReferAndEarn = () => {
                         style={[
                           styles.box,
                           {
-                            backgroundColor: colors.bottomBackgroundColor,
+                            backgroundColor: colors.lightGrey,
                             marginTop: 1,
                           },
                         ]}>
                         <AppText
                           type={TWELVE}
                           weight={POPPINS_LIGHT}
-                          color={BLACK}
+                          color={WHITE}
                           style={{ marginTop: 6 }}>
                           {item.titlefour}
                         </AppText>
@@ -238,7 +239,7 @@ const ReferAndEarn = () => {
                           style={{ marginTop: 10 }}
                           type={FIFTEEN}
                           weight={SEMI_BOLD}
-                          color={BLACK}>
+                          color={WHITE}>
                           {item.deposit}
                         </AppText>
                       </View>
@@ -252,7 +253,7 @@ const ReferAndEarn = () => {
                         <AppText
                           type={TWELVE}
                           weight={POPPINS_LIGHT}
-                          color={BLACK}
+                          color={WHITE}
                           style={{ marginTop: 6 }}>
                           {item.titlefive}
                         </AppText>
@@ -260,7 +261,7 @@ const ReferAndEarn = () => {
                           style={{ marginTop: 10 }}
                           type={FIFTEEN}
                           weight={SEMI_BOLD}
-                          color={BLACK}>
+                          color={WHITE}>
                           {item.deposit}
                         </AppText>
                       </View>
@@ -271,13 +272,13 @@ const ReferAndEarn = () => {
             </LinearGradient>
             <View style={{ paddingHorizontal: 17 }}>
               <TouchableOpacityView style={styles.histroymainbox} onPress={() => NavigationService.navigate(TRANSACTION_SCREEN)}>
-                <AppText type={THIRTEEN} weight={POPPINS_MEDIUM}>
+                <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} color={WHITE}>
                   Transaction History
                 </AppText>
                 <FastImage
                   source={rightArrow}
                   resizeMode="contain"
-                  tintColor={colors.black}
+                  tintColor={colors.white}
                   style={{ height: 15, width: 20 }}
                 />
               </TouchableOpacityView>
@@ -357,8 +358,9 @@ const styles = StyleSheet.create({
     marginHorizontal: universalPaddingHorizontal,
     paddingVertical: 10,
     marginTop: 25,
-
     borderRadius: 35,
+    borderColor:"#F0E6A54D",
+    borderWidth:1,
   },
   box: {
     height: 96,
@@ -384,7 +386,7 @@ const styles = StyleSheet.create({
   boxtwo: {
     height: 96,
     width: '48%',
-    backgroundColor: colors.bottomBackgroundColor,
+    backgroundColor: colors.lightGrey,
     marginTop: 20,
     borderRadius: 10,
     paddingHorizontal: 20,
@@ -395,7 +397,7 @@ const styles = StyleSheet.create({
   histroymainbox: {
     height: 50,
     width: '100%',
-    backgroundColor: NLCColor.white,
+    backgroundColor: NLCColor.lightGray,
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -409,6 +411,6 @@ const styles = StyleSheet.create({
     elevation: 1
   },
   bottomContainer: {
-    backgroundColor: "#F8F8F8"
+    // backgroundColor: "#F8F8F8"
   }
 });

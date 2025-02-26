@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     borderRadius: 17,
     overflow: 'hidden',
     marginBottom: 10,
-    backgroundColor:colors.white
+    backgroundColor:'#343434'
   },
   topContainer: {
     height: 131 - 33,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: colors.bottomBackgroundColor,
+    backgroundColor: '#3F3F3F',
   },
   gloryIcon: {
     height: 18,

@@ -26,6 +26,8 @@ import {
   TWELVE,
   WHITE,
   BLACK,
+  YellowText,
+  LIGHTGRAY,
 } from '../../common/AppText';
 import {flexOne, universalPaddingHorizontal} from '../../theme/dimens';
 import {StatusBar} from 'native-base';
@@ -60,7 +62,7 @@ export const RenderTabBar = props => {
           }}>
           <AppText
             type={FORTEEN}
-            color={focused ? RED : BLACK}
+            color={focused ? YellowText : LIGHTGRAY}
             weight={POPPINS_MEDIUM}>
             {route.title}
           </AppText>
@@ -69,7 +71,7 @@ export const RenderTabBar = props => {
               style={{height: 2, width: 95}}
               start={{x: 0, y: 1}}
               end={{x: 1, y: 0}}
-              colors={[NLCColor.LightRed, NLCColor.shadeRed]}></LinearGradient>
+              colors={['#D89E3C', '#EAD288']}></LinearGradient>
           ) : (
             <View style={{width: 100, height: 2}}></View>
           )}
@@ -237,8 +239,16 @@ const MyMatches = () => {
   });
 
   return (
-    <AppSafeAreaView statusColor={true} hidden={false}>
-      <CommonImageBackground common>
+    <AppSafeAreaView 
+    style={{ backgroundColor: "#111019" ,paddingBottom:'15%'
+    }}>
+      <StatusBar
+              backgroundColor={'#111019'}
+              translucent={true}
+              networkActivityIndicatorVisible={true}
+              barStyle={"light-content"}
+        />
+      {/* <CommonImageBackground common> */}
         <HomeTopHeader
           walletIcon={true}
           personClick={() =>
@@ -303,7 +313,7 @@ const MyMatches = () => {
           initialLayout={{width: Screen.Width}}
           renderTabBar={props => <RenderTabBar {...props} />}
         />
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
       <SpinnerSecond loading={isLoading} />
     </AppSafeAreaView>
   );

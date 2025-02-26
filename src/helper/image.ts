@@ -17,8 +17,15 @@ export const NlgIconNew = require('../../assets/images/Nlgiconnew.png')
 export const MyBattleReferBackground = require('../../assets/images/MyBattleReferBackground.png');
 export const Nlgprofilebox = require('../../assets/images/Nlgprofilebox.png');
 // export const splash = require('../../assets/images/splash.jpg');
-export const splashScreen = require('../../assets/images/Splash.png')
+export const splashScreen = require('../../assets/images/splash.jpg')
 
+
+export const backLogo = require('../../assets/images/backLogo.png')
+export const frontLogo = require('../../assets/images/frontlogo.png')
+export const profileBackMain = require('../../assets/images/profileBackMain.png')
+
+
+// profileBackMain
 
 
 
@@ -232,6 +239,10 @@ export const PANDYA = require('../../assets/images/pandya.png');
 export const PANT = require('../../assets/images/pant.png');
 export const backIconMain = require('../../assets/images/backIconMain.png');
 export const headerIner = require('../../assets/images/headerIner.png');
+
+export const headerBack = require('../../assets/images/headerBack.png');
+
+
 
 export const CAPTAIN = require('../../assets/images/captain.png');
 export const VICE_CAPTAIN = require('../../assets/images/viceCaptain.png');

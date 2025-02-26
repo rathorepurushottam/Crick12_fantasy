@@ -32,7 +32,7 @@ const PrimaryButton = ({
       disable = {disable}
       onPress={onPress}>
       <LinearGradient
-        colors={[color ? color : NLCColor.LightRed, color ? color : NLCColor.shadeRed]}
+        colors={[color ? color : '#D89E3C', color ? color : '#EAD288']}
         start={{ x: 1, y: 1 }}
         end={{ x: 0, y: 1 }}
         style={[styles.linearGradient, smallBtn]}>

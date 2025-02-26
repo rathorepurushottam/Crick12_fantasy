@@ -38,16 +38,10 @@ const HomeTopHeader = ({ personClick, walletIcon }) => {
   }, [total_balance])
   return (
     <>
-      <StatusBar
-        backgroundColor={'transparent'}
-        translucent={true}
-        networkActivityIndicatorVisible={true}
-        barStyle={"light-content"}
-      />
       <LinearGradient
-        colors={[NLCColor.LightRed,NLCColor.shadeRed]}
-        start={{ x: 1, y: 1 }}
-        end={{ x: 1, y: 0 }}
+        colors={['#111019','#111019']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
         style={styles.topContainer}>
         <TouchableOpacityView
           style={{ height: 28, width: 28, marginTop: "5%" }}
@@ -68,11 +62,7 @@ const HomeTopHeader = ({ personClick, walletIcon }) => {
               style={{ height: 10, width: 10 }} />
           </View>
         </TouchableOpacityView>
-        <FastImage
-          source={NlgIconNew}
-          style={styles.combineIcon}
-          resizeMode="contain"
-        />
+
         <TouchableOpacityView
           style={{ marginTop: "6%" }}
           onPress={() => NavigationService.navigate(MY_BALANCE)}>
@@ -87,7 +77,7 @@ const HomeTopHeader = ({ personClick, walletIcon }) => {
                   style={{ height: 12, width: 14, }}
                   resizeMode="contain"
                   source={WalletIcon}
-                  tintColor={NLCColor.textInputcolor}
+                  tintColor={'#111111'}
                 />
               </View>
               <View>
@@ -121,10 +111,13 @@ const styles = StyleSheet.create({
   topContainer: {
     height: 90,
     width: '100%',
-    paddingHorizontal: 10,
+    paddingLeft: 20,
+    paddingRight:10,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent:"space-between"
+    justifyContent:"space-between",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+
   },
   personImage: {
     height: 28,
@@ -155,7 +148,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 80,
     borderWidth: 1,
-    borderColor:NLCColor.lightPink,
+    borderColor:'#C1AA9966',
     marginLeft: 30,
 
   },
@@ -170,8 +163,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     borderWidth: 1,
-    borderColor:NLCColor.lightPink,
-    backgroundColor: NLCColor.Red
+    borderColor:'#C1AA9926',
+    backgroundColor: '#FFFFFF80',
+
   },
   logoview: {
     //  justifyContent:"space-between"

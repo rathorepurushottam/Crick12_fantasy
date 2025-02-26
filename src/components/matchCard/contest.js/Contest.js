@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { AppText, POPPINS_BOLD, SIXTEEN } from '../../../common/AppText';
+import { AppText, POPPINS_BOLD, SIXTEEN, WHITE } from '../../../common/AppText';
 import NavigationService from '../../../navigation/NavigationService';
 import { ALL_CONTEST_LIST, PRACTISE_SCREEN } from '../../../navigation/routes';
 import ContestCard from '../contestCard/ContestCard';
@@ -9,6 +9,7 @@ import { setAllContest } from '../../../slices/matchSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Contest = ({ details, totalTeamCount, matchId }) => {
+  console.log(details?.name,"{details?.name}{details?.name}{details?.name}")
   const dispatch = useDispatch();
   const contestList = useSelector(state => state?.match?.contestList);
   const renderContest = ({ item }) => {
@@ -43,6 +44,7 @@ const Contest = ({ details, totalTeamCount, matchId }) => {
         <AppText
           type={SIXTEEN}
           style={{ marginTop: 5, marginBottom: 10 }}
+          color={WHITE}
           weight={POPPINS_BOLD}>
           {details?.name}
         </AppText>
@@ -53,7 +55,6 @@ const Contest = ({ details, totalTeamCount, matchId }) => {
         )}
       </View>
       <FlatList
-
         data={details?.data} renderItem={renderContest} />
     </>
   );

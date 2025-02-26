@@ -56,16 +56,16 @@ const InputBox = ({
           style={{
             borderWidth: 1,
             borderRadius: 10,
-            backgroundColor:NLCColor.textInputcolor,
+            backgroundColor:"#1E1C2A",
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
             marginTop: top ? 10 : 0,
-            borderColor:NLCColor.inputBorderColor,
+            borderColor:'#2B2839',
             paddingHorizontal:10,
           }}>
           {image && (
-            <FastImage source={image} resizeMode='contain' tintColor={NLCColor.Red} style={{
+            <FastImage source={image} resizeMode='contain' tintColor={'#DBA63D'} style={{
               height: 20,
               width: 20,
               marginLeft: 5

@@ -56,11 +56,14 @@ export const GREEN = 'GREEN';
 export const RED = 'RED';
 export const BORDERPINK = 'BORDERPINK';
 export const TEXTCOLOR = 'TEXTCOLOR';
+export const LIGHTGRAY = 'LIGHTGRAY'
+
 
 export const LIGHTGOLDEN = 'LIGHTGOLDEN';
 export const LIGHTWHITE = 'LIGHTWHITE';
-export const REDTEXT = 'REDTEXT';
+export const REDTEXT = 'RED';
 export const BUTTONCOLOR = 'BUTTONCOLOR';
+export const YellowText = 'YELLOWTEXT'
 
 
 
@@ -89,6 +92,7 @@ export const THIRTY = 'THIRTY';
 
 export const TWENTY_ONE_L = 'TWENTY_ONE_L';
 export const THIRTY_SIX_L = 'THIRTY_SIX_L';
+
 
 const AppText = ({
   type,
@@ -267,6 +271,9 @@ const getTextStyle = (
     case BLUE:
       style['color'] = '#7B3995';
       break;
+    case LIGHTGRAY:
+      style['color'] = '#747474';
+      break;
     case RBBACKGROUND:
       style['color'] = colors.rbBackground;
       break;
@@ -293,6 +300,9 @@ const getTextStyle = (
       break;
     case BUTTONCOLOR:
       style['color'] = NLCColor.buttonColor;
+      break;
+    case YellowText:
+      style['color'] = '#DBA73E'
       break;
     // case SIXTH:
     //   style['color'] = colors.sixth;

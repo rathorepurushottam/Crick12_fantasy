@@ -216,7 +216,6 @@ const FilterSheet = ({
     <View
       style={{
         flex: 1,
-        
       }}>
       <View style={styles.top}>
         <TouchableOpacity

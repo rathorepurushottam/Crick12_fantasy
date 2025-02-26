@@ -28,7 +28,7 @@ import { Screen, flexOne } from '../../theme/dimens';
 import CommonImageBackground from '../../common/commonImageBackground';
 import PrimaryButton from '../../common/primaryButton';
 import SecondaryButton from '../../common/secondaryButton';
-import { AppText, BLACK, FORTEEN, POPPINS_MEDIUM, RED, WHITE } from '../../common/AppText';
+import { AppText, BLACK, FORTEEN, LIGHTGRAY, POPPINS_MEDIUM, RED, WHITE, YellowText } from '../../common/AppText';
 import { NLCColor, NewColor, colors } from '../../theme/color';
 import ContestCard from '../../components/matchCard/contestCard/ContestCard';
 import { getKycDetails } from '../../actions/profileAction';
@@ -38,17 +38,14 @@ import MyContestListETC from '../../components/matchCard/myContest/MyContestList
 import SlideSwiper from '../../common/SlideSwiper';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
 import LinearGradient from 'react-native-linear-gradient';
-
-
-
-
+import { white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 export const RenderTabBar = props => {
   return (
     <TabBar
       {...props}
       contentContainerStyle={{
-        backgroundColor: colors.white,
+        backgroundColor: '#1E1C2A',
         width: Screen.Width,
         height: 50,
       }}
@@ -64,7 +61,7 @@ export const RenderTabBar = props => {
           }}>
           <AppText
             type={FORTEEN}
-            color={focused ? RED : BLACK}
+            color={focused ? YellowText : LIGHTGRAY}
             weight={POPPINS_MEDIUM}>
             {route.title}
           </AppText>
@@ -73,7 +70,7 @@ export const RenderTabBar = props => {
               style={{ height: 2, width: 102, }}
               start={{ x: 0, y: 1 }}
               end={{ x: 1, y: 0 }}
-              colors={[NLCColor.LightRed, NLCColor.shadeRed]}
+              colors={['#DBA73E', '#E0C77D']}
             >
             </LinearGradient>
           ) :
@@ -167,6 +164,7 @@ const MyContest = () => {
   //   }
   // }, [modalRemove])
   const renderItem = ({ item }) => {
+    console.log(item,"itemmmmssssss")
     console.log('in contest')
     return (
       <Contest
@@ -355,9 +353,9 @@ const MyContest = () => {
   });
 
   return (
-    <AppSafeAreaView light={true} hidden={false}>
+    <AppSafeAreaView style={{backgroundColor:"111019"}}>
       <StatusBar
-        backgroundColor={'#282828'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
@@ -373,7 +371,7 @@ const MyContest = () => {
           title={saveTitle}
         />
 
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 ,backgroundColor:"#111019"}}>
           <TabView
             navigationState={{ index, routes }}
             renderScene={renderScene}
@@ -383,7 +381,6 @@ const MyContest = () => {
           />
         </View>
 
-       
         <RBSheet
           ref={filterSheet}
           closeOnDragDown={false}

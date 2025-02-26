@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { PermissionsAndroid, Platform, StyleSheet, RefreshControl } from 'react-native';
+import { PermissionsAndroid, Platform, StyleSheet, RefreshControl, StatusBar, View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppSafeAreaView } from '../../common/AppSafeAreaView';
 import Basketball from './Basketball';
@@ -13,6 +13,7 @@ import { HomeTopHeader } from '../../common/HomeTopHeader';
 import { BannerLoop } from '../../helper/image';
 import Geolocation from '@react-native-community/geolocation';
 import ReminderModal from '../../common/ReminderModal/ReminderModal';
+import { NewColor } from '../../theme/color';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -30,10 +31,6 @@ const Home = () => {
   const kycDetails = useSelector(state => {
     return state.profile.kycDetails;
 });
-
-
-
-
 const getKycDetialsss = ()=>{
   if(!kycDetails) {
     dispatch(getKycDetails());
@@ -42,7 +39,6 @@ const getKycDetialsss = ()=>{
     getCheck(newcheck);
   }
 }
-
 
 useEffect(() => {
   if (!kycDetails) {
@@ -100,6 +96,7 @@ useEffect(() => {
       }
     }
   };
+  
   const getLatituteLongitute = (lat, long) => {
     setLatitude(lat)
     setLongitute(long)
@@ -182,11 +179,13 @@ useEffect(() => {
     setRandom(Math.random())
   }
   return (
-    <AppSafeAreaView
-      statusColor={true}
-      light={true}
-      style={{ backgroundColor: "#F8F8F8" }}
-      hidden={false}>
+    <AppSafeAreaView style={{paddingBottom:"15%"}}>
+      <StatusBar
+        backgroundColor={'#111019'}
+        translucent={true}
+        networkActivityIndicatorVisible={true}
+        barStyle={"light-content"}
+      />
       <HomeTopHeader
         walletIcon={true}
         personClick={() =>
@@ -205,7 +204,7 @@ useEffect(() => {
         ) : (
           <Kabbadi jobType="Kabbadi" />
         )}
-      <ReminderModal setkycPOpUp={setkycPOpUp}kycPOpUp={kycPOpUp}/>
+      {/* <ReminderModal setkycPOpUp={setkycPOpUp}kycPOpUp={kycPOpUp}/> */}
       </KeyBoardAware>
     </AppSafeAreaView>
   );

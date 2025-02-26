@@ -46,6 +46,9 @@ export const colors = {
   lightWhite: '#00000033',
   textColor: '#8E8E8E',
   buttoncolor: '#3EAA35',
+  bottomTabBackGround :'#252431',
+
+  lightGrey :"#3F3F3F"
 
 };
 export const NewColor = {
@@ -65,6 +68,8 @@ export const NewColor = {
   linerBlackFivegry: '#00000005',
   linerBlacklightEight: '#00000080',
   lightBlue: '#F4FBFD',
+  backGroundDark :'#111019',
+  backgroundInput :"#1E1C2A"
 };
 export const NLCColor = {
   textInputcolor: '#F4F4F4',
@@ -78,13 +83,14 @@ export const NLCColor = {
   lightWhite: '#FFF3F6',
   white: '#FFFFFF',
   roundColor: '#00000014',
-  tabColor: '#D9E2E5',
+  tabColor: '#999999',
   lightSkyBlue: '#FBA3B5',
   shadeSkuBlue: '#FF90A64D',
   buttonColor: '#3EAA35',
   shineRed: "#FF5252",
   background: '#34343415',
   buttonWidthColor: "#FFFFFF66",
-
+  yellow :'#DBA63D',
+  lightGray :'#3F3F3F'
 
 };

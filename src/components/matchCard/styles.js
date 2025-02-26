@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: 15,
     position: 'relative',
-    backgroundColor: NLCColor.white,
+    // backgroundColor: NLCColor.white,
+    backgroundColor: "#343434"
   },
   cardContainerTwo: {
     height: 140,
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: 15,
     position: 'relative',
-    backgroundColor: colors.white
+    backgroundColor: "#343434"
   },
   matchImage: {
     height: 111 - 22,
@@ -36,12 +37,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     top: 0,
     borderTopWidth: 25,
-    borderTopColor: NLCColor.lightWhite,
+    borderTopColor: '#3F3F3F',
     borderLeftWidth: 0,
     borderRightWidth: 15,
     borderRightColor: 'transparent',
     borderStyle: 'solid',
-    borderLeftColor: NewColor.lightBlue
+    borderLeftColor: '#3F3F3F',
+    // backgroundColor:"#3F3F3F"
   },
   linerLine: {
     height: 0.7,
@@ -61,12 +63,18 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   bottom: {
-    backgroundColor: "#F6F6F6",
+    // backgroundColor: "#F6F6F6",
+    backgroundColor: '#3F3F3F',
     paddingHorizontal: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     marginTop: 19,
+    // borderLeftWidth:1,
+    // borderTopWidth:1,
+    // borderBottomWidth:1,
+    // borderColor:'green'
+
   },
   teamContainer: {
     flexDirection: 'row',
@@ -75,6 +83,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 25,
     marginTop: 20,
+    
   },
   teamImage: {
     height: 40,

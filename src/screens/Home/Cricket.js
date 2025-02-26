@@ -176,7 +176,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
           marginHorizontal: universalPaddingHorizontal,
         }}
         type={EIGHTEEN}
-        weight={POPPINS_BOLD} color={BLACK}>
+        weight={POPPINS_BOLD} color={WHITE}>
         Upcoming Matches
       </AppText>
       <KeyBoardAware
@@ -195,6 +195,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#111019"
   },
   one: {
     flexDirection: 'row',

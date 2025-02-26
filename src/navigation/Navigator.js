@@ -108,6 +108,7 @@ import {
   RED,
   TABCOLOR,
   TEN,
+  YellowText,
 } from '../common/AppText';
 import {NLCColor, NewColor, colors} from '../theme/color';
 import LinearGradient from 'react-native-linear-gradient';
@@ -315,14 +316,29 @@ const BottomMainTab = () => {
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
+        // tabBarStyle: {
+        //   backgroundColor: colors.white,
+        //   height: Platform.OS === 'ios' ? 80 : 60,
+        //   borderTopWidth: 0,
+        //   paddingVertical: 10,
+        //   borderTopRightRadius: 20,
+        //   borderTopLeftRadius: 20,
+        // },
+        
         tabBarStyle: {
-          backgroundColor: colors.white,
-          height: Platform.OS === 'ios' ? 80 : 60,
-          borderTopWidth: 0,
-          paddingVertical: 10,
-          borderTopRightRadius: 20,
-          borderTopLeftRadius: 20,
-        },
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor:colors.bottomTabBackGround, 
+        height: Platform.OS === 'ios' ? 80 : 60,
+        paddingVertical: 10,
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
+        elevation: 0,
+        zIndex: 1, 
+        borderTopColor:colors.bottomTabBackGround
+      },        
         tabBarAllowFontScaling: false,
         tabBarShowLabel: false,
       }}>
@@ -337,14 +353,14 @@ const BottomMainTab = () => {
                   resizeMode="contain"
                   style={{width: 33, height: 12, marginTop: -12}}
                   source={bottomtapHed}
-                  tintColor={NLCColor.Red}
+                  tintColor={'#DBA63D'}
                 />
               ) : (
                 <View style={{width: 33, height: 12, marginTop: -12}}></View>
               )}
               <FastImage
                 source={focused ? homeLinerIcon : home_icon}
-                tintColor={focused ? NLCColor.Red : NLCColor.tabColor}
+                tintColor={focused ? '#DBA63D' : NLCColor.tabColor}
                 style={{
                   width: 25,
                   height: 25,
@@ -353,7 +369,7 @@ const BottomMainTab = () => {
               />
               <AppText
                 style={{marginTop: 4}}
-                color={focused ? RED : TABCOLOR}
+                color={focused ? YellowText : TABCOLOR}
                 weight={POPPINS_SEMI_BOLD}
                 type={TEN}>
                 Home
@@ -373,14 +389,14 @@ const BottomMainTab = () => {
                   resizeMode="contain"
                   style={{width: 33, height: 12, marginTop: -12}}
                   source={bottomtapHed}
-                  tintColor={NLCColor.Red}
+                  tintColor={'#DBA63D'}
                 />
               ) : (
                 <View style={{width: 33, height: 12, marginTop: -12}}></View>
               )}
               <FastImage
                 source={focused ? contestLinerIcon : contest_icon}
-                tintColor={focused ? NLCColor.Red : NLCColor.tabColor}
+                tintColor={focused ? '#DBA63D' : NLCColor.tabColor}
                 style={{
                   width: 25,
                   height: 25,
@@ -389,7 +405,7 @@ const BottomMainTab = () => {
               />
               <AppText
                 style={{marginTop: 4}}
-                color={focused ? RED : TABCOLOR}
+                color={focused ? YellowText : TABCOLOR}
                 weight={POPPINS_SEMI_BOLD}
                 type={TEN}>
                 Contest
@@ -410,7 +426,7 @@ const BottomMainTab = () => {
                   resizeMode="contain"
                   style={{width: 33, height: 12, marginTop: -15, marginLeft: 6}}
                   source={bottomtapHed}
-                  tintColor={NLCColor.Red}
+                  tintColor={'#DBA63D'}
                 />
               ) : (
                 <View
@@ -422,7 +438,7 @@ const BottomMainTab = () => {
                   }}></View>
               )}
               <FastImage
-                tintColor={focused ? NLCColor.Red : NLCColor.tabColor}
+                tintColor={focused ? '#DBA63D' : NLCColor.tabColor}
                 source={focused ? balance : balance}
                 style={{
                   width: 23,
@@ -433,7 +449,7 @@ const BottomMainTab = () => {
               />
               <AppText
                 style={{marginTop: 3, marginLeft: 10}}
-                color={focused ? RED : TABCOLOR}
+                color={focused ? YellowText : TABCOLOR}
                 weight={POPPINS_SEMI_BOLD}
                 type={TEN}>
                 Wallet
@@ -454,13 +470,13 @@ const BottomMainTab = () => {
                   resizeMode="contain"
                   style={{width: 33, height: 12, marginTop: -14}}
                   source={bottomtapHed}
-                  tintColor={NLCColor.Red}
+                  tintColor={'#DBA63D'}
                 />
               ) : (
                 <View style={{width: 33, height: 12, marginTop: -14}}></View>
               )}
               <FastImage
-                tintColor={focused ? NLCColor.Red : NLCColor.tabColor}
+                tintColor={focused ? '#DBA63D' : NLCColor.tabColor}
                 source={focused ? refer_earn : refer_earn}
                 style={{
                   width: 23,
@@ -470,7 +486,7 @@ const BottomMainTab = () => {
               />
               <AppText
                 style={{marginTop: 4}}
-                color={focused ? RED : TABCOLOR}
+                color={focused ? YellowText : TABCOLOR}
                 weight={POPPINS_SEMI_BOLD}
                 type={TEN}>
                 Refer & Earn

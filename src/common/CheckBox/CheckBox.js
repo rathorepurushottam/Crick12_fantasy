@@ -18,7 +18,7 @@ const Checkbox = ({ onPress, value, disabled, type }: any) => {
       underlayColor="transparent"
       disabled={disabled}
       style={{}}>
-      <LinearGradient colors={[NLCColor.LightRed, NLCColor.shadeRed]} style={styles.linearGradientWrapper}
+      <LinearGradient colors={['#D89E3C', '#EAD288']} style={styles.linearGradientWrapper}
         start={{ x: 1, y: 0 }}
         end={{ x: 0, y: 1 }}>
         {value ? (

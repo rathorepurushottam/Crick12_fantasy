@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 14,
     flex:1,
+    backgroundColor:"#1E1C2A"
     // marginTop:5
   },
   gradient: {
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
   },
   NameLabel: {
     marginTop: 10,
+    color:'#fff'
   },
 });
 

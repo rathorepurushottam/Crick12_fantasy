@@ -23,9 +23,11 @@ import {
   SettingIcon,
   TermsIcon,
   UserIcon,
+  aboutUs,
   iconNlg,
   kycIcon,
   kycLogo,
+  profileBackMain,
   rightArrow,
   right_arrow,
 } from '../helper/image';
@@ -90,7 +92,7 @@ export const datatwo = [
   },
   {
     id: 5,
-    FastImage: BattleIcon,
+    FastImage: aboutUs,
     title: 'About Us',
     source: rightArrow,
   },
@@ -165,10 +167,10 @@ const CustomDrawer = () => {
   }, []);
   const renderData = ({item, index}: any) => {
     const color = {
-      backgroundColor: select == item.id ? NLCColor.Red : NLCColor.white,
+      backgroundColor: select == item.id ? NLCColor.yellow : NLCColor.lightGray,
     };
-    const tintColor = select == item.id ? colors.white : colors.textColor;
-    const textColor = select == item.id ? WHITE : TEXTCOLOR;
+    const tintColor = select == item.id ? colors.black : colors.white;
+    const textColor = select == item.id ? BLACK : WHITE;
     return (
       <>
         <TouchableOpacityView
@@ -211,7 +213,7 @@ const CustomDrawer = () => {
         networkActivityIndicatorVisible={true}
       />
       <ImageBackground
-        source={Nlgprofilebox}
+        source={profileBackMain}
         resizeMode="cover"
         // tintColor={NLCColor.Red}
         style={styles.MyBattleProfileBox}>
@@ -244,11 +246,11 @@ const CustomDrawer = () => {
             }}
             style={styles.nameview}>
             <View>
-              <AppText type={FIFTEEN} weight={POPPINS_SEMI_BOLD} color={WHITE}>
+              <AppText type={FIFTEEN} weight={POPPINS_SEMI_BOLD} color={BLACK}>
                 {userData?.full_name}
               </AppText>
 
-              <AppText type={TWELVE} weight={NORMAL} color={WHITE}>
+              <AppText type={TWELVE} weight={NORMAL} color={BLACK}>
                 +91 {userData?.mobile_number}
               </AppText>
             </View>
@@ -257,13 +259,13 @@ const CustomDrawer = () => {
                 source={rightArrow}
                 resizeMode="contain"
                 style={styles.rightArrow}
-                tintColor={colors.white}
+                tintColor={colors.black}
               />
             </TouchableOpacityView>
           </TouchableOpacityView>
         </View>
       </ImageBackground>
-      <KeyBoardAware style={{backgroundColor: '#F8F8F8'}}>
+      <KeyBoardAware style={{backgroundColor: '#343434'}}>
         <View style={styles.topviewicons}>
           <FlatList
             data={datatwo}
@@ -355,7 +357,7 @@ const styles = StyleSheet.create({
     width: 20,
   },
   topviewicons: {
-    backgroundColor: colors.white,
+    backgroundColor: '#343434',
     marginTop: 20,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -370,6 +372,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 10,
     borderRadius: 10,
+    backgroundColor:'#343434'
   },
   imageicon: {
     height: 25,
