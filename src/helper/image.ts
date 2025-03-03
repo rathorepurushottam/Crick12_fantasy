@@ -101,9 +101,19 @@ export const TermsIcon = require('../../assets/images/TermsIcon.png');
 export const iconNlg = require('../../assets/images/iconNlg.png')
 
 
+export const darkPlus = require('../../assets/images/darkPlus.png')
+export const darkMinus = require('../../assets/images/darkMinus.png')
+
+
+export const  backCVC = require('../../assets/images/backCVC.png')
 
 
 
+
+
+
+
+// backCVC
 
 
 

@@ -19,7 +19,8 @@ import {
   SEMI_BOLD,
   TWELVE,
   WHITE,
-  AppText, SIXTEEN
+  AppText, SIXTEEN,
+  YellowText
 } from '../common/AppText';
 import { fixedToTwo } from '../helper/utility';
 import moment from 'moment';
@@ -38,11 +39,11 @@ export const RenderTabBar = (props: any) => {
               width: '100%',
               height: 38,
               justifyContent: 'space-evenly',
-              // backgroundColor:'orange',
+              // backgroundColor:'#111019',
               // padding: 5,
               alignItems: 'center',
             }}>
-            <AppText type={FORTEEN} color={focused ? RED : BLACK} weight={POPPINS_MEDIUM}>
+            <AppText type={FORTEEN} color={focused ? YellowText : WHITE} weight={POPPINS_MEDIUM}>
               {route.title}
             </AppText>
             {focused ? 
@@ -51,8 +52,8 @@ export const RenderTabBar = (props: any) => {
             start={{ x: 0, y: 1 }}
             end={{ x: 1, y: 0 }}
             colors={[
-              NLCColor.LightRed,
-              NLCColor.shadeRed
+              '#DBA73E',
+              '#E0C77D'
             ]}></LinearGradient> :<View style={{width:102, height:2}}></View>
             }
           </View>
@@ -143,17 +144,17 @@ const SlideSwiper = ({tabTitles, reverseData}: any) => {
   const listheader = () => {
     return (
       <View style={styles.renderItemContainerSecond}>
-        <AppText color={BLACK} type={TEN} style={{ flex: 1 }}>
+        <AppText color={WHITE} type={TEN} style={{ flex: 1 }}>
           DATE & TIME
         </AppText>
         <AppText
-          color={BLACK} 
+          color={WHITE} 
           type={TEN}
           style={{ flex: 1, textAlign: 'center' }}>
           TRANSACTION DETAILS
         </AppText>
         <AppText
-          color={BLACK} 
+          color={WHITE} 
           type={TEN}
           style={{ flex: 1, textAlign: 'right' }}>
           AMOUNT
@@ -179,6 +180,7 @@ const SlideSwiper = ({tabTitles, reverseData}: any) => {
       justifyContent: 'center',
     }}>
     <AppText
+      color={WHITE}
       style={{ textAlign: 'center' }}
       type={FORTEEN}
       weight={POPPINS_MEDIUM}>
@@ -211,6 +213,7 @@ const SlideSwiper = ({tabTitles, reverseData}: any) => {
     <AppText
       style={{ textAlign: 'center' }}
       type={FORTEEN}
+      color={WHITE}
       weight={POPPINS_MEDIUM}>
       {'Nothing to show.'}
     </AppText>
@@ -241,6 +244,7 @@ const SlideSwiper = ({tabTitles, reverseData}: any) => {
     <AppText
       style={{ textAlign: 'center' }}
       type={FORTEEN}
+      color={WHITE}
       weight={POPPINS_MEDIUM}>
       {'Nothing to show.'}
     </AppText>
@@ -293,10 +297,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     paddingHorizontal: universalPaddingHorizontal,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.6,
     paddingBottom: 5,
     marginTop: 5,
-    borderBottomColor: "#BEBEBE"
+    borderBottomColor: "#424242",
+    backgroundColor:'#111019'
   },
 })
 {/* <TabView

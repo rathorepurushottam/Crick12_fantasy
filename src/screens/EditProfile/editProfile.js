@@ -166,11 +166,11 @@ export default function EditProfile() {
   return (
     <AppSafeAreaView light={true} hidden={false}>
       <StatusBar
-        backgroundColor={'#282828'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <Header
           title={'Edit Profile'}
           commonHeader
@@ -208,41 +208,32 @@ export default function EditProfile() {
               </TouchableOpacityView>
             </TouchableOpacityView>
             <View>
-              <AppText type={EIGHTEEN} weight={POPPINS_SEMI_BOLD}>
+              <AppText type={EIGHTEEN} color={WHITE} weight={POPPINS_SEMI_BOLD}>
                 {userData?.full_name ? userData?.full_name : `My Profile`}
               </AppText>
 
               {
                 checkKYC ?
-                  <View style={styles.verifiedContainer}><Text style={{ fontSize: 10, color: '#fff', fontWeight: "500" }}>Kyc Verified</Text></View>
+                  <View style={styles.verifiedContainer}><Text style={{ fontSize: 10, color: '#222', fontWeight: "500" }}>Kyc Verified</Text></View>
                   :
-                  <View style={styles.notVerifiedCOntainer}><Text style={{ fontSize: 10, color: '#fff', fontWeight: "500" }}>Kyc Not Verified</Text></View>
+                  <View style={styles.notVerifiedCOntainer}><Text style={{ fontSize: 10, color: '#222', fontWeight: "500" }}>Kyc Not Verified</Text></View>
 
               }
-              {/* <AppText type={FORTEEN} weight={POPPINS_MEDIUM}>
-                Enter Your Details Here
-              </AppText> */}
             </View>
           </View>
           <CommonContainer style={styles.InputBoxWrapper}>
-            {/* <View style={styles.userIcon}>
-              <Image source={userAvatar} style={styles.cameraIcon} />
-              <AppText
-                style={styles.color(colors)}
-                type={EIGHTEEN}
-                weight={POPPINS_EXTRA_BOLD_ITALIC}>
-                {' Your Details'}
-              </AppText>
-            </View> */}
+          
 
             <View
               style={{
                 paddingHorizontal: 10,
                 paddingVertical: 20,
                 width: '100%',
+                backgroundColor:"#3F3F3F",
+                borderRadius:10
               }}>
               <InputBox
-                placeholderTextColor={colors.black}
+                placeholderTextColor={'#999999'}
                 label={'Full Name'}
                 value={fullName}
                 keyboardType="default"
@@ -252,18 +243,9 @@ export default function EditProfile() {
                 labelStyle={styles.label}
                 editable={userData?.full_name ? false : true}
               />
-              {/* <InputBox
-                placeholderTextColor={colors.grey}
-                label={'Email'}
-                editable={userData?.email ? false : true}
-                value={email}
-                keyboardType="default"
-                placeholder={'Enter your email'}
-                onChange={setEmail}
-                textInputBox={styles.textInputBox}
-                labelStyle={[styles.label, { marginTop: 20 }]}
-              /> */}
+            
               <AppText
+              color={WHITE}
                 type={FORTEEN}
                 weight={POPPINS_MEDIUM}
                 style={[styles.label, { marginTop: 20 }]}>
@@ -277,7 +259,7 @@ export default function EditProfile() {
                   onPress={() => setGender('Male')}>
                   {gender == 'Male' ? <RadioActive /> : <RadioUnActive />}
 
-                  <AppText type={ELEVEN} weight={POPPINS}>
+                  <AppText type={ELEVEN} weight={POPPINS} color={WHITE}>
                     Male
                   </AppText>
                 </TouchableOpacityView>
@@ -287,7 +269,7 @@ export default function EditProfile() {
                   onPress={() => setGender('Female')}>
                   {gender == 'Female' ? <RadioActive /> : <RadioUnActive />}
 
-                  <AppText type={ELEVEN} weight={POPPINS}>
+                  <AppText type={ELEVEN} weight={POPPINS} color={WHITE}>
                     Female
                   </AppText>
                 </TouchableOpacityView>
@@ -306,11 +288,13 @@ export default function EditProfile() {
               <TouchableOpacityView disable={userData?.dob ? true : false} onPress={showDatePicker}>
                 <View style={styles.InputBoxContainer}>
                   <AppText
+                  color={WHITE}
                     type={FORTEEN}
                     weight={POPPINS_MEDIUM} 
                     style={[styles.label, { marginTop: 20 }]}>
                     DOB
                   </AppText>
+
                   <View
                     style={[
                       styles.InputBox,
@@ -318,9 +302,11 @@ export default function EditProfile() {
                         flexDirection: 'row',
                         justifyContent: 'space-between',
                         alignItems: 'center',
+                        backgroundColor:"#1E1C2A"
                       },
                     ]}>
                     <AppText
+                    color={WHITE}
                       style={{
                         marginLeft: 5,
                       }}
@@ -338,25 +324,16 @@ export default function EditProfile() {
                         marginLeft: 'auto',
                         marginEnd: 10,
                       }}>
-                      <FastImage style={styles.calandar} source={calender} tintColor={colors.black} />
+                      <FastImage style={styles.calandar} source={calender} tintColor={colors.white} />
                     </TouchableOpacityView>
                   </View>
+
                 </View>
               </TouchableOpacityView>
 
-              {/* <InputBox
-                placeholderTextColor={colors.grey}
-                label={'Address'}
-                editable={ false}
-                value={Address}
-                keyboardType="default"
-                placeholder={'Your Address'}
-                onChange={(val)=>setAddress(val)}
-                textInputBox={styles.textInputBox}
-                labelStyle={[styles.label, { marginTop: 20 }]}
-              /> */}
                   <AppText
                     type={FORTEEN}
+                    color={WHITE}
                     weight={POPPINS_MEDIUM} 
                     style={[styles.label,]}>
                     Address
@@ -364,30 +341,20 @@ export default function EditProfile() {
           <View
             style={ [Address ? { } : {},{
               borderWidth: 1,
-              borderColor: "#E4E4E4",
+              borderColor: "#2B2839",
               borderRadius: 12,
-              backgroundColor: "#F5F5F5",
+              backgroundColor: "#2B2839",
               height: 80,
               justifyContent: "center",
               paddingHorizontal: 10
             }]}
           >
-            <AppText style={{ color: colors.black }} weight={POPPINS_MEDIUM}>
+            <AppText style={{ color: colors.white }} weight={POPPINS_MEDIUM}>
               {Address ? Address : 'Address'}
             </AppText>
           </View>
             </View>
           </CommonContainer>
-
-          {/* <View style={{marginBottom: 30, marginHorizontal: 20}}>
-            <Button
-              style={{width: '100%', height: 45 }}
-              onPress={() => {
-                handleSubmit();
-              }}>
-              {'SAVE'}
-            </Button>
-          </View> */}
         </KeyBoardAware>
         <View
           style={{
@@ -486,7 +453,7 @@ export default function EditProfile() {
             </View>
           </View>
         </RBSheet>
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
     </AppSafeAreaView>
   );
 }
@@ -506,8 +473,8 @@ const styles = StyleSheet.create({
     height: 114,
     alignSelf: 'center',
     borderRadius: 90,
-    borderColor: NLCColor.Red,
-    borderWidth: 5,
+    borderColor: '#DBA63D',
+    borderWidth: 3,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
@@ -522,7 +489,7 @@ const styles = StyleSheet.create({
   cameraContainer: {
     width: 24,
     height: 24,
-    backgroundColor: NLCColor.Red,
+    backgroundColor:'#DBA63D',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -573,6 +540,7 @@ const styles = StyleSheet.create({
   },
   InputBoxContainer: {
     marginBottom: 10,
+    
 
   },
   InputBoxLabel: {
@@ -587,8 +555,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     height: Primary.Height,
     borderRadius: 10,
-    borderColor: "#DDDDDD",
-    borderWidth: 1
+    // borderColor: "#DDDDDD",
+    // borderWidth: 1
     // paddingHorizontal: 15,
   },
   btnContainer: {
@@ -632,7 +600,9 @@ const styles = StyleSheet.create({
     fontFamily: fontFamilyPoppins,
     fontSize: 12,
     flex: 1,
-    color: colors.black,
+    backgroundColor: '#1E1C2A',
+    color:"#fff",
+    // borderWidth:1,
   },
 
   verifiedContainer: {
@@ -644,7 +614,7 @@ const styles = StyleSheet.create({
     // width: "45%"
     alignSelf:'center'
   },
-  notVerifiedCOntainer: {  backgroundColor: colors.lightRed, borderRadius: 4, padding: 4,    alignSelf:'center'
+  notVerifiedCOntainer: {  backgroundColor: '#EAD288', borderRadius: 4, padding: 4,    alignSelf:'center'
   },
   cameratypeSelectInside:{
     flexDirection:'row',
@@ -653,3 +623,40 @@ const styles = StyleSheet.create({
     marginTop:"10%"
   }
 });
+
+
+
+  {/* <InputBox
+                placeholderTextColor={colors.grey}
+                label={'Email'}
+                editable={userData?.email ? false : true}
+                value={email}
+                keyboardType="default"
+                placeholder={'Enter your email'}
+                onChange={setEmail}
+                textInputBox={styles.textInputBox}
+                labelStyle={[styles.label, { marginTop: 20 }]}
+              /> */}
+
+                {/* <View style={{marginBottom: 30, marginHorizontal: 20}}>
+            <Button
+              style={{width: '100%', height: 45 }}
+              onPress={() => {
+                handleSubmit();
+              }}>
+              {'SAVE'}
+            </Button>
+          </View> */}
+
+          
+              {/* <InputBox
+                placeholderTextColor={colors.grey}
+                label={'Address'}
+                editable={ false}
+                value={Address}
+                keyboardType="default"
+                placeholder={'Your Address'}
+                onChange={(val)=>setAddress(val)}
+                textInputBox={styles.textInputBox}
+                labelStyle={[styles.label, { marginTop: 20 }]}
+              /> */}

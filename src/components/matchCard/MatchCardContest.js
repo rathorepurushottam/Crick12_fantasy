@@ -17,6 +17,7 @@ import {
   RED,
   SEMI_BOLD,
   TEN,
+  WHITE,
 } from '../../common/AppText';
 import NavigationService from '../../navigation/NavigationService';
 import { MY_CONTEST } from '../../navigation/routes';
@@ -90,6 +91,7 @@ const MatchCardContest = ({
         <View style={styles.seriesNametext} >
           <AppText
             numberOfLines={1}
+            color={WHITE}
             weight={POPPINS_SEMI_BOLD}
             style={{ bottom: 22 }} >{details?.SeriesName}</AppText>
 
@@ -110,7 +112,7 @@ const MatchCardContest = ({
           <View
             style={{ flex: flexOne, flexDirection: 'row', alignItems: 'center' }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <AppText weight={POPPINS_BOLD} type={TEN} numberOfLines={1}>
+              <AppText weight={POPPINS_BOLD} color={WHITE} type={TEN} numberOfLines={1}>
                 {details?.TeamA && nameSlice(details?.TeamA)}
               </AppText>
               <FastImage
@@ -124,6 +126,7 @@ const MatchCardContest = ({
                 marginLeft: 5,
                 marginTop: 20,
               }}
+              color={WHITE}
               weight={POPPINS_MEDIUM}>
               {details?.TeamsShortNames[0]}
             </AppText>
@@ -146,6 +149,7 @@ const MatchCardContest = ({
                   </AppText>
                 </View>
                 <AppText
+                color={WHITE}
                   style={{
                     flex: flexOne,
                   }}
@@ -202,6 +206,7 @@ const MatchCardContest = ({
                 alignItems: 'center',
               }}>
               <AppText
+              color={WHITE}
                 style={{
                   marginRight: 5,
                   marginTop: 20,
@@ -214,6 +219,7 @@ const MatchCardContest = ({
               {/* <View style={styles.teamShortNameTextTwo}> */}
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <AppText
+                color={WHITE}
                   style={{
                     marginRight: 5,
                   }}
@@ -236,8 +242,8 @@ const MatchCardContest = ({
           <View style={[styles.bottom, { height: 35, }]}>
             <View style={styles.teamConunt}>
               <View style={styles.teamConunt}>
-                <AppText weight={POPPINS_MEDIUM}>{details?.countTeam} </AppText>
-                <AppText weight={POPPINS_MEDIUM}>Team</AppText>
+                <AppText color={WHITE} weight={POPPINS_MEDIUM}>{details?.countTeam} </AppText>
+                <AppText color={WHITE} weight={POPPINS_MEDIUM}>Team</AppText>
               </View>
               <View
                 style={[
@@ -246,10 +252,10 @@ const MatchCardContest = ({
                     marginLeft: 20,
                   },
                 ]}>
-                <AppText weight={POPPINS_MEDIUM}>
+                <AppText weight={POPPINS_MEDIUM} color={WHITE}>
                   {details?.countContest}{' '}
                 </AppText>
-                <AppText weight={POPPINS_MEDIUM}>Contests</AppText>
+                <AppText color={WHITE} weight={POPPINS_MEDIUM}>Contests</AppText>
               </View>
             </View>
           </View>
@@ -270,6 +276,7 @@ const MatchCardContest = ({
                   </AppText>
                   <AppText
                     weight={LATO_SEMI_BOLD}
+                    color={WHITE}
                     type={ELEVEN}
                     style={[
                       styles.textStyle,

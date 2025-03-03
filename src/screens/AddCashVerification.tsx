@@ -4,7 +4,7 @@ import { AppSafeAreaView } from "../common/AppSafeAreaView";
 import CommonImageBackground from "../common/commonImageBackground";
 import Header from "../common/Header";
 import { universalPaddingHorizontal } from "../theme/dimens";
-import { AppText, BLACKOPACITY, FORTEEN, GREEN, POPPINS_MEDIUM, POPPINS_SEMI_BOLD, SIXTEEN, THIRTEEN } from "../common/AppText";
+import { AppText, BLACKOPACITY, FORTEEN, GREEN, POPPINS_MEDIUM, POPPINS_SEMI_BOLD, SIXTEEN, THIRTEEN, WHITE } from "../common/AppText";
 import FastImage from "react-native-fast-image";
 import { adhaarIcon, dlicon, kycLogo, panIcon, passportIcon, votericon } from "../helper/image";
 import { KeyBoardAware } from "../common/KeyboardAware";
@@ -61,7 +61,7 @@ const AddCashVerification = () => {
                 style={styles.renderContainer}>
                 <View style={styles.underContainer}>
                     <FastImage source={item.image} resizeMode="contain" style={styles.renderImage} />
-                    <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD}>
+                    <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD} color={WHITE}>
                         {item.title}
                     </AppText>
                 </View>
@@ -99,11 +99,12 @@ const AddCashVerification = () => {
         //  light = {true} 
          hidden = {false}>
             <StatusBar
-                backgroundColor={'transparent'}
+                backgroundColor={'#111019'}
                 translucent={true}
                 networkActivityIndicatorVisible={true}
+                barStyle={'light-content'}
             />
-            <CommonImageBackground common>
+            {/* <CommonImageBackground common> */}
                 <Header
                     commonHeader
                     title="Verification"
@@ -114,13 +115,13 @@ const AddCashVerification = () => {
                         <RefreshControl refreshing={isConnected} onRefresh={onRefresh} />
                     } style={styles.bottomContainer}>
                     <FastImage source={kycLogo} resizeMode="contain" style={styles.kycLogoS} />
-                    <AppText style={[styles.headerText, { marginTop: '10%' }]} type={SIXTEEN} weight={POPPINS_SEMI_BOLD}>
+                    <AppText color={WHITE} style={[styles.headerText, { marginTop: '10%' }]} type={SIXTEEN} weight={POPPINS_SEMI_BOLD}>
                         Let’s verify KYC
                     </AppText>
                     <AppText style={styles.headerText} type={THIRTEEN} weight={POPPINS_SEMI_BOLD} color={BLACKOPACITY}>
                         {"Please submit the following documents \nfor the verification process"}
                     </AppText>
-                    <AppText style={[styles.marginTop, { marginBottom: 10 }]} type={THIRTEEN} weight={POPPINS_SEMI_BOLD}>
+                    <AppText color={WHITE} style={[styles.marginTop, { marginBottom: 10 }]} type={THIRTEEN} weight={POPPINS_SEMI_BOLD}>
                         Please select document to verify
                     </AppText>
                     {data?.map((item) => {
@@ -138,7 +139,7 @@ const AddCashVerification = () => {
                         It will take less then a minute
                     </AppText>
                 </View>
-            </CommonImageBackground>
+            {/* </CommonImageBackground> */}
         </AppSafeAreaView>
     )
 }
@@ -191,7 +192,7 @@ const styles = StyleSheet.create({
     tick: {
         height: 10,
         width: 10,
-        backgroundColor: colors.backGroundBlue,
+        backgroundColor: '#DBA73E',
         borderRadius: 50
     },
     buttonStyle: {

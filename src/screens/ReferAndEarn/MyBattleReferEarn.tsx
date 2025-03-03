@@ -88,7 +88,7 @@ const MyBattleReferEarn = () => {
           networkActivityIndicatorVisible={true}
           barStyle={"light-content"}
         />
-      <KeyBoardAware style={{ backgroundColor: 'white' }}>
+      <KeyBoardAware style={{ }}>
         <ImageBackground
           source={MyBattleReferBackground}
           resizeMode="contain"
@@ -121,7 +121,7 @@ const MyBattleReferEarn = () => {
                 color={BLACKOPACITY}>
                 Invite accepted -
               </AppText>
-              <AppText type={FIFTEEN} weight={POPPINS_SEMI_BOLD}>
+              <AppText color={WHITE} type={FIFTEEN} weight={POPPINS_SEMI_BOLD}>
                 {' '}
                 10
               </AppText>
@@ -148,7 +148,7 @@ const MyBattleReferEarn = () => {
               colors.linerLineBlue,
               colors.linerLinePick,
             ]}></LinearGradient>
-          <AppText weight={POPPINS_MEDIUM}>How it works! </AppText>
+          <AppText color={WHITE} weight={POPPINS_MEDIUM}>How it works! </AppText>
           <LinearGradient
             style={{
               width: 128,
@@ -200,8 +200,8 @@ const MyBattleReferEarn = () => {
                       marginLeft: 15,
                       flex: 1,
                     }}>
-                    <AppText type={POPPINS_MEDIUM}>{item?.title}</AppText>
-                    <AppText numberOfLines={2} type={TEN} color={LIGHTWHITE}>
+                    <AppText type={POPPINS_MEDIUM} color={WHITE}>{item?.title}</AppText>
+                    <AppText numberOfLines={2} type={TEN} style={{color:'#BABABA'}}>
                       {item?.about}
                     </AppText>
                   </View>
@@ -216,7 +216,9 @@ const MyBattleReferEarn = () => {
             paddingVertical: 10,
           }}>
           <PrimaryButton
-            onPress={() => shareToAny(userData?.refercode)}
+            // onPress={() => shareToAny(userData?.refercode)}
+            onPress={() => shareToAny('CRICK1212')}
+
             buttonStyle={{
               marginHorizontal: universalPaddingHorizontal,
               width: '78%',
@@ -225,7 +227,7 @@ const MyBattleReferEarn = () => {
             title="Invite"
           />
           <SolidButton
-            onPress={openWhatsApp}
+            // onPress={openWhatsApp}
             size={TEN}
             color={WHITE}
             style={[
@@ -246,7 +248,7 @@ export default MyBattleReferEarn;
 const styles = StyleSheet.create({
   MyBattleReferBackground: {
     height: 315,
-    width: 393,
+    width: '100%',
   },
   main: {
     alignSelf: 'center',
@@ -270,7 +272,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 16,
     alignSelf: 'center',
-    backgroundColor: colors.bottomBackgroundColor,
+    backgroundColor: '#1E1C2A',
   },
   refreboxtwo: {
     height: 62,

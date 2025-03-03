@@ -141,13 +141,14 @@ const VerifyPAN = () => {
 
   const check = checkValidPanCardNumber(pan);
   return (
-    <AppSafeAreaView hidden={false}>
+    <AppSafeAreaView style={{backgroundColor:"#111019"}}>
       <StatusBar
-        backgroundColor={'transparent'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
+        barStyle={'light-content'}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <Header
           style={{ padding: universalPaddingHorizontal, marginTop: '10%' }}
           commonHeader
@@ -177,7 +178,7 @@ const VerifyPAN = () => {
           </View> */}
           <View style={styles.box}>
             <View>
-              <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD}>
+              <AppText color={WHITE} type={FORTEEN} weight={POPPINS_SEMI_BOLD}>
                 Enter your Pan number
               </AppText>
               <FastImage source={recommendedIcon} resizeMode='contain' style={styles.recommended} />
@@ -186,7 +187,7 @@ const VerifyPAN = () => {
               <TextInput
                 allowFontScaling={false}
                 placeholder={'Pan Number'}
-                placeholderTextColor={colors.black}
+                placeholderTextColor={colors.lightGrey}
                 style={styles.inputStyle}
                 value={pan}
                 onChangeText={(value) => setPan(value)}
@@ -200,7 +201,7 @@ const VerifyPAN = () => {
               <TextInput
                 allowFontScaling={false}
                 placeholder={'Pan Card Holder Name '}
-                placeholderTextColor={colors.black}
+                placeholderTextColor={colors.lightGrey}
                 style={styles.inputStyle}
                 value={name}
                 onChangeText={(value) => setName(value)}
@@ -218,19 +219,19 @@ const VerifyPAN = () => {
 
           <View style={styles.commonFlow}>
                         <Checkbox value={true} />
-                        <AppText style={styles.commonText} weight={POPPINS_MEDIUM}>
-                            {` User must be 18 years of age or above to play\n pay-to-play contest on NLG`}
+                        <AppText color={WHITE} style={styles.commonText} weight={POPPINS_MEDIUM}>
+                            {` User must be 18 years of age or above to play\n pay-to-play contest on Crick12`}
                         </AppText>
                     </View>
                     <View style={styles.commonFlow}>
                         <Checkbox value={true} />
-                        <AppText style={styles.commonText} weight={POPPINS_MEDIUM}>
+                        <AppText  color={WHITE} style={styles.commonText} weight={POPPINS_MEDIUM}>
                             {`Users must not be residing in restricted states. To know amore, read Terms & conditions.`}
                         </AppText>
                     </View>
                     <View style={styles.commonFlow}>
                         <Checkbox value={true} />
-                        <AppText style={styles.commonText} weight={POPPINS_MEDIUM}>
+                        <AppText color={WHITE} style={styles.commonText} weight={POPPINS_MEDIUM}>
                             I{` hereby confirm that my attached documents are \ncredible and binding`}
                         </AppText>
                     </View>
@@ -248,7 +249,7 @@ const VerifyPAN = () => {
             title="SUBMIT"
           />
         </View>
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"
@@ -275,7 +276,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 20,
     marginBottom: 20,
-    backgroundColor: colors.bottomBackgroundColor
+    backgroundColor: '#111019'
   },
   recommended: {
     width: 82,
@@ -297,7 +298,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: poppinsSemiBold,
     flex: 1,
-    color: colors.black
+    color: colors.white
   },
   checkIcon: {
     height: 20,

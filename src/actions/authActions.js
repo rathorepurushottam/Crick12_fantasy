@@ -26,7 +26,7 @@ export const userLogin = data => async dispatch => {
       await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data?.accessToken);
       dispatch(setUserData(response?.data));
       // dispatch(updateDeviceToken());
-      NavigationService.navigate(BOTTOM_NAVIGATION_STACK);
+      NavigationService.navigate('DrawerNavigationStack');
     } else {
       toastAlert.showToastError(response?.message);
     }
@@ -37,10 +37,8 @@ export const userLogin = data => async dispatch => {
     dispatch(setLoading(false));
   }
 };
-//done
-export const userSignup =
-  (data, permissionSave) =>
-    async dispatch => {
+
+export const userSignup = (data, permissionSave) => async dispatch => {
       try {
         dispatch(setLoading(true));
         const response = await appOperation.guest.register(data);
@@ -75,19 +73,21 @@ export const userSignup =
 export const otpVerification =
   (data, isAlert = false) =>
     async dispatch => {
+      console.log(data,"data in otp verrification")
       try {
         dispatch(setLoading(true));
         const response = await appOperation.guest.otp_verification(data);
-
+        console.log("response in otp",response)
         if (response?.success) {
           appOperation.setCustomerToken(response?.data?.accessToken);
           await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data?.accessToken);
           dispatch(setUserData(response?.data?._id));
           dispatch(updateDeviceToken());
           dispatch(getUserProfile(true, false));
-          NavigationService.navigate(BOTTOM_NAVIGATION_STACK);
+          NavigationService.navigate('DrawerNavigationStack');
         } else {
           toastAlert.showToastError(response?.message);
+          console.log(response,"response in else part")
         }
         // if (response?.success) {
         //   isAlert
@@ -146,7 +146,7 @@ export const otpVerification =
 //   }
 // };
 
-export const resetSignUpOtp = id => async (dispatch: any) => {
+export const resetSignUpOtp = id => async (dispatch) => {
   try {
     dispatch(setLoading(true));
     const response = await appOperation.guest.resend_otp(id);

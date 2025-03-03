@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   box: {
     // borderWidth: 2,
     // borderColor: colors.borderLightBlue,
-    backgroundColor:NLCColor.background,
+    backgroundColor:'#343434',
 
     borderRadius: 16,
     marginTop: 20,
@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
   },
   textInputBox: {
     height: 40,
-
-    
+    color:"#fff"
   },
   boxContainer: {
     // marginHorizontal: 10,
@@ -91,9 +90,9 @@ const styles = StyleSheet.create({
   rsContainer: {
     alignSelf: 'center',
     borderRadius: 6,
-    borderColor: "#BEBEBE",
+    borderColor: "#DBA63D",
     borderWidth: 1,
-    backgroundColor:NLCColor.Red
+    backgroundColor:'#DBA63D'
   },
   rs: {
     textAlign: 'center',

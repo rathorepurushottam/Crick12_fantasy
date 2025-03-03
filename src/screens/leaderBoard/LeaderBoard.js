@@ -26,6 +26,8 @@ import {
   TEN,
   WHITE,
   BLACK,
+  YellowText,
+  LIGHTGRAY,
 } from '../../common/AppText';
 import {TouchableOpacityView} from '../../common/TouchableOpacityView';
 import LeaderBoardList from '../../components/leaderBoardList/LeaderBoardList';
@@ -59,9 +61,10 @@ export const RenderTabBar = props => {
     <TabBar
       {...props}
       contentContainerStyle={{
-        backgroundColor: colors.white,
+        backgroundColor: '#1E1C2A',
         width: Screen.Width,
         height: 50,
+        justifyContent:'space-between'
       }}
       renderLabel={({route, focused}) => (
         <View
@@ -75,7 +78,7 @@ export const RenderTabBar = props => {
           }}>
           <AppText
             type={FORTEEN}
-            color={focused ? RED : BLACK}
+            color={focused ? YellowText : LIGHTGRAY}
             weight={POPPINS_MEDIUM}>
             {route.title}
           </AppText>
@@ -84,7 +87,7 @@ export const RenderTabBar = props => {
               style={{height: 2, width: 102}}
               start={{x: 0, y: 1}}
               end={{x: 1, y: 0}}
-              colors={[NLCColor.LightRed, NLCColor.shadeRed]}></LinearGradient>
+              colors={['#DBA73E', '#E0C77D']}></LinearGradient>
           ) : (
             <View style={{width: 102, height: 2}}></View>
           )}
@@ -132,7 +135,7 @@ const ThreeRoute = ({route}) => (
 const renderScene = SceneMap({
   first: FirstRoute,
   second: SecondRoute,
-  three: ThreeRoute,
+  // three: ThreeRoute,
 });
 
 const renderMyScene = SceneMap({
@@ -313,13 +316,13 @@ const LeaderBoard = () => {
       fnStatus: setForStatus,
       status: forStatus,
     },
-    {
-      key: 'three',
-      title: 'Scorecard',
-      scoreBoard: scoreBoard,
-      renderItemScore: renderItemScore,
-      refresh: onRefresh,
-    },
+    // {
+    //   key: 'three',
+    //   title: 'Scorecard',
+    //   scoreBoard: scoreBoard,
+    //   renderItemScore: renderItemScore,
+    //   refresh: onRefresh,
+    // },
   ]);
 
   const currentDate = new Date();
@@ -331,6 +334,8 @@ const LeaderBoard = () => {
       <View style={styles.container}>
         <CommonHeader
           allContest={true}
+          title = {'LEADERBOARD'}
+          from = {'LEADERBOARD'}
           style={{
             marginBottom: 0,
           }}
@@ -414,11 +419,11 @@ const LeaderBoard = () => {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                   }}>
-                  <AppText type={TEN} color={BLACKOPACITY}>
+                  <AppText type={TEN} color={WHITE}>
                     PRIZE POOL
                   </AppText>
                   {route?.params?.details?.JoinWithMULT && (
-                    <AppText type={TEN} color={BLACKOPACITY}>
+                    <AppText type={TEN} color={WHITE}>
                       Multiple Entries
                     </AppText>
                   )}
@@ -430,7 +435,7 @@ const LeaderBoard = () => {
                     justifyContent: 'space-between',
                     marginVertical: 6,
                   }}>
-                  <AppText type={FIFTEEN} weight={LATO_SEMI_BOLD}>
+                  <AppText type={FIFTEEN} weight={LATO_SEMI_BOLD} color={WHITE}>
                     ₹{route?.params?.details?.winning_amount}
                   </AppText>
                   {/* <AppText
@@ -455,8 +460,8 @@ const LeaderBoard = () => {
                     }}
                     start={{x: 0, y: 0}}
                     colors={[
-                      NLCColor.LightRed,
-                      NLCColor.shadeRed,
+                      '#DBA73E',
+                      '#E0C77D',
                     ]}></LinearGradient>
                 </View>
                 <View
@@ -482,11 +487,11 @@ const LeaderBoard = () => {
                   <View style={styles.commonViewStyle}>
                     <FastImage
                       source={GLORY}
-                      tintColor={NLCColor.Red}
+                      tintColor={'#DBA63D'}
                       style={styles.gloryIcon}
                     />
                     <AppText
-                      color={BLACKOPACITY}
+                      color={WHITE}
                       type={TEN}
                       weight={LATO_SEMI_BOLD}
                       style={styles.commonTextStyle}>
@@ -500,11 +505,11 @@ const LeaderBoard = () => {
                   <View style={styles.commonViewStyle}>
                     <FastImage
                       source={WINNER}
-                      tintColor={NLCColor.Red}
+                      tintColor={'#DBA63D'}
                       style={styles.gloryIcon}
                     />
                     <AppText
-                      color={BLACKOPACITY}
+                      color={WHITE}
                       type={TEN}
                       style={styles.commonTextStyle}>
                       {route?.params?.item?.data?.WinningAmount
@@ -515,13 +520,13 @@ const LeaderBoard = () => {
                   </View>
                   <View style={styles.commonViewStyle}>
                     <FastImage
-                      tintColor={NLCColor.Red}
+                      tintColor={'#DBA63D'}
                       source={details?.JoinWithMULT ? m : SINGLE}
                       resizeMode="contain"
                       style={styles.gloryIcon}
                     />
                     <AppText
-                      color={BLACKOPACITY}
+                      color={WHITE}
                       type={TEN}
                       style={styles.commonTextStyle}>
                       {details?.JoinWithMULT
@@ -672,9 +677,9 @@ const LeaderBoard = () => {
   };
 
   return (
-    <AppSafeAreaView light={true} hidden={false}>
+    <AppSafeAreaView >
       <StatusBar
-        backgroundColor={'#282828'}
+        // backgroundColor={'#282828'}
         translucent={true}
         networkActivityIndicatorVisible={true}
       />

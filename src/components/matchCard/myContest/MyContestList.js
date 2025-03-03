@@ -144,11 +144,11 @@ const MyContestList = ({ item }) => {
       onPress={onNavigate}>
       <View onPress={onNavigate} style={styles.topContainer}>
         <View style={[styles.top]}>
-          <AppText type={TEN} weight={LATO_BOLD}>
+          <AppText type={TEN} weight={LATO_BOLD} color={WHITE}>
             PRIZE POOL
           </AppText>
           {item?.JoinWithMULT && (
-            <AppText type={TEN} weight={LATO_BOLD}>
+            <AppText type={TEN} weight={LATO_BOLD} color={WHITE}>
               Multiple Entries
             </AppText>
           )}
@@ -164,13 +164,14 @@ const MyContestList = ({ item }) => {
           }}>
           <AppText style={{
             marginTop: 2
-          }} type={FIFTEEN} weight={LATO_BOLD} >
+          }} type={FIFTEEN} weight={LATO_BOLD} color={WHITE}>
             ₹{item?.contest_details?.winning_amount ? numberWithCommas(item?.contest_details?.winning_amount) : 0}
           </AppText>
           <AppText
 
             weight={LATO_BOLD}
             type={TEN}
+            color={WHITE}
             style={{
               marginLeft: 10,
               flex: 1,
@@ -184,6 +185,7 @@ const MyContestList = ({ item }) => {
             style={{
               marginTop: 2,
             }}
+            color={WHITE}
             weight={LATO_BOLD}
             type={THIRTEEN}>
             ₹{item?.data?.EnteryFee ? item?.data?.EnteryFee : 0}
@@ -206,7 +208,7 @@ const MyContestList = ({ item }) => {
                 ]}></LinearGradient>
             </View>
             <View style={styles.flex}>
-              <AppText color={BLACKOPACITY} weight={LATO_BOLD} type={TEN}>
+              <AppText color={WHITE} weight={LATO_BOLD} type={TEN} >
                 {numberWithCommas(item?.data?.Contestsize)} spots
               </AppText>
               <AppText
@@ -227,7 +229,7 @@ const MyContestList = ({ item }) => {
         {item?.teamDetails?.map((item) => {
           return (
             <View style={{
-              backgroundColor: '#E9E9E9',
+              backgroundColor: '#1E1C2A',
               paddingVertical: 10,
               borderRadius: 10,
               flexDirection: 'row',
@@ -236,13 +238,13 @@ const MyContestList = ({ item }) => {
               paddingHorizontal: 10,
               marginBottom: 5
             }}>
-              <AppText weight={POPPINS_SEMI_BOLD}>
+              <AppText weight={POPPINS_SEMI_BOLD} color={WHITE}>
                 {item?.name}
               </AppText>
-              <AppText weight={POPPINS_SEMI_BOLD}>
+              <AppText weight={POPPINS_SEMI_BOLD} color={WHITE}>
                 {item.totalpoints} Pts
               </AppText>
-              <AppText weight={POPPINS_SEMI_BOLD}>
+              <AppText weight={POPPINS_SEMI_BOLD} color={WHITE}>
                 #{item.rank}
               </AppText>
             </View>
@@ -261,7 +263,7 @@ const MyContestList = ({ item }) => {
             justifyContent: 'space-between',
             marginTop: -10
           }}>
-            <AppText  type={TEN} weight={LATO_BOLD}>
+            <AppText  type={TEN} weight={LATO_BOLD} color={WHITE}>
               JOINED WITH {item?.teamDetails?.length} TEAM
             </AppText>
             <TouchableOpacityView
@@ -275,14 +277,14 @@ const MyContestList = ({ item }) => {
                   width: 15,
                   transform: [{ rotate: visible ? '90deg' : '270deg' }]
                 }}
-                source={arrow} tintColor={colors.black} resizeMode='contain' />
+                source={arrow} tintColor={'#DBA63D'} resizeMode='contain' />
             </TouchableOpacityView>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             {item?.teamDetails?.map((item, index) => {
               return (
                 <View style={styles.grayContainer}>
-                  <AppText style={{ marginTop: 1 }} type={TEN}>
+                  <AppText color={BLACK} style={{ marginTop: 1 }} type={TEN}>
                     {item.name}
                   </AppText>
                 </View>
@@ -301,19 +303,19 @@ const MyContestList = ({ item }) => {
                     onPress={() => onCardClick(item)}
                     style={{
                       paddingVertical: 10,
-                      backgroundColor: '#F2F2F2',
+                      backgroundColor: '#343434',
                       borderRadius: 10,
                       paddingHorizontal: 10,
                       marginTop: 10,
                       borderWidth:1,
-                      borderColor:"#E9E9E9"
+                      borderColor:"#DBA63D"
                     }}>
                     <View style={{
                       flexDirection: 'row', alignItems: 'center',
                       justifyContent: 'space-between'
                     }} >
                       <AppText
-                        weight={POPPINS_SEMI_BOLD}>
+                        weight={POPPINS_SEMI_BOLD} color={WHITE}>
                         Team {teamNumber}
                       </AppText>
                       <TouchableOpacityView
@@ -325,7 +327,7 @@ const MyContestList = ({ item }) => {
                             height: 14,
                             width: 14
                           }}
-                          tintColor={colors.black}
+                          tintColor={colors.white}
                           source={PENCIL} />
                       </TouchableOpacityView>
                     </View>
@@ -338,12 +340,13 @@ const MyContestList = ({ item }) => {
                         justifyContent: 'center'
                       }} >
                         <AppText
+                        color={WHITE}
                           style={{ opacity: 0.5 }}
                           weight={POPPINS_MEDIUM}>
                           Captain
                         </AppText>
                         <AppText
-                          weight={POPPINS_SEMI_BOLD}>
+                          weight={POPPINS_SEMI_BOLD} color={WHITE}>
                           {captain?.first_name && modifyName(captain?.first_name)}
                         </AppText>
                       </View>
@@ -352,11 +355,13 @@ const MyContestList = ({ item }) => {
                         justifyContent: 'center'
                       }} >
                         <AppText
+                        color={WHITE}
                           style={{ opacity: 0.5 }}
                           weight={POPPINS_MEDIUM}>
                           Vice Captain
                         </AppText>
                         <AppText
+                        color={WHITE}
                           weight={POPPINS_SEMI_BOLD}>
                           {viceCaptain?.first_name && modifyName(viceCaptain?.first_name)}
                         </AppText>

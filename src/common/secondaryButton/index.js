@@ -25,8 +25,9 @@ const SecondaryButton = ({
       activeOpacity={1}
       onPress={onPress}>
         <LinearGradient colors={[
-          colors.white,
-          colors.white
+                "#252431",
+              "#252431"
+
         ]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1.0, y: 0 }}

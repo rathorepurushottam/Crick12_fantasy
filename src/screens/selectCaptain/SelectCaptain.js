@@ -27,6 +27,7 @@ import {
   THIRTEEN,
   TWELVE,
   WHITE,
+  YellowText,
 } from '../../common/AppText';
 import {SpinnerSecond} from '../../common/SpinnerSecond';
 import {TouchableOpacityView} from '../../common/TouchableOpacityView';
@@ -38,6 +39,7 @@ import {
   PANT,
   Subtract,
   all_rounderIcon,
+  backCVC,
   backIconMain,
   batsmanIcon,
   bowlerIcon,
@@ -191,15 +193,15 @@ const SelectCaptain = ({}) => {
           style={styles.playerImage}
         />
         <View style={{flex: 1, marginLeft: -10}}>
-          <AppText numberOfLines={1}>
+          <AppText numberOfLines={1} color={WHITE}>
             {item?.short_name.split(' ')[0].charAt(0).toUpperCase() +
               ' ' +
               item?.short_name.split(' ')[1]}
           </AppText>
-          <AppText style={{textTransform: 'uppercase'}} type={TEN}>
+          <AppText style={{textTransform: 'uppercase'}} color={WHITE} type={TEN}>
             <AppText
               type={TEN}
-              color={BLACKOPACITY}
+              color={WHITE}
               style={{
                 textTransform: 'uppercase',
               }}>
@@ -258,12 +260,12 @@ const SelectCaptain = ({}) => {
           )}
         </View>
         <View style={{flex: 1, alignItems: 'center'}}>
-          <AppText style={{marginLeft: -32}} type={TEN}>
+          <AppText style={{marginLeft: -32}} type={TEN} color={WHITE}>
             {item?.average_point ? item?.average_point?.toFixed(2) : 0}
           </AppText>
         </View>
         <ImageBackground
-          source={Subtract}
+          source={backCVC}
           resizeMode="stretch"
           style={styles.vcContainer}>
           {/* {console.log(item?.pid !== captainId ,'====ID',item?.pid,'====IF',route?.params?.captainId)} */}
@@ -272,7 +274,7 @@ const SelectCaptain = ({}) => {
               <TouchableOpacityView
                 onPress={() => onSelectCaptain(item?.pid)}
                 style={[styles.roleBedge]}>
-                <AppText weight={POPPINS_SEMI_BOLD} color={RED} type={TEN}>
+                <AppText weight={POPPINS_SEMI_BOLD} color={YellowText} type={TEN}>
                   {'C'}
                 </AppText>
               </TouchableOpacityView>
@@ -288,9 +290,9 @@ const SelectCaptain = ({}) => {
                   borderRadius: 5,
                   justifyContent: 'center',
                   alignItems: 'center',
-                  backgroundColor: NLCColor.Red,
+                  backgroundColor: '#DBA63D',
                 }}>
-                <AppText weight={POPPINS_SEMI_BOLD} color={WHITE} type={TEN}>
+                <AppText weight={POPPINS_SEMI_BOLD} color={BLACK} type={TEN}>
                   2X
                 </AppText>
               </View>
@@ -301,7 +303,7 @@ const SelectCaptain = ({}) => {
               <TouchableOpacityView
                 onPress={() => onSelectViceCaptain(item?.pid)}
                 style={[styles.roleBedge]}>
-                <AppText weight={POPPINS_SEMI_BOLD} color={RED} type type={TEN}>
+                <AppText weight={POPPINS_SEMI_BOLD} color={YellowText}  type={TEN}>
                   VC
                 </AppText>
               </TouchableOpacityView>
@@ -311,7 +313,7 @@ const SelectCaptain = ({}) => {
               onPress={() => onSelectViceCaptain(item?.pid)}
               style={{alignItems: 'center', marginTop: 5}}>
               <View style={[styles.roleBedge2]}>
-                <AppText weight={POPPINS_SEMI_BOLD} color={WHITE} type={TEN}>
+                <AppText weight={POPPINS_SEMI_BOLD} color={BLACK} type={TEN}>
                   1.5X
                 </AppText>
               </View>
@@ -450,15 +452,15 @@ const SelectCaptain = ({}) => {
     }
   }, [removeTabs]);
   return (
-    <AppSafeAreaView light={true}>
+    <AppSafeAreaView style={{backgroundColor:"#111019"}}>
       <StatusBar
         backgroundColor={'transparent'}
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <TouchableOpacityView
-          style={styles.topContainer}
+          style={[styles.topContainer,{marginTop:"5%"}]}
           onPress={() => NavigationService.goBack()}>
           <FastImage
             source={backIconMain}
@@ -482,24 +484,27 @@ const SelectCaptain = ({}) => {
         <AppText
           weight={POPPINS_SEMI_BOLD}
           type={FORTEEN}
+          color={WHITE}
           style={styles.heading}>
           Choose Captain & Vice Captain
         </AppText>
         <AppText
-          color={BLACKOPACITY}
           weight={POPPINS}
+          color={WHITE}
           style={styles.subHeading}>
           C will get 2x points & VC will get 1.5x points
         </AppText>
         <View style={styles.playerHeadingBar}>
           <AppText
+            color={WHITE}
             style={{
               flex: 1,
             }}
-            weight={POPPINS}></AppText>
+            weight={POPPINS}>Player</AppText>
 
           <AppText
             type={TWELVE}
+            color={WHITE}
             style={{
               flex: 1.5,
               textAlign: 'left',
@@ -518,6 +523,7 @@ const SelectCaptain = ({}) => {
             <AppText
               type={TWELVE}
               style={{textAlign: 'left', marginLeft: 5}}
+              color={WHITE}
               weight={POPPINS}>
               Average point
             </AppText>
@@ -561,7 +567,7 @@ const SelectCaptain = ({}) => {
             }}>
             <AppText
               style={{opacity: 0.4, marginTop: 10}}
-              color={BLACK}
+              color={WHITE}
               weight={POPPINS_SEMI_BOLD}
               type={FORTEEN}>
               Wicket-Keeper
@@ -582,7 +588,7 @@ const SelectCaptain = ({}) => {
               })}
             <AppText
               style={{opacity: 0.4, marginTop: 15}}
-              color={BLACK}
+              color={WHITE}
               weight={POPPINS_SEMI_BOLD}
               type={FORTEEN}>
               Batsman
@@ -603,7 +609,7 @@ const SelectCaptain = ({}) => {
               })}
             <AppText
               style={{opacity: 0.4, marginTop: 15}}
-              color={BLACK}
+              color={WHITE}
               weight={POPPINS_SEMI_BOLD}
               type={FORTEEN}>
               All Rounders
@@ -624,7 +630,7 @@ const SelectCaptain = ({}) => {
               })}
             <AppText
               style={{opacity: 0.4, marginTop: 15}}
-              color={BLACK}
+              color={WHITE}
               weight={POPPINS_SEMI_BOLD}
               type={FORTEEN}>
               Bowlers
@@ -660,11 +666,12 @@ const SelectCaptain = ({}) => {
               {
                 borderWidth: 1,
                 borderRadius: 10,
-                borderColor: NLCColor.Red,
+                borderColor:'#D89E3C',
+                backgroundColor:"#252431"
               },
             ]}
             title={'TEAM PREVIEW'}
-            titleStyle={{color: NLCColor.Red}}
+            titleStyle={{color: '#D89E3C'}}
           />
           <PrimaryButton
             buttonStyle={styles.buttonStyle}
@@ -672,7 +679,7 @@ const SelectCaptain = ({}) => {
             title="SAVE"
           />
         </View>
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
       <Confirmation
         isModalVisible={isAdd}
         details={selectedMatch}

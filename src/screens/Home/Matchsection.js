@@ -171,16 +171,16 @@ const Matchsection = ({
         <View style={{ alignSelf: "center", marginTop: -15 }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <AppText
-              color={BLACK}
+              color={WHITE}
               weight={POPPINS_SEMI_BOLD} type={TEN} numberOfLines={1}>
               {details?.TeamA && nameSliceTwo(details?.TeamA)}
             </AppText>
             <FastImage source={VS}
               resizeMode='contain'
               style={{ height: 27, width: 15, marginRight: 5, marginLeft: 5,}} 
-              tintColor= '#00000050'/>
+              tintColor= '#fff'/>
             <AppText
-              color={BLACK} weight={POPPINS_SEMI_BOLD} type={TEN} numberOfLines={1}>
+              color={WHITE} weight={POPPINS_SEMI_BOLD} type={TEN} numberOfLines={1}>
               {details?.TeamB && nameSliceTwo(details?.TeamB)}
             </AppText>
           </View>
@@ -229,14 +229,14 @@ const Matchsection = ({
         </View>
         <View style={styles.bottomView}>
           <AppText
-            color={BLACK}
+            color={WHITE}
             style={{
               marginTop: 2,
             }}>
             {details?.countTeam} Team
           </AppText>
           <AppText
-            color={BLACK}
+            color={WHITE}
             style={{
               marginTop: 2,
               marginLeft: 15,
@@ -274,8 +274,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignSelf: 'center',
     // width: Screen.Width / 2,
-    resizeMode: 'contain',
-    backgroundColor: colors.white,
+    // resizeMode: 'contain',
+    backgroundColor: "#343434",
     paddingHorizontal: 5
   },
   seriesNameText: {

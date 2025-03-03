@@ -179,9 +179,15 @@ const RootStackScreen = () => (
       component={AuthStack}
       options={{headerShown: false}}
     />
-    <Stack.Screen
+    {/* <Stack.Screen
       name={BOTTOM_NAVIGATION_STACK}
       component={BottomMainTab}
+      options={{headerShown: false}}
+    /> */}
+
+<Stack.Screen
+      name={'DrawerNavigationStack'}
+      component={DrawerMainTab}
       options={{headerShown: false}}
     />
     <Stack.Screen name={PROFILE_EDIT} component={EditProfile} />
@@ -255,6 +261,33 @@ const AuthStack = () => {
   );
 };
 
+
+const DrawerMainTab = ()=>{
+  const Drawer = createDrawerNavigator();
+  return (
+  <Drawer.Navigator
+  initialRouteName={BOTTOM_NAVIGATION_STACK}
+  drawerContent={(props) => <CustomDrawer {...props} />}
+  screenOptions={{
+    headerShown: false,
+    drawerType: "front", // Drawer slides over content
+    overlayColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
+  }}
+>
+  <Drawer.Screen
+    name={BOTTOM_NAVIGATION_STACK}
+    component={BottomMainTab}
+    options={{
+      drawerStyle: {
+        width: "80%",
+      },
+      sceneContainerStyle: { backgroundColor: "transparent" },
+    }}
+  />
+</Drawer.Navigator>
+  )
+}
+
 const HomeStack = () => (
   <Stack.Navigator
     screenOptions={{
@@ -295,16 +328,16 @@ const WalletStack = () => (
 );
 
 const ProfileStack = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerShown: false,
-    }}>
+  <Drawer.Navigator
+  screenOptions={{
+    headerShown: false,
+  }}>
     <Stack.Screen
       name={MYBATTLEREFEREARN}
       component={MyBattleReferEarn}
       options={{headerShown: false}}
     />
-  </Stack.Navigator>
+  </Drawer.Navigator>
 );
 
 const BottomMainTab = () => {
@@ -343,8 +376,8 @@ const BottomMainTab = () => {
         tabBarShowLabel: false,
       }}>
       <BottomTab.Screen
-        name={BOTTOM_TAB_HOMESCREEN}
-        component={HomeDrawer}
+        name={'Home'}
+        component={HomeStack}
         options={{
           tabBarIcon: ({focused}) => (
             <>
@@ -379,8 +412,8 @@ const BottomMainTab = () => {
         }}
       />
       <BottomTab.Screen
-        name={BOTTOM_TAB_CONTEST_SCREEN}
-        component={ContestDrawer}
+        name={'Contest'}
+        component={ContestStack}
         options={{
           tabBarIcon: ({focused}) => (
             <>
@@ -416,8 +449,8 @@ const BottomMainTab = () => {
       />
 
       <BottomTab.Screen
-        name={REFER_EARN}
-        component={WalletDrawer}
+        name={'Wallet'}
+        component={WalletStack}
         options={{
           tabBarIcon: ({focused}) => (
             <>
@@ -460,8 +493,8 @@ const BottomMainTab = () => {
       />
 
       <BottomTab.Screen
-        name={PROFILE}
-        component={ProfileDrawer}
+        name={'Profile'}
+        component={ProfileStack}
         options={{
           tabBarIcon: ({focused}) => (
             <>

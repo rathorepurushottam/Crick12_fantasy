@@ -4,11 +4,14 @@ import { NewColor, colors } from '../../theme/color';
 const styles = StyleSheet.create({
   head: {
     height: 33,
-    backgroundColor: "#F6F6F6",
     paddingHorizontal: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
+    backgroundColor:"#424242",
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10
+
   },
   winningContainer: {
     paddingHorizontal: 10,
@@ -16,6 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     height: 40,
+    backgroundColor:"#1E1C2A"
     // backgroundColor:'orange'
   },
 });

@@ -429,7 +429,7 @@ const Login = () => {
                       left: 5,
                       marginTop: 5
                     }}>
-                    I have read and agree to NLG fantasy Terms of {`\n`}Service
+                    I have read and agree to Crick12 fantasy Terms of {`\n`}Service
                     and Privacy Policy
                   </AppText>
                 </View>

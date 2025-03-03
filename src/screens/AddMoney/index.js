@@ -29,7 +29,7 @@ import { fixedToTwo, toastAlert } from '../../helper/utility';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import { WebViewComponent } from '../../components/WebView';
 import { getUserProfile } from '../../actions/profileAction';
-import { colors } from '../../theme/color';
+import { colors, NLCColor } from '../../theme/color';
 import RNUpiPayment from 'react-native-upi-payment'
 import NavigationService from '../../navigation/NavigationService';
 import { ADDCASH_VERIFICATION } from '../../navigation/routes';
@@ -110,14 +110,14 @@ const AddMoney = () => {
   let amounttoadd = amount - tdsamount;
   let dividTwo = tdsamount / 2
   return (
-    <AppSafeAreaView light={true} hidden={false}>
+    <AppSafeAreaView style={{backgroundColor:'#111019'}}>
       <StatusBar
-        backgroundColor={'#282828'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
       <KeyBoardAware>
-        <CommonImageBackground common>
+        {/* <CommonImageBackground common> */}
           <Header
            
             commonHeader
@@ -127,13 +127,13 @@ const AddMoney = () => {
             <View style={styles.box}>
               <View style={styles.mobileContainer}>
                 <View>
-                  <AppText type={TWELVE}>
+                  <AppText type={TWELVE} color={WHITE}>
                     Available Balance
                   </AppText>
                 </View>
 
                 <View>
-                  <AppText type={TWELVE}>
+                  <AppText type={TWELVE} color={WHITE}>
                     INR {fixedToTwo(total_balance)}
                   </AppText>
                 </View>
@@ -145,7 +145,7 @@ const AddMoney = () => {
             </View>
             {/* <BannerSlider bannerData={bannerData} /> */}
             <View style={[styles.box,]}>
-              <AppText  type={TWELVE}>
+              <AppText  type={TWELVE} color={WHITE}>
                 Add cash to your account
               </AppText>
               <View style={{ flexDirection: 'row' }}>
@@ -159,7 +159,7 @@ const AddMoney = () => {
                   onPressClose={() => setAmount('')}
                   keyboardType={'number-pad'}
                   // textInputStyle={styles.text}
-                  placeholderTextColor={colors.black}
+                  placeholderTextColor={'#BABABA'}
 
                 />
                 <FastImage
@@ -172,7 +172,7 @@ const AddMoney = () => {
                   }}
                   resizeMode="contain"
                   source={cross}
-                  tintColor={colors.black}
+                  tintColor={colors.white}
                 />
               </View>
               <View style={styles.buttonContainer}>
@@ -182,7 +182,7 @@ const AddMoney = () => {
                       onPress={() => setAmount(item.rupay)}
                       style={styles.rsContainer}>
                       <AppText
-                        color={WHITE}
+                        color={BLACK}
                         weight={POPPINS_MEDIUM}
                         type={TWELVE}
                         style={styles.rs}>
@@ -195,42 +195,42 @@ const AddMoney = () => {
               {amount ?
                 <>
                   <View style={{ flexDirection: "row", marginTop: 10, alignItems: "center", justifyContent: "space-between" }} >
-                    <AppText type={TWELVE} color={colors.black}>
+                    <AppText type={TWELVE} color={WHITE}>
                       Amount to be added in wallet
                     </AppText>
-                    <AppText>
+                    <AppText color={WHITE}>
                       +INR {parseFloat(amounttoadd)?.toFixed(2)}
                     </AppText>
                   </View>
                   <View style={{ flexDirection: "row", alignItems: "center", marginTop: 5, justifyContent: "space-between" }} >
-                    <AppText type={TWELVE} color={colors.black}>
+                    <AppText type={TWELVE} color={WHITE}>
                       SGST[14%]
                     </AppText>
-                    <AppText>
+                    <AppText color={WHITE}>
                       INR {parseFloat(dividTwo)?.toFixed(2)}
                     </AppText>
                   </View>
                   <View style={{ flexDirection: "row", alignItems: "center", marginTop: 5, justifyContent: "space-between" }} >
-                    <AppText type={TWELVE} color={colors.black}>
+                    <AppText type={TWELVE} color={WHITE}>
                       CGST[14%]
                     </AppText>
-                    <AppText>
+                    <AppText color={WHITE}>
                       INR {parseFloat(dividTwo)?.toFixed(2)}
                     </AppText>
                   </View>
                   <View style={{ flexDirection: "row", alignItems: "center", marginTop: 5, justifyContent: "space-between" }} >
-                    <AppText type={TWELVE} color={colors.black}>
+                    <AppText type={TWELVE} color={WHITE}>
                       Total GST[28%]
                     </AppText>
-                    <AppText>
+                    <AppText color={WHITE}>
                       -INR {parseFloat(tdsamount)?.toFixed(2)}
                     </AppText>
                   </View>
                   <View style={{ flexDirection: "row", alignItems: "center", marginTop: 5, justifyContent: "space-between" }} >
-                    <AppText type={TWELVE} color={colors.black}>
+                    <AppText type={TWELVE} color={WHITE}>
                       Deposit Bonus
                     </AppText>
-                    <AppText>
+                    <AppText color={WHITE}>
                       +INR {parseFloat(tdsamount)?.toFixed(2)}
                     </AppText>
                   </View>
@@ -240,10 +240,10 @@ const AddMoney = () => {
                     marginTop: 5,
                   }} />
                   <View style={{ flexDirection: "row", alignItems: "center", marginTop: 5, justifyContent: "space-between" }} >
-                    <AppText type={TWELVE} color={colors.black}>
+                    <AppText type={TWELVE} color={WHITE}>
                       Total Amount
                     </AppText>
-                    <AppText>
+                    <AppText color={WHITE}>
                       +INR {parseFloat(amount)?.toFixed(2)}
                     </AppText>
                   </View>
@@ -263,7 +263,7 @@ const AddMoney = () => {
               title="Add Money Text"
             /> */}
           </View>
-        </CommonImageBackground>
+        {/* </CommonImageBackground> */}
 
       </KeyBoardAware>
       <RBSheet

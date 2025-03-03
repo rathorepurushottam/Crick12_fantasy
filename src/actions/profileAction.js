@@ -28,7 +28,7 @@ export const getUserProfile =
       dispatch(setLoading(true));
       const response = await appOperation.customer.get_profile();
       if (response?.success) {
-        isNavigate ? NavigationService.reset(BOTTOM_NAVIGATION_STACK) : null;
+        isNavigate ? NavigationService.reset('DrawerNavigationStack') : null;
         isUpdate ? NavigationService.navigate(BOTTOM_TAB_PROFILE_SCREEN) : null;
         dispatch(setUserData(response?.data));
         dispatch(createWalletAPI(response?.data?._id));

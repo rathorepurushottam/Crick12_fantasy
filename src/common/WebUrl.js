@@ -15,27 +15,27 @@ const WebUrl = ({ route }) => {
     console.log('====================================')
     let titleName = () => {
         if (title == 'Terms & Conditions') {
-            return 'https://nlgfantasy.com/termsNConditionsmobile'
+            return 'http://103.175.163.162:5125/termsNConditionsmobile'
         } else if (title == 'About Us') {
-            return 'https://nlgfantasy.com/aboutmobile'
+            return 'http://103.175.163.162:5125/aboutmobile'
         } else if (title == 'How to Play') {
-            return 'https://nlgfantasy.com/howToPlaymobile'
+            return 'http://103.175.163.162:5125/howToPlaymobile'
         } else if (title == 'Privacy Policy') {
-            return 'https://nlgfantasy.com/policymobile'
+            return 'http://103.175.163.162:5125/policymobile'
         } else if (title == 'Points System') {
-            return 'https://nlgfantasy.com/responsible_gaming'
+            return 'http://103.175.163.162:5125/responsible_gaming'
         } else if (title == 'Responsible Gaming') {
-            return 'https://nlgfantasy.com/responsible_gaming'
+            return 'http://103.175.163.162:5125/responsible_gaming'
         } else if (title == 'Legalities') {
-            return 'https://nlgfantasy.com/legalities'
+            return 'http://103.175.163.162:5125/legalities'
         } else if (title == 'Fair Play Policy') {
-            return 'https://nlgfantasy.com/fairPlay'
+            return 'http://103.175.163.162:5125/fairPlay'
         }
     }
     return (
-        <AppSafeAreaView light={true} hidden={false}>
+        <AppSafeAreaView >
             <StatusBar
-                backgroundColor={'#282828'}
+                backgroundColor={'#111019'}
                 translucent={true}
                 networkActivityIndicatorVisible={true}
             />

@@ -231,12 +231,12 @@ const CustomDrawer = () => {
               style={styles.usericon}
             />
           </TouchableOpacityView>
-          {
+          {/* {
             checkKYC ? 
             <View style={styles.verifiedContainer}><Text style={{fontSize:10,color:'#fff',fontWeight:"500"}}>Kyc Verified</Text></View>
             :
             <View style={ styles.notVerifiedCOntainer}><Text style={{fontSize:10,color:'#fff',fontWeight:"500"}}>Kyc Not Verified</Text></View>
-          }
+          } */}
           
           </View>
           <TouchableOpacityView

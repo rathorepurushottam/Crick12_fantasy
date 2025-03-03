@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: universalPaddingHorizontal,
     width: '100%',
-    backgroundColor: "#282828",
+    backgroundColor: "#111019",
     height: 70,
   },
   leftArrow: {
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 10,
-    backgroundColor:colors.white
+    backgroundColor:'#181720'
   },
   label: {
     color: 'white',
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: colors.white,
+    backgroundColor: '#343434',
     marginBottom: 10,
     borderRadius: 10
   },
@@ -124,10 +124,10 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   roleBedge: {
-    height: 30,
-    width: 30,
+    height: 25,
+    width: 25,
     borderWidth: 1,
-    borderColor: NLCColor.LightRed,
+    borderColor: '#DBA63D',
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor:NLCColor.Red
+    backgroundColor:'#DBA63D'
   },
   playerRole: {
     color: 'white',
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
   buttonStyle: {
     flex: 1,
     marginHorizontal: 5,
+    backgroundColor:"#252431"
   },
   vcContainer: {
     width: 90,

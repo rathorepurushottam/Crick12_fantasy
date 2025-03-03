@@ -213,6 +213,7 @@ const MyContest = () => {
           style={{
             textAlign: 'center',
           }}
+          color={WHITE}
         >
           You haven't joined a contest yet!{'\n'}Find a contest to join and
           start winning
@@ -235,7 +236,7 @@ const MyContest = () => {
         }}>
         <AppText
           style={{
-            color: 'black',
+            color: WHITE,
             fontSize: 14,
             textAlign: 'center',
           }}>

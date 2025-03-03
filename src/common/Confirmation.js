@@ -176,7 +176,7 @@ const Confirmation = ({
       <View style={styles.centeredView}>
         <View style={styles.modalContainer}>
           <View style={styles.modalTopSection}>
-            <AppText type={SIXTEEN} weight={POPPINS_BOLD_ITALIC}>
+            <AppText type={SIXTEEN} weight={POPPINS_BOLD_ITALIC} color={WHITE}>
               CONFIRMATION
             </AppText>
             <Pressable
@@ -205,15 +205,15 @@ const Confirmation = ({
               paddingBottom: 10,
             }}>
             <View style={styles.center}>
-              <AppText type={SIXTEEN} weight={SEMI_BOLD}>
+              <AppText type={SIXTEEN} weight={SEMI_BOLD} color={WHITE}>
                 Contest Fee
               </AppText>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <AppText color={BLACK} weight={LATO_SEMI_BOLD} type={SIXTEEN}>
+                <AppText color={WHITE} weight={LATO_SEMI_BOLD} type={SIXTEEN} >
                   ₹
                   <AppText
                     type={SIXTEEN}
-                    color={BLACK}
+                    color={WHITE}
                     weight={SEMI_BOLD}>
                     {CreateContestData?.EnteryFee ? CreateContestData?.EnteryFee : selectMulty?.length ? `${EnteryFee} x ${selectMulty?.length}` : EnteryFee}
                   </AppText>
@@ -221,18 +221,18 @@ const Confirmation = ({
               </View>
             </View>
             <View style={[styles.center, { marginTop: 5 }]}>
-              <AppText type={FORTEEN} weight={SEMI_BOLD}>
+              <AppText type={FORTEEN} weight={SEMI_BOLD} color={WHITE}>
                 Usable Balance{'\n'}(Unutilized + Winning + Bonus)
               </AppText>
-              <AppText type={FORTEEN} weight={LATO_SEMI_BOLD} >
+              <AppText type={FORTEEN} weight={LATO_SEMI_BOLD} color={WHITE} >
                 ₹{`${fixedToTwo(sumOfTotal)}`}
               </AppText>
             </View>
             <View style={[styles.center, { marginTop: 5 }]}>
-              <AppText type={FORTEEN} weight={SEMI_BOLD}>
+              <AppText type={FORTEEN} weight={SEMI_BOLD} color={WHITE}>
                 Usable Cash Bonus
               </AppText>
-              <AppText type={FORTEEN} style={{ opacity: 0.5 }} weight={SEMI_BOLD}>
+              <AppText type={FORTEEN} style={{ opacity: 0.5 }} color={WHITE} weight={SEMI_BOLD}>
                 -₹{Number(usableBonus)?.toFixed(2)}
               </AppText>
             </View>
@@ -252,7 +252,7 @@ const Confirmation = ({
             </AppText>
           </View>
           <View style={styles.detailsStyle}>
-            <AppText weight={SEMI_BOLD}>
+            <AppText weight={SEMI_BOLD} color={WHITE}>
               By Joining this contest, you accept Fantasy Score 11’s T&C and
               confirm that you are not a resident of Assam, Odisha, Nagaland,
               Andhra Pradesh, Sikkim, Telangana.
@@ -276,11 +276,11 @@ const Confirmation = ({
               ]}
               start={{ x: 1, y: 1 }}
               end={{ x: 0, y: 1 }}
-              colors={[NLCColor.LightRed, NLCColor.shineRed]}>
+              colors={['#D89E3C', '#EAD288']}>
               <AppText
                 type={EIGHTEEN}
                 style={{
-                  color: 'white',
+                  color: 'black',
                 }}
                 weight={POPPINS_BOLD}>
                 {payTotalAmount <= total_balance ? 'Join contest' : 'Add cash'}
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: Dimensions.get('window').width - 20,
     // height: 243,
-    backgroundColor: colors.white,
+    backgroundColor: '#111019',
     borderRadius: 16,
     overflow: 'hidden',
     // justifyContent: 'space-between',
@@ -324,7 +324,7 @@ const styles = StyleSheet.create({
   },
   modalTopSection: {
     height: 54,
-    backgroundColor: "#F6F6F6",
+    backgroundColor: "#424242",
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 16,
     marginVertical: 10,
-    backgroundColor: "#F6F6F6",
+    backgroundColor: "#1E1C2A",
   },
   btn: {
     height: 45,

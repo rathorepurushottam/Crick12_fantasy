@@ -98,7 +98,9 @@ export const ListEmptyComponent = ({title, activeTab}) => {
         <AppText
           style={{textAlign: 'center'}}
           type={FORTEEN}
+          color={WHITE}
           weight={POPPINS_MEDIUM}>
+
           {title
             ? title
             : `You haven't joined any that are live.\n Join contests for any of the upcoming matches`}
@@ -110,6 +112,7 @@ export const ListEmptyComponent = ({title, activeTab}) => {
         <AppText
           style={{textAlign: 'center'}}
           type={FORTEEN}
+          color={WHITE}
           weight={POPPINS_MEDIUM}>
           {title
             ? title
@@ -120,7 +123,7 @@ export const ListEmptyComponent = ({title, activeTab}) => {
       )}
 
       <PrimaryButton
-        onPress={() => NavigationService.navigate(BOTTOM_TAB_HOMESCREEN)}
+        onPress={() => NavigationService.navigate('Home')}
         smallBtn={styles.joinButtonMyContest}
         title="VIEW UPCOMING MATCHES"
         type={TWELVE}

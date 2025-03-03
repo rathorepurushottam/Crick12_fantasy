@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   radio: {
     height: 18,
     width: 18,
-    borderColor: NLCColor.Red,
+    borderColor: '#DBA73E',
     borderWidth: 1,
     marginRight: 10,
     borderRadius: 50,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   radionInner: {
     height: 12,
     width: 12,
-    backgroundColor: NLCColor.Red,
+    backgroundColor: '#DBA73E',
     borderRadius: 50,
   },
 });

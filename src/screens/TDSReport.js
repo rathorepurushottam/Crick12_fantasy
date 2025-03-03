@@ -64,11 +64,11 @@ const TDSReport = () => {
     return (
         <AppSafeAreaView light={true} hidden={false}>
             <StatusBar
-                backgroundColor={'#282828'}
+                backgroundColor={'#111019'}
                 translucent={true}
                 networkActivityIndicatorVisible={true}
             />
-            <CommonImageBackground common>
+            {/* <CommonImageBackground common> */}
                 <Header
                     style={{
                     }}
@@ -79,7 +79,7 @@ const TDSReport = () => {
                     flex: 1, alignItems: "center",
                     justifyContent: "center"
                 }} >
-                    <AppText type={SIXTEEN} weight={POPPINS_SEMI_BOLD} >
+                    <AppText type={SIXTEEN} color={WHITE} weight={POPPINS_SEMI_BOLD} >
                         No TDS Report
                     </AppText>
                 </View>
@@ -125,7 +125,7 @@ const TDSReport = () => {
                         showsHorizontalScrollIndicator={false}
                     />
                 </View> */}
-            </CommonImageBackground>
+            {/* </CommonImageBackground> */}
         </AppSafeAreaView>
     )
 }

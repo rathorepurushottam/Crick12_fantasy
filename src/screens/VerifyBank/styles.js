@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   box: {
     borderWidth: 1,
-    backgroundColor: colors.bottomBackgroundColor,
+    backgroundColor: '#111019',
     borderRadius: 16,
     marginTop: 10,
     paddingHorizontal: 10,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   textInputBox: {
     fontFamily: fontFamilyPoppins,
     fontSize: 12,
-    color:colors.black
+    color:colors.white
   },
   boxContainer: {
     marginHorizontal: 10,

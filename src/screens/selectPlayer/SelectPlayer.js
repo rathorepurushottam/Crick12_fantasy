@@ -29,6 +29,7 @@ import {
   SEMI_BOLD,
   TEN,
   WHITE,
+  YellowText,
 } from '../../common/AppText';
 import {TouchableOpacityView} from '../../common/TouchableOpacityView';
 import PlayerRoleBadge from '../../components/playerRoleBedge/PlayerRoleBedge';
@@ -46,7 +47,10 @@ import {
   backIconMain,
   batsmanIcon,
   bowlerIcon,
+  darkMinus,
+  darkPlus,
   dropDownRed,
+  headerBack,
   headerIner,
   rightArrow,
   wicket_keeper,
@@ -934,7 +938,7 @@ const removePlayerFromTeam = item => {
         : null;
     return selectedPlayers?.includes(item?.pid) ? (
       <LinearGradient
-        colors={['#FFC4C400', '#FFC4C4']}
+        colors={['#34343400', '#FF5252']}
         start={{x: 0, y: 0.1}}
         end={{x: 1, y: 0}}
         style={[styles.selectPlayerContainer]}>
@@ -957,10 +961,10 @@ const removePlayerFromTeam = item => {
             />
           </TouchableOpacityView>
           <View style={{flex: 1.5, alignItems: 'flex-start', marginLeft: 15}}>
-            <AppText color={BLACK} numberOfLines={1} style={styles.playerName}>
+            <AppText  numberOfLines={1} color={WHITE} style={styles.playerName}>
               {modifyName(item?.first_name)}
             </AppText>
-            <AppText type={TEN} numberOfLines={1} weight={POPPINS_MEDIUM}>
+            <AppText type={TEN} color={WHITE} numberOfLines={1} weight={POPPINS_MEDIUM}>
               {item?.teamName}
             </AppText>
             {item?.playing11 == undefined ? (
@@ -972,17 +976,17 @@ const removePlayerFromTeam = item => {
                         height: 5,
                         width: 5,
                         borderRadius: 100,
-                        backgroundColor: NLCColor.Red,
+                        backgroundColor: '#DBA63D',
                         marginTop: 5,
                       }}
                     />
                     <AppText
                       style={{
-                        color: NLCColor.Red,
                         marginLeft: 5,
                         fontWeight: 700,
                         fontSize: 10,
                       }}
+                      color= {YellowText}
                       weight={POPPINS_MEDIUM}>
                       Played last match
                     </AppText>
@@ -1006,9 +1010,10 @@ const removePlayerFromTeam = item => {
                     />
                     <AppText
                       style={{
-                        color: '#00B81C',
+                        color: WHITE,
                         marginLeft: 5,
                         fontWeight: 500,
+
                       }}
                       weight={SEMI_BOLD}>
                       Announced
@@ -1040,18 +1045,18 @@ const removePlayerFromTeam = item => {
             )}
           </View>
           <View style={{flex: 1, alignItems: 'center', marginEnd: 0}}>
-            <AppText weight={POPPINS_MEDIUM} style={styles.points}>
+            <AppText weight={POPPINS_MEDIUM} style={styles.points} color={WHITE}>
               {item?.average_point ? item?.average_point?.toFixed(2) : 0}
             </AppText>
           </View>
           <View style={styles.creditBtnView}>
-            <AppText style={{marginLeft: 15}} weight={POPPINS_MEDIUM}>
+            <AppText style={{marginLeft: 15}} weight={POPPINS_MEDIUM} color={WHITE}>
               {item?.fantasy_player_rating}
             </AppText>
 
             <FastImage
               resizeMode="contain"
-              source={RED_MINUS}
+              source={darkMinus}
               style={styles.plusIcon}
             />
           </View>
@@ -1063,7 +1068,7 @@ const removePlayerFromTeam = item => {
           styles.selectPlayerContainer,
           {
             backgroundColor:
-              selectedPlayers?.length === 11 ? colors.gray : colors.white,
+              selectedPlayers?.length === 11 ? colors.gray : '#343434',
           },
         ]}
         onPress={() =>
@@ -1084,10 +1089,11 @@ const removePlayerFromTeam = item => {
           <AppText
             weight={POPPINS_MEDIUM}
             numberOfLines={1}
+            color={WHITE}
             style={styles.playerName}>
             {modifyName(item?.first_name)}
           </AppText>
-          <AppText numberOfLines={1} weight={POPPINS_MEDIUM} type={TEN}>
+          <AppText numberOfLines={1} weight={POPPINS_MEDIUM} color={WHITE} type={TEN}>
             {item?.teamName}
             {/* <Text style={{color: '#21B5F6'}}>DC</Text> Sel By 91.84%**/}
           </AppText>
@@ -1100,17 +1106,18 @@ const removePlayerFromTeam = item => {
                       height: 5,
                       width: 5,
                       borderRadius: 100,
-                      backgroundColor: NLCColor.Red,
+                      backgroundColor: '#DBA63D',
                       marginTop: 5,
                     }}
                   />
                   <AppText
+                    color= {YellowText}
                     style={{
-                      color: NLCColor.Red,
                       marginLeft: 5,
                       fontWeight: 700,
                       fontSize: 10,
                     }}
+                    
                     weight={POPPINS_MEDIUM}>
                     Played last match
                   </AppText>
@@ -1168,18 +1175,18 @@ const removePlayerFromTeam = item => {
           )}
         </View>
         <View style={{flex: 1, alignItems: 'center', marginEnd: 0}}>
-          <AppText style={[styles.points, {marginLeft: -5}]}>
+          <AppText style={[styles.points, {marginLeft: -5}]} color={WHITE}>
             {item?.average_point ? item?.average_point?.toFixed(2) : 0}
           </AppText>
         </View>
         <View style={styles.creditBtnView}>
-          <AppText style={{marginLeft: 15}} weight={POPPINS_MEDIUM}>
+          <AppText style={{marginLeft: 15}} weight={POPPINS_MEDIUM} color={WHITE}>
             {item?.fantasy_player_rating}
           </AppText>
 
           <FastImage
             resizeMode="contain"
-            source={GREEN_PLUS_ICON}
+            source={darkPlus}
             style={styles.plusIcon}
           />
         </View>
@@ -1311,16 +1318,16 @@ const removePlayerFromTeam = item => {
   });
 
   return (
-    <AppSafeAreaView light={true} hidden={false}>
+    <AppSafeAreaView style={{backgroundColor:"#111019"}}>
       <StatusBar
         backgroundColor={'transparent'}
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <TouchableOpacityView
           onPress={() => NavigationService.goBack()}
-          style={styles.topContainer}>
+          style={[styles.topContainer,{marginTop:"4%"}]}>
           <FastImage
             resizeMode="contain"
             source={backIconMain}
@@ -1335,7 +1342,7 @@ const removePlayerFromTeam = item => {
           </AppText>
         </TouchableOpacityView>
         <ImageBackground
-          source={headerIner}
+          source={headerBack}
           resizeMode="contain"
           style={styles.header}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -1350,13 +1357,13 @@ const removePlayerFromTeam = item => {
               resizeMode="contain"
             />
             <View>
-              <AppText color={WHITE} style={{paddingLeft: 5}}>
+              <AppText color={BLACK} style={{paddingLeft: 5}}>
                 {TeamsShortNames && TeamsShortNames?.length !== 0
                   ? TeamsShortNames[0]
                   : ''}
               </AppText>
               <AppText
-                color={WHITE}
+                color={BLACK}
                 weight={POPPINS_MEDIUM}
                 style={{paddingLeft: 5}}>
                 {player?.length}
@@ -1365,21 +1372,21 @@ const removePlayerFromTeam = item => {
           </View>
           <LiveTime
             view={true}
-            color={timeDifference >= 1 ? WHITE : WHITE}
+            color={timeDifference >= 1 ? BLACK : BLACK}
             top={true}
             details={contestData}
             setRemoveTabs={setRemoveTabs}
           />
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <View>
-              <AppText color={WHITE} style={{paddingRight: 5}}>
+              <AppText color={BLACK} style={{paddingRight: 5}} >
                 {' '}
                 {TeamsShortNames &&
                   TeamsShortNames.length >= 1 &&
                   TeamsShortNames[1]}
               </AppText>
               <AppText
-                color={WHITE}
+                color={BLACK}
                 weight={POPPINS_MEDIUM}
                 style={{
                   paddingRight: 5,
@@ -1400,11 +1407,12 @@ const removePlayerFromTeam = item => {
             />
           </View>
         </ImageBackground>
+
         <View style={styles.card}>
           <View style={styles.midContainer}>
             <View style={{justifyContent: 'center'}}>
-              <AppText type={TEN}>Selection</AppText>
-              <AppText type={TEN} weight={POPPINS_BOLD}>
+              <AppText type={TEN} color={WHITE}>Selection</AppText>
+              <AppText type={TEN} color={WHITE} weight={POPPINS_BOLD}>
                 {`${selectedPlayers?.length}/11`}
               </AppText>
             </View>
@@ -1414,10 +1422,10 @@ const removePlayerFromTeam = item => {
                 justifyContent: 'center',
                 alignItems: 'flex-end',
               }}>
-              <AppText type={TEN} weight={POPPINS_MEDIUM}>
+              <AppText type={TEN} color={WHITE} weight={POPPINS_MEDIUM}>
                 Credit
               </AppText>
-              <AppText type={TEN} weight={POPPINS_BOLD}>
+              <AppText type={TEN} color={WHITE} weight={POPPINS_BOLD}>
                 {availableCredits}
               </AppText>
             </View>
@@ -1445,7 +1453,7 @@ const removePlayerFromTeam = item => {
                 width: 24,
               }}
               resizeMode="contain"
-              tintColor={NLCColor.shineRed}
+              tintColor={'red'}
               source={StopIcon}
             />
           </View>
@@ -1482,11 +1490,11 @@ const removePlayerFromTeam = item => {
               {
                 borderWidth: 1,
                 borderRadius: 10,
-                borderColor: NLCColor.Red,
+                borderColor: '#D89E3C',
               },
             ]}
             title={'TEAM PREVIEW'}
-            titleStyle={{color: NLCColor.Red}}
+            titleStyle={{color: '#D89E3C'}}
           />
           <PrimaryButton
             buttonStyle={styles.buttonStyle}
@@ -1494,7 +1502,7 @@ const removePlayerFromTeam = item => {
             title="CONTINUE"
           />
         </View>
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
       <PlayerDetailModal
         isVisible={isVisible}
         setIsVisible={() => setIsVisible(false)}
@@ -1577,7 +1585,7 @@ export const RenderTabBar = props => {
               }}>
               <AppText
                 type={FORTEEN}
-                color={focused ? RED : BLACK}
+                color={focused ? YellowText : WHITE}
                 weight={POPPINS_MEDIUM}>
                 {`${route?.title}${` (${
                   route?.title == 'WK'
@@ -1596,7 +1604,7 @@ export const RenderTabBar = props => {
                   style={{height: 2, width: 65}}
                   start={{x: 0, y: 1}}
                   end={{x: 1, y: 0}}
-                  colors={[NLCColor.LightRed, NLCColor.shadeRed]}
+                  colors={['#DBA63D', '#DBA63D']}
                 />
               ) : (
                 <View style={{height: 2, width: 102}} />
@@ -1613,7 +1621,7 @@ export const RenderTabBar = props => {
           style={{flex: 1}}
           type={ELEVEN}
           weight={POPPINS_MEDIUM}
-          color={'#B1B1B1'}>
+          color={WHITE}>
           INFO
         </AppText>
         <TouchableOpacityView
@@ -1624,7 +1632,7 @@ export const RenderTabBar = props => {
             alignItems: 'center',
           }}
           onPress={() => filterDataOfSorting('PLAYERS')}>
-          <AppText color={'#B1B1B1'} type={ELEVEN} weight={POPPINS_MEDIUM}>
+          <AppText color={WHITE} type={ELEVEN} weight={POPPINS_MEDIUM}>
             PLAYERS
           </AppText>
           {'PLAYERS' == saveTitle ? (
@@ -1653,7 +1661,7 @@ export const RenderTabBar = props => {
             alignItems: 'center',
           }}
           onPress={() => filterDataOfSorting('AVG POINTS')}>
-          <AppText color={'#B1B1B1'} type={ELEVEN} weight={POPPINS_MEDIUM}>
+          <AppText color={WHITE} type={ELEVEN} weight={POPPINS_MEDIUM}>
             AVG POINTS
           </AppText>
           {'AVG POINTS' == saveTitle ? (
@@ -1677,7 +1685,7 @@ export const RenderTabBar = props => {
         <TouchableOpacityView
           style={{padding: 2, flexDirection: 'row', alignItems: 'center'}}
           onPress={() => filterDataOfSorting('CREDITS')}>
-          <AppText color={'#B1B1B1'} type={ELEVEN} weight={POPPINS_MEDIUM}>
+          <AppText color={WHITE} type={ELEVEN} weight={POPPINS_MEDIUM}>
             CREDITS
           </AppText>
           {'CREDITS' == saveTitle ? (

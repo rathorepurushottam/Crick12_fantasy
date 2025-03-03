@@ -6,7 +6,7 @@ import { StatusBar } from 'native-base';
 import Header from '../common/Header';
 import { universalPaddingHorizontal } from '../theme/dimens';
 import { KeyBoardAware } from '../common/KeyboardAware';
-import { AppText, FORTEEN, POPPINS_MEDIUM } from '../common/AppText';
+import { AppText, FORTEEN, POPPINS_MEDIUM, WHITE } from '../common/AppText';
 import InputBox from '../common/InputBox';
 import { colors } from '../theme/color';
 import { fontFamilyPoppins } from '../theme/typography';
@@ -41,14 +41,14 @@ const VerifyUPI = () => {
   const check = checkUPIDlNumber(name);
   console.log(check,"checkkk")
   return (
-    <AppSafeAreaView>
+    <AppSafeAreaView style={{backgroundColor:"#111019"}}>
       <StatusBar
-        backgroundColor={'transparent'}
-        barStyle="dark-content"
+        backgroundColor={'#111019'}
+        barStyle="light-content"
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <Header
           commonHeader
           title="Verify UPI ID"
@@ -59,8 +59,9 @@ const VerifyUPI = () => {
           <AppText
             type={FORTEEN}
             weight={POPPINS_MEDIUM}
+            color={WHITE}
             style={styles.withdraw}>
-    Enter your UPI ID
+            Enter your UPI ID
           </AppText>
           <View style={styles.box}>
             
@@ -89,7 +90,7 @@ const VerifyUPI = () => {
             onPress={onSubmit}
           />
         </View>
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
     </AppSafeAreaView>
   );
 };
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: universalPaddingHorizontal,
   },
   withdraw: {
-    color: colors.black,
+    // color: colors.black,
     marginTop: 10,
   },
   box: {
@@ -108,18 +109,18 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingHorizontal: 10,
     paddingVertical: 20,
-    backgroundColor: colors.bottomBackgroundColor,
+    backgroundColor: '#111019',
   },
   label: {
     fontSize: 12,
-    color: colors.black,
+    color: colors.white,
     marginTop: 0,
     marginBottom: 5,
   },
   textInputBox: {
     fontFamily: fontFamilyPoppins,
     fontSize: 12,
-    color:colors.black
+    color:colors.white
   },
   topLogo:{
     width:120,

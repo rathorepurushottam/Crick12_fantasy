@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginTop: Screen.Height / 40,
     paddingHorizontal: universalPaddingHorizontal,
     alignItems:'center',
-    backgroundColor:"#282828",
+    backgroundColor:"#111019",
     height:70,
   },
   logo: {

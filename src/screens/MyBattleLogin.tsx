@@ -73,17 +73,13 @@ const MyBattleLogin = () => {
     }
   };
   return (
-    <AppSafeAreaView
-      statusColor={true}
-      style={{backgroundColor: NewColor.backGroundDark}}
-      light={true}
-      hidden={false}>
-      {/* <StatusBar
-        barStyle={'dark-content'}
-        backgroundColor={'transparent'}
+    <AppSafeAreaView>
+      <StatusBar
+        barStyle={'light-content'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
-      /> */}
+      />
       <ImageBackground
         source={backLogo}
         resizeMode="cover"
@@ -190,7 +186,7 @@ const MyBattleLogin = () => {
             style={styles.AgeIcon}
           />
           <AppText type={ELEVEN} style={{marginHorizontal: 10}} color={WHITE}>
-            I have read and agree to NLG Fantasy{' '}
+            I have read and agree to Crick12 Fantasy{' '}
             <AppText type={ELEVEN}color={WHITE} onPress={()=>{
               NavigationService.navigate(MYBATTLETERM)
             }} style={{textDecorationLine: 'underline'}}>

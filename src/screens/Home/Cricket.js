@@ -142,12 +142,14 @@ const Cricket = ({ random, setRefreshingTwo }) => {
       {myMatchesHome?.length !== 0 && (
         <View>
           <View style={styles.one}>
-            <AppText type={EIGHTEEN} weight={POPPINS_BOLD} color={BLACK}>
+            <AppText type={EIGHTEEN} weight={POPPINS_BOLD} color={WHITE}>
               My Matches
             </AppText>
             <ViewAll
-              onPress={() =>
-                NavigationService.navigate(BOTTOM_TAB_CONTEST_SCREEN)
+              onPress={() =>{
+                console.log("Pressed")
+                NavigationService.navigate('Contest')
+              }
               }
             />
           </View>

@@ -4,11 +4,14 @@ import { NewColor, colors } from '../../theme/color';
 const styles = StyleSheet.create({
   head: {
     height: 33,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: '#424242',
     paddingHorizontal: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10
+    
   },
   userImg: {
     height: 38,

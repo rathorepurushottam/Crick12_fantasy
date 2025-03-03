@@ -24,9 +24,9 @@ const MyBattleTerm = () => {
           commonHeader
         />
         <KeyBoardAware>
-          <WebView
+          {/* <WebView
             source={{uri: 'https://nlgfantasy.com/termsNConditionsmobile'}}
-          />
+          /> */}
         </KeyBoardAware>
       </CommonImageBackground>
     </AppSafeAreaView>

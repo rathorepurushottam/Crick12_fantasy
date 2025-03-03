@@ -4,7 +4,7 @@ import Header from '../common/Header';
 import { AppSafeAreaView } from '../common/AppSafeAreaView';
 import { KeyBoardAware } from '../common/KeyboardAware';
 import CommonImageBackground from '../common/commonImageBackground';
-import { AppText, BLACK, BLACKOPACITY, ELEVEN, FORTEEN, POPPINS_MEDIUM, POPPINS_SEMI_BOLD, TEN, THIRTEEN } from '../common/AppText';
+import { AppText, BLACK, BLACKOPACITY, ELEVEN, FORTEEN, POPPINS_MEDIUM, POPPINS_SEMI_BOLD, TEN, THIRTEEN, WHITE } from '../common/AppText';
 import { useDispatch, useSelector } from 'react-redux';
 import InputBox from '../common/InputBox';
 import PrimaryButton from '../common/primaryButton';
@@ -204,14 +204,14 @@ const VerifyAdhaarcard = () => {
   const check = checkValidAdharCardNumber(name.replace(/\s/g, ''));
   const checkOtp = otp && checkValidAdharCardNumber(name.replace(/\s/g, ''));
   return (
-    <AppSafeAreaView>
+    <AppSafeAreaView style={{backgroundColor:"#111019"}}>
       <StatusBar
-        backgroundColor={'transparent'}
-        barStyle="dark-content"
+        backgroundColor={'#111019'}
+        barStyle="light-content"
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <Header
           commonHeader
           title="Aadhar Card Verification"
@@ -222,7 +222,7 @@ const VerifyAdhaarcard = () => {
 
           <View style={styles.box}>
             <View>
-              <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD}>
+              <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD} color={WHITE}>
                 Enter your Aadhaar number
               </AppText>
               <FastImage source={recommendedIcon} resizeMode='contain' style={styles.recommended} />
@@ -263,7 +263,7 @@ const VerifyAdhaarcard = () => {
                 keyboardType={'decimal-pad'}
               />
               {isTimerActive  ? (
-                <AppText weight={POPPINS_SEMI_BOLD} type={THIRTEEN}>
+                <AppText color={WHITE} weight={POPPINS_SEMI_BOLD} type={THIRTEEN}>
                   {formatTime(resendButtonDisabledTime)}
                 </AppText>) : (
                 <PrimaryButton
@@ -271,7 +271,7 @@ const VerifyAdhaarcard = () => {
                   smallBtn={{ height: 21, borderRadius: 5 }}
                   buttonStyle={[styles.buttonStyle, { marginTop: Platform.OS == 'ios' ? -5 : 0 }]}
                   title="Send OTP"
-                  color={check ?   ''  : '#858585'}
+                  color={check ?   ''  : '#fff'}
                   onPress={() => sendOtp()}
                 />)}
             </View>
@@ -286,19 +286,19 @@ const VerifyAdhaarcard = () => {
 
           <View style={styles.commonFlow}>
             <Checkbox value={isVisable} />
-            <AppText style={styles.commonText} weight={POPPINS_MEDIUM}>
+            <AppText color={WHITE} style={styles.commonText} weight={POPPINS_MEDIUM}>
               {` User must be 18 years of age or above to play\n pay-to-play contest on FantasyScore11`}
             </AppText>
           </View>
           <View style={styles.commonFlow}>
             <Checkbox value={isVisable} />
-            <AppText style={styles.commonText} weight={POPPINS_MEDIUM}>
+            <AppText color={WHITE} style={styles.commonText} weight={POPPINS_MEDIUM}>
               {`Users must not be residing in restricted states. To know\n more, read Terms & conditions.`}
             </AppText>
           </View>
           <View style={styles.commonFlow}>
             <Checkbox value={isVisable} />
-            <AppText style={styles.commonText} weight={POPPINS_MEDIUM}>
+            <AppText color={WHITE} style={styles.commonText} weight={POPPINS_MEDIUM}>
               I{`hereby confirm that my attached documents are \ncredible and binding`}
             </AppText>
           </View>
@@ -312,7 +312,7 @@ const VerifyAdhaarcard = () => {
             onPress={onSubmit}
           />
         </View>
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
       <SpinnerSecond loading={loadingKyc ? loadingKyc : loading} />
     </AppSafeAreaView>
   );
@@ -459,7 +459,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: poppinsSemiBold,
     flex: 1,
-    color: colors.black
+    color: colors.white
   },
   inputContainer: {
     marginTop: 10,

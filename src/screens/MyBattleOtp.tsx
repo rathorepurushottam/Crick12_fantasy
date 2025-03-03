@@ -54,7 +54,6 @@ const MyBattleOtp = ({route}: any) => {
   //   }
   // }, [otpFromMethod]);
   const onSubmit = () => {
-    console.log('skdalsdalsd');
     if (code.length < 6) {
       toastAlert.showToastError('Please provide a valid OTP');
     } else {
@@ -62,6 +61,7 @@ const MyBattleOtp = ({route}: any) => {
         mobile_number: Number?.mobile_number,
         otp: code,
       };
+      console.log('data',data);
       dispatch(otpVerification(data));
     }
   };
@@ -135,7 +135,7 @@ const MyBattleOtp = ({route}: any) => {
                   }
                 }
               }}
-              placeholderTextColor={NLCColor.black}
+              placeholderTextColor={NLCColor.lightGray}
               codeInputFieldStyle={styles.underlineStyleBase}
               codeInputHighlightStyle={styles.underlineStyleHighLighted}
             />
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1E1C2A',
     color: '#fff',
     borderWidth: 1,
-    borderColor:"#1E1C2A"
+    borderColor:"#2B2839"
   },
   underlineStyleHighLighted: {
     // borderColor: '#DDDDDD',

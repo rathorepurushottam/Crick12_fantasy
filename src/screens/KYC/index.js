@@ -114,9 +114,9 @@ const KYC = () => {
         }]}>
 
           <View style={styles.pancardlayerview}>
-            <FastImage source={item.image} resizeMode="contain" style={styles.renderImage} />
+            <FastImage tintColor={'#fff'} source={item.image} resizeMode="contain" style={styles.renderImage} />
           </View>
-          <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD} style={{ marginLeft: 10 }}>
+          <AppText color={WHITE} type={FORTEEN} weight={POPPINS_SEMI_BOLD} style={{ marginLeft: 10 }}>
             {item.title}
           </AppText>
         </View>
@@ -164,29 +164,26 @@ const KYC = () => {
     }
   }
   return (
-    <AppSafeAreaView hidden={false}
-      statusColor={true}
-      light={true}
-    // style={{ backgroundColor: "#F8F8F8" }}
-    >
+    <AppSafeAreaView  style={{backgroundColor:"#111019"}}>
       <StatusBar
-        backgroundColor={'transparent'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
+        barStyle={'light-content'}
       />
       <Header
         commonHeader
         title="Verification"
-        style={{ padding: universalPaddingHorizontal, }}
+        style={{ padding: universalPaddingHorizontal,marginTop: '10%' }}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
 
         <KeyBoardAware style={styles.bottomContainer}>
           <FastImage source={kycLogo} resizeMode="contain" style={styles.kycLogoS} />
           {/* <AppText style={[styles.headerText, { marginTop: '10%' }]} type={SIXTEEN} weight={POPPINS_SEMI_BOLD}>
             Let’s verify KYC
           </AppText> */}
-          <AppText style={styles.headerText} type={THIRTEEN} weight={POPPINS_SEMI_BOLD} color={colors.black}>
+          <AppText style={styles.headerText} type={THIRTEEN} weight={POPPINS_SEMI_BOLD} color={WHITE}>
             {"Please submit the following documents \nfor the verification process"}
           </AppText>
           {/* <AppText
@@ -200,6 +197,7 @@ const KYC = () => {
           <AppText
             weight={POPPINS_MEDIUM}
             type={FORTEEN}
+            color={WHITE}
             style={styles.getVerified}>
             Aadhar Verification
           </AppText>
@@ -209,12 +207,12 @@ const KYC = () => {
               checkInProgress('Aadhar') ?
                 toastAlert.showToastError('Your Aadhar have been progress') :
                 NavigationService.navigate(VERIFY_ADHAAR_SCREEN)}
-            style={[styles.panContainer, { backgroundColor: colors.bottomBackgroundColor }]}>
+            style={[styles.panContainer, { backgroundColor: '#1E1C2A' }]}>
             <View style={styles.underContainer}>
               <View style={styles.pancardlayerview}>
-                <FastImage source={panIcon} resizeMode="contain" style={styles.renderImage} />
+                <FastImage tintColor={'#fff'} source={panIcon} resizeMode="contain" style={styles.renderImage} />
               </View>
-              <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} style={{ marginLeft: 10 }}>
+              <AppText color={WHITE} type={THIRTEEN} weight={POPPINS_MEDIUM} style={{ marginLeft: 10 }}>
                 Aadhar using OTP
               </AppText>
 
@@ -267,6 +265,7 @@ const KYC = () => {
           <AppText
             weight={POPPINS_MEDIUM}
             type={FORTEEN}
+            color={WHITE}
             style={[styles.getVerified]}>
             Pan Verification
           </AppText>
@@ -280,12 +279,12 @@ const KYC = () => {
                   toastAlert.showToastError('Please first verify aadhar')
                   :
                   NavigationService.navigate(VERIFY_PAN_SCREEN)}
-            style={[styles.panContainer, { backgroundColor: colors.bottomBackgroundColor }]}>
+            style={[styles.panContainer, { backgroundColor: '#1E1C2A' }]}>
             <View style={styles.underContainer}>
               <View style={styles.pancardlayerview}>
-                <FastImage source={panIcon} resizeMode="contain" style={styles.renderImage} />
+                <FastImage tintColor={'white'} source={panIcon} resizeMode="contain" style={styles.renderImage} />
               </View>
-              <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} style={{ marginLeft: 10 }}>
+              <AppText color={WHITE} type={THIRTEEN} weight={POPPINS_MEDIUM} style={{ marginLeft: 10 }}>
                 Pan Card
               </AppText>
             </View>
@@ -342,7 +341,7 @@ const KYC = () => {
             }
           </TouchableOpacityView> */}
 
-          <AppText style={{ marginTop: 10, marginBottom: 10 }} weight={POPPINS_MEDIUM} type={FORTEEN}>
+          <AppText style={{ marginTop: 10, marginBottom: 10 }} color={WHITE} weight={POPPINS_MEDIUM} type={FORTEEN}>
             Withdrawal Account verification
           </AppText>
           {data?.map((item) => {
@@ -393,7 +392,7 @@ const KYC = () => {
             </View>
           </View>
         </Modal>
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
     </AppSafeAreaView>
   );
 };
@@ -479,7 +478,7 @@ const styles = StyleSheet.create({
   },
   renderContainer: {
     // borderWidth: 1,
-    backgroundColor: colors.bottomBackgroundColor,
+    backgroundColor: '#1E1C2A',
     paddingHorizontal: 1,
     height: 46,
     marginBottom: 20,

@@ -21,7 +21,7 @@ const AppSafeAreaView = ({
       </SafeAreaView>
     </View>
   ) : (
-    <View style={[{ flex: 1, backgroundColor: 'black' }, style]}>
+    <View style={[{ flex: 1, backgroundColor: '#111019' }, style]}>
       {/* <StatusBar
         translucent={false}
         backgroundColor={statusColor ? 'black' : "white"}

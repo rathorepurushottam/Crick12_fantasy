@@ -65,6 +65,7 @@ const CommonHeader = ({
   completeMatch,
   setModalRemove,
   otherContainer,
+  from,
   title
 }) => {
   const dispatch = useDispatch();
@@ -445,6 +446,11 @@ const CommonHeader = ({
         <></>
       ) : (
        */}
+
+       {
+        from == "LEADERBOARD"
+         ? <></>
+         :
         <View style={[styles.filterContainer, { otherContainer }]}>
           <AppText
             weight={POPPINS_MEDIUM}
@@ -470,6 +476,9 @@ const CommonHeader = ({
           </TouchableOpacityView>
 
         </View>
+       }
+
+
       {/* )} */}
     </View>
   );

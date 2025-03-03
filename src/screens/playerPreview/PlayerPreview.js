@@ -31,6 +31,7 @@ import {
   CAPTAIN,
   downArrow,
   green_ground,
+  headerBack,
   headerIner,
   LEFT_ARROW,
   LINEAR_GRADIENT,
@@ -154,7 +155,7 @@ const PlayerPreview = () => {
             Create Team
           </AppText>
         </View>
-        <ImageBackground source={headerIner} resizeMode='contain' style={styles.header}>
+        <ImageBackground source={headerBack} resizeMode='contain' style={styles.header}>
           <View style={styles.teamView}>
             <FastImage
               source={{ uri: route?.params?.oldData?.TeamAlogo }}
@@ -165,14 +166,14 @@ const PlayerPreview = () => {
               style={{
                 marginLeft: 5,
               }}>
-              <AppText weight={POPPINS_MEDIUM} color={WHITE} >
+              <AppText weight={POPPINS_MEDIUM} color={BLACK} >
                 {route?.params?.oldData?.TeamsShortNames &&
                   route?.params?.oldData?.TeamsShortNames.length > 0 &&
                   route?.params?.oldData?.TeamsShortNames[0]}
               </AppText>
               <AppText
                 weight={POPPINS_MEDIUM}
-                color={WHITE}
+                color={BLACK}
                 type={TWELVE}>
                 {route?.params?.player?.length}
               </AppText>
@@ -180,7 +181,7 @@ const PlayerPreview = () => {
           </View>
           <LiveTime
             view={true}
-            color={timeDifference >= 1 ? WHITE : WHITE}
+            color={timeDifference >= 1 ? BLACK : BLACK}
             top={true}
             details={contestData}
           setRemoveTabs={setRemoveTabs}
@@ -190,14 +191,14 @@ const PlayerPreview = () => {
               style={{
                 marginRight: 5,
               }}>
-              <AppText color={WHITE} weight={POPPINS_MEDIUM}>
+              <AppText color={BLACK} weight={POPPINS_MEDIUM}>
                 {' '}
                 {route?.params?.oldData?.TeamsShortNames &&
                   route?.params?.oldData?.TeamsShortNames.length > 0 &&
                   route?.params?.oldData?.TeamsShortNames[1]}
               </AppText>
               <AppText
-                color={WHITE}
+                color={BLACK}
                 weight={POPPINS_MEDIUM}
                 style={{
                   alignSelf: 'flex-end',

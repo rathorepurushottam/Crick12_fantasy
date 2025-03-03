@@ -14,6 +14,7 @@ import {
   POPPINS_SEMI_BOLD,
   THIRTEEN,
   TWENTY_FOUR,
+  WHITE,
 } from '../../common/AppText';
 import Listing from '../../common/Profile/listing';
 import CommonContainer from '../../common/Profile/commonContainer';
@@ -57,13 +58,14 @@ const MyBalance = () => {
     dispatch(getUserProfile(false, false));
   };
   return (
-    <AppSafeAreaView light={true} hidden={false}>
+    <AppSafeAreaView style={{backgroundColor:"#111019"}}>
       <StatusBar
-        backgroundColor={'#282828'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
+        barStyle={"light-content"}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <Header title="My Balance" commonHeader />
         <View style={{paddingHorizontal: 20}}>
           <View
@@ -74,10 +76,10 @@ const MyBalance = () => {
               marginTop: 30,
             }}>
             <View>
-              <AppText type={FORTEEN} weight={POPPINS_LIGHT}>
+              <AppText color={WHITE} type={FORTEEN} weight={POPPINS_LIGHT}>
                 Your Total Balance
               </AppText>
-              <AppText type={TWENTY_FOUR} weight={POPPINS_SEMI_BOLD}>
+              <AppText color={WHITE} type={TWENTY_FOUR} weight={POPPINS_SEMI_BOLD}>
                 INR {Math.round(sumOfTotal).toFixed(2)}
               </AppText>
             </View>
@@ -104,9 +106,9 @@ const MyBalance = () => {
                 height: 215,
                 marginTop: 15,
                 paddingHorizontal: 0,
-                backgroundColor: NLCColor.background,
+                backgroundColor: '#3F3F3F',
                 borderWidth: 1,
-                borderColor: NLCColor.background,
+                borderColor: '#DBA73E',
               }}>
               <ListingItem
                 title={'Cash Deposit'}
@@ -131,7 +133,7 @@ const MyBalance = () => {
               alignItems: 'center',
               justifyContent: 'center',
               marginTop: 20,
-              backgroundColor: NLCColor.background,
+              backgroundColor: '#3F3F3F',
             }}>
             <Listing
               onPressMain={() => NavigationService.navigate(TRANSACTION_SCREEN)}
@@ -148,6 +150,7 @@ const MyBalance = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginTop: 10,
+                backgroundColor: '#3F3F3F',
               }}>
               <Listing
                 onPressMain={() => NavigationService.navigate(KYC_SCREEN)}
@@ -181,7 +184,7 @@ const MyBalance = () => {
               alignItems: 'center',
               justifyContent: 'center',
               marginTop: 10,
-              backgroundColor: NLCColor.background,
+              backgroundColor: '#3F3F3F',
             }}>
             <Listing
               onPressMain={() => NavigationService.navigate(TDS_REPORT)}
@@ -212,7 +215,7 @@ const MyBalance = () => {
         ) : (
           <></>
         )}
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
     </AppSafeAreaView>
   );
   60;

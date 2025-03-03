@@ -36,10 +36,10 @@ const Winnings = ({ id, privateis, notLive }) => {
       <>
         {item?.EndRank !== null ?
           <View style={styles.winningContainer}>
-            <AppText >
+            <AppText color={WHITE}>
               #{item.StartRank == item?.EndRank ? item.StartRank : `${item?.StartRank}-${item?.EndRank}`}
             </AppText>
-            <AppText >{parseInt(item?.Price)?.toFixed(2)}</AppText>
+            <AppText color={WHITE}>{parseInt(item?.Price)?.toFixed(2)}</AppText>
           </View >
           : <View style={{
             alignItems: "center",
@@ -73,10 +73,11 @@ const Winnings = ({ id, privateis, notLive }) => {
     );
   };
   return (
-    <>
+    <View style={{backgroundColor:"#111019",flex:1,paddingHorizontal:10,paddingTop:10}}>
+      <View>
       <View style={styles.head}>
-        <AppText type={TEN}>RANK</AppText>
-        <AppText type={TEN}>WINNINGS</AppText>
+        <AppText type={TEN} color={WHITE}>RANK</AppText>
+        <AppText type={TEN} color={WHITE}>WINNINGS</AppText>
       </View>
       <View>
         {loading ? (
@@ -93,7 +94,8 @@ const Winnings = ({ id, privateis, notLive }) => {
           />
         )}
       </View>
-    </>
+      </View>
+    </View>
   );
 };
 

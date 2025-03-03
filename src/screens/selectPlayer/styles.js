@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: universalPaddingHorizontal,
     width: '100%',
-    backgroundColor:"#282828",
+    backgroundColor:"#111019",
     height:70,
   },
   leftArrow: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomColor: colors.gray,
     marginTop: -7,
-    backgroundColor:"#F6F6F6"
+    backgroundColor:"#181720"
   },
   playerListingHeadTitle: {
     color: 'white',
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
   description: {
     color: 'white',

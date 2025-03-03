@@ -79,7 +79,7 @@ const HelpDesk = () => {
                         </View>
                     </TouchableOpacityView>
                     <TouchableOpacityView
-                        onPress={() => Linking.openURL("mailto:?to=support@nextlevelgaming.com")}
+                        onPress={() => Linking.openURL("mailto:?to=support@crick12.com")}
                         style={styles.box}>
                         <View style={styles.boxContainer}>
                             <View style={{ flexDirection: 'row' }}>
@@ -93,7 +93,7 @@ const HelpDesk = () => {
                                 </View>
                                 <View style={styles.mobileContainer}>
                                     <AppText weight={POPPINS_SEMI_BOLD} type={TWELVE} style={styles.mobile}>
-                                        Email Us{'\n'}<AppText  type={TWELVE} weight={POPPINS_SEMI_BOLD}>support@nextlevelgaming.com</AppText>
+                                        Email Us{'\n'}<AppText  type={TWELVE} weight={POPPINS_SEMI_BOLD}>support@crick12.com</AppText>
                                     </AppText>
                                 </View>
                             </View>

@@ -101,12 +101,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: 10,
     marginTop: 10,
-    backgroundColor:colors.white
+    backgroundColor:'#111019'
   },
   topContainer: {
     paddingHorizontal: universalPaddingHorizontal,
     justifyContent: 'space-evenly',
-    backgroundColor:colors.white
+    backgroundColor:'#1E1C2A'
   },
   top: {
     flexDirection: 'row',
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     paddingHorizontal: 10,
-    backgroundColor: "#F6F6F6",
+    backgroundColor: "#1E1C2A",
     paddingVertical: 10
   },
   gloryIcon: {
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   grayContainer: {
     height: 18,
     width: 18,
-    backgroundColor: "#EBEBEB",
+    backgroundColor: "#DBA63D",
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',

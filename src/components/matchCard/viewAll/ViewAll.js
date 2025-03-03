@@ -13,7 +13,7 @@ const ViewAll = ({ onPress }) => {
       <AppText
         weight={POPPINS_MEDIUM}
         type={ELEVEN}
-        color={BLACK}
+        color={WHITE}
         style={{ marginRight: 5,}}>
         View all
       </AppText>
@@ -21,7 +21,7 @@ const ViewAll = ({ onPress }) => {
         source={right_arrow}
         style={styles.rightArrow}
         resizeMode="contain"
-        tintColor={colors.black}
+        tintColor={colors.white}
       />
     </TouchableOpacityView>
   );

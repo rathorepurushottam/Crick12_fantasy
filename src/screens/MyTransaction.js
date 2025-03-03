@@ -188,13 +188,13 @@ const MyTransaction = () => {
   };
   const reverseData = [...depositTransactions].reverse();
   return (
-    <AppSafeAreaView light={true} hidden={false}>
+    <AppSafeAreaView >
       <StatusBar
-        backgroundColor={'#282828'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <Header
           commonHeader
           title="Transaction"
@@ -305,7 +305,7 @@ const MyTransaction = () => {
         </View> */}
         <SlideSwiper tabTitles={titles} reverseData={reverseData}/>
         <SpinnerSecond loading={isLoading} />
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
     </AppSafeAreaView>
   );
 };

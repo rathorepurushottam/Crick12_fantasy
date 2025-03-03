@@ -26,7 +26,7 @@ const Listing = ({Icon, Name, next, lastName, onPress, onPressMain}) => {
           <FastImage
             source={Icon}
             resizeMode="contain"
-            tintColor={colors.black}
+            tintColor={colors.white}
             style={[
               {width: 24, height: 24, resizeMode: 'contain'},
               !next && {width: 20, height: 20},
@@ -35,7 +35,7 @@ const Listing = ({Icon, Name, next, lastName, onPress, onPressMain}) => {
           />
         </View>
         <View style={{marginLeft: 15}}>
-          <AppText type={FOURTEEN} weight={POPPINS_MEDIUM}>
+          <AppText  color={WHITE} type={FOURTEEN} weight={POPPINS_MEDIUM}>
             {Name}
           </AppText>
         </View>

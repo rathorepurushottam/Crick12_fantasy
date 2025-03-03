@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     height: 'auto',
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
+    backgroundColor:"#111019"
   },
   top: {
     height: 46,
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     marginTop: '-10%',
     width:'95%',
     alignSelf:'center',
+    backgroundColor:"#111019"
   },
   teamName: {
     color: 'white',
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   },
   progressBar: {
     height: 3,
-    backgroundColor: colors.lightgry,
+    backgroundColor: '#1E1C2A',
     borderRadius: 4,
 
     overflow: 'hidden',
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor:NLCColor.white,
+    backgroundColor:'#1E1C2A',
     borderRadius:4,
     width:'90%',
     alignSelf:'center',

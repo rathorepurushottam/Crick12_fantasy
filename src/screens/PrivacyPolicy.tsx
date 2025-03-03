@@ -24,9 +24,9 @@ const PrivacyPolicy = () => {
             commonHeader
         />
         <KeyBoardAware>
-            <WebView
+            {/* <WebView
                 source={{ uri: 'https://nlgfantasy.com/policymobile' }}
-            />
+            /> */}
         </KeyBoardAware>
     </CommonImageBackground>
 </AppSafeAreaView>

@@ -4,7 +4,7 @@ import Header from '../../common/Header';
 import { AppSafeAreaView } from '../../common/AppSafeAreaView';
 import { KeyBoardAware } from '../../common/KeyboardAware';
 import CommonImageBackground from '../../common/commonImageBackground';
-import { AppText, BLACKOPACITY, FORTEEN, POPPINS_MEDIUM, POPPINS_SEMI_BOLD } from '../../common/AppText';
+import { AppText, BLACKOPACITY, FORTEEN, POPPINS_MEDIUM, POPPINS_SEMI_BOLD, WHITE } from '../../common/AppText';
 import styles from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import InputBox from '../../common/InputBox';
@@ -152,20 +152,21 @@ const VerifyBank = () => {
 
   const isSelected = !accountNo || accountNoRe != accountNo || !ifsclNumber(ifsc) || !isbank || !branch;
   return (
-    <AppSafeAreaView hidden={false}>
+    <AppSafeAreaView >
       <StatusBar
-        backgroundColor={'transparent'}
+        backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
+        barStyle={'light-content'}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <Header
           commonHeader
           title="Verify Bank Account"
           style={{ padding: universalPaddingHorizontal, marginTop: '10%' }}
         />
         <KeyBoardAware style={styles.bottomContainer}>
-          <AppText type={FORTEEN} style={[styles.withdraw, { marginLeft: 2 }]}>
+          <AppText color={WHITE} type={FORTEEN} style={[styles.withdraw, { marginLeft: 2 }]}>
             Enter Your Bank Details
           </AppText>
           {/* <View
@@ -277,7 +278,7 @@ const VerifyBank = () => {
           />
         </View>
         }
-      </CommonImageBackground>
+      {/* </CommonImageBackground> */}
     </AppSafeAreaView>
   );
 };

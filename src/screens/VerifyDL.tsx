@@ -99,7 +99,7 @@ const VerifyDL = () => {
                     <View style={styles.commonFlow}>
                         <Checkbox value={isVisable} />
                         <AppText style={styles.commonText} weight={POPPINS_MEDIUM}>
-                            {` User must be 18 years of age or above to play\n pay-to-play contest on NLG`}
+                            {` User must be 18 years of age or above to play\n pay-to-play contest on Crick12`}
                         </AppText>
                     </View>
                     <View style={styles.commonFlow}>

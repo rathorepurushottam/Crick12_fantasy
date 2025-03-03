@@ -242,7 +242,7 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
           {
             backgroundColor:
               filteredArray?.length == 1
-                ? NLCColor.white
+                ? '#747474'
                 : null,
             borderBottomWidth: 1,
             borderBottomColor: NLCColor.white
@@ -269,7 +269,7 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
           </TouchableOpacityView>
           <View
             style={{ flex: 1.4, marginLeft: 6 }}>
-            <AppText> {`${item?.full_name || item?.username
+            <AppText color={WHITE}> {`${item?.full_name || item?.username
               ? `${item?.full_name
                 ? item?.full_name
                 : item?.username
@@ -314,14 +314,14 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
               flex: 1,
             }}>
             {item?.team_details?.total_points ? (
-              <AppText weight={SEMI_BOLD} type={TWELVE}>
+              <AppText weight={SEMI_BOLD} type={TWELVE} color={WHITE}>
                 {item?.team_details?.total_points}
               </AppText>
             ) : (
               <></>
             )}
             {item?.rank ? (
-              <AppText weight={SEMI_BOLD} type={TWELVE}>
+              <AppText weight={SEMI_BOLD} type={TWELVE} color={WHITE}>
                 # {item?.rank}
               </AppText>
             ) : (
@@ -341,7 +341,7 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
             style={[
               styles.leaderBoardContainer,
               {
-                backgroundColor: "#EBEBEB",
+                backgroundColor: "#181720",
                 borderBottomWidth: 1,
                 borderBottomColor: colors.lightgry
               },
@@ -426,7 +426,7 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
                   )
                 }
                 style={{ flex: 1.4, marginLeft: 6 }}>
-                <AppText> {`${item?.full_name || item?.username
+                <AppText color={WHITE}> {`${item?.full_name || item?.username
                   ? `${item?.full_name
                     ? item?.full_name
                     : item?.username
@@ -511,12 +511,14 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
       })
     );
   };
+
   return (
-    <>
+    <View style={{backgroundColor:"#111019",flex:1,paddingHorizontal:10,paddingTop:10}}>
       <View style={styles.head}>
         <AppText
           weight={SEMI_BOLD}
           type={TEN}
+          color={WHITE}
           style={{
             flex: 2,
           }}>{`ALL TEAMS (${filteredArray?.length})`}</AppText>
@@ -526,10 +528,11 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
             <AppText
               style={{ flex: 1 }}
               type={TEN}
+              color={WHITE}
             >
               Points
             </AppText>
-            <AppText type={TEN}>
+            <AppText color={WHITE} type={TEN}>
               Rank
             </AppText>
           </>
@@ -564,13 +567,13 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
             <AppText style={{
               textAlign: 'center',
               marginTop: '20%'
-            }} color={BLACK} weight={POPPINS_SEMI_BOLD} >
+            }} color={WHITE} weight={POPPINS_SEMI_BOLD} >
               No other team has joined this contest
             </AppText>
           }
         </>
       )}
-    </>
+    </View>
   );
 };
 

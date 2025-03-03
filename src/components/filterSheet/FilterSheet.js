@@ -195,7 +195,7 @@ const FilterSheet = ({
                       ? styles.entry2
                       : styles.entry,
                   ]}>
-                  <AppText weight={LATO_SEMI_BOLD} >{item?.value}</AppText>
+                  <AppText weight={LATO_SEMI_BOLD} color={WHITE}>{item?.value}</AppText>
                 </TouchableOpacityView>
               );
             })}
@@ -227,15 +227,15 @@ const FilterSheet = ({
             source={MATCH_REMAINDER_CLOSE_ICON}
             style={styles.closeIcon}
             resizeMode="contain"
-            tintColor={colors.black}
+            tintColor={colors.white}
           />
         </TouchableOpacity>
-        <AppText color={BLACK} weight={POPPINS_SEMI_BOLD} type={FORTEEN}>
+        <AppText color={WHITE} weight={POPPINS_SEMI_BOLD} type={FORTEEN}>
           Filter
         </AppText>
         <TouchableOpacityView onPress={Onclear}>
           <AppText
-            type={TWELVE} weight={{ POPPINS_MEDIUM }}>
+            type={TWELVE} weight={{ POPPINS_MEDIUM }} color={WHITE}>
             Clear
           </AppText>
         </TouchableOpacityView>
@@ -243,7 +243,7 @@ const FilterSheet = ({
       <View
         style={{
           flexGrow: 1,
-          backgroundColor: colors.white
+          backgroundColor: '#111019'
         }}>
         <CommonContainer
           title={'Entry'}
@@ -280,7 +280,7 @@ const FilterSheet = ({
             style={styles.btn}
             start={{ x: 1, y: 1 }}
             end={{ x: 0, y: 1 }}
-            colors={[NLCColor.LightRed, NLCColor.shadeRed]}>
+            colors={['#D89E3C', '#EAD288']}>
             <AppText
               style={{ color: 'white' }}
               type={THIRTEEN}

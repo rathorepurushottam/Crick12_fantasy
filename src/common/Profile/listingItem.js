@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {AppText, ELEVEN, FOURTEEN, POPPINS, POPPINS_MEDIUM, POPPINS_SEMI_BOLD} from '../AppText';
+import {AppText, ELEVEN, FOURTEEN, POPPINS, POPPINS_MEDIUM, POPPINS_SEMI_BOLD, WHITE} from '../AppText';
 import {Button} from '../Button';
 import {useSelector} from 'react-redux';
 import NavigationService from '../../navigation/NavigationService';
@@ -20,18 +20,18 @@ const ListingItem = ({title, info, button, border}) => {
           width: '100%',
           flexDirection: 'row',
           justifyContent: 'space-between',
-          borderBottomWidth: !border ? 1 : null,
-          borderBottomColor: NLCColor.background,
+          borderBottomWidth: !border ? 0.2 : null,
+          borderBottomColor: '#E0C77D',
           paddingHorizontal: 10,
           paddingVertical: 16,
           // backgroundColor: 'red',
         },
       ]}>
       <View>
-        <AppText type={FOURTEEN} weight={POPPINS_MEDIUM}>
+        <AppText color={WHITE} type={FOURTEEN} weight={POPPINS_MEDIUM}>
           {title}
         </AppText>
-        <AppText type={FOURTEEN} weight={POPPINS_SEMI_BOLD}>
+        <AppText color={WHITE} type={FOURTEEN} weight={POPPINS_SEMI_BOLD}>
           {info}
         </AppText>
       </View>
