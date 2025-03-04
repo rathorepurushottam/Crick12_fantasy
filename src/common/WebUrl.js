@@ -29,7 +29,7 @@ const WebUrl = ({ route }) => {
         } else if (title == 'Legalities') {
             return 'http://103.175.163.162:5125/legalities'
         } else if (title == 'Fair Play Policy') {
-            return 'http://103.175.163.162:5125/fairPlay'
+            // return 'http://103.175.163.162:5125/fairPlay'
         }
     }
     return (

@@ -24,10 +24,12 @@ import {
   TermsIcon,
   UserIcon,
   aboutUs,
+  helpDesk,
   iconNlg,
   kycIcon,
   kycLogo,
   profileBackMain,
+  responsibleGame,
   rightArrow,
   right_arrow,
 } from '../helper/image';
@@ -80,7 +82,7 @@ export const datatwo = [
   },
   {
     id: 3,
-    FastImage: iconNlg,
+    FastImage: helpDesk,
     title: 'Help Desk',
     source: rightArrow,
   },
@@ -118,7 +120,7 @@ export const datathree = [
   // },
   {
     id: 9,
-    FastImage: iconNlg,
+    FastImage: responsibleGame,
     title: 'Responsible Gaming',
     source: rightArrow,
   },
