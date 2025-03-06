@@ -23,8 +23,10 @@ export const splashScreen = require('../../assets/images/splash.jpg')
 export const backLogo = require('../../assets/images/backLogo.png')
 export const frontLogo = require('../../assets/images/frontlogo.png')
 export const profileBackMain = require('../../assets/images/profileBackMain.png')
+export const creatTeam = require('../../assets/images/creatTeam.png')
 
 
+// creatTeam
 // profileBackMain
 
 

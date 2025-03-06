@@ -57,6 +57,7 @@ const Confirmation = ({
   JoinWithMULT,
   privateContest
 }) => {
+  console.log(isModalVisible,"modalvissible")
   const dispatch = useDispatch();
   const myTeam = useSelector(state => state?.match?.myTeams);
 

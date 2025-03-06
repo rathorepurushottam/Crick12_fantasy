@@ -53,6 +53,7 @@ const ContestCard = ({ details, totalTeamCount }) => {
     return state.profile.kycDetails;
   });
   const [isAdd, setIsAdd] = useState(false);
+  // const [isAdd] = useRef(false)
 
   const onClickContest = () => {
     console.log('in contestCard')
@@ -81,6 +82,7 @@ const ContestCard = ({ details, totalTeamCount }) => {
 
   };
   const onJoinContest = async () => {
+    console.log(isAdd,"setIsAddsetIsAdd")
    /*  if (kycDetails?.adhar_verified == 0) {
       NavigationService.navigate(ADDCASH_VERIFICATION)
     } else if (kycDetails?.adhar_verified == 2) {
@@ -110,10 +112,11 @@ const ContestCard = ({ details, totalTeamCount }) => {
             isEditMode: false,
           });
         } else {
-          dispatch(getMyTeam(_id));
+          // dispatch(getMyTeam(_id));
           dispatch(setSelectedMatch({ ...details }));
           setSaveTeamName(myTeam[0]?.name)
           setIsAdd(true);
+          // isAddRef.current = true;
         }
       } else if (totalTeamCount > 1) {
         if (details?.teamDetails?.length == myTeam?.length) {

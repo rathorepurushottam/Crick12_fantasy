@@ -55,7 +55,7 @@ export const userSignup = (data, permissionSave) => async dispatch => {
         console.log(response,"responseee")
 
         if (response?.success) {
-          console.log(response,"response")
+          // console.log(response,"response")
           NavigationService.navigate(MYBATTLEOTP, { data: data, id: 'register', permissionSave: permissionSave });
         } else {
           toastAlert.showToastError(response?.message);
@@ -73,11 +73,11 @@ export const userSignup = (data, permissionSave) => async dispatch => {
 export const otpVerification =
   (data, isAlert = false) =>
     async dispatch => {
-      console.log(data,"data in otp verrification")
+      // console.log(data,"data in otp verrification")
       try {
         dispatch(setLoading(true));
         const response = await appOperation.guest.otp_verification(data);
-        console.log("response in otp",response)
+        // console.log("response in otp",response)
         if (response?.success) {
           appOperation.setCustomerToken(response?.data?.accessToken);
           await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data?.accessToken);
@@ -87,7 +87,7 @@ export const otpVerification =
           NavigationService.navigate('DrawerNavigationStack');
         } else {
           toastAlert.showToastError(response?.message);
-          console.log(response,"response in else part")
+          // console.log(response,"response in else part")
         }
         // if (response?.success) {
         //   isAlert

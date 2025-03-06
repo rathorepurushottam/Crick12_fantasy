@@ -7,6 +7,7 @@ import {
   FlatList,
   StatusBar,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
@@ -28,6 +29,7 @@ import {
   BLACK,
   YellowText,
   LIGHTGRAY,
+  FIFTEENTH,
 } from '../../common/AppText';
 import {TouchableOpacityView} from '../../common/TouchableOpacityView';
 import LeaderBoardList from '../../components/leaderBoardList/LeaderBoardList';
@@ -173,6 +175,8 @@ const LeaderBoard = () => {
     return state.profile.userData;
   });
 
+
+  console.log(route?.params?.details,"route?.params?.detailsroute?.params?.details")
   const TABS = [
     {id: 1, title: 'Winnings'},
     {id: 2, title: 'Leaderboard'},
@@ -200,10 +204,15 @@ const LeaderBoard = () => {
       let data = {cid: SeriesId};
       dispatch(getAllPlayerList(_id, data));
       NavigationService.navigate(SELECT_PLAYER, matchDetails);
-    } else if (totalTeamCount === 1) {
-      dispatch(setSelectedMatch({...details}));
-      setIsAdd(true);
-    } else if (totalTeamCount > 1) {
+    } 
+    // else if (totalTeamCount === 1) {
+    //   dispatch(setSelectedMatch({...details}));
+    //   setIsAdd(true);
+    // }
+    //  else if (totalTeamCount > 1) {
+    //   selectTeam?.current?.open();
+    // }
+    else{
       selectTeam?.current?.open();
     }
   };
@@ -334,7 +343,7 @@ const LeaderBoard = () => {
       <View style={styles.container}>
         <CommonHeader
           allContest={true}
-          title = {'LEADERBOARD'}
+          title = {'Contest Details'}
           from = {'LEADERBOARD'}
           style={{
             marginBottom: 0,
@@ -683,7 +692,7 @@ const LeaderBoard = () => {
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
-      <CommonImageBackground common>
+      {/* <CommonImageBackground common> */}
         <View style={{flex: 1}}>
           {renderTop()}
           <TabView
@@ -698,7 +707,23 @@ const LeaderBoard = () => {
             renderTabBar={props => <RenderTabBar {...props} />}
           />
         </View>
-      </CommonImageBackground>
+        <View style={{ width: '100%', 
+            paddingVertical: 10, 
+            borderTopLeftRadius:40,
+            borderTopRightRadius:40,
+            alignItems: "center", 
+            backgroundColor: "#252431",
+            flexDirection:"row",
+            justifyContent:'center'
+             // Optional for visibility
+          }}>
+            <TouchableOpacity onPress={onJoinContest} style={{backgroundColor:"#3EAA35",width:"90%",marginHorizontal:10,
+              marginVertical:10,padding:10,borderRadius:13,alignItems:"center"
+            }}>
+          <AppText color={WHITE} type={FORTEEN}>JOIN ₹{route?.params?.details?.EnteryFee}</AppText>
+          </TouchableOpacity>
+        </View>
+      {/* </CommonImageBackground> */}
       <RBSheet
         ref={selectTeam}
         closeOnDragDown={false}

@@ -36,6 +36,18 @@ const HomeTopHeader = ({ personClick, walletIcon }) => {
   useEffect(() => {
     setRandom(Math.random())
   }, [total_balance])
+
+  const formatNumber = (value) => {
+    if (value >= 1e9) {
+      return (value / 1e9).toFixed(1) + 'B'; // Billion
+    } else if (value >= 1e6) {
+      return (value / 1e6).toFixed(1) + 'M'; // Million
+    } else if (value >= 1e3) {
+      return (value / 1e3).toFixed(1) + 'k'; // Thousand
+    } else {
+      return value.toString(); // Less than 1000, return as is
+    }
+  };
   return (
     <>
       <LinearGradient
@@ -70,7 +82,7 @@ const HomeTopHeader = ({ personClick, walletIcon }) => {
             colors={[ "#FFFFFF33","#FFFFFF26"]}
             start={{ x:1, y: 0 }}
             end={{ x: 0, y: 0 }}
-            style={styles.walletView}>
+            style={[styles.walletView, totalbalance < 1000 ? {width:70} : {}]}>
             <View style={{ flexDirection: "row", alignItems: "center", }}>
               <View style={styles.walletbox}>
                 <FastImage
@@ -82,11 +94,12 @@ const HomeTopHeader = ({ personClick, walletIcon }) => {
               </View>
               <View>
                 <AppText
-                  style={{  marginLeft: 7 }}
+                  style={{  marginLeft: 3 ,marginRight:3}}
                   type={TWELVE}
                   weight={POPPINS_SEMI_BOLD}
                   color={WHITE}>
-                  ₹ {Math.round(totalbalance).toFixed(0)}
+                  {/* ₹ {Math.round(totalbalance).toFixed(0)} */}
+                  ₹ {formatNumber(totalbalance)}
                 </AppText>
               </View>
             </View>
@@ -146,7 +159,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 2,
     height: 30,
-    width: 80,
+    // width: 80,
     borderWidth: 1,
     borderColor:'#C1AA9966',
     marginLeft: 30,

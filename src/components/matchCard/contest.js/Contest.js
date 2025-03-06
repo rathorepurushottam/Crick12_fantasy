@@ -35,6 +35,7 @@ const Contest = ({ details, totalTeamCount, matchId }) => {
 
   return (
     <>
+    <View>
       <View
         style={{
           flexDirection: 'row',
@@ -56,6 +57,10 @@ const Contest = ({ details, totalTeamCount, matchId }) => {
       </View>
       <FlatList
         data={details?.data} renderItem={renderContest} />
+
+
+    </View>
+
     </>
   );
 };

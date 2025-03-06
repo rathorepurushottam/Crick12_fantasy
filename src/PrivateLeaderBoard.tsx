@@ -75,7 +75,7 @@ const PrivateLeaderBoard = () => {
         if (matchDetails?.MatchId && MyCreateContestData[0]?.contest_category_id) {
             wsRefTwo.current = new WebSocket(urlTwo);
             wsRefTwo.current.onopen = () => {
-                console.log('connected');
+                // console.log('connected');
                 // wsRef.current.send('1000000');
             };
             wsRefTwo.current.onclose = e => {

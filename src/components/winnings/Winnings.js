@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View, RefreshControl } from 'react-native';
+import { FlatList, View, RefreshControl, ScrollView } from 'react-native';
 import { appOperation } from '../../appOperation';
 import { AppText, BLACK, BLACKOPACITY, FORTEEN, LATO_SEMI_BOLD, LIGHTBLUE, POPPINS_BOLD, SIXTEEN, TEN, TWELVE, WHITE } from '../../common/AppText';
 import { toastAlert } from '../../helper/utility';
@@ -74,7 +74,7 @@ const Winnings = ({ id, privateis, notLive }) => {
   };
   return (
     <View style={{backgroundColor:"#111019",flex:1,paddingHorizontal:10,paddingTop:10}}>
-      <View>
+      <ScrollView>
       <View style={styles.head}>
         <AppText type={TEN} color={WHITE}>RANK</AppText>
         <AppText type={TEN} color={WHITE}>WINNINGS</AppText>
@@ -94,7 +94,7 @@ const Winnings = ({ id, privateis, notLive }) => {
           />
         )}
       </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
