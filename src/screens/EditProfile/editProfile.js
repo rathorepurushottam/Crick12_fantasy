@@ -148,7 +148,7 @@ export default function EditProfile() {
   }, [userData]);
 
 
-  console.log(Address,"addressaddress")
+  // console.log(Address,"addressaddress")
   const confimCamera = useRef();
   const onCamSelect = () => {
     confimCamera?.current?.close();
@@ -161,7 +161,7 @@ export default function EditProfile() {
 
   const checkKYC = userData?.adhar_verified == 1 && userData?.pan_verified == 1;
 
-  console.log(userData, "UserDataaa")
+  // console.log(userData, "UserDataaa")
   // console.log(Address,"addresssss")
   return (
     <AppSafeAreaView light={true} hidden={false}>

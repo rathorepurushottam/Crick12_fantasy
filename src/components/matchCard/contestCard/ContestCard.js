@@ -82,7 +82,7 @@ const ContestCard = ({ details, totalTeamCount }) => {
 
   };
   const onJoinContest = async () => {
-    console.log(isAdd,"setIsAddsetIsAdd")
+    // console.log(isAdd,"setIsAddsetIsAdd")
    /*  if (kycDetails?.adhar_verified == 0) {
       NavigationService.navigate(ADDCASH_VERIFICATION)
     } else if (kycDetails?.adhar_verified == 2) {

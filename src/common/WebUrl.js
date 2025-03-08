@@ -10,9 +10,9 @@ import { StatusBar } from "native-base";
 
 const WebUrl = ({ route }) => {
     let title = route?.params?.titleNames
-    console.log('====================================')
+    // console.log('====================================')
     console.log(title,'====title>>>')
-    console.log('====================================')
+    // console.log('====================================')
     let titleName = () => {
         if (title == 'Terms & Conditions') {
             return 'http://103.175.163.162:5125/termsNConditionsmobile'

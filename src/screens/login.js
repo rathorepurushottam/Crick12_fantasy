@@ -107,7 +107,7 @@ const Login = () => {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       await signOut();
-      console.log('userInfo', userInfo);
+      // console.log('userInfo', userInfo);
 
       // _authWithSocial({
       //   email: userInfo.user.email,

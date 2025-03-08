@@ -226,7 +226,7 @@ const MyContest = () => {
           start winning
         </AppText>
         <PrimaryButton
-          onPress={() => setActiveTab(1)}
+          onPress={() => NavigationService.navigate('Home')}
           smallBtn={styles.joinButtonMyContest}
           title="JOIN A CONTEST"
         />
@@ -234,6 +234,7 @@ const MyContest = () => {
     );
   };
   const EmptyComponentTwo = () => {
+    console.log("Indier empty component")
     return (
       <View
         style={{
@@ -243,7 +244,7 @@ const MyContest = () => {
         }}>
         <AppText
           style={{
-            color: WHITE,
+            color: '#fff',
             fontSize: 14,
             textAlign: 'center',
           }}>

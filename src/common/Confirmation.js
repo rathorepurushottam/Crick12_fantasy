@@ -57,7 +57,6 @@ const Confirmation = ({
   JoinWithMULT,
   privateContest
 }) => {
-  console.log(isModalVisible,"modalvissible")
   const dispatch = useDispatch();
   const myTeam = useSelector(state => state?.match?.myTeams);
 
@@ -67,6 +66,8 @@ const Confirmation = ({
   const CreateContestData = useSelector(
     state => state?.match?.CreateContestData,
   );
+
+  console.log(CreateContestData,"CreateContestDataCreateContestDataCreateContestData")
   const FilterId = myTeam?.find(value => {
     return value?.name === saveTeamName;
   });
@@ -363,3 +364,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
+
+
+
+// {CreateContestData?.EnteryFee ? CreateContestData?.EnteryFee : details?.EnteryFee ? details?.EnteryFee: selectMulty?.length ? `${EnteryFee} x ${selectMulty?.length}` : EnteryFee}
+// 
+
+

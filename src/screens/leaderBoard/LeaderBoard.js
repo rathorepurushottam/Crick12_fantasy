@@ -176,7 +176,7 @@ const LeaderBoard = () => {
   });
 
 
-  console.log(route?.params?.details,"route?.params?.detailsroute?.params?.details")
+  // console.log(route?.params?.details,"route?.params?.detailsroute?.params?.details")
   const TABS = [
     {id: 1, title: 'Winnings'},
     {id: 2, title: 'Leaderboard'},
@@ -190,10 +190,10 @@ const LeaderBoard = () => {
   let url = `${BaseUrl}leader-board?limit=10&skip=0&matchid=${route?.params?.matchDetails?.MatchId}&contest_category_id=${route?.params?.details?.contest_category_id}&user_id=${userData?._id}`;
   let urlTwo = `${BaseUrl}leader-board?limit=10&skip=0&matchid=${route?.params?.matchDetails?.MatchId}&contest_category_id=${route?.params?.details?.contest_category_id}&user_id=${userData?._id}`;
 
-  console.log(route?.params?.matchDetails?.MatchId,"route?.params?.matchDetails?.MatchId")
-  console.log(urlTwo,"utrltwwwwooo")
-  console.log(route?.params?.details?.contest_category_id)
-  console.log(userData?._id)
+  // console.log(route?.params?.matchDetails,"route?.params?.matchDetails?.MatchId")
+  // console.log(urlTwo,"utrltwwwwooo")
+  // console.log(route?.params?.details,"route?.params?.details?route?.params?.details?")
+  // console.log(userData?._id)
 
   const onJoinContest = async () => {
     if (totalTeamCount === 0) {
@@ -249,7 +249,7 @@ const LeaderBoard = () => {
       setIsConnected(false);
     }
     try {
-      console.log('Insider url two')
+      // console.log('Insider url two')
       wsRefTwo.current = new WebSocket(urlTwo);
       console.log(wsRefTwo.current,"wsRefTwo.current")
       wsRefTwo.current.onopen = () => {
@@ -259,7 +259,7 @@ const LeaderBoard = () => {
       wsRefTwo.current.onmessage = e => {
         console.log('insider error websocket')
         const parseData = JSON.parse(e?.data);
-        console.log(parseData,"parseDataaaa")
+        // console.log(parseData,"parseDataaaa")
         // setScoreBoard(parseData?.score);
         // setTeamAScore(parseData && parseData?.score[0]?.teama);
         // setTeamBScore(parseData && parseData?.score[0]?.teamb);
@@ -296,7 +296,7 @@ const LeaderBoard = () => {
   };
 
   useEffect(() => {
-    console.log(ForConnectedTo,"ForConnectedToForConnectedTo")
+    // console.log(ForConnectedTo,"ForConnectedToForConnectedTo")
     if (!ForConnectedTo) {
       getData();
       setForConnectedTo(true);
@@ -717,11 +717,11 @@ const LeaderBoard = () => {
             justifyContent:'center'
              // Optional for visibility
           }}>
-            <TouchableOpacity onPress={onJoinContest} style={{backgroundColor:"#3EAA35",width:"90%",marginHorizontal:10,
+            {/* <TouchableOpacity onPress={onJoinContest} style={{backgroundColor:"#3EAA35",width:"90%",marginHorizontal:10,
               marginVertical:10,padding:10,borderRadius:13,alignItems:"center"
             }}>
           <AppText color={WHITE} type={FORTEEN}>JOIN ₹{route?.params?.details?.EnteryFee}</AppText>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       {/* </CommonImageBackground> */}
       <RBSheet

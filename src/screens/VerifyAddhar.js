@@ -118,7 +118,7 @@ const VerifyAdhaarcard = () => {
         adhar_no: name.replace(/\s/g, ''),
         // adhar_verified: false
       }
-      console.log(data,"aadhar Dataaa")
+      // console.log(data,"aadhar Dataaa")
       dispatch(addharVerifiy(data, filterSheet, setIsTimerActive))
     }
   };
@@ -178,7 +178,7 @@ const VerifyAdhaarcard = () => {
 
   const onSubmit = () => {
     if (!checkValidAdharCardNumber(name.replace(/\s/g, ''))) {
-      console.log(!checkValidAdharCardNumber(name.replace(/\s/g, '')));
+      // console.log(!checkValidAdharCardNumber(name.replace(/\s/g, '')));
       toastAlert.showToastError('Please enter vaild adhaar number')
     }
     //  else if (!dob) {
@@ -195,7 +195,7 @@ const VerifyAdhaarcard = () => {
         // dob: dob.split('/').map(part => part.replace(/^0+/, '')).join('/'),
         // adhar_verified: false
       };
-      console.log(data,"aadhar Dataa again")
+      // console.log(data,"aadhar Dataa again")
       // NavigationService.navigate('AadharConfirmation')
       dispatch(addharVerifiyOtp(data))
     }

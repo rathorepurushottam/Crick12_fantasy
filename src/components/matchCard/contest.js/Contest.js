@@ -9,7 +9,7 @@ import { setAllContest } from '../../../slices/matchSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Contest = ({ details, totalTeamCount, matchId }) => {
-  console.log(details?.name,"{details?.name}{details?.name}{details?.name}")
+  // console.log(details?.name,"{details?.name}{details?.name}{details?.name}")
   const dispatch = useDispatch();
   const contestList = useSelector(state => state?.match?.contestList);
   const renderContest = ({ item }) => {

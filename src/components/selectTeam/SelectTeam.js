@@ -39,7 +39,7 @@ const SelectTeam = ({ onClose, contestDetails, matchDetails, teamDetails, joinWi
   const [random, setRandom] = useState(10);
   const [allSelects, setAllSelects] = useState(false);
 
-  console.log(matchDetails,"matchDetailsmatchDetailsmatchDetails")
+  // console.log(contestDetails,"contestDetailscontestDetailscontestDetailscontestDetails")
   const onSelectTeam = item => {
     let checkingTeam = teamDetails?.filter((items) => {
       return items?.team_id == item?._id

@@ -338,6 +338,18 @@ const CommonHeader = ({
     );
   };
 
+  const formatNumber = (value) => {
+    if (value >= 1e9) {
+      return (value / 1e9).toFixed(1) + 'B'; // Billion
+    } else if (value >= 1e6) {
+      return (value / 1e6).toFixed(1) + 'M'; // Million
+    } else if (value >= 1e3) {
+      return (value / 1e3).toFixed(1) + 'k'; // Thousand
+    } else {
+      return value.toString(); // Less than 1000, return as is
+    }
+  };
+
   useEffect(() => {
     setModalRemove(removeTabs)
   }, [removeTabs])
@@ -362,7 +374,7 @@ const CommonHeader = ({
             colors={[ '#FFFFFF33',"#FFFFFF26"]}
             start={{ x: 1, y: 0 }}
             end={{ x: 0, y: 1 }}
-            style={styles.walletView}>
+            style={[styles.walletView, totalbalance < 1000 ? {width:70} : {}]}>
             <View style={{ flexDirection: "row", alignItems: "center", }}>
               <View style={styles.walletbox}>
                 <FastImage
