@@ -49,6 +49,8 @@ export const RenderTabBar = props => {
       {...props}
       contentContainerStyle={{
         flexGrow: 1,
+        justifyContent:'space-evenly',
+        backgroundColor:"#1E1C2A"
       }}
       renderLabel={({route, focused}) => (
         <View
@@ -76,6 +78,21 @@ export const RenderTabBar = props => {
             <View style={{width: 100, height: 2}}></View>
           )}
         </View>
+
+      //   <View
+      //   style={{
+      //     backgroundColor: focused ? '#F0E6A5' : 'transparent',
+      //     paddingVertical: 8,
+      //     paddingHorizontal: 16,
+      //     borderRadius: 20, // Rounded corners like the image
+      //   }}>
+      //   <AppText
+      //     type={FORTEEN}
+      //     color={focused ? '#1E1C2A' : LIGHTGRAY} // Change text color when selected
+      //     weight={POPPINS_MEDIUM}>
+      //     {route.title}
+      //   </AppText>
+      // </View>
       )}
       indicatorStyle={{backgroundColor: 'transparent'}}
       scrollEnabled={!props.scrollEnabled ? props.scrollEnabled : true}

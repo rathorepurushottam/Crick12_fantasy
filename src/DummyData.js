@@ -1,4 +1,4 @@
-const {img1, img2, img3, img4, img5, img6} = require('./helper/image');
+const {img1, img2, img3, img4, img5, img6, banner} = require('./helper/image');
 const {
   img7,
   img8,
@@ -12,6 +12,27 @@ const {
 } = require('./helper/image');
 import Swipper from './common/Swipper/Swipper';
 // const swipper = Swipper;
+
+
+
+
+export const SliderData = [
+  {
+      id:1,
+      image : banner
+  },
+  {
+      id:2,
+      image : banner
+  },
+  {
+      id:3,
+      image : banner
+  },{
+      id:4,
+      image : banner
+  }
+]
 
 const DATA = [
   {

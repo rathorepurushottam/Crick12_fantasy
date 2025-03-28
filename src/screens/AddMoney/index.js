@@ -1,4 +1,4 @@
-import { View, StatusBar, Linking, ScrollView, BackHandler } from 'react-native';
+import { View, StatusBar, Linking, ScrollView, BackHandler, ImageBackground } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
 import Header from '../../common/Header';
 import { AppSafeAreaView } from '../../common/AppSafeAreaView';
@@ -10,15 +10,17 @@ import {
   FORTEEN,
   LATO_BOLD,
   LIGHTBLUE,
+  POPPINS_BOLD,
   POPPINS_MEDIUM,
   SEMI_BOLD,
+  SIXTEEN,
   TWELVE,
   WHITE,
 } from '../../common/AppText';
 import styles from './styles';
 import InputBox from '../../common/InputBox';
 import FastImage from 'react-native-fast-image';
-import { horizontalLine, cross, BannerLoop, UPILogo, CLOSE_WHITE_ICON } from '../../helper/image';
+import { horizontalLine, cross, BannerLoop, UPILogo, CLOSE_WHITE_ICON, headerBack, backCover, WalletBox } from '../../helper/image';
 import { TouchableOpacityView } from '../../common/TouchableOpacityView';
 import BannerSlider from '../../common/BannerSilder';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,6 +35,7 @@ import { colors, NLCColor } from '../../theme/color';
 import RNUpiPayment from 'react-native-upi-payment'
 import NavigationService from '../../navigation/NavigationService';
 import { ADDCASH_VERIFICATION } from '../../navigation/routes';
+import { poppinsBold } from '../../theme/typography';
 const AddMoney = () => {
   const dispatch = useDispatch()
   const [amount, setAmount] = useState(Number);
@@ -123,8 +126,21 @@ const AddMoney = () => {
             commonHeader
             title="Add Money"
           />
+        <ImageBackground source={backCover} resizeMode='stretch' style={styles.header}>
+          <View style={styles.backBox}>
+          <View>
+                  <AppText type={SIXTEEN} weight={POPPINS_BOLD} color={BLACK}>
+                  ₹{fixedToTwo(total_balance)}
+                  </AppText>
+                  <AppText type={TWELVE} color={BLACK}>
+                  Available Balance
+                  </AppText>
+                </View>
+                <FastImage source={WalletBox} style={{height:50,width:50,}}/>
+          </View>
+      </ImageBackground>
           <View style={styles.bottomContainer}>
-            <View style={styles.box}>
+            {/* <View style={styles.box}>
               <View style={styles.mobileContainer}>
                 <View>
                   <AppText type={TWELVE} color={WHITE}>
@@ -142,7 +158,7 @@ const AddMoney = () => {
                 style={styles.horizontalLine}
                 source={horizontalLine} tintColor={"#BEBEBE"}
               />
-            </View>
+            </View> */}
             {/* <BannerSlider bannerData={bannerData} /> */}
             <View style={[styles.box,]}>
               <AppText  type={TWELVE} color={WHITE}>

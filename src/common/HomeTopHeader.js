@@ -6,6 +6,7 @@ import {
   MY_BALANCE,
 } from '../navigation/routes';
 import {
+  iconbell,
   MyBattleLogo,
   Nlgicon,
   NlgIconNew,

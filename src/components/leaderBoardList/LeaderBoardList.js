@@ -15,7 +15,7 @@ import {
   TWELVE,
   WHITE,
 } from '../../common/AppText';
-import { DUMMY_USER, PANT, persons } from '../../helper/image';
+import { DUMMY_USER, PANT, person } from '../../helper/image';
 import styles from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { SpinnerSecond } from '../../common/SpinnerSecond';
@@ -215,6 +215,7 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
     console.log('Hellooo')
   };
   const renderLeaderBoard = ({ item, index }) => {
+    // console.log(item,'Items in leaderboardlist')
     return (
       <TouchableOpacityView
         onPress={() =>
@@ -262,7 +263,8 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
                     ? {
                       uri: `${IMAGE_BASE_URL + item?.created_by?.logo}`,
                     }
-                    : persons
+                    : 
+                    person
               }
             // source={PANT}
             />
@@ -336,6 +338,7 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
     return (
       myDataleader &&
       myDataleader?.map(item => {
+        console.log(item,"item in mydataleadeboard")
         return (
           <TouchableOpacityView
             style={[
@@ -399,7 +402,8 @@ const LeaderBoardList = ({ matchId, id, forStatus, setForStatus, selfCreateConte
                         ? {
                           uri: `${IMAGE_BASE_URL + item?.created_by?.logo}`,
                         }
-                        : persons
+                        : 
+                        person
                   }
                 // source={PANT}
                 />

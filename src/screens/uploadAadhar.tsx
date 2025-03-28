@@ -9,7 +9,7 @@ import { KeyBoardAware } from "../common/KeyboardAware";
 import FastImage from "react-native-fast-image";
 import { BannerVerify, adhaarFront, adhaarback, cameraIcon, checkAdhaar, gallaryIcon, recommendedIcon } from "../helper/image";
 import { TouchableOpacityView } from "../common/TouchableOpacityView";
-import { AppText, BLACKOPACITY, FORTEEN, POPPINS_MEDIUM, POPPINS_SEMI_BOLD, THIRTEEN } from "../common/AppText";
+import { AppText, BLACKOPACITY, FORTEEN, POPPINS_MEDIUM, POPPINS_SEMI_BOLD, THIRTEEN, WHITE } from "../common/AppText";
 import ImagePicker from 'react-native-image-crop-picker';
 import { checkValidAdharCardNumber, formatAadharNumber, toastAlert } from "../helper/utility";
 import { NewColor, colors } from "../theme/color";
@@ -114,18 +114,18 @@ const UploadAadhar = () => {
         }
     }
     return (
-        <AppSafeAreaView light={true} hidden={false}>
+        <AppSafeAreaView  style={{backgroundColor:"#111019"}}>
             <StatusBar
-                backgroundColor={'#282828'}
-                // barStyle="dark-content"
-                translucent={true}
-                networkActivityIndicatorVisible={true}
+                 backgroundColor={'#111019'}
+                 translucent={true}
+                 networkActivityIndicatorVisible={true}
+                 barStyle={'light-content'}
             />
-            <CommonImageBackground common>
+            {/* <CommonImageBackground common> */}
                 <Header
                     commonHeader
                     title="Upload Aadhar"
-                    style={{ padding: universalPaddingHorizontal, marginTop: '8%' }}
+                    style={{ padding: universalPaddingHorizontal, marginTop: '7%' }}
                 />
                 <KeyBoardAware style={styles.bottomContainer}>
                     <FastImage source={BannerVerify} resizeMode='stretch' style={styles.topBanner} />
@@ -133,11 +133,11 @@ const UploadAadhar = () => {
                         <View style={styles.flexBoxContainer}>
                             <View style={styles.uploadBox}>
                                 <FastImage source={imageData ? { uri: imageData?.uri } : adhaarFront} resizeMode='stretch' style={styles.adhaarIcon} />
-                                <AppText type={FORTEEN} weight = {POPPINS_SEMI_BOLD}>Front</AppText>
+                                <AppText type={FORTEEN} weight = {POPPINS_SEMI_BOLD} color={WHITE}>Front</AppText>
                             </View>
                             <View style={styles.uploadBackBox}>
                                 <FastImage source={imageDatattwo ? { uri: imageDatattwo?.uri } : adhaarback} resizeMode='stretch' style={styles.adhaarIcon} />
-                                <AppText type={FORTEEN} weight = {POPPINS_SEMI_BOLD}>Back</AppText>
+                                <AppText type={FORTEEN} weight = {POPPINS_SEMI_BOLD} color={WHITE}>Back</AppText>
 
                             </View>
                         </View>
@@ -145,7 +145,7 @@ const UploadAadhar = () => {
                             onPress={() => openPicker()}
                             style={styles.openGallaryContainer}>
                             <FastImage source={cameraIcon} resizeMode='contain' style={styles.cameraIconStyle} />
-                            <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} color={BLACKOPACITY}>
+                            <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} color={WHITE}>
                                 Use camera
                             </AppText>
                         </TouchableOpacityView>
@@ -153,14 +153,14 @@ const UploadAadhar = () => {
                             onPress={() => openGallery()}
                             style={styles.openGallaryContainer}>
                             <FastImage source={gallaryIcon} resizeMode='contain' style={styles.cameraIconStyle} />
-                            <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} color={BLACKOPACITY}>
+                            <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} color={WHITE}>
                                 Select from the gallery
                             </AppText>
                         </TouchableOpacityView>
                     </View>
                     <View style={styles.box}>
                         <View>
-                            <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD}>
+                            <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD} color={WHITE}>
                                 Enter your Aadhaar number
                             </AppText>
                             <FastImage source={recommendedIcon} resizeMode='contain' style={styles.recommended} />
@@ -181,7 +181,7 @@ const UploadAadhar = () => {
                                 : <></>}
                         </View>
                     </View>
-                    <View style={styles.box}>
+                    {/* <View style={styles.box}>
                         <View>
                             <AppText type={FORTEEN} weight={POPPINS_SEMI_BOLD}>
                                 Select State
@@ -201,7 +201,7 @@ const UploadAadhar = () => {
                                 dropDownDirection="TOP"
                             />
                         </View>
-                    </View>
+                    </View> */}
                 </KeyBoardAware>
                 <View style={{ paddingHorizontal: universalPaddingHorizontal }}>
                     <PrimaryButton
@@ -210,7 +210,7 @@ const UploadAadhar = () => {
                         onPress={onSubmit}
                     />
                 </View>
-            </CommonImageBackground>
+            {/* </CommonImageBackground> */}
         </AppSafeAreaView>
     )
 };
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: "#002E612B",
+        borderColor: "#ccc",
         marginTop: 20
     },
     flexBoxContainer: {
@@ -241,19 +241,19 @@ const styles = StyleSheet.create({
     uploadBox: {
         borderRadius: 10,
         width: '48%',
-        height: 98,
+        height: 120,
         alignItems: "center",
         justifyContent: "center",
-        borderColor: "#002E610F",
+        borderColor: "#ccc",
         borderWidth: 1,
     },
     uploadBackBox: {
         borderRadius: 10,
         width: '48%',
-        height: 98,
+        height: 120,
         alignItems: "center",
         justifyContent: "center",
-        borderColor: "#002E610F",
+        borderColor: "#ccc",
         borderWidth: 1,
     },
     openGallaryContainer: {
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: "#002E610F",
+        borderColor: "#ccc",
         height: 40,
         marginTop: 15
     },
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     },
     box: {
         borderWidth: 1,
-        borderColor: "#002E610F",
+        borderColor: "#ccc",
         borderRadius: 8,
         marginTop: 10,
         paddingHorizontal: 10,
@@ -300,12 +300,12 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontFamily: poppinsSemiBold,
         flex: 1,
-        color:colors.black
+        color:colors.white
     },
     inputContainer: {
         marginTop: 10,
         borderBottomWidth: 1,
-        borderBottomColor: "#002E6112",
+        borderBottomColor: "#ccc",
         flexDirection: 'row',
         alignItems: "center",
         justifyContent: "space-between"

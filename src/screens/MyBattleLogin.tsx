@@ -19,6 +19,7 @@ import {
   backLogo,
   callIcon,
   frontLogo,
+  logomain,
 } from '../helper/image';
 import {
   AppText,
@@ -84,7 +85,7 @@ const MyBattleLogin = () => {
         source={backLogo}
         resizeMode="cover"
         style={styles.MyBattleScreen}>
-      <FastImage resizeMode="stretch" style={styles.logo} source={frontLogo} />
+      <FastImage resizeMode="stretch" style={styles.logo} source={logomain} />
       </ImageBackground>
       <View
         style={{

@@ -14,6 +14,7 @@ import { BannerLoop } from '../../helper/image';
 import Geolocation from '@react-native-community/geolocation';
 import ReminderModal from '../../common/ReminderModal/ReminderModal';
 import { NewColor } from '../../theme/color';
+import Slider from '../../common/slider/Slider';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -195,6 +196,7 @@ useEffect(() => {
         refreshControl={
           <RefreshControl refreshing={refershing} onRefresh={onRefresh} />
         }>
+          <Slider/>
         {selectedLabel == 'Cricket' ? (
           <Cricket random={random} setRefreshingTwo={setRefreshingTwo} />
         ) : selectedLabel == 'Football' ? (

@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
   userImg: {
     height: 38,
     width: 38,
-    borderRadius: 100
+    borderRadius: 100,
+    // backgroundColor:"#fff"
   },
   leaderBoardContainer: {
     paddingHorizontal: 10,

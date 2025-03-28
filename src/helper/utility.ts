@@ -80,7 +80,11 @@ export const fixedToTwo = (value: number) => {
   let temp = value?.toFixed(2);
   return temp;
 };
-export const BaseUrl = 'http://103.175.163.162:5005/'
+// export const BaseUrl = 'http://103.175.163.162:5005/'
+// export const BaseUrl = 'https://f3fe-2402-a00-404-2895-31ea-7dbb-2acf-3b8d.ngrok-free.app/';
+export const BaseUrl = 'https://31c8-2402-a00-404-2895-31ea-7dbb-2acf-3b8d.ngrok-free.app/';
+
+
 export const IMAGE_BASE_URL = 'http://103.175.163.162:4009/';
 
 export const toastAlert = {

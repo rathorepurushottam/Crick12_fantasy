@@ -56,6 +56,7 @@ export const userSignup = (data, permissionSave) => async dispatch => {
 
         if (response?.success) {
           // console.log(response,"response")
+          toastAlert.showToastError(response?.message);
           NavigationService.navigate(MYBATTLEOTP, { data: data, id: 'register', permissionSave: permissionSave });
         } else {
           toastAlert.showToastError(response?.message);
@@ -84,6 +85,7 @@ export const otpVerification =
           dispatch(setUserData(response?.data?._id));
           dispatch(updateDeviceToken());
           dispatch(getUserProfile(true, false));
+          toastAlert.showToastError(response?.message);
           NavigationService.navigate('DrawerNavigationStack');
         } else {
           toastAlert.showToastError(response?.message);

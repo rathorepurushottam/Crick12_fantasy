@@ -27,11 +27,13 @@ import { universalPaddingHorizontal } from '../../theme/dimens';
 import { setMyMatchesHome, setUpComingMatches } from '../../slices/matchSlice';
 import { KeyBoardAware } from '../../common/KeyboardAware';
 import { BaseUrl } from '../../helper/utility';
+import { parse } from 'react-native-svg';
 const search = element => getDate(element).hour < 0;
 const Cricket = ({ random, setRefreshingTwo }) => {
   const dispatch = useDispatch();
   const wsRef = useRef(null);
   const upcomingMatches = useSelector(state => state.match.upcomingMatches);
+  console.log(upcomingMatches,"upcomingMatchesupcomingMatchesupcomingMatches")
   const myMatchesHome = useSelector(state => state.match.myMatchesHome);
   const userData = useSelector(state => {
     return state.profile.userData;
@@ -53,7 +55,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
   }, [random])
   useEffect(() => {
     const interval = setInterval(() => {
-      const itemIndex = upcomingMatches.findIndex(search);
+      const itemIndex = upcomingMatches?.findIndex(search);
       let tempArray = [...upcomingMatches];
       if (itemIndex !== -1 && upcomingMatches?.length !== 0) {
         tempArray?.splice(itemIndex, 1);
@@ -68,6 +70,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
     }
   }, [upcomingMatches]);
   const onRefresh = React.useCallback((_id) => {
+    console.log(_id,"idddddddd")
     const URL = `${BaseUrl}upcoming-matches?limit=10&skip=0&userid=${_id}`;
 
     setRefreshing(true);
@@ -84,6 +87,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
       if (!wsRef.current) return;
       wsRef.current.onmessage = e => {
         const parseData = JSON.parse(e?.data);
+        console.log(parseData,"ParseFDataaaaaa")
         let temp = parseData?.upcoming?.sort((a, b) => {
           return a?.contest_details?.length < b?.contest_details?.length;
         });
@@ -97,6 +101,8 @@ const Cricket = ({ random, setRefreshingTwo }) => {
       setRefreshing(false);
     }
   }, [isConnected]);
+
+
   const getData = React.useCallback((_id) => {
     const URL = `${BaseUrl}upcoming-matches?limit=10&skip=0&userid=${_id}`;
     if (isConnected && wsRef.current) {
@@ -111,9 +117,11 @@ const Cricket = ({ random, setRefreshingTwo }) => {
       if (!wsRef.current) return;
       wsRef.current.onmessage = e => {
         const parseData = JSON.parse(e?.data);
+        console.log(parseData,"parsedatataa2222")
         let temp = parseData?.upcoming?.sort((a, b) => {
           return a?.contest_details?.length < b?.contest_details?.length;
         });
+        console.log(temp,"tempppppppp")
         dispatch(setUpComingMatches(temp));
         dispatch(setMyMatchesHome(parseData?.mymatches));
       };
@@ -123,6 +131,8 @@ const Cricket = ({ random, setRefreshingTwo }) => {
       setRefreshing(false);
     }
   }, [isConnected]);
+
+
   useEffect(() => {
     if (_id && _id) {
       if (!ForConnectedTo) {
@@ -137,6 +147,8 @@ const Cricket = ({ random, setRefreshingTwo }) => {
     } else {
     }
   }, [_id, userData]);
+
+
   return (
     <View style={styles.container}>
       {myMatchesHome?.length !== 0 && (

@@ -78,7 +78,7 @@ const AddCashVerification = () => {
     }
     const onSubmit = () => {
         if (select == '1') {
-            NavigationService.navigate(VERIFY_ADHAAR_SCREEN)
+            NavigationService.navigate(UPLOAD_AADHAR)
         }
          else if (select == '2') {
             NavigationService.navigate(VERIFY_PAN_SCREEN)
@@ -87,7 +87,7 @@ const AddCashVerification = () => {
             NavigationService.navigate(VERIFY_DL)
         } 
         else if (select == '4') {
-            NavigationService.navigate(VERIFY_ADHAAR_SCREEN)
+            NavigationService.navigate(UPLOAD_AADHAR)
         }
     }
     const onRefresh = () => {

@@ -19,6 +19,9 @@ export const Nlgprofilebox = require('../../assets/images/Nlgprofilebox.png');
 // export const splash = require('../../assets/images/splash.jpg');
 export const splashScreen = require('../../assets/images/splash.jpg')
 
+export const splashScreen1 = require('../../assets/images/splashScreen1.jpg')
+export const logomain = require('../../assets/images/logomain.png')
+
 
 export const backLogo = require('../../assets/images/backLogo.png')
 export const frontLogo = require('../../assets/images/frontlogo.png')
@@ -108,6 +111,8 @@ export const darkMinus = require('../../assets/images/darkMinus.png')
 
 
 export const  backCVC = require('../../assets/images/backCVC.png')
+export const  banner = require('../../assets/images/banner.jpeg')
+
 
 
 
@@ -253,7 +258,7 @@ export const backIconMain = require('../../assets/images/backIconMain.png');
 export const headerIner = require('../../assets/images/headerIner.png');
 
 export const headerBack = require('../../assets/images/headerBack.png');
-
+export const backCover = require('../../assets/images/backCover.png')
 
 
 export const CAPTAIN = require('../../assets/images/captain.png');

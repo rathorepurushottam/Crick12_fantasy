@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 16,
     borderWidth:2,
-    borderColor:NLCColor.Red
+    borderColor:'#3D3D3D'
   },
   rightArrow: {
     height: 10,

@@ -8,10 +8,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: universalPaddingHorizontal,
     flex: 1
   },
+  header: {
+    // flexDirection: "row",
+    // alignItems: "center",
+    // justifyContent: "space-between",
+    marginHorizontal: 10,
+    height: 80,
+    marginTop: 10,
+    // width:"%"
+  },
+  backBox: {
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    paddingHorizontal: 20, 
+    paddingVertical: 20, 
+    alignItems: "center"
+  },
   box: {
     // borderWidth: 2,
     // borderColor: colors.borderLightBlue,
-    backgroundColor:'#343434',
+    backgroundColor: '#343434',
 
     borderRadius: 16,
     marginTop: 20,
@@ -19,7 +35,7 @@ const styles = StyleSheet.create({
   },
   textInputBox: {
     height: 40,
-    color:"#fff"
+    color: "#fff"
   },
   boxContainer: {
     // marginHorizontal: 10,
@@ -92,7 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     borderColor: "#DBA63D",
     borderWidth: 1,
-    backgroundColor:'#DBA63D'
+    backgroundColor: '#DBA63D'
   },
   rs: {
     textAlign: 'center',
@@ -101,8 +117,8 @@ const styles = StyleSheet.create({
     height: Platform.OS == 'ios' ? 20 : 30,
     marginTop: Platform.OS == 'ios' ? 5 : 0
   },
-  text:{
-    color:colors.white
+  text: {
+    color: colors.white
   }
 });
 

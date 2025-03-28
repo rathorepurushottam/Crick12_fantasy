@@ -8,7 +8,7 @@ import NavigationService from '../navigation/NavigationService';
 import { AUTHSTACK, LOGIN, MYBATTLEOTP, OTP } from '../navigation/routes';
 import { USER_TOKEN_KEY } from '../helper/Constants';
 import FastImage from 'react-native-fast-image';
-import { splashScreen } from '../helper/image';
+import { splashScreen, splashScreen1 } from '../helper/image';
 
 const AuthLoading = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const AuthLoading = () => {
   };
   return (
     <AppSafeAreaView>
-      <FastImage source={splashScreen} resizeMode='contain' style={{flex:1}} />
+      <FastImage source={splashScreen1} resizeMode='contain' style={{flex:1}} />
       <SpinnerSecond loading={true} />
     </AppSafeAreaView>
   );

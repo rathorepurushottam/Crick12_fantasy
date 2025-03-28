@@ -32,6 +32,7 @@ import SecondaryButton from '../../common/secondaryButton';
 import NavigationService from '../../navigation/NavigationService';
 import {
   MY_BALANCE,
+  UPLOAD_AADHAR,
   VERIFY_ADHAAR_SCREEN,
   VERIFY_BANK_SCREEN,
   VERIFY_DL,
@@ -206,7 +207,7 @@ const KYC = () => {
               toastAlert.showToastError('Your Aadhar have been Verfied') :
               checkInProgress('Aadhar') ?
                 toastAlert.showToastError('Your Aadhar have been progress') :
-                NavigationService.navigate(VERIFY_ADHAAR_SCREEN)}
+                NavigationService.navigate(UPLOAD_AADHAR)}
             style={[styles.panContainer, { backgroundColor: '#1E1C2A' }]}>
             <View style={styles.underContainer}>
               <View style={styles.pancardlayerview}>

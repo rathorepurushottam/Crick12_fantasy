@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import {AppSafeAreaView} from '../common/AppSafeAreaView';
 import {KeyBoardAware} from '../common/KeyboardAware';
-import {backLogo, frontLogo, MyBattleIcon, MyBattleScreen, Nlglogo, Nlglogo2} from '../helper/image';
+import {backLogo, frontLogo, logomain, MyBattleIcon, MyBattleScreen, Nlglogo, Nlglogo2} from '../helper/image';
 import {StatusBar} from 'native-base';
 import {NLCColor, NewColor, colors} from '../theme/color';
 import {Logo, universalPaddingHorizontal} from '../theme/dimens';
@@ -87,7 +87,7 @@ const MyBattleOtp = ({route}: any) => {
         source={backLogo}
         resizeMode="cover"
         style={styles.MyBattleScreen}>
-      <FastImage resizeMode="stretch" style={styles.logo} source={frontLogo} />
+      <FastImage resizeMode="stretch" style={styles.logo} source={logomain} />
       </ImageBackground>
         {/* <FastImage source={Nlglogo2} resizeMode="stretch" style={styles.logo} /> */}
       </View>

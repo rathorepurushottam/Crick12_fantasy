@@ -15,21 +15,21 @@ const WebUrl = ({ route }) => {
     // console.log('====================================')
     let titleName = () => {
         if (title == 'Terms & Conditions') {
-            return 'http://103.175.163.162:5125/termsNConditionsmobile'
+            return 'http://crick12.in/termsNConditionsmobile'
         } else if (title == 'About Us') {
-            return 'http://103.175.163.162:5125/aboutmobile'
+            return 'http://crick12.in/aboutmobile'
         } else if (title == 'How to Play') {
-            return 'http://103.175.163.162:5125/howToPlaymobile'
+            return 'http://crick12.in/howToPlaymobile'
         } else if (title == 'Privacy Policy') {
-            return 'http://103.175.163.162:5125/policymobile'
+            return 'http://crick12.in/policymobile'
         } else if (title == 'Points System') {
-            return 'http://103.175.163.162:5125/responsible_gaming'
+            return 'http://crick12.in/responsible_gaming'
         } else if (title == 'Responsible Gaming') {
-            return 'http://103.175.163.162:5125/responsible_gaming'
+            return 'http://crick12.in/responsible_gaming'
         } else if (title == 'Legalities') {
-            return 'http://103.175.163.162:5125/legalities'
+            return 'http://crick12.in/legalities'
         } else if (title == 'Fair Play Policy') {
-            // return 'http://103.175.163.162:5125/fairPlay'
+            // return 'http://crick12.in/fairPlay'
         }
     }
     return (

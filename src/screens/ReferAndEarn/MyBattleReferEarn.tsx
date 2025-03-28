@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, Linking, StyleSheet, View } from 'react-native';
+import { ImageBackground, Linking, Share, StyleSheet, View } from 'react-native';
 import { AppSafeAreaView } from '../../common/AppSafeAreaView';
 import { KeyBoardAware } from '../../common/KeyboardAware';
 import {
@@ -78,6 +78,21 @@ const MyBattleReferEarn = () => {
       .catch(error => {
         console.error('An error occurred while opening WhatsApp:', error);
       });
+  };
+   const shareLinkTeam = async (refercode: any) => {
+    // const link = await createLinkRefer(refercode);
+    const message = `Join me on Crick12 and Enjoy Winning in every Contest.\n
+     Also, Get Rs.100 joining Bonus and Rs. 100 by using my referral code.\n 
+      Click the Link below and download the application now.
+      \n http://crcik12.in/ \n
+       Don't Forget to use my Invite Code ${refercode} \n
+        Enjoy Winning. Crick12`;
+    try {
+      Share.share({
+        message: message,
+      });
+    } catch (error) {
+    }
   };
   return (
     <AppSafeAreaView
@@ -216,17 +231,17 @@ const MyBattleReferEarn = () => {
             paddingVertical: 10,
           }}>
           <PrimaryButton
-            // onPress={() => shareToAny(userData?.refercode)}
-            onPress={() => shareToAny('CRICK1212')}
+            onPress={() => shareLinkTeam('CRICK1212')}
+            // onPress={() => shareToAny('CRICK1212')}
 
             buttonStyle={{
               marginHorizontal: universalPaddingHorizontal,
-              width: '78%',
+              width: '94%',
             }}
             titleStyle={{ color: 'white' }}
             title="Invite"
           />
-          <SolidButton
+          {/* <SolidButton
             // onPress={openWhatsApp}
             size={TEN}
             color={WHITE}
@@ -236,7 +251,7 @@ const MyBattleReferEarn = () => {
             ]}
             nogradient={true}
             ImageStyle={styles.commonBtn}
-            Icon={whatsapp}></SolidButton>
+            Icon={whatsapp}></SolidButton> */}
         </View>
       </KeyBoardAware>
     </AppSafeAreaView>
