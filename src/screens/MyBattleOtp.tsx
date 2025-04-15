@@ -2,7 +2,15 @@ import React, {useState} from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import {AppSafeAreaView} from '../common/AppSafeAreaView';
 import {KeyBoardAware} from '../common/KeyboardAware';
-import {backLogo, frontLogo, logomain, MyBattleIcon, MyBattleScreen, Nlglogo, Nlglogo2} from '../helper/image';
+import {
+  backLogo,
+  frontLogo,
+  logomain,
+  MyBattleIcon,
+  MyBattleScreen,
+  Nlglogo,
+  Nlglogo2,
+} from '../helper/image';
 import {StatusBar} from 'native-base';
 import {NLCColor, NewColor, colors} from '../theme/color';
 import {Logo, universalPaddingHorizontal} from '../theme/dimens';
@@ -61,7 +69,7 @@ const MyBattleOtp = ({route}: any) => {
         mobile_number: Number?.mobile_number,
         otp: code,
       };
-      console.log('data',data);
+      console.log('data', data);
       dispatch(otpVerification(data));
     }
   };
@@ -71,11 +79,10 @@ const MyBattleOtp = ({route}: any) => {
   };
   return (
     <AppSafeAreaView
-        statusColor={true}
-        style={{backgroundColor: NewColor.backGroundDark}}
-        light={true}
-        hidden={false}
-      >
+      statusColor={true}
+      style={{backgroundColor: NewColor.backGroundDark}}
+      light={true}
+      hidden={false}>
       {/* <StatusBar
         barStyle={'dark-content'}
         backgroundColor={'transparent'}
@@ -83,12 +90,16 @@ const MyBattleOtp = ({route}: any) => {
         networkActivityIndicatorVisible={true}
       /> */}
       <View>
-      <ImageBackground
-        source={backLogo}
-        resizeMode="cover"
-        style={styles.MyBattleScreen}>
-      <FastImage resizeMode="stretch" style={styles.logo} source={logomain} />
-      </ImageBackground>
+        <ImageBackground
+          source={backLogo}
+          resizeMode="cover"
+          style={styles.MyBattleScreen}>
+          <FastImage
+            resizeMode="stretch"
+            style={styles.logo}
+            source={logomain}
+          />
+        </ImageBackground>
         {/* <FastImage source={Nlglogo2} resizeMode="stretch" style={styles.logo} /> */}
       </View>
       <View style={styles.main}>
@@ -100,14 +111,11 @@ const MyBattleOtp = ({route}: any) => {
             <AppText weight={POPPINS_MEDIUM} type={THIRTEEN} color={WHITE}>
               Verify with OTP
             </AppText>
-            <AppText
-              type={TWELVE}
-              weight={POPPINS_MEDIUM}
-              color={BLACKOPACITY}>
+            <AppText type={TWELVE} weight={POPPINS_MEDIUM} color={BLACKOPACITY}>
               OTP sent to your mobile no. +91{' '}
               {JSON.stringify(Number?.mobile_number)?.replace(
                 /(?!^.*)[^a-zA-Z\s](?=.{2})/g,
-                `X`,
+                'X',
               )}
             </AppText>
             <OTPInputView
@@ -158,6 +166,7 @@ const MyBattleOtp = ({route}: any) => {
         <PrimaryButton
           onPress={onSubmit}
           title="Verify"
+          disable={!code ? true : false}
           buttonStyle={styles.button}
         />
       </View>
@@ -170,16 +179,16 @@ export default MyBattleOtp;
 const styles = StyleSheet.create({
   MyBattleScreen: {
     width: '100%',
-    height:278,
-    alignItems:"center",
-    justifyContent:'flex-end'
+    height: 278,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   main: {
     paddingHorizontal: universalPaddingHorizontal,
     // flex: 0.1,
     justifyContent: 'center',
     // marginTop:10,
-    marginTop:50
+    marginTop: 50,
   },
   underlineStyleBase: {
     width: 50,
@@ -188,7 +197,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1E1C2A',
     color: '#fff',
     borderWidth: 1,
-    borderColor:"#2B2839"
+    borderColor: '#2B2839',
   },
   underlineStyleHighLighted: {
     // borderColor: '#DDDDDD',

@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import {StyleSheet, View, ActivityIndicator} from 'react-native';
 
-const SpinnerSecond = ({ style, loading }: any) => {
+const SpinnerSecond = ({style, loading}: any) => {
   return (
     <>
       {loading ? (
         <View style={[styles.spinnerStyle, style]}>
-          <ActivityIndicator size={'large'} color={'#AD53CC'} />
+          <ActivityIndicator size={'large'} color={'#D89E3C'} />
         </View>
       ) : (
         <></>
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { SpinnerSecond };
+export {SpinnerSecond};

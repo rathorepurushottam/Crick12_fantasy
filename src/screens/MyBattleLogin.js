@@ -46,10 +46,12 @@ import {userSignup} from '../actions/authActions';
 import {TouchableOpacityView} from '../common/TouchableOpacityView';
 import Checkbox from '../common/CheckBox/CheckBox';
 import NavigationService from '../navigation/NavigationService';
-import { MYBATTLEPOLICY, MYBATTLETERM } from '../navigation/routes';
+import {MYBATTLEPOLICY, MYBATTLETERM} from '../navigation/routes';
+import {SpinnerSecond} from '../common/SpinnerSecond';
 
 const MyBattleLogin = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(state => state.home.isLoading);
   const [number, setNumber] = useState('');
   const [isSelected, setIsSelected] = useState(false);
   const [code, setCode] = useState('');
@@ -60,16 +62,15 @@ const MyBattleLogin = () => {
       toastAlert.showToastError('Please enter Mobile Number');
     } else if (!validateMobile(number)) {
       toastAlert.showToastError('Please provide a valid Mobile Number');
-    }   else if (!isSelected) {
+    } else if (!isSelected) {
       toastAlert.showToastError('Please confirm you are 18+');
-    }   
-   else {
+    } else {
       let data = {
         refercode: code,
         mobile_number: number,
         resend: true,
       };
-        console.log(data,"login data")
+      console.log(data, 'login data');
       dispatch(userSignup(data));
     }
   };
@@ -85,7 +86,7 @@ const MyBattleLogin = () => {
         source={backLogo}
         resizeMode="cover"
         style={styles.MyBattleScreen}>
-      <FastImage resizeMode="stretch" style={styles.logo} source={logomain} />
+        <FastImage resizeMode="stretch" style={styles.logo} source={logomain} />
       </ImageBackground>
       <View
         style={{
@@ -104,7 +105,7 @@ const MyBattleLogin = () => {
           textInputBox={styles.textInputBox}
           labelStyle={styles.label}
           image={callIcon}
-          maxLength = {10}
+          maxLength={10}
         />
         {referral && (
           <InputBox
@@ -132,7 +133,6 @@ const MyBattleLogin = () => {
               alignSelf: 'flex-end',
               textDecorationLine: 'underline',
               marginTop: 5,
-              
             }}>
             Have a referral code?
           </AppText>
@@ -155,8 +155,8 @@ const MyBattleLogin = () => {
 
         <View>
           <PrimaryButton
-            disable = {!isSelected ? true : false}
-            color={!isSelected ?  '#858585' : ''}
+            disable={!isSelected ? true : false}
+            color={!isSelected ? '#858585' : ''}
             onPress={onSubmit}
             title="Continue"
             buttonStyle={styles.button}
@@ -188,20 +188,32 @@ const MyBattleLogin = () => {
           />
           <AppText type={ELEVEN} style={{marginHorizontal: 10}} color={WHITE}>
             I have read and agree to Crick12 Fantasy{' '}
-            <AppText type={ELEVEN}color={WHITE} onPress={()=>{
-              NavigationService.navigate(MYBATTLETERM)
-            }} style={{textDecorationLine: 'underline'}}>
+            <AppText
+              type={ELEVEN}
+              color={WHITE}
+              onPress={() => {
+                NavigationService.navigate(MYBATTLETERM);
+              }}
+              style={{textDecorationLine: 'underline'}}>
               Terms of Service
             </AppText>
-            <AppText type={ELEVEN} color={WHITE}> and </AppText>
-            <AppText color={WHITE} onPress={()=>{
-              NavigationService.navigate(MYBATTLEPOLICY)
-            }}  type={ELEVEN} style={{textDecorationLine: 'underline'}}>
+            <AppText type={ELEVEN} color={WHITE}>
+              {' '}
+              and{' '}
+            </AppText>
+            <AppText
+              color={WHITE}
+              onPress={() => {
+                NavigationService.navigate(MYBATTLEPOLICY);
+              }}
+              type={ELEVEN}
+              style={{textDecorationLine: 'underline'}}>
               Privacy Policy
             </AppText>
           </AppText>
         </View>
       </View>
+      <SpinnerSecond loading={isLoading} />
       {/* </ImageBackground> */}
     </AppSafeAreaView>
   );
@@ -212,9 +224,9 @@ export default MyBattleLogin;
 const styles = StyleSheet.create({
   MyBattleScreen: {
     width: '100%',
-    height:278,
-    alignItems:"center",
-    justifyContent:'flex-end'
+    height: 278,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   main: {
     flex: 0.1,

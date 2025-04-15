@@ -68,14 +68,14 @@ const KYC = () => {
       id: 1,
       title: 'Bank Account',
       image: bankIcon,
-      isVerified: kycDetails?.bank_verified
+      isVerified: kycDetails?.bank_verified,
     },
-    {
-      id: 2,
-      title: 'UPI',
-      image: upiIcon,
-      isVerified: kycDetails?.upi_verified
-    },
+    // {
+    //   id: 2,
+    //   title: 'UPI',
+    //   image: upiIcon,
+    //   isVerified: kycDetails?.upi_verified
+    // },
   ]
 
   const isVerified = id => {

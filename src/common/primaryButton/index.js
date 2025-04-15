@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
 import {
@@ -9,9 +9,9 @@ import {
   POPPINS_BOLD,
   WHITE,
 } from '../AppText';
-import { RootState } from '../../libs/rootReducer';
-import { TouchableOpacityView } from '../TouchableOpacityView';
-import { NLCColor, colors } from '../../theme/color';
+import {RootState} from '../../libs/rootReducer';
+import {TouchableOpacityView} from '../TouchableOpacityView';
+import {NLCColor, colors} from '../../theme/color';
 
 const PrimaryButton = ({
   title,
@@ -23,18 +23,18 @@ const PrimaryButton = ({
   disable,
   color,
   ...rest
-}: any) => {
+}) => {
   return (
     <TouchableOpacityView
       activeOpacity={1}
       {...rest}
       style={buttonStyle}
-      disable = {disable}
+      disable={disable}
       onPress={onPress}>
       <LinearGradient
         colors={[color ? color : '#D89E3C', color ? color : '#EAD288']}
-        start={{ x: 1, y: 1 }}
-        end={{ x: 0, y: 1 }}
+        start={{x: 1, y: 1}}
+        end={{x: 0, y: 1}}
         style={[styles.linearGradient, smallBtn]}>
         <AppText
           type={type ? type : SIXTEEN}

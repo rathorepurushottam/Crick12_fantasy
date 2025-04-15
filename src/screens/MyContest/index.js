@@ -1,17 +1,25 @@
-import { useFocusEffect, useRoute } from '@react-navigation/native';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { View, StatusBar, FlatList, RefreshControl, Platform, TouchableOpacity, Dimensions } from 'react-native';
+import {useFocusEffect, useRoute} from '@react-navigation/native';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {
+  View,
+  StatusBar,
+  FlatList,
+  RefreshControl,
+  Platform,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppSafeAreaView } from '../../common/AppSafeAreaView';
-import { SpinnerSecond } from '../../common/SpinnerSecond';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppSafeAreaView} from '../../common/AppSafeAreaView';
+import {SpinnerSecond} from '../../common/SpinnerSecond';
 import FilterSheet from '../../components/filterSheet/FilterSheet';
 import CommonHeader from '../../components/matchCard/commonHeader/CommonHeader';
 import MatchRemainder from '../../components/matchCard/matchRemainder/MatchRemainder';
 import MyContestList from '../../components/matchCard/myContest/MyContestList';
 import MyTeam from '../../components/matchCard/myTeam/MyTeam';
 import NavigationService from '../../navigation/NavigationService';
-import { CREATE_CONTEST, SELECT_PLAYER } from '../../navigation/routes';
+import {CREATE_CONTEST, SELECT_PLAYER} from '../../navigation/routes';
 import {
   MycreateContest,
   getAllPlayerList,
@@ -25,24 +33,33 @@ import {
 } from '../../slices/matchSlice';
 import styles from './styles';
 import Contest from '../../components/matchCard/contest.js/Contest';
-import { Screen, flexOne, universalPaddingHorizontal } from '../../theme/dimens';
+import {Screen, flexOne, universalPaddingHorizontal} from '../../theme/dimens';
 import CommonImageBackground from '../../common/commonImageBackground';
 import PrimaryButton from '../../common/primaryButton';
 import SecondaryButton from '../../common/secondaryButton';
-import { AppText, BLACK, FORTEEN, LIGHTGRAY, POPPINS_MEDIUM, RED, WHITE, YellowText } from '../../common/AppText';
-import { NLCColor, NewColor, colors } from '../../theme/color';
+import {
+  AppText,
+  BLACK,
+  FORTEEN,
+  LIGHTGRAY,
+  POPPINS_MEDIUM,
+  RED,
+  WHITE,
+  YellowText,
+} from '../../common/AppText';
+import {NLCColor, NewColor, colors} from '../../theme/color';
 import ContestCard from '../../components/matchCard/contestCard/ContestCard';
-import { getKycDetails } from '../../actions/profileAction';
-import { MatchLiveModal } from '../../common/MatchLiveModal';
-import { transformData } from '../../helper/utility';
+import {getKycDetails} from '../../actions/profileAction';
+import {MatchLiveModal} from '../../common/MatchLiveModal';
+import {transformData} from '../../helper/utility';
 import MyContestListETC from '../../components/matchCard/myContest/MyContestListcETC';
 import SlideSwiper from '../../common/SlideSwiper';
-import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
+import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import LinearGradient from 'react-native-linear-gradient';
-import { white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import {white} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 import FastImage from 'react-native-fast-image';
-import { creatTeam } from '../../helper/image';
-import AntDesign from 'react-native-vector-icons/AntDesign'
+import {creatTeam} from '../../helper/image';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import SelectTeam from '../../components/selectTeam/SelectTeam';
 
 export const RenderTabBar = props => {
@@ -54,7 +71,7 @@ export const RenderTabBar = props => {
         width: Screen.Width,
         height: 50,
       }}
-      renderLabel={({ route, focused }) => (
+      renderLabel={({route, focused}) => (
         <View
           style={{
             flexDirection: 'column',
@@ -72,21 +89,19 @@ export const RenderTabBar = props => {
           </AppText>
           {focused ? (
             <LinearGradient
-              style={{ height: 2, width: 102, }}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 0 }}
+              style={{height: 2, width: 102}}
+              start={{x: 0, y: 1}}
+              end={{x: 1, y: 0}}
               colors={['#DBA73E', '#E0C77D']}
-            >
-            </LinearGradient>
-          ) :
-            (
-              <View style={{ width: 102, height: 2 }}></View>
-            )}
+            />
+          ) : (
+            <View style={{width: 102, height: 2}} />
+          )}
         </View>
       )}
-      indicatorStyle={{ backgroundColor: 'transparent' }}
+      indicatorStyle={{backgroundColor: 'transparent'}}
       scrollEnabled={!props.scrollEnabled ? props.scrollEnabled : true}
-      tabStyle={[{ width: 'auto' }, props.tabStyle]}
+      tabStyle={[{width: 'auto'}, props.tabStyle]}
       pressColor={'transparent'}
       style={[styles.tabbar, props.style]}
     />
@@ -99,7 +114,7 @@ const MyContest = () => {
   const route = useRoute();
   const filterSheet = useRef();
   const AleartLive = useRef();
-  const isLoading = useSelector((state) => state.auth.isLoading);
+  const isLoading = useSelector(state => state.auth.isLoading);
   const contestData = useSelector(state => state?.match?.contestData);
   const contestList = useSelector(state => state?.match?.contestList);
   const myTeam = useSelector(state => state?.match?.myTeams);
@@ -107,7 +122,6 @@ const MyContest = () => {
   const SortbyFilterData = useSelector(state => state?.match?.SortbyFilterData);
   const transformedData = transformData(contestList?.data);
   const matchDetails = useSelector(state => state?.match?.contestData);
-
 
   const selectTeam = useRef();
 
@@ -122,23 +136,27 @@ const MyContest = () => {
   const [team, setTeam] = useState([]);
   const [prize, setPrize] = useState([]);
   const [contest, setContest] = useState([]);
-  const [modalRemove, setModalRemove] = useState(false)
-  const [saveTitle, setTitle] = useState('')
+  const [modalRemove, setModalRemove] = useState(false);
+  const [saveTitle, setTitle] = useState('');
   const [activeTab, setActiveTab] = useState(
-    route?.params?.isFromMyMatch == true || isPastTime == 'false'
-      ? 2
-      : 1,
+    route?.params?.isFromMyMatch == true || isPastTime == 'false' ? 2 : 1,
   );
   useEffect(() => {
-    setTitle(activeTab == 1 ? 'Select Contest' : activeTab == 2 ? "My Contest" : activeTab == 3 ? "My Team" : 'Select Contest')
-  }, [activeTab])
-  const { _id, isFromMyMatch, match_id, isHome, SeriesId } = contestData ?? '';
-
-
+    setTitle(
+      activeTab == 1
+        ? 'Select Contest'
+        : activeTab == 2
+        ? 'My Contest'
+        : activeTab == 3
+        ? 'My Team'
+        : 'Select Contest',
+    );
+  }, [activeTab]);
+  const {_id, isFromMyMatch, match_id, isHome, SeriesId} = contestData ?? '';
 
   const [index, setIndex] = useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Contest' },
+    {key: 'first', title: 'Contest'},
     {
       key: 'second',
       title: 'My Contest',
@@ -170,7 +188,7 @@ const MyContest = () => {
   //     }
   //   }
   // }, [modalRemove])
-  const renderItem = ({ item }) => {
+  const renderItem = ({item}) => {
     // console.log(item,"itemmmmssssss")
     // console.log('in contest')
     return (
@@ -181,14 +199,14 @@ const MyContest = () => {
       />
     );
   };
-  const renderMyTeam = ({ item }) => {
-    console.log("in myteam")
+  const renderMyTeam = ({item}) => {
+    console.log('in myteam');
     return <MyTeam item={item} tab={route?.params?.tab} />;
   };
-  const renderMyContest = ({ item }) => {
+  const renderMyContest = ({item}) => {
     return <MyContestList item={item} matchDetails={route?.params} />;
   };
-  const renderContest = ({ item }) => {
+  const renderContest = ({item}) => {
     return <ContestCard details={item} totalTeamCount={myTeam?.length} />;
   };
   const renderMyCreateContest = () => {
@@ -208,7 +226,9 @@ const MyContest = () => {
     );
   };
   const EmptyComponent = () => {
-    return MyCreateContestData?.length || myContest?.length ? <></> : (
+    return MyCreateContestData?.length || myContest?.length ? (
+      <></>
+    ) : (
       <View
         style={{
           flex: 1,
@@ -220,8 +240,7 @@ const MyContest = () => {
           style={{
             textAlign: 'center',
           }}
-          color={WHITE}
-        >
+          color={WHITE}>
           You haven't joined a contest yet!{'\n'}Find a contest to join and
           start winning
         </AppText>
@@ -234,7 +253,7 @@ const MyContest = () => {
     );
   };
   const EmptyComponentTwo = () => {
-    console.log("Indier empty component")
+    console.log('Indier empty component');
     return (
       <View
         style={{
@@ -285,7 +304,7 @@ const MyContest = () => {
   //           alignSelf: 'center',
   //         }}
   //       />
-        
+
   //     <View style={{flex:1,justifyContent:"flex-end",bottom:0,position:"absolute",alignItems:"center"}}>
   //     <AppText color={WHITE}>Create Team</AppText>
   //   </View>
@@ -298,61 +317,61 @@ const MyContest = () => {
   //   </View>
   // );
 
-   const onJoinContest = async () => {
-        // if (myTeam?.length === 0) {
-          dispatch(setAllPlayers([]))
-          let data = { cid: matchDetails?.SeriesId };
-          dispatch(getAllPlayerList(_id, data, false, {}, true));
-          NavigationService.navigate(SELECT_PLAYER, {
-            matchDetails,
-            isEditMode: false,
-          });
-          dispatch(setIsContestEntry(true));
-          dispatch(setSelectedMatch({ ...details }));
-  
-        //  } 
-        // else if (myTeam?.length === 1) {
-        //   if (details?.teamDetails?.length) {
-        //     dispatch(setAllPlayers([]))
-        //     let data = { cid: matchDetails?.SeriesId };
-        //     let isNavigate = true
-        //     dispatch(getAllPlayerList(_id, data, false, {}, isNavigate));
-        //     dispatch(setIsContestEntry(true));
-        //     dispatch(setSelectedMatch({ ...details }));
-        //     NavigationService.navigate(SELECT_PLAYER, {
-        //       matchDetails,
-        //       isEditMode: false,
-        //     });
-        //   } else {
-        //     dispatch(getMyTeam(_id));
-        //     dispatch(setSelectedMatch({ ...details }));
-        //     setSaveTeamName(myTeam[0]?.name)
-        //     setIsAdd(true);
-        //   }
-        // } else if (myTeam?.length > 1) {
-        //   if (details?.teamDetails?.length == myTeam?.length) {
-        //     console.log('Helloooo');
-        //     dispatch(setAllPlayers([]))
-        //     let data = { cid: matchDetails?.SeriesId };
-        //     let isNavigate = true
-        //     dispatch(getAllPlayerList(_id, data, false, {}, isNavigate));
-        //     dispatch(setIsContestEntry(true));
-        //     dispatch(setSelectedMatch({ ...details }));
-        //     NavigationService.navigate(SELECT_PLAYER, {
-        //       matchDetails,
-        //       isEditMode: false,
-        //     });
-          // } 
-          // else {
-          //   dispatch(setSelectedMatch({ ...details }));
-          //   selectTeam?.current?.open();
-          // }
-        // }
-      /* } */
-    };
+  const onJoinContest = async () => {
+    // if (myTeam?.length === 0) {
+    dispatch(setAllPlayers([]));
+    let data = {cid: matchDetails?.SeriesId};
+    dispatch(getAllPlayerList(_id, data, false, {}, true));
+    NavigationService.navigate(SELECT_PLAYER, {
+      matchDetails,
+      isEditMode: false,
+    });
+    dispatch(setIsContestEntry(true));
+    dispatch(setSelectedMatch({...details}));
 
-  const FirstRoute = ({ route }) => (
-    <View style={{ flex: 1, marginHorizontal: 10 }}>
+    //  }
+    // else if (myTeam?.length === 1) {
+    //   if (details?.teamDetails?.length) {
+    //     dispatch(setAllPlayers([]))
+    //     let data = { cid: matchDetails?.SeriesId };
+    //     let isNavigate = true
+    //     dispatch(getAllPlayerList(_id, data, false, {}, isNavigate));
+    //     dispatch(setIsContestEntry(true));
+    //     dispatch(setSelectedMatch({ ...details }));
+    //     NavigationService.navigate(SELECT_PLAYER, {
+    //       matchDetails,
+    //       isEditMode: false,
+    //     });
+    //   } else {
+    //     dispatch(getMyTeam(_id));
+    //     dispatch(setSelectedMatch({ ...details }));
+    //     setSaveTeamName(myTeam[0]?.name)
+    //     setIsAdd(true);
+    //   }
+    // } else if (myTeam?.length > 1) {
+    //   if (details?.teamDetails?.length == myTeam?.length) {
+    //     console.log('Helloooo');
+    //     dispatch(setAllPlayers([]))
+    //     let data = { cid: matchDetails?.SeriesId };
+    //     let isNavigate = true
+    //     dispatch(getAllPlayerList(_id, data, false, {}, isNavigate));
+    //     dispatch(setIsContestEntry(true));
+    //     dispatch(setSelectedMatch({ ...details }));
+    //     NavigationService.navigate(SELECT_PLAYER, {
+    //       matchDetails,
+    //       isEditMode: false,
+    //     });
+    // }
+    // else {
+    //   dispatch(setSelectedMatch({ ...details }));
+    //   selectTeam?.current?.open();
+    // }
+    // }
+    /* } */
+  };
+
+  const FirstRoute = ({route}) => (
+    <View style={{flex: 1, marginHorizontal: 10}}>
       {!route?.params?.isFromMyMatch ? (
         <>
           <FlatList
@@ -366,97 +385,96 @@ const MyContest = () => {
                 onRefresh={() => onRefresh('contest')}
               />
             }
-            style={{ width: '100%', alignSelf: 'center', flex: 1 }}
+            style={{width: '100%', alignSelf: 'center', flex: 1}}
           />
-          
+
           {/* Fixed Button Position */}
-          <TouchableOpacity onPress={onJoinContest} style={{ 
-            width: '100%', 
-            paddingVertical: 20, 
-            borderTopLeftRadius:10,
-            borderTopRightRadius:10,
-            alignItems: "center", 
-            backgroundColor: "#252431",
-            flexDirection:"row",
-            justifyContent:'center'
-             // Optional for visibility
-          }}>
-            <FastImage source={creatTeam} style={{height:20,width:20}} />
-            <AppText type={FORTEEN}
-            color={YellowText}
-            style={{paddingHorizontal:10}}
-            weight={POPPINS_MEDIUM}>Create Team</AppText>
-            <AntDesign name="arrowright" color={'#D89E3C'} size={20}/>
+          <TouchableOpacity
+            onPress={onJoinContest}
+            style={{
+              width: '100%',
+              paddingVertical: 20,
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 10,
+              alignItems: 'center',
+              backgroundColor: '#252431',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              // Optional for visibility
+            }}>
+            <FastImage source={creatTeam} style={{height: 20, width: 20}} />
+            <AppText
+              type={FORTEEN}
+              color={YellowText}
+              style={{paddingHorizontal: 10}}
+              weight={POPPINS_MEDIUM}>
+              Create Team
+            </AppText>
+            <AntDesign name="arrowright" color={'#D89E3C'} size={20} />
           </TouchableOpacity>
         </>
       ) : null}
     </View>
   );
-  
 
-  const SecondRoute = ({ route }) => (
-    (
-      <View
+  const SecondRoute = ({route}) => (
+    <View
+      style={{
+        flex: 1,
+      }}>
+      <FlatList
+        data={myContest}
+        showsVerticalScrollIndicator={false}
+        renderItem={renderMyContest}
+        ListHeaderComponent={renderMyCreateContest}
+        ListEmptyComponent={<EmptyComponent />}
+        keyExtractor={(item, index) => index.toString()}
+        refreshControl={
+          <RefreshControl
+            refreshing={false}
+            onRefresh={() => onRefresh('my contest')}
+          />
+        }
         style={{
-          flex: 1,
-        }}>
-        <FlatList
-          data={myContest}
-          showsVerticalScrollIndicator={false}
-          renderItem={renderMyContest}
-          ListHeaderComponent={renderMyCreateContest}
-          ListEmptyComponent={<EmptyComponent />}
-          keyExtractor={(item, index) => index.toString()}
-          refreshControl={
-            <RefreshControl
-              refreshing={false}
-              onRefresh={() => onRefresh('my contest')}
-            />
-          }
-          style={{
-            width: '100%',
-            alignSelf: 'center',
-            flex: flexOne,
-          }}
-          contentContainerStyle={{
-            flexGrow: flexOne,
-          }}
-        />
-      </View>
-    )
-  );
-
-  const ThreeRoute = ({ route }) => (
-    (
-      <View
-        style={{
+          width: '100%',
+          alignSelf: 'center',
           flex: flexOne,
-        }}>
-        <FlatList
-          data={myTeam}
-          renderItem={renderMyTeam}
-          showsVerticalScrollIndicator={false}
-          keyExtractor={(item, index) => index.toString()}
-          ListEmptyComponent={<EmptyComponentTwo />}
-          refreshControl={
-            <RefreshControl
-              refreshing={false}
-              onRefresh={() => onRefresh('my team')}
-            />
-          }
-          contentContainerStyle={{
-            flexGrow: flexOne,
-          }}
-          style={{
-            width: '100%',
-            flex: flexOne,
-            alignSelf: 'center',
-          }}
-        />
-      </View>
-    )
+        }}
+        contentContainerStyle={{
+          flexGrow: flexOne,
+        }}
+      />
+    </View>
   );
 
+  const ThreeRoute = ({route}) => (
+    <View
+      style={{
+        flex: flexOne,
+      }}>
+      <FlatList
+        data={myTeam}
+        renderItem={renderMyTeam}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item, index) => index.toString()}
+        ListEmptyComponent={<EmptyComponentTwo />}
+        refreshControl={
+          <RefreshControl
+            refreshing={false}
+            onRefresh={() => onRefresh('my team')}
+          />
+        }
+        contentContainerStyle={{
+          flexGrow: flexOne,
+        }}
+        style={{
+          width: '100%',
+          flex: flexOne,
+          alignSelf: 'center',
+        }}
+      />
+    </View>
+  );
 
   const renderScene = SceneMap({
     first: FirstRoute,
@@ -465,13 +483,13 @@ const MyContest = () => {
   });
 
   return (
-    <AppSafeAreaView style={{backgroundColor:"111019"}}>
+    <AppSafeAreaView style={{backgroundColor: '111019'}}>
       <StatusBar
         backgroundColor={'#111019'}
         translucent={true}
         networkActivityIndicatorVisible={true}
       />
-      <CommonImageBackground common  >
+      <CommonImageBackground common>
         <CommonHeader
           details={route?.params}
           showFilter={() => filterSheet.current.open()}
@@ -483,12 +501,12 @@ const MyContest = () => {
           title={saveTitle}
         />
 
-        <View style={{ flex: 1 ,backgroundColor:"#111019"}}>
+        <View style={{flex: 1, backgroundColor: '#111019'}}>
           <TabView
-            navigationState={{ index, routes }}
+            navigationState={{index, routes}}
             renderScene={renderScene}
             onIndexChange={setIndex}
-            initialLayout={{ width: Screen.Width }}
+            initialLayout={{width: Screen.Width}}
             renderTabBar={props => <RenderTabBar {...props} />}
           />
         </View>
@@ -521,12 +539,15 @@ const MyContest = () => {
             setContest={setContest}
           />
         </RBSheet>
-        {!myTeam &&
-        // !route?.params?.isFromMyMatch &&
-        //   isPastTime != 'false' && 
-          (
-            <View style={[styles.buttonContainer, { marginVertical: Platform.OS == 'ios' ? 20 : 10 }]}>
-              {/* <SecondaryButton
+        {!myTeam && (
+          // !route?.params?.isFromMyMatch &&
+          //   isPastTime != 'false' &&
+          <View
+            style={[
+              styles.buttonContainer,
+              {marginVertical: Platform.OS == 'ios' ? 20 : 10},
+            ]}>
+            {/* <SecondaryButton
                 onPress={() => NavigationService.navigate(CREATE_CONTEST)}
                 buttonStyle={[styles.buttonStyle,{marginTop: Platform.OS == 'ios'? -5:0}]}
                 title={'CREATE CONTEST'}
@@ -538,20 +559,27 @@ const MyContest = () => {
                   borderRadius: 10,
                 }}
               /> */}
-              <PrimaryButton
-                buttonStyle={[styles.buttonStyle, { marginTop: Platform.OS == 'ios' ? -5 : 0 }]}
-                onPress={() => {
-                  dispatch(getTab(''));
-                  dispatch(setAllPlayers([]))
-                  let data = { cid: SeriesId };
-                  dispatch(getAllPlayerList(_id, data));
-                  NavigationService.navigate(SELECT_PLAYER, contestData, isFromMyMatch);
-                  dispatch(setIsContestEntry(false));
-                }}
-                title="CREATE TEAM"
-              />
-            </View>
-          )}
+            <PrimaryButton
+              buttonStyle={[
+                styles.buttonStyle,
+                {marginTop: Platform.OS == 'ios' ? -5 : 0},
+              ]}
+              onPress={() => {
+                dispatch(getTab(''));
+                dispatch(setAllPlayers([]));
+                let data = {cid: SeriesId};
+                dispatch(getAllPlayerList(_id, data));
+                NavigationService.navigate(
+                  SELECT_PLAYER,
+                  contestData,
+                  isFromMyMatch,
+                );
+                dispatch(setIsContestEntry(false));
+              }}
+              title="CREATE TEAM"
+            />
+          </View>
+        )}
         <SpinnerSecond loading={isLoading} />
       </CommonImageBackground>
       <MatchLiveModal AleartLive={AleartLive} />
@@ -585,8 +613,8 @@ const MyContest = () => {
 
 export default MyContest;
 
-
- {/* 
+{
+  /*
         <View style={styles.mainContainer}>
           {index === 1 && SortbyFilterData?.length > 0 ? (
             <FlatList
@@ -680,8 +708,10 @@ export default MyContest;
               )}
             </>
           )}
-        </View> */}
-        {/* <RBSheet
+        </View> */
+}
+{
+  /* <RBSheet
           ref={sheet}
           closeOnDragDown={true}
           height={201}
@@ -699,4 +729,5 @@ export default MyContest;
             data={contestData}
             onClose={() => sheet?.current?.close()}
           />
-        </RBSheet> */}
+        </RBSheet> */
+}

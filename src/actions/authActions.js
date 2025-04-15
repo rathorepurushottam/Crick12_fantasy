@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Dispatch } from 'redux';
-import { appOperation } from '../appOperation';
-import { logError, toastAlert } from '../helper/utility';
+import {Dispatch} from 'redux';
+import {appOperation} from '../appOperation';
+import {logError, toastAlert} from '../helper/utility';
 import NavigationService from '../navigation/NavigationService';
 import {
   AUTHSTACK,
@@ -10,11 +10,11 @@ import {
   MYBATTLEOTP,
   OTP,
 } from '../navigation/routes';
-import { setLoading } from '../slices/authSlice';
-import { setUserData, setWalletCreate } from '../slices/profileSlice';
-import { getUserProfile } from './profileAction';
-import { FCM_TOKEN_KEY, USER_TOKEN_KEY } from '../helper/Constants';
-import { Platform } from 'react-native';
+import {setLoading} from '../slices/authSlice';
+import {setUserData, setWalletCreate} from '../slices/profileSlice';
+import {getUserProfile} from './profileAction';
+import {FCM_TOKEN_KEY, USER_TOKEN_KEY} from '../helper/Constants';
+import {Platform} from 'react-native';
 //done
 export const userLogin = data => async dispatch => {
   try {
@@ -39,73 +39,77 @@ export const userLogin = data => async dispatch => {
 };
 
 export const userSignup = (data, permissionSave) => async dispatch => {
-      try {
-        dispatch(setLoading(true));
-        const response = await appOperation.guest.register(data);
-        // if (response?.success) {
-        //   appOperation.setCustomerToken(response?.data?.accessToken);
-        //   await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data?.accessToken);
-        //   dispatch(setUserData(response?.data));
-        //   console.log('data here')
-        //   NavigationService.navigate(OTP);
-        // } else {
-        //   toastAlert.showToastError(response?.message);
-        // }
+  try {
+    dispatch(setLoading(true));
+    const response = await appOperation.guest.register(data);
+    // if (response?.success) {
+    //   appOperation.setCustomerToken(response?.data?.accessToken);
+    //   await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data?.accessToken);
+    //   dispatch(setUserData(response?.data));
+    //   console.log('data here')
+    //   NavigationService.navigate(OTP);
+    // } else {
+    //   toastAlert.showToastError(response?.message);
+    // }
 
-        console.log(response,"responseee")
+    console.log(response, 'responseee');
 
-        if (response?.success) {
-          // console.log(response,"response")
-          toastAlert.showToastError(response?.message);
-          NavigationService.navigate(MYBATTLEOTP, { data: data, id: 'register', permissionSave: permissionSave });
-        } else {
-          toastAlert.showToastError(response?.message);
-        }
-        // NavigationService.navigate(OTP)
-      } catch (e) {
-        console.log(e,"errrrrroorrrrrr");
-        logError(e);
-        toastAlert.showToastError(e?.message);
-      } finally {
-        dispatch(setLoading(false));
-      }
-    };
+    if (response?.success) {
+      // console.log(response,"response")
+      toastAlert.showToastError(response?.message);
+      NavigationService.navigate(MYBATTLEOTP, {
+        data: data,
+        id: 'register',
+        permissionSave: permissionSave,
+      });
+    } else {
+      toastAlert.showToastError(response?.message);
+    }
+    // NavigationService.navigate(OTP)
+  } catch (e) {
+    console.log(e, 'errrrrroorrrrrr');
+    logError(e);
+    toastAlert.showToastError(e?.message);
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
 //done
 export const otpVerification =
   (data, isAlert = false) =>
-    async dispatch => {
-      // console.log(data,"data in otp verrification")
-      try {
-        dispatch(setLoading(true));
-        const response = await appOperation.guest.otp_verification(data);
-        // console.log("response in otp",response)
-        if (response?.success) {
-          appOperation.setCustomerToken(response?.data?.accessToken);
-          await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data?.accessToken);
-          dispatch(setUserData(response?.data?._id));
-          dispatch(updateDeviceToken());
-          dispatch(getUserProfile(true, false));
-          toastAlert.showToastError(response?.message);
-          NavigationService.navigate('DrawerNavigationStack');
-        } else {
-          toastAlert.showToastError(response?.message);
-          // console.log(response,"response in else part")
-        }
-        // if (response?.success) {
-        //   isAlert
-        //     ? toastAlert.showToastError(response?.message)
-        //     : NavigationService.navigate('Home' ,{data: data, id: 'register'})
-        // } else {
-        //   toastAlert.showToastError(response?.message);
-        // }
-      } catch (e) {
-        // logError(e);
-        console.log(e,"error in otp verification")
-        toastAlert.showToastError(e?.message);
-      } finally {
-        dispatch(setLoading(false));
+  async dispatch => {
+    // console.log(data,"data in otp verrification")
+    try {
+      dispatch(setLoading(true));
+      const response = await appOperation.guest.otp_verification(data);
+      // console.log("response in otp",response)
+      if (response?.success) {
+        appOperation.setCustomerToken(response?.data?.accessToken);
+        await AsyncStorage.setItem(USER_TOKEN_KEY, response?.data?.accessToken);
+        dispatch(setUserData(response?.data?._id));
+        dispatch(updateDeviceToken());
+        dispatch(getUserProfile(true, false));
+        toastAlert.showToastError(response?.message);
+        NavigationService.navigate('DrawerNavigationStack');
+      } else {
+        toastAlert.showToastError(response?.message);
+        // console.log(response,"response in else part")
       }
-    };
+      // if (response?.success) {
+      //   isAlert
+      //     ? toastAlert.showToastError(response?.message)
+      //     : NavigationService.navigate('Home' ,{data: data, id: 'register'})
+      // } else {
+      //   toastAlert.showToastError(response?.message);
+      // }
+    } catch (e) {
+      // logError(e);
+      console.log(e, 'error in otp verification');
+      toastAlert.showToastError(e?.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
 
 //done
 // export const forgotPassword =
@@ -148,7 +152,7 @@ export const otpVerification =
 //   }
 // };
 
-export const resetSignUpOtp = id => async (dispatch) => {
+export const resetSignUpOtp = id => async dispatch => {
   try {
     dispatch(setLoading(true));
     const response = await appOperation.guest.resend_otp(id);
@@ -180,7 +184,7 @@ export const refreshToken = () => async () => {
 
 export const updateDeviceToken = () => async dispatch => {
   let fcmToken = await AsyncStorage.getItem(FCM_TOKEN_KEY);
-  console.log(fcmToken, "Fcm_Token");
+  console.log(fcmToken, 'Fcm_Token');
   let data = {
     fcm_device: Platform.OS,
     fcm_token: fcmToken,
@@ -188,14 +192,11 @@ export const updateDeviceToken = () => async dispatch => {
   };
   try {
     const response = await appOperation.customer.fcm_token(data);
-    console.log(response, "updateDeviceToken");
+    console.log(response, 'updateDeviceToken');
   } catch (e) {
     logError(e);
   }
 };
-
-
-
 
 //done
 export const userLogout = () => async () => {

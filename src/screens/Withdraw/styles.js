@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
   box: {
     // borderWidth: 2,
     // borderColor: NewColor.linerBlackFive,
-    backgroundColor: NLCColor.background,
+    // backgroundColor: NLCColor.background,
     borderRadius: 16,
     paddingVertical: 5,
     paddingHorizontal: 5,
   },
   boxTwo: {
-    backgroundColor: NLCColor.background,
+    backgroundColor: NLCColor.lightWhite,
     borderRadius: 16,
     paddingVertical: 5,
     paddingHorizontal: 5,
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     width: 330,
     fontSize: 12,
     fontWeight: '700',
+    color: "white"
   },
   boxContainer: {
     marginHorizontal: 10,
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   tickContainer: {
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: NLCColor.Red,
+    borderColor: '#D89E3C',
     height: 20,
     width: 20,
     alignItems: "center",
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   tick: {
     height: 10,
     width: 10,
-    backgroundColor: NLCColor.Red,
+    backgroundColor:'#D89E3C',
     borderRadius: 50
   }
 });

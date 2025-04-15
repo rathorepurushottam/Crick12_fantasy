@@ -6,12 +6,12 @@ import {
   Image,
   StatusBar,
   Linking,
-  Alert
+  Alert,
 } from 'react-native';
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { shareToAny } from '../helper/utility';
-import { AppSafeAreaView } from '../common/AppSafeAreaView';
+import {shareToAny} from '../helper/utility';
+import {AppSafeAreaView} from '../common/AppSafeAreaView';
 import {
   AppText,
   ELEVEN,
@@ -49,19 +49,33 @@ import {
   iconbell,
   rightArrow,
 } from '../helper/image';
-import { Button } from '../common/Button';
-import { SolidButton } from '../common/SolidButton';
-import { KeyBoardAware } from '../common/KeyboardAware';
-import { NLCColor, NewColor, colors } from '../theme/color';
-import { universalPaddingHorizontal } from '../theme/dimens';
+import {Button} from '../common/Button';
+import {SolidButton} from '../common/SolidButton';
+import {KeyBoardAware} from '../common/KeyboardAware';
+import {NLCColor, NewColor, colors} from '../theme/color';
+import {universalPaddingHorizontal} from '../theme/dimens';
 import FastImage from 'react-native-fast-image';
-import { TouchableOpacityView } from '../common/TouchableOpacityView';
+import {TouchableOpacityView} from '../common/TouchableOpacityView';
 import NavigationService from '../navigation/NavigationService';
 import MyBattleLogin from './MyBattleLogin';
-import { ADD_MONEY_SCREEN, MYBATTLELOGIN, MYBATTLEOTP, MYBATTLEREFEREARN, MY_BALANCE, TRANSACTION_SCREEN } from '../navigation/routes';
-import { HomeTopHeader } from '../common/HomeTopHeader';
+import {
+  ADD_MONEY_SCREEN,
+  MYBATTLELOGIN,
+  MYBATTLEOTP,
+  MYBATTLEREFEREARN,
+  MY_BALANCE,
+  TRANSACTION_SCREEN,
+} from '../navigation/routes';
+import {HomeTopHeader} from '../common/HomeTopHeader';
+import {useSelector} from 'react-redux';
 
 const ReferAndEarn = () => {
+  const userData = useSelector(state => {
+    return state.profile.userData;
+  });
+  let totalbalance =
+    userData?.winning_amount + userData?.cash_bonus + userData?.totaldeposit;
+
   const data = [
     {
       id: 1,
@@ -91,26 +105,27 @@ const ReferAndEarn = () => {
 
   return (
     <>
-      <AppSafeAreaView style={{ backgroundColor: "#111019" ,paddingBottom:'15%'}}>
-       <StatusBar
-        backgroundColor={'#111019'}
-        translucent={true}
-        networkActivityIndicatorVisible={true}
-        barStyle={"light-content"}
-       />
+      <AppSafeAreaView
+        style={{backgroundColor: '#111019', paddingBottom: '15%'}}>
+        <StatusBar
+          backgroundColor={'#111019'}
+          translucent={true}
+          networkActivityIndicatorVisible={true}
+          barStyle={'light-content'}
+        />
         <KeyBoardAware style={styles.bottomContainer}>
           <HomeTopHeader
             walletIcon={true}
-            personClick={() =>
-              NavigationService.openDrawer()
+            personClick={
+              () => NavigationService.openDrawer()
               // Alert.alert('aaj')
             }
           />
           <View>
             <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              colors={[ '#DBA63D39','#DBA63D99']}
+              start={{x: 0, y: 0}}
+              end={{x: 1, y: 0}}
+              colors={['#DBA63D39', '#DBA63D99']}
               style={styles.mainbox}>
               {data?.map(item => {
                 return (
@@ -120,21 +135,26 @@ const ReferAndEarn = () => {
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-
                       }}>
-                      <View style={{ marginTop: 10 }}>
-                        <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} color={WHITE}>
+                      <View style={{marginTop: 10}}>
+                        <AppText
+                          type={THIRTEEN}
+                          weight={POPPINS_MEDIUM}
+                          color={WHITE}>
                           {item.title}
                         </AppText>
-                        <AppText type={TWENTY_FIVE} weight={POPPINS_SEMI_BOLD} color={WHITE}>
-                          {item.balance}
+                        <AppText
+                          type={TWENTY_FIVE}
+                          weight={POPPINS_SEMI_BOLD}
+                          color={WHITE}>
+                          {Number(totalbalance).toFixed(1)}
                         </AppText>
                       </View>
 
                       <FastImage
                         source={item?.FastImage}
                         resizeMode="contain"
-                        style={{ height: 87, width: 78, right: 30 }}
+                        style={{height: 87, width: 78, right: 30}}
                       />
                     </View>
                     <View
@@ -146,11 +166,9 @@ const ReferAndEarn = () => {
                         marginTop: -15,
                       }}>
                       <LinearGradient
-                        colors={[
-                          '#DBA73E','#D89D3A','#D0AB5B','#E0C77D'
-                        ]}
-                        start={{ x: 1, y: 0 }}
-                        end={{ x: 0, y: 1 }}
+                        colors={['#DBA73E', '#D89D3A', '#D0AB5B', '#E0C77D']}
+                        start={{x: 1, y: 0}}
+                        end={{x: 0, y: 1}}
                         style={styles.box}>
                         <AppText
                           type={TWELVE}
@@ -159,22 +177,32 @@ const ReferAndEarn = () => {
                           {item.titletwo}
                         </AppText>
                         <AppText
-                          style={{ marginTop: 3 }}
+                          style={{marginTop: 3}}
                           type={FIFTEEN}
                           weight={SEMI_BOLD}
                           color={BLACK}>
-                          {item.deposit}
+                          ₹{userData.totaldeposit?.toFixed(2)}
                         </AppText>
-                        <TouchableOpacityView style={styles.depositbutton} onPress={() => NavigationService.navigate(ADD_MONEY_SCREEN)}>
+                        <TouchableOpacityView
+                          style={styles.depositbutton}
+                          onPress={() =>
+                            NavigationService.navigate(ADD_MONEY_SCREEN)
+                          }>
                           <View
-                            style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <AppText type={ELEVEN} color={WHITE} weight={POPPINS_LIGHT}>
+                            style={{
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                            }}>
+                            <AppText
+                              type={ELEVEN}
+                              color={WHITE}
+                              weight={POPPINS_LIGHT}>
                               Deposit
                             </AppText>
                             <FastImage
                               source={rightArrow}
                               resizeMode="contain"
-                              style={{ height: 10, width: 10, left: 25 }}
+                              style={{height: 10, width: 10, left: 25}}
                             />
                           </View>
                         </TouchableOpacityView>
@@ -187,11 +215,11 @@ const ReferAndEarn = () => {
                           {item.titlethree}
                         </AppText>
                         <AppText
-                          style={{ marginTop: 3 }}
+                          style={{marginTop: 3}}
                           type={FIFTEEN}
                           weight={SEMI_BOLD}
                           color={WHITE}>
-                          {item.deposit}
+                          ₹{userData.winning_amount}
                         </AppText>
                         <TouchableOpacityView
                           style={[
@@ -199,16 +227,25 @@ const ReferAndEarn = () => {
                             {
                               backgroundColor: NLCColor.shineRed,
                             },
-                          ]} onPress={() => NavigationService.navigate(MY_BALANCE)}>
+                          ]}
+                          onPress={() =>
+                            NavigationService.navigate(MY_BALANCE)
+                          }>
                           <View
-                            style={{ flexDirection: 'row', alignItems: 'center' }} >
-                            <AppText type={ELEVEN} color={WHITE} weight={POPPINS_LIGHT}>
+                            style={{
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                            }}>
+                            <AppText
+                              type={ELEVEN}
+                              color={WHITE}
+                              weight={POPPINS_LIGHT}>
                               Withdraw
                             </AppText>
                             <FastImage
                               source={rightArrow}
                               resizeMode="contain"
-                              style={{ height: 10, width: 10, left: 25 }}
+                              style={{height: 10, width: 10, left: 25}}
                             />
                           </View>
                         </TouchableOpacityView>
@@ -232,15 +269,15 @@ const ReferAndEarn = () => {
                           type={TWELVE}
                           weight={POPPINS_LIGHT}
                           color={WHITE}
-                          style={{ marginTop: 6 }}>
+                          style={{marginTop: 6}}>
                           {item.titlefour}
                         </AppText>
                         <AppText
-                          style={{ marginTop: 10 }}
+                          style={{marginTop: 10}}
                           type={FIFTEEN}
                           weight={SEMI_BOLD}
                           color={WHITE}>
-                          {item.deposit}
+                          ₹0
                         </AppText>
                       </View>
                       <View
@@ -254,15 +291,15 @@ const ReferAndEarn = () => {
                           type={TWELVE}
                           weight={POPPINS_LIGHT}
                           color={WHITE}
-                          style={{ marginTop: 6 }}>
+                          style={{marginTop: 6}}>
                           {item.titlefive}
                         </AppText>
                         <AppText
-                          style={{ marginTop: 10 }}
+                          style={{marginTop: 10}}
                           type={FIFTEEN}
                           weight={SEMI_BOLD}
                           color={WHITE}>
-                          {item.deposit}
+                          ₹{userData?.cash_bonus}
                         </AppText>
                       </View>
                     </View>
@@ -270,8 +307,10 @@ const ReferAndEarn = () => {
                 );
               })}
             </LinearGradient>
-            <View style={{ paddingHorizontal: 17 }}>
-              <TouchableOpacityView style={styles.histroymainbox} onPress={() => NavigationService.navigate(TRANSACTION_SCREEN)}>
+            <View style={{paddingHorizontal: 17}}>
+              <TouchableOpacityView
+                style={styles.histroymainbox}
+                onPress={() => NavigationService.navigate(TRANSACTION_SCREEN)}>
                 <AppText type={THIRTEEN} weight={POPPINS_MEDIUM} color={WHITE}>
                   Transaction History
                 </AppText>
@@ -279,7 +318,7 @@ const ReferAndEarn = () => {
                   source={rightArrow}
                   resizeMode="contain"
                   tintColor={colors.white}
-                  style={{ height: 15, width: 20 }}
+                  style={{height: 15, width: 20}}
                 />
               </TouchableOpacityView>
             </View>
@@ -325,7 +364,7 @@ const ReferAndEarn = () => {
       </AppSafeAreaView>
     </>
   );
-}
+};
 export default ReferAndEarn;
 
 const styles = StyleSheet.create({
@@ -334,24 +373,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: universalPaddingHorizontal,
-    marginTop: "10%"
+    marginTop: '10%',
   },
   iconbell: {
     height: 28,
     width: 28,
     right: -1,
-    position: "absolute",
+    position: 'absolute',
   },
   iconbellview: {
     height: 5,
     width: 5,
     backgroundColor: colors.brownish,
     borderRadius: 10,
-    alignContent: "flex-end",
+    alignContent: 'flex-end',
 
     marginBottom: 15,
-
-
   },
   mainbox: {
     paddingHorizontal: 20,
@@ -359,8 +396,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginTop: 25,
     borderRadius: 35,
-    borderColor:"#F0E6A54D",
-    borderWidth:1,
+    borderColor: '#F0E6A54D',
+    borderWidth: 1,
   },
   box: {
     height: 96,
@@ -381,7 +418,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: NLCColor.buttonWidthColor
+    borderColor: NLCColor.buttonWidthColor,
   },
   boxtwo: {
     height: 96,
@@ -408,9 +445,9 @@ const styles = StyleSheet.create({
     // borderColor:colors.rbBackground,
     shadowColor: NLCColor.white,
     shadowOpacity: 0.5,
-    elevation: 1
+    elevation: 1,
   },
   bottomContainer: {
     // backgroundColor: "#F8F8F8"
-  }
+  },
 });

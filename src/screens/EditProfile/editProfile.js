@@ -1,12 +1,12 @@
-import { View, Image, StyleSheet, StatusBar, Text } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
+import {View, Image, StyleSheet, StatusBar, Text} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 import moment from 'moment';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import ImagePicker from 'react-native-image-crop-picker';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import FastImage from 'react-native-fast-image';
-import { TouchableOpacityView } from '../../common/TouchableOpacityView';
+import {TouchableOpacityView} from '../../common/TouchableOpacityView';
 import {
   AppText,
   BLACK,
@@ -29,20 +29,20 @@ import {
   persons,
   placeholderImage,
 } from '../../helper/image';
-import { KeyBoardAware } from '../../common/KeyboardAware';
+import {KeyBoardAware} from '../../common/KeyboardAware';
 import RadioActive from '../../common/RadioActive';
 import RadioUnActive from '../../common/RadioUnActive';
-import { AppSafeAreaView } from '../../common/AppSafeAreaView';
+import {AppSafeAreaView} from '../../common/AppSafeAreaView';
 import CommonContainer from '../../common/Profile/commonContainer';
-import { fontFamilyPoppins } from '../../theme/typography';
-import { Primary, universalPaddingHorizontal } from '../../theme/dimens';
+import {fontFamilyPoppins} from '../../theme/typography';
+import {Primary, universalPaddingHorizontal} from '../../theme/dimens';
 import PrimaryButton from '../../common/primaryButton';
-import { editProfile } from '../../actions/profileAction';
-import { appOperation } from '../../appOperation';
-import { BaseUrl, IMAGE_BASE_URL } from '../../helper/utility';
+import {editProfile} from '../../actions/profileAction';
+import {appOperation} from '../../appOperation';
+import {BaseUrl, IMAGE_BASE_URL} from '../../helper/utility';
 import CommonImageBackground from '../../common/commonImageBackground';
-import { NLCColor, colors } from '../../theme/color';
-import { NewColor } from '../../theme/color';
+import {NLCColor, colors} from '../../theme/color';
+import {NewColor} from '../../theme/color';
 
 export default function EditProfile() {
   const isLoading = useSelector(state => {
@@ -58,7 +58,7 @@ export default function EditProfile() {
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const [gender, setGender] = useState('Male');
   const [profileImage, setProfileImage] = useState(null);
-  const [Address, setAddress] = useState(null)
+  const [Address, setAddress] = useState(null);
   const [imageUrl, setImageUrl] = useState(
     userData?.logo ? userData?.logo : null,
   );
@@ -143,10 +143,13 @@ export default function EditProfile() {
     setFullName(userData?.full_name);
     setEmail(userData?.email);
     setMobileNumber(`${userData?.mobile_number}`);
-    setGender(userData?.gender)
-    setAddress(userData?.address ? `${userData?.address?.house} ${userData?.address?.street} ${userData?.address?.dist}, ${userData?.address?.state}  ${userData?.address?.country}` : '')
+    setGender(userData?.gender);
+    setAddress(
+      userData?.address
+        ? `${userData?.address?.house} ${userData?.address?.street} ${userData?.address?.dist}, ${userData?.address?.state}  ${userData?.address?.country}`
+        : '',
+    );
   }, [userData]);
-
 
   // console.log(Address,"addressaddress")
   const confimCamera = useRef();
@@ -171,288 +174,306 @@ export default function EditProfile() {
         networkActivityIndicatorVisible={true}
       />
       {/* <CommonImageBackground common> */}
-        <Header
-          title={'Edit Profile'}
-          commonHeader
-          style={{ padding: universalPaddingHorizontal, }}
-        />
+      <Header
+        title={'Edit Profile'}
+        commonHeader
+        style={{padding: universalPaddingHorizontal}}
+      />
 
-        <KeyBoardAware style={{ flex: 1 }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-around',
-              width: '90%',
-              top: 10,
-            }}>
-            <TouchableOpacityView  onPress={() => {
-                  confimCamera.current.open();
-                }} style={styles.avtarContainer}>
-              <Image
-                style={[styles?.avtharImage]}
-                source={
-                  profileImage?.uri
-                    ? { uri: profileImage?.uri }
-                    : userData?.logo
-                      ? { uri: `${BaseUrl}${userData?.logo}` }
-                      : UserIcon
-                }
-              />
-              <TouchableOpacityView
-                onPress={() => {
-                  confimCamera.current.open();
-                }}
-                style={styles.cameraContainer}>
-                <Image source={camera} style={styles.cameraIcon} tintColor={NLCColor.white} />
-              </TouchableOpacityView>
-            </TouchableOpacityView>
-            <View>
-              <AppText type={EIGHTEEN} color={WHITE} weight={POPPINS_SEMI_BOLD}>
-                {userData?.full_name ? userData?.full_name : `My Profile`}
-              </AppText>
-
-              {
-                checkKYC ?
-                  <View style={styles.verifiedContainer}><Text style={{ fontSize: 10, color: '#222', fontWeight: "500" }}>Kyc Verified</Text></View>
-                  :
-                  <View style={styles.notVerifiedCOntainer}><Text style={{ fontSize: 10, color: '#222', fontWeight: "500" }}>Kyc Not Verified</Text></View>
-
-              }
-            </View>
-          </View>
-          <CommonContainer style={styles.InputBoxWrapper}>
-          
-
-            <View
-              style={{
-                paddingHorizontal: 10,
-                paddingVertical: 20,
-                width: '100%',
-                backgroundColor:"#3F3F3F",
-                borderRadius:10
-              }}>
-              <InputBox
-                placeholderTextColor={'#999999'}
-                label={'Full Name'}
-                value={fullName}
-                keyboardType="default"
-                placeholder={'Enter your name'}
-                onChange={setFullName}
-                textInputBox={styles.textInputBox}
-                labelStyle={styles.label}
-                editable={userData?.full_name ? false : true}
-              />
-            
-              <AppText
-              color={WHITE}
-                type={FORTEEN}
-                weight={POPPINS_MEDIUM}
-                style={[styles.label, { marginTop: 20 }]}>
-                Gender
-              </AppText>
-
-              <View style={styles.radioContainer}>
-                <TouchableOpacityView
-                disable = {userData?.gender ? true : false}                
-                  style={styles.radioWrapper}
-                  onPress={() => setGender('Male')}>
-                  {gender == 'Male' ? <RadioActive /> : <RadioUnActive />}
-
-                  <AppText type={ELEVEN} weight={POPPINS} color={WHITE}>
-                    Male
-                  </AppText>
-                </TouchableOpacityView>
-                <TouchableOpacityView
-                  disable = {userData?.gender ? true : false}                
-                  style={styles.radioWrapper}
-                  onPress={() => setGender('Female')}>
-                  {gender == 'Female' ? <RadioActive /> : <RadioUnActive />}
-
-                  <AppText type={ELEVEN} weight={POPPINS} color={WHITE}>
-                    Female
-                  </AppText>
-                </TouchableOpacityView>
-              </View>
-              <InputBox
-                label={'Mobile number'}
-                value={mobileNumber}
-                placeholder={'Enter mobile number'}
-                onChange={setMobileNumber}
-                placeholderTextColor={colors.grey}
-                textInputBox={styles.textInputBox}
-                labelStyle={[styles.label, { marginTop: 20 }]}
-                editable={false}
-              />
-
-              <TouchableOpacityView disable={userData?.dob ? true : false} onPress={showDatePicker}>
-                <View style={styles.InputBoxContainer}>
-                  <AppText
-                  color={WHITE}
-                    type={FORTEEN}
-                    weight={POPPINS_MEDIUM} 
-                    style={[styles.label, { marginTop: 20 }]}>
-                    DOB
-                  </AppText>
-
-                  <View
-                    style={[
-                      styles.InputBox,
-                      {
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        backgroundColor:"#1E1C2A"
-                      },
-                    ]}>
-                    <AppText
-                    color={WHITE}
-                      style={{
-                        marginLeft: 5,
-                      }}
-                      weight={POPPINS_MEDIUM}
-                      type={TEN}
-                    >
-                      {dateOfBirth && dateOfBirth}
-                    </AppText>
-                    <TouchableOpacityView
-                    disable={userData?.dob ? true : false}
-                      onPress={() => {
-                        setIsDatePickerVisible(true);
-                      }}
-                      style={{
-                        marginLeft: 'auto',
-                        marginEnd: 10,
-                      }}>
-                      <FastImage style={styles.calandar} source={calender} tintColor={colors.white} />
-                    </TouchableOpacityView>
-                  </View>
-
-                </View>
-              </TouchableOpacityView>
-
-                  <AppText
-                    type={FORTEEN}
-                    color={WHITE}
-                    weight={POPPINS_MEDIUM} 
-                    style={[styles.label,]}>
-                    Address
-                  </AppText>
-          <View
-            style={ [Address ? { } : {},{
-              borderWidth: 1,
-              borderColor: "#2B2839",
-              borderRadius: 12,
-              backgroundColor: "#2B2839",
-              height: 80,
-              justifyContent: "center",
-              paddingHorizontal: 10
-            }]}
-          >
-            <AppText style={{ color: colors.white }} weight={POPPINS_MEDIUM}>
-              {Address ? Address : 'Address'}
-            </AppText>
-          </View>
-            </View>
-          </CommonContainer>
-        </KeyBoardAware>
+      <KeyBoardAware style={{flex: 1}}>
         <View
           style={{
-            paddingHorizontal: universalPaddingHorizontal,
-            paddingVertical: 10,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            width: '90%',
+            top: 10,
           }}>
-          <PrimaryButton
-            onPress={() => handleSubmit()}
-            buttonStyle={{
-              marginHorizontal: universalPaddingHorizontal,
+          <TouchableOpacityView
+            onPress={() => {
+              confimCamera.current.open();
             }}
-            title="SAVE"
-          />
+            style={styles.avtarContainer}>
+            <Image
+              style={[styles?.avtharImage]}
+              source={
+                profileImage?.uri
+                  ? {uri: profileImage?.uri}
+                  : userData?.logo
+                  ? {uri: `${BaseUrl}${userData?.logo}`}
+                  : UserIcon
+              }
+            />
+            <TouchableOpacityView
+              onPress={() => {
+                confimCamera.current.open();
+              }}
+              style={styles.cameraContainer}>
+              <Image
+                source={camera}
+                style={styles.cameraIcon}
+                tintColor={NLCColor.white}
+              />
+            </TouchableOpacityView>
+          </TouchableOpacityView>
+          <View>
+            <AppText type={EIGHTEEN} color={WHITE} weight={POPPINS_SEMI_BOLD}>
+              {userData?.full_name ? userData?.full_name : 'My Profile'}
+            </AppText>
+
+            {checkKYC ? (
+              <View style={styles.verifiedContainer}>
+                <Text style={{fontSize: 10, color: '#222', fontWeight: '500'}}>
+                  Kyc Verified
+                </Text>
+              </View>
+            ) : (
+              <View style={styles.notVerifiedCOntainer}>
+                <Text style={{fontSize: 10, color: '#222', fontWeight: '500'}}>
+                  Kyc Not Verified
+                </Text>
+              </View>
+            )}
+          </View>
         </View>
-        <DateTimePickerModal
-          isVisible={isDatePickerVisible}
-          mode="date"
-          onConfirm={handleConfirm}
-          onCancel={hideDatePicker}
-          maximumDate={moment().subtract(18, 'years').toDate()}
-        />
+        <CommonContainer style={styles.InputBoxWrapper}>
+          <View
+            style={{
+              paddingHorizontal: 10,
+              paddingVertical: 20,
+              width: '100%',
+              backgroundColor: '#3F3F3F',
+              borderRadius: 10,
+            }}>
+            <InputBox
+              placeholderTextColor={'#999999'}
+              label={'Full Name'}
+              value={fullName}
+              keyboardType="default"
+              placeholder={'Enter your name'}
+              onChange={setFullName}
+              textInputBox={styles.textInputBox}
+              labelStyle={styles.label}
+              editable={userData?.full_name ? false : true}
+            />
 
-        <RBSheet
-          ref={confimCamera}
-          closeOnDragDown={true}
-          height={200}
-          customStyles={{
-            container: {
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
-            },
-            draggableIcon: {
-              display: 'none',
-            },
-          }}>
-          <View style={styles.cameratypeSelect}>
-            <View style={styles.header}>
+            <AppText
+              color={WHITE}
+              type={FORTEEN}
+              weight={POPPINS_MEDIUM}
+              style={[styles.label, {marginTop: 20}]}>
+              Gender
+            </AppText>
+
+            <View style={styles.radioContainer}>
               <TouchableOpacityView
-                style={styles.closeIcon}
-                onPress={() => confimCamera?.current?.close()}>
-                <FastImage
-                  tintColor={colors.white}
-                  source={closeIcon}
-                  style={{ height: 12, width: 12 }}
-                />
+                disable={userData?.gender ? true : false}
+                style={styles.radioWrapper}
+                onPress={() => setGender('Male')}>
+                {gender == 'Male' ? <RadioActive /> : <RadioUnActive />}
+
+                <AppText type={ELEVEN} weight={POPPINS} color={WHITE}>
+                  Male
+                </AppText>
               </TouchableOpacityView>
-              <AppText color={WHITE} weight={POPPINS_SEMI_BOLD}>Select </AppText>
+              <TouchableOpacityView
+                disable={userData?.gender ? true : false}
+                style={styles.radioWrapper}
+                onPress={() => setGender('Female')}>
+                {gender == 'Female' ? <RadioActive /> : <RadioUnActive />}
+
+                <AppText type={ELEVEN} weight={POPPINS} color={WHITE}>
+                  Female
+                </AppText>
+              </TouchableOpacityView>
             </View>
+            <InputBox
+              label={'Mobile number'}
+              value={mobileNumber}
+              placeholder={'Enter mobile number'}
+              onChange={setMobileNumber}
+              placeholderTextColor={colors.grey}
+              textInputBox={styles.textInputBox}
+              labelStyle={[styles.label, {marginTop: 20}]}
+              editable={false}
+            />
 
-            <View style={styles.cameratypeSelectInside}>
-              <TouchableOpacityView onPress={onCamSelect}>
-                <View
-                  style={[
-                    styles.cameraContainer,
-                    {
-                      position: 'relative',
-                      right: 0,
-                      bottom: 0,
-                      alignSelf: 'center',
-                    },
-                  ]}>
-                  <Image source={camera} style={styles.cameraIcon} />
-                </View>
-
+            <TouchableOpacityView
+              disable={userData?.dob ? true : false}
+              onPress={showDatePicker}>
+              <View style={styles.InputBoxContainer}>
                 <AppText
+                  color={WHITE}
+                  type={FORTEEN}
                   weight={POPPINS_MEDIUM}
-                  style={{
-                    marginTop: 10,
-                  }}>
-                  Use Camera
+                  style={[styles.label, {marginTop: 20}]}>
+                  DOB
                 </AppText>
-              </TouchableOpacityView>
-              <TouchableOpacityView onPress={onGalerySelect}>
+
                 <View
                   style={[
-                    styles.cameraContainer,
+                    styles.InputBox,
                     {
-                      position: 'relative',
-                      right: 0,
-                      bottom: 0,
-                      alignSelf: 'center',
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      backgroundColor: '#1E1C2A',
                     },
                   ]}>
-                  <Image
-                    source={{
-                      uri: 'data:image/png;base64,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',
+                  <AppText
+                    color={WHITE}
+                    style={{
+                      marginLeft: 5,
                     }}
-                    style={styles.cameraIcon}
-                  />
+                    weight={POPPINS_MEDIUM}
+                    type={TEN}>
+                    {dateOfBirth && dateOfBirth}
+                  </AppText>
+                  <TouchableOpacityView
+                    disable={userData?.dob ? true : false}
+                    onPress={() => {
+                      setIsDatePickerVisible(true);
+                    }}
+                    style={{
+                      marginLeft: 'auto',
+                      marginEnd: 10,
+                    }}>
+                    <FastImage
+                      style={styles.calandar}
+                      source={calender}
+                      tintColor={colors.white}
+                    />
+                  </TouchableOpacityView>
                 </View>
+              </View>
+            </TouchableOpacityView>
 
-                <AppText weight={POPPINS_MEDIUM} style={{ marginTop: 10 }}>
-                  Use Gallery
-                </AppText>
-              </TouchableOpacityView>
+            <AppText
+              type={FORTEEN}
+              color={WHITE}
+              weight={POPPINS_MEDIUM}
+              style={[styles.label]}>
+              Address
+            </AppText>
+            <View
+              style={[
+                Address ? {} : {},
+                {
+                  borderWidth: 1,
+                  borderColor: '#2B2839',
+                  borderRadius: 12,
+                  backgroundColor: '#2B2839',
+                  height: 80,
+                  justifyContent: 'center',
+                  paddingHorizontal: 10,
+                },
+              ]}>
+              <AppText style={{color: colors.white}} weight={POPPINS_MEDIUM}>
+                {Address ? Address : 'Address'}
+              </AppText>
             </View>
           </View>
-        </RBSheet>
+        </CommonContainer>
+      </KeyBoardAware>
+      <View
+        style={{
+          paddingHorizontal: universalPaddingHorizontal,
+          paddingVertical: 10,
+        }}>
+        <PrimaryButton
+          onPress={() => handleSubmit()}
+          buttonStyle={{
+            marginHorizontal: universalPaddingHorizontal,
+          }}
+          title="SAVE"
+        />
+      </View>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+        maximumDate={moment().subtract(18, 'years').toDate()}
+      />
+
+      <RBSheet
+        ref={confimCamera}
+        closeOnDragDown={true}
+        height={200}
+        customStyles={{
+          container: {
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+          },
+          draggableIcon: {
+            display: 'none',
+          },
+        }}>
+        <View style={styles.cameratypeSelect}>
+          <View style={styles.header}>
+            <TouchableOpacityView
+              style={styles.closeIcon}
+              onPress={() => confimCamera?.current?.close()}>
+              <FastImage
+                tintColor={colors.white}
+                source={closeIcon}
+                style={{height: 12, width: 12}}
+              />
+            </TouchableOpacityView>
+            <AppText color={WHITE} weight={POPPINS_SEMI_BOLD}>
+              Select{' '}
+            </AppText>
+          </View>
+
+          <View style={styles.cameratypeSelectInside}>
+            <TouchableOpacityView onPress={onCamSelect}>
+              <View
+                style={[
+                  styles.cameraContainer,
+                  {
+                    position: 'relative',
+                    right: 0,
+                    bottom: 0,
+                    alignSelf: 'center',
+                  },
+                ]}>
+                <Image source={camera} style={styles.cameraIcon} />
+              </View>
+
+              <AppText
+                weight={POPPINS_MEDIUM}
+                style={{
+                  marginTop: 10,
+                }}>
+                Use Camera
+              </AppText>
+            </TouchableOpacityView>
+            <TouchableOpacityView onPress={onGalerySelect}>
+              <View
+                style={[
+                  styles.cameraContainer,
+                  {
+                    position: 'relative',
+                    right: 0,
+                    bottom: 0,
+                    alignSelf: 'center',
+                  },
+                ]}>
+                <Image
+                  source={{
+                    uri: 'data:image/png;base64,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',
+                  }}
+                  style={styles.cameraIcon}
+                />
+              </View>
+
+              <AppText weight={POPPINS_MEDIUM} style={{marginTop: 10}}>
+                Use Gallery
+              </AppText>
+            </TouchableOpacityView>
+          </View>
+        </View>
+      </RBSheet>
       {/* </CommonImageBackground> */}
     </AppSafeAreaView>
   );
@@ -489,7 +510,7 @@ const styles = StyleSheet.create({
   cameraContainer: {
     width: 24,
     height: 24,
-    backgroundColor:'#DBA63D',
+    backgroundColor: '#DBA63D',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -510,7 +531,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
     marginTop: 30,
     backgroundColor: NLCColor.background,
-    borderRadius: 10
+    borderRadius: 10,
   },
   userIcon: {
     flexDirection: 'row',
@@ -540,8 +561,6 @@ const styles = StyleSheet.create({
   },
   InputBoxContainer: {
     marginBottom: 10,
-    
-
   },
   InputBoxLabel: {
     color: colors.white,
@@ -549,7 +568,7 @@ const styles = StyleSheet.create({
   },
   InputBox: {
     backgroundColor: colors.white,
-    borderRadius: 6,
+    // borderRadius: 6,
     width: '100%',
     color: 'white',
     paddingLeft: 10,
@@ -601,7 +620,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     flex: 1,
     backgroundColor: '#1E1C2A',
-    color:"#fff",
+    color: '#fff',
     // borderWidth:1,
   },
 
@@ -612,21 +631,24 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingHorizontal: 10,
     // width: "45%"
-    alignSelf:'center'
+    alignSelf: 'center',
   },
-  notVerifiedCOntainer: {  backgroundColor: '#EAD288', borderRadius: 4, padding: 4,    alignSelf:'center'
+  notVerifiedCOntainer: {
+    backgroundColor: '#EAD288',
+    borderRadius: 4,
+    padding: 4,
+    alignSelf: 'center',
   },
-  cameratypeSelectInside:{
-    flexDirection:'row',
-    justifyContent:'space-evenly',
-    alignItems:'center',
-    marginTop:"10%"
-  }
+  // cameratypeSelectInside: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-evenly',
+  //   alignItems: 'center',
+  //   marginTop: '10%',
+  // },
 });
 
-
-
-  {/* <InputBox
+{
+  /* <InputBox
                 placeholderTextColor={colors.grey}
                 label={'Email'}
                 editable={userData?.email ? false : true}
@@ -636,9 +658,11 @@ const styles = StyleSheet.create({
                 onChange={setEmail}
                 textInputBox={styles.textInputBox}
                 labelStyle={[styles.label, { marginTop: 20 }]}
-              /> */}
+              /> */
+}
 
-                {/* <View style={{marginBottom: 30, marginHorizontal: 20}}>
+{
+  /* <View style={{marginBottom: 30, marginHorizontal: 20}}>
             <Button
               style={{width: '100%', height: 45 }}
               onPress={() => {
@@ -646,10 +670,10 @@ const styles = StyleSheet.create({
               }}>
               {'SAVE'}
             </Button>
-          </View> */}
+          </View> */
+}
 
-          
-              {/* <InputBox
+/* <InputBox
                 placeholderTextColor={colors.grey}
                 label={'Address'}
                 editable={ false}
@@ -659,4 +683,4 @@ const styles = StyleSheet.create({
                 onChange={(val)=>setAddress(val)}
                 textInputBox={styles.textInputBox}
                 labelStyle={[styles.label, { marginTop: 20 }]}
-              /> */}
+              /> */

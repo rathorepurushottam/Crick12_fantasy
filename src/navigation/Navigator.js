@@ -185,7 +185,7 @@ const RootStackScreen = () => (
       options={{headerShown: false}}
     /> */}
 
-<Stack.Screen
+    <Stack.Screen
       name={'DrawerNavigationStack'}
       component={DrawerMainTab}
       options={{headerShown: false}}
@@ -239,8 +239,8 @@ const RootStackScreen = () => (
     <Stack.Screen name={MYBATTLELOGIN} component={MyBattleLogin} />
     <Stack.Screen name={MYBATTLEOTP} component={MyBattleOtp} />
     <Stack.Screen name={MYBATTLEREFEREARN} component={MyBattleReferEarn} />
-    <Stack.Screen name = "AadharConfirmation" component={AadharConfirmation}/>
-    <Stack.Screen name = "PanConfirmation" component={PanConfirmation}/>
+    <Stack.Screen name="AadharConfirmation" component={AadharConfirmation} />
+    <Stack.Screen name="PanConfirmation" component={PanConfirmation} />
   </Stack.Navigator>
 );
 
@@ -261,32 +261,30 @@ const AuthStack = () => {
   );
 };
 
-
-const DrawerMainTab = ()=>{
+const DrawerMainTab = () => {
   const Drawer = createDrawerNavigator();
   return (
-  <Drawer.Navigator
-  initialRouteName={BOTTOM_NAVIGATION_STACK}
-  drawerContent={(props) => <CustomDrawer {...props} />}
-  screenOptions={{
-    headerShown: false,
-    drawerType: "front", // Drawer slides over content
-    overlayColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
-  }}
->
-  <Drawer.Screen
-    name={BOTTOM_NAVIGATION_STACK}
-    component={BottomMainTab}
-    options={{
-      drawerStyle: {
-        width: "80%",
-      },
-      sceneContainerStyle: { backgroundColor: "transparent" },
-    }}
-  />
-</Drawer.Navigator>
-  )
-}
+    <Drawer.Navigator
+      initialRouteName={BOTTOM_NAVIGATION_STACK}
+      drawerContent={props => <CustomDrawer {...props} />}
+      screenOptions={{
+        headerShown: false,
+        drawerType: 'front', // Drawer slides over content
+        overlayColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent overlay
+      }}>
+      <Drawer.Screen
+        name={BOTTOM_NAVIGATION_STACK}
+        component={BottomMainTab}
+        options={{
+          drawerStyle: {
+            width: '80%',
+          },
+          sceneContainerStyle: {backgroundColor: 'transparent'},
+        }}
+      />
+    </Drawer.Navigator>
+  );
+};
 
 const HomeStack = () => (
   <Stack.Navigator
@@ -329,9 +327,9 @@ const WalletStack = () => (
 
 const ProfileStack = () => (
   <Drawer.Navigator
-  screenOptions={{
-    headerShown: false,
-  }}>
+    screenOptions={{
+      headerShown: false,
+    }}>
     <Stack.Screen
       name={MYBATTLEREFEREARN}
       component={MyBattleReferEarn}
@@ -357,21 +355,21 @@ const BottomMainTab = () => {
         //   borderTopRightRadius: 20,
         //   borderTopLeftRadius: 20,
         // },
-        
+
         tabBarStyle: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor:colors.bottomTabBackGround, 
-        height: Platform.OS === 'ios' ? 80 : 60,
-        paddingVertical: 10,
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
-        elevation: 0,
-        zIndex: 1, 
-        borderTopColor:colors.bottomTabBackGround
-      },        
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          backgroundColor: colors.bottomTabBackGround,
+          height: Platform.OS === 'ios' ? 80 : 60,
+          paddingVertical: 10,
+          borderTopRightRadius: 20,
+          borderTopLeftRadius: 20,
+          elevation: 0,
+          zIndex: 1,
+          borderTopColor: colors.bottomTabBackGround,
+        },
         tabBarAllowFontScaling: false,
         tabBarShowLabel: false,
       }}>
@@ -389,7 +387,7 @@ const BottomMainTab = () => {
                   tintColor={'#DBA63D'}
                 />
               ) : (
-                <View style={{width: 33, height: 12, marginTop: -12}}></View>
+                <View style={{width: 33, height: 12, marginTop: -12}} />
               )}
               <FastImage
                 source={focused ? homeLinerIcon : home_icon}
@@ -425,7 +423,7 @@ const BottomMainTab = () => {
                   tintColor={'#DBA63D'}
                 />
               ) : (
-                <View style={{width: 33, height: 12, marginTop: -12}}></View>
+                <View style={{width: 33, height: 12, marginTop: -12}} />
               )}
               <FastImage
                 source={focused ? contestLinerIcon : contest_icon}
@@ -468,7 +466,8 @@ const BottomMainTab = () => {
                     height: 12,
                     marginTop: -15,
                     marginLeft: 6,
-                  }}></View>
+                  }}
+                />
               )}
               <FastImage
                 tintColor={focused ? '#DBA63D' : NLCColor.tabColor}
@@ -506,7 +505,7 @@ const BottomMainTab = () => {
                   tintColor={'#DBA63D'}
                 />
               ) : (
-                <View style={{width: 33, height: 12, marginTop: -14}}></View>
+                <View style={{width: 33, height: 12, marginTop: -14}} />
               )}
               <FastImage
                 tintColor={focused ? '#DBA63D' : NLCColor.tabColor}
@@ -531,7 +530,6 @@ const BottomMainTab = () => {
     </BottomTab.Navigator>
   );
 };
-
 
 const HomeDrawer = ({navigation}) => {
   const isFocused = useIsFocused();

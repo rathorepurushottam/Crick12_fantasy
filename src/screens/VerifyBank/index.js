@@ -34,6 +34,7 @@ const VerifyBank = () => {
   const [ifsc, setIfsc] = useState('');
   const [isbank, setBank] = useState('');
   const [branch, setBranch] = useState('');
+  const [name, setName] = useState('');
   const [state, setState] = useState('Rajasthan');
   const [imageData, setImageData] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
@@ -81,6 +82,7 @@ const VerifyBank = () => {
         ifsc_code: ifsc,
         bank_name: isbank,
         branch_name: branch,
+        account_holder_name: name,
       }
       console.log(data,"BankDataa")
       dispatch(bankVerifiy(data));
@@ -146,7 +148,8 @@ const VerifyBank = () => {
     setAccountNoRe(kycDetails?.bank_details?.account_number);
     setIfsc(kycDetails?.bank_details?.ifsc);
     setBank(kycDetails?.bank_details?.bank_name);
-    setBranch(kycDetails?.bank_details?.branch_name)
+    setBranch(kycDetails?.bank_details?.branch_name);
+    setName(kycDetails?.bank_details?.account_holder_name);
   },[kycDetails])
 
 
@@ -216,6 +219,17 @@ const VerifyBank = () => {
               maxLength={17}
               editable={kycDetails?.bank_details?.account_number ? false : true}
 
+            />
+            <InputBox
+              placeholder="Your Account Holder name"
+              value={name}
+              placeholderTextColor={colors.gray}
+              labelStyle={[styles.label, { marginTop: 15 }]}
+              label="Account Holder Name"
+              returnKeyType="next"
+              onChange={value => setName(value)}
+              textInputBox={styles.textInputBox}
+              editable={kycDetails?.bank_details?.branch_name ? false : true}
             />
             <InputBox
               placeholder="Enter 11 digit IFSC code"

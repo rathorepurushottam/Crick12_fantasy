@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useState, useRef, useEffect } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   ScrollView,
@@ -7,7 +7,7 @@ import {
   StyleSheet,
   RefreshControl,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   AppText,
   BLACK,
@@ -20,25 +20,24 @@ import {
 } from '../../common/AppText';
 import MatchCard from '../../components/matchCard/MatchCard';
 import ViewAll from '../../components/matchCard/viewAll/ViewAll';
-import Matchsection, { getDate } from './Matchsection';
-import { BOTTOM_TAB_CONTEST_SCREEN } from '../../navigation/routes';
+import Matchsection, {getDate} from './Matchsection';
+import {BOTTOM_TAB_CONTEST_SCREEN} from '../../navigation/routes';
 import NavigationService from '../../navigation/NavigationService';
-import { universalPaddingHorizontal } from '../../theme/dimens';
-import { setMyMatchesHome, setUpComingMatches } from '../../slices/matchSlice';
-import { KeyBoardAware } from '../../common/KeyboardAware';
-import { BaseUrl } from '../../helper/utility';
-import { parse } from 'react-native-svg';
+import {universalPaddingHorizontal} from '../../theme/dimens';
+import {setMyMatchesHome, setUpComingMatches} from '../../slices/matchSlice';
+import {KeyBoardAware} from '../../common/KeyboardAware';
+import {BaseUrl} from '../../helper/utility';
+
 const search = element => getDate(element).hour < 0;
-const Cricket = ({ random, setRefreshingTwo }) => {
+const Cricket = ({random, setRefreshingTwo}) => {
   const dispatch = useDispatch();
   const wsRef = useRef(null);
   const upcomingMatches = useSelector(state => state.match.upcomingMatches);
-  console.log(upcomingMatches,"upcomingMatchesupcomingMatchesupcomingMatches")
   const myMatchesHome = useSelector(state => state.match.myMatchesHome);
   const userData = useSelector(state => {
     return state.profile.userData;
   });
-  const { _id } = userData ?? '';
+  const {_id} = userData ?? '';
   const [isMoadlVisible, setIsModalVisible] = useState(false);
   const [intro, setIntro] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -48,11 +47,11 @@ const Cricket = ({ random, setRefreshingTwo }) => {
 
   useEffect(() => {
     if (_id && _id) {
-      onRefresh(_id)
+      onRefresh(_id);
     } else {
-      console.log('Hellooo')
+      console.log('Hellooo');
     }
-  }, [random])
+  }, [random]);
   useEffect(() => {
     const interval = setInterval(() => {
       const itemIndex = upcomingMatches?.findIndex(search);
@@ -69,69 +68,77 @@ const Cricket = ({ random, setRefreshingTwo }) => {
       dispatch(setUpComingMatches(upcomingMatches));
     }
   }, [upcomingMatches]);
-  const onRefresh = React.useCallback((_id) => {
-    console.log(_id,"idddddddd")
-    const URL = `${BaseUrl}upcoming-matches?limit=10&skip=0&userid=${_id}`;
+  const onRefresh = React.useCallback(
+    _id => {
+      console.log(_id, 'idddddddd');
+      const URL = `${BaseUrl}upcoming-matches?limit=10&skip=0&userid=${_id}`;
 
-    setRefreshing(true);
-    setRefreshingTwo(true);
-    if (isConnected && wsRef.current) {
-      wsRef.current.close();
-      setIsConnected(false);
-    }
-    try {
-      wsRef.current = new WebSocket(URL);
-      wsRef.current.onopen = () => {
-        setIsConnected(true); 
-      };
-      if (!wsRef.current) return;
-      wsRef.current.onmessage = e => {
-        const parseData = JSON.parse(e?.data);
-        console.log(parseData,"ParseFDataaaaaa")
-        let temp = parseData?.upcoming?.sort((a, b) => {
-          return a?.contest_details?.length < b?.contest_details?.length;
-        });
-        dispatch(setUpComingMatches(temp));
-        dispatch(setMyMatchesHome(parseData?.mymatches));
-      };
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setRefreshingTwo(false);
-      setRefreshing(false);
-    }
-  }, [isConnected]);
+      setRefreshing(true);
+      setRefreshingTwo(true);
+      if (isConnected && wsRef.current) {
+        wsRef.current.close();
+        setIsConnected(false);
+      }
+      try {
+        wsRef.current = new WebSocket(URL);
+        wsRef.current.onopen = () => {
+          setIsConnected(true);
+        };
+        if (!wsRef.current) {
+          return;
+        }
+        wsRef.current.onmessage = e => {
+          const parseData = JSON.parse(e?.data);
+          // console.log(parseData, 'ParseFDataaaaaa');
+          let temp = parseData?.upcoming?.sort((a, b) => {
+            return a?.contest_details?.length < b?.contest_details?.length;
+          });
+          dispatch(setUpComingMatches(temp));
+          dispatch(setMyMatchesHome(parseData?.mymatches));
+        };
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setRefreshingTwo(false);
+        setRefreshing(false);
+      }
+    },
+    [isConnected],
+  );
 
-
-  const getData = React.useCallback((_id) => {
-    const URL = `${BaseUrl}upcoming-matches?limit=10&skip=0&userid=${_id}`;
-    if (isConnected && wsRef.current) {
-      wsRef.current.close();
-      setIsConnected(false);
-    }
-    try {
-      wsRef.current = new WebSocket(URL);
-      wsRef.current.onopen = () => {
-        setIsConnected(true);
-      };
-      if (!wsRef.current) return;
-      wsRef.current.onmessage = e => {
-        const parseData = JSON.parse(e?.data);
-        console.log(parseData,"parsedatataa2222")
-        let temp = parseData?.upcoming?.sort((a, b) => {
-          return a?.contest_details?.length < b?.contest_details?.length;
-        });
-        console.log(temp,"tempppppppp")
-        dispatch(setUpComingMatches(temp));
-        dispatch(setMyMatchesHome(parseData?.mymatches));
-      };
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setRefreshing(false);
-    }
-  }, [isConnected]);
-
+  const getData = React.useCallback(
+    _id => {
+      const URL = `${BaseUrl}upcoming-matches?limit=10&skip=0&userid=${_id}`;
+      if (isConnected && wsRef.current) {
+        wsRef.current.close();
+        setIsConnected(false);
+      }
+      try {
+        wsRef.current = new WebSocket(URL);
+        wsRef.current.onopen = () => {
+          setIsConnected(true);
+        };
+        if (!wsRef.current) {
+          return;
+        }
+        wsRef.current.onmessage = e => {
+          const parseData = JSON.parse(e?.data);
+          // console.log(parseData, 'parsedatataa2222');
+          let temp = parseData?.upcoming?.sort((a, b) => {
+            return a?.contest_details?.length < b?.contest_details?.length;
+          });
+          // console.log(temp, 'tempppppppp');
+          dispatch(setUpComingMatches(temp));
+          dispatch(setMyMatchesHome(parseData?.mymatches));
+        };
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setRefreshing(false);
+      }
+    },
+    [isConnected],
+  );
 
   useEffect(() => {
     if (_id && _id) {
@@ -148,7 +155,6 @@ const Cricket = ({ random, setRefreshingTwo }) => {
     }
   }, [_id, userData]);
 
-
   return (
     <View style={styles.container}>
       {myMatchesHome?.length !== 0 && (
@@ -158,11 +164,10 @@ const Cricket = ({ random, setRefreshingTwo }) => {
               My Matches
             </AppText>
             <ViewAll
-              onPress={() =>{
-                console.log("Pressed")
-                NavigationService.navigate('Contest')
-              }
-              }
+              onPress={() => {
+                console.log('Pressed');
+                NavigationService.navigate('Contest');
+              }}
             />
           </View>
           <View style={styles.two}>
@@ -190,7 +195,8 @@ const Cricket = ({ random, setRefreshingTwo }) => {
           marginHorizontal: universalPaddingHorizontal,
         }}
         type={EIGHTEEN}
-        weight={POPPINS_BOLD} color={WHITE}>
+        weight={POPPINS_BOLD}
+        color={WHITE}>
         Upcoming Matches
       </AppText>
       <KeyBoardAware
@@ -209,7 +215,7 @@ const Cricket = ({ random, setRefreshingTwo }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#111019"
+    backgroundColor: '#111019',
   },
   one: {
     flexDirection: 'row',

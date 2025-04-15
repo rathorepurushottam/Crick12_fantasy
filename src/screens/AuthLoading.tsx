@@ -1,14 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getUserProfile } from '../actions/profileAction';
-import { AppSafeAreaView } from '../common/AppSafeAreaView';
-import { SpinnerSecond } from '../common/SpinnerSecond';
+import React, {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {getUserProfile} from '../actions/profileAction';
+import {AppSafeAreaView} from '../common/AppSafeAreaView';
+import {SpinnerSecond} from '../common/SpinnerSecond';
 import NavigationService from '../navigation/NavigationService';
-import { AUTHSTACK, LOGIN, MYBATTLEOTP, OTP } from '../navigation/routes';
-import { USER_TOKEN_KEY } from '../helper/Constants';
+import {AUTHSTACK, LOGIN, MYBATTLEOTP, OTP} from '../navigation/routes';
+import {USER_TOKEN_KEY} from '../helper/Constants';
 import FastImage from 'react-native-fast-image';
-import { splashScreen, splashScreen1 } from '../helper/image';
+import {splashScreen, splashScreen1} from '../helper/image';
 
 const AuthLoading = () => {
   const dispatch = useDispatch();
@@ -22,9 +22,9 @@ const AuthLoading = () => {
       if (token) {
         dispatch(getUserProfile(true, false));
       } else {
-        setTimeout(()=>{
+        setTimeout(() => {
           NavigationService.navigate(AUTHSTACK);
-        },2000)
+        }, 2000);
       }
     } catch (e) {
       console.log(e);
@@ -32,7 +32,11 @@ const AuthLoading = () => {
   };
   return (
     <AppSafeAreaView>
-      <FastImage source={splashScreen1} resizeMode='contain' style={{flex:1}} />
+      <FastImage
+        source={splashScreen1}
+        resizeMode="contain"
+        style={{flex: 1}}
+      />
       <SpinnerSecond loading={true} />
     </AppSafeAreaView>
   );

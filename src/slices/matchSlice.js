@@ -1,15 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { Linking } from 'react-native';
-import { appOperation } from '../appOperation';
-import { toastAlert } from '../helper/utility';
+import {createSlice} from '@reduxjs/toolkit';
+import {Linking} from 'react-native';
+import {appOperation} from '../appOperation';
+import {toastAlert} from '../helper/utility';
 import NavigationService from '../navigation/NavigationService';
-import { CONTESTSHARE, KYC_SCREEN, MY_BALANCE, OTHER_USER_PROFILE, PRIVATECONTESTLEADER, SHARE_TEAM } from '../navigation/routes';
-import { getKycDetails, getUserProfile } from '../actions/profileAction';
-import { customSort } from '../screens/Selectsubstitute.js/SelectSubstitute';
+import {
+  CONTESTSHARE,
+  KYC_SCREEN,
+  MY_BALANCE,
+  OTHER_USER_PROFILE,
+  PRIVATECONTESTLEADER,
+  SHARE_TEAM,
+} from '../navigation/routes';
+import {getKycDetails, getUserProfile} from '../actions/profileAction';
+import {customSort} from '../screens/Selectsubstitute.js/SelectSubstitute';
 function expandData(data) {
-  return data.map((item) => {
-    const expandedData = item.data.map((nestedData) => ({ ...nestedData }));
-    return { ...item, data: expandedData };
+  return data.map(item => {
+    const expandedData = item.data.map(nestedData => ({...nestedData}));
+    return {...item, data: expandedData};
   });
 }
 export const initialState = {
@@ -43,107 +50,107 @@ export const initialState = {
   dataContest: undefined,
   details: [],
   addharDetails: undefined,
-  ifscDetails: undefined
+  ifscDetails: undefined,
 };
 
 export const matchSlice = createSlice({
   name: 'match',
   initialState,
   reducers: {
-    setUpComingMatches: (state, { payload }) => {
+    setUpComingMatches: (state, {payload}) => {
       state.upcomingMatches = payload;
     },
-    setLoading: (state, { payload }) => {
+    setLoading: (state, {payload}) => {
       state.isLoading = payload;
     },
-    setMyTeam: (state, { payload }) => {
+    setMyTeam: (state, {payload}) => {
       state.myTeams = payload;
     },
-    setMyContest: (state, { payload }) => {
+    setMyContest: (state, {payload}) => {
       state.myContest = payload;
     },
-    setMyMatchesData: (state, { payload }) => {
+    setMyMatchesData: (state, {payload}) => {
       state.myMatchesData = payload;
     },
-    setContestData: (state, { payload }) => {
+    setContestData: (state, {payload}) => {
       state.contestData = payload;
     },
-    setMyMatchesHome: (state, { payload }) => {
+    setMyMatchesHome: (state, {payload}) => {
       state.myMatchesHome = payload;
     },
-    setCreateContest: (state, { payload }) => {
+    setCreateContest: (state, {payload}) => {
       state.CreateContestData = payload;
     },
-    setContestList: (state, { payload }) => {
+    setContestList: (state, {payload}) => {
       state.contestList = payload;
     },
-    setIsContestEntry: (state, { payload }) => {
+    setIsContestEntry: (state, {payload}) => {
       state.isContestEntry = payload;
     },
-    setSelectedMatch: (state, { payload }) => {
+    setSelectedMatch: (state, {payload}) => {
       state.selectedMatch = payload;
     },
-    setAllPlayers: (state, { payload }) => {
+    setAllPlayers: (state, {payload}) => {
       state.allPlayers = payload;
     },
-    setPlayerDetail: (state, { payload }) => {
+    setPlayerDetail: (state, {payload}) => {
       state.playerDetail = payload;
     },
-    setShareLink: (state, { payload }) => {
+    setShareLink: (state, {payload}) => {
       state.shareLink = payload;
     },
-    setCreateWallet: (state, { payload }) => {
+    setCreateWallet: (state, {payload}) => {
       state.walletCreateData = payload;
     },
-    setTab: (state, { payload }) => {
+    setTab: (state, {payload}) => {
       state.getPlayerTab = payload;
     },
-    setAdharVerify: (state, { payload }) => {
+    setAdharVerify: (state, {payload}) => {
       state.adharVerifydata = payload;
     },
-    setOtherUserProfile: (state, { payload }) => {
+    setOtherUserProfile: (state, {payload}) => {
       state.OtherProfileData = payload;
     },
-    setUpiVerifiy: (state, { payload }) => {
+    setUpiVerifiy: (state, {payload}) => {
       state.upiVerifiy = payload;
     },
-    setSortByFilter: (state, { payload }) => {
+    setSortByFilter: (state, {payload}) => {
       state.SortbyFilterData = payload;
     },
-    setContestListTeam: (state, { payload }) => {
+    setContestListTeam: (state, {payload}) => {
       state.contestListTeam = payload;
     },
-    setPhonePeGewat: (state, { payload }) => {
+    setPhonePeGewat: (state, {payload}) => {
       state.phonePeGetway_Response = payload;
     },
-    setAllContest: (state, { payload }) => {
+    setAllContest: (state, {payload}) => {
       state.allContestList = payload;
     },
-    setRemaningPlayer: (state, { payload }) => {
+    setRemaningPlayer: (state, {payload}) => {
       state.RemaningPlayer = payload;
     },
-    setsubstitute: (state, { payload }) => {
+    setsubstitute: (state, {payload}) => {
       state.substitute = payload;
     },
-    setShareTeam: (state, { payload }) => {
+    setShareTeam: (state, {payload}) => {
       state.saveTeamShare = payload;
     },
-    setMyCreateContest: (state, { payload }) => {
+    setMyCreateContest: (state, {payload}) => {
       state.MyCreateContestData = payload;
     },
-    setSavematchDetails: (state, { payload }) => {
+    setSavematchDetails: (state, {payload}) => {
       state.MatchDetails = payload;
     },
-    setdataContest: (state, { payload }) => {
+    setdataContest: (state, {payload}) => {
       state.dataContest = payload;
     },
-    setMathdetails: (state, { payload }) => {
+    setMathdetails: (state, {payload}) => {
       state.details = payload;
     },
-    setAdharDetails: (state, { payload }) => {
+    setAdharDetails: (state, {payload}) => {
       state.addharDetails = payload;
     },
-    setifscDetails: (state, { payload }) => {
+    setifscDetails: (state, {payload}) => {
       state.ifscDetails = payload;
     },
   },
@@ -194,7 +201,7 @@ export const getMyTeam = data => async dispatch => {
     if (res.code == 200) {
       dispatch(setMyTeam(res?.data));
     }
-  } catch { }
+  } catch {}
 };
 export const createContestData = data => async dispatch => {
   try {
@@ -209,9 +216,11 @@ export const getMyJoinedContest = data => async dispatch => {
   try {
     const res = await appOperation.customer.getMyJoinedContest(data);
     if (res.code == 200) {
-      const updatedData = res.data.map((dataItem) => {
-        const arrayfilter = res.arr.filter((e) => e?.contest_category_id === dataItem?.contest_category_id);
-        return { ...dataItem, teamDetails: arrayfilter };
+      const updatedData = res.data.map(dataItem => {
+        const arrayfilter = res.arr.filter(
+          e => e?.contest_category_id === dataItem?.contest_category_id,
+        );
+        return {...dataItem, teamDetails: arrayfilter};
       });
       res.data = updatedData;
       dispatch(setMyContest(res?.data));
@@ -221,7 +230,8 @@ export const getMyJoinedContest = data => async dispatch => {
   }
 };
 export const setcreateContest =
-  (data, matchid, payAmount, _id, _matchid, teamName, contestListId) => async dispatch => {
+  (data, matchid, payAmount, _id, _matchid, teamName, contestListId) =>
+  async dispatch => {
     let newData = {
       data1: data,
       matchid1: matchid,
@@ -235,8 +245,7 @@ export const setcreateContest =
         const data = {
           match_id: res?.matchcontestofuser?.match_id,
           matchid: _matchid,
-          contest_category_id:
-            res?.matchcontestofuser?.contest_category_id,
+          contest_category_id: res?.matchcontestofuser?.contest_category_id,
           teams_id: [_id],
           match_contest_category_id: res?.matchcontestofuser?._id,
           amount: payAmount,
@@ -269,18 +278,20 @@ export const MycreateContest = (data, condition) => async dispatch => {
   try {
     const res = await appOperation.customer.getMyCreateContest(data);
     if (res.code == 200) {
-      const updatedData = res.data.map((dataItem) => {
-        const arrayfilter = res.arr.filter((e) => e?.contest_category_id === dataItem?.contest_category_id);
-        return { ...dataItem, teamDetails: arrayfilter };
+      const updatedData = res.data.map(dataItem => {
+        const arrayfilter = res.arr.filter(
+          e => e?.contest_category_id === dataItem?.contest_category_id,
+        );
+        return {...dataItem, teamDetails: arrayfilter};
       });
       res.data = updatedData;
       let datanew = {
         first: res.data[0]?.match_id,
-        second: res.data[0]?.contest_category_id
-      }
+        second: res.data[0]?.contest_category_id,
+      };
       dispatch(setMyCreateContest(res?.data));
       dispatch(setSavematchDetails(res?.matchesdata));
-      dispatch(shareTeamSave(datanew))
+      dispatch(shareTeamSave(datanew));
       condition ? NavigationService.navigate(PRIVATECONTESTLEADER) : null;
     }
   } catch (e) {
@@ -292,7 +303,7 @@ export const joinContest = (data, matchDetails) => async dispatch => {
     const res = await appOperation.customer.joinContest(data);
     if (res.code == 200) {
       toastAlert.showToastError(res?.message);
-      let data = {}
+      let data = {};
       dispatch(getContestList(matchDetails?._id));
       dispatch(getMyTeam(matchDetails?._id));
       dispatch(getMyJoinedContest(matchDetails?._id));
@@ -323,29 +334,32 @@ export const getContestList = (outputObject, id) => async dispatch => {
     dispatch(setLoading(true));
     const res = await appOperation.customer.getContestList(data);
     if (res?.code === 200) {
-      const MyContest = { ...res?.data }
-      const newData = MyContest?.data?.map((dataitem) => {
-        const filteredData = dataitem?.data?.map((dataItem) => {
+      const MyContest = {...res?.data};
+      const newData = MyContest?.data?.map(dataitem => {
+        const filteredData = dataitem?.data?.map(dataItem => {
           const arrayfilter = res?.getuserjounedcont?.filter(
-            (e) =>
+            e =>
               e?.contest_category_id === dataItem?.contest_category_id &&
-              !dataItem?.JoinWithMULT
+              !dataItem?.JoinWithMULT,
           );
           const arrayfilterMulti = res?.getuserjounedcont?.filter(
-            (e) =>
-              e?.contest_category_id === dataItem?.contest_category_id
+            e => e?.contest_category_id === dataItem?.contest_category_id,
           );
-          return { ...dataItem, remove: arrayfilter?.length ? true : false, teamDetails: arrayfilterMulti };
+          return {
+            ...dataItem,
+            remove: arrayfilter?.length ? true : false,
+            teamDetails: arrayfilterMulti,
+          };
         });
 
-        return { ...dataitem, data: filteredData };
+        return {...dataitem, data: filteredData};
       });
       const expandedData = expandData(newData);
       const expandDataNew = {
         data: expandedData,
       };
       dispatch(setContestList(expandDataNew));
-      dispatch(setContestListTeam(res?.getuserjounedcont))
+      dispatch(setContestListTeam(res?.getuserjounedcont));
       const newArrya = [];
       const desiredInnerDataIds = res.data.reduce((acc, category) => {
         for (const entry of category.data) {
@@ -353,7 +367,7 @@ export const getContestList = (outputObject, id) => async dispatch => {
         }
         return acc;
       }, []);
-      const finalArray = { data: [] };
+      const finalArray = {data: []};
       for (const category of res?.data) {
         for (const entry of category?.data) {
           if (desiredInnerDataIds.includes(entry.inner_data_id)) {
@@ -384,47 +398,50 @@ export const getMyMatches = status => async dispatch => {
     dispatch(setLoading(false));
   }
 };
-export const getAllPlayerList = (id, data, subsitute, newData, navigate) => async dispatch => {
-  try {
-    dispatch(setLoading(true));
-    const res = await appOperation.customer.getAllPlayers(id, data);
+export const getAllPlayerList =
+  (id, data, subsitute, newData, navigate) => async dispatch => {
+    try {
+      dispatch(setLoading(true));
+      const res = await appOperation.customer.getAllPlayers(id, data);
 
-    if (res.code == 200) {
-      const players = [];
-      res?.data?.forEach(items => {
-        items?.players?.forEach(player => {
-          let data = { ...player };
-          data['teamName'] = items?.team?.abbr;
-          data['title'] = items?.team?.title;
-          const isLastPlay = items?.last_match_played?.some(
-            lastPlay => lastPlay?.player_id == player?.pid
+      if (res.code == 200) {
+        const players = [];
+        res?.data?.forEach(items => {
+          items?.players?.forEach(player => {
+            let data = {...player};
+            data.teamName = items?.team?.abbr;
+            data.title = items?.team?.title;
+            const isLastPlay = items?.last_match_played?.some(
+              lastPlay => lastPlay?.player_id == player?.pid,
+            );
+            data.last_play = isLastPlay;
+            players.push(data);
+          });
+        });
+        if (subsitute) {
+          const newplayer = players.filter(
+            player =>
+              !newData.some(
+                existingPlayer => existingPlayer.pid === player.pid,
+              ),
           );
-          data['last_play'] = isLastPlay;
-          players.push(data);
-        });
-      });
-      if (subsitute) {
-        const newplayer = players.filter(
-          player =>
-            !newData.some(
-              (existingPlayer) => existingPlayer.pid === player.pid,
-            ),
-        );
-        let substitutePlayer = newData?.filter(item => {
-          return item?.substitute === true;
-        });
-        let allPlayer = [...substitutePlayer, ...newplayer]
-        const RemaningPlayerNew = allPlayer?.filter(player => player).sort(customSort)
-        dispatch(setRemaning(RemaningPlayerNew));
+          let substitutePlayer = newData?.filter(item => {
+            return item?.substitute === true;
+          });
+          let allPlayer = [...substitutePlayer, ...newplayer];
+          const RemaningPlayerNew = allPlayer
+            ?.filter(player => player)
+            .sort(customSort);
+          dispatch(setRemaning(RemaningPlayerNew));
+        }
+        dispatch(setAllPlayers(players));
       }
-      dispatch(setAllPlayers(players));
+    } catch (e) {
+      console.log(e);
+    } finally {
+      dispatch(setLoading(false));
     }
-  } catch (e) {
-    console.log(e);
-  } finally {
-    dispatch(setLoading(false));
-  }
-};
+  };
 export const getPlayerDetail = id => async dispatch => {
   try {
     dispatch(setPlayerDetail(undefined));
@@ -488,10 +505,9 @@ export const getAdharVerify = data => async dispatch => {
       dispatch(setAdharVerify(res.data));
       toastAlert.showToastError(res.message);
       dispatch(getKycDetails());
-      NavigationService.navigate(MY_BALANCE)
+      NavigationService.navigate(MY_BALANCE);
     } else {
       toastAlert.showToastError(res.message);
-
     }
     dispatch(setLoading(false));
   } catch (e) {
@@ -518,14 +534,13 @@ export const getOtherUserProfile = data => async dispatch => {
 export const getUpiVerifiy = data => async dispatch => {
   try {
     const res = await appOperation.customer.upiVerifiy(data);
-    console.log(res,"reponse upi verification")
+    console.log(res, 'reponse upi verification');
     if (res?.success) {
       toastAlert.showToastError(res.message);
       dispatch(getKycDetails());
       NavigationService.navigate(KYC_SCREEN);
     } else {
       toastAlert.showToastError(res.message);
-
     }
   } catch (e) {
     console.log(e, 'resresresres');
@@ -549,17 +564,17 @@ export const paymentGetwayPhonepe = (data, title, sheet) => async dispatch => {
     const res = await appOperation.customer.phonePeGetway(data);
     if (res?.success) {
       if (title == 'PAY_PAGE') {
-        dispatch(setPhonePeGewat(res?.data?.data))
-        sheet.current.open()
+        dispatch(setPhonePeGewat(res?.data?.data));
+        sheet.current.open();
       } else {
         const payIntent = res?.data?.data?.instrumentResponse?.intentUrl;
         Linking.openURL(payIntent)
-          .then((supported) => {
+          .then(supported => {
             if (!supported) {
               console.error('WhatsApp is not installed on your device.');
             }
           })
-          .catch((error) => {
+          .catch(error => {
             console.error('An error occurred while opening WhatsApp:', error);
           });
       }
@@ -573,35 +588,36 @@ export const paymentGetwayPhonepe = (data, title, sheet) => async dispatch => {
     dispatch(setLoading(false));
   }
 };
-export const paymentGetwayPhonepeText = (data, title, sheet) => async dispatch => {
-  try {
-    const res = await appOperation.customer.phonePeGetwayTest(data);
-    if (res?.success) {
-      if (title == 'PAY_PAGE') {
-        dispatch(setPhonePeGewat(res?.data?.data))
-        sheet.current.open()
-      } else {
-        const payIntent = res?.data?.data?.instrumentResponse?.intentUrl;
-        Linking.openURL(payIntent)
-          .then((supported) => {
-            if (!supported) {
-              console.error('WhatsApp is not installed on your device.');
-            }
-          })
-          .catch((error) => {
-            console.error('An error occurred while opening WhatsApp:', error);
-          });
+export const paymentGetwayPhonepeText =
+  (data, title, sheet) => async dispatch => {
+    try {
+      const res = await appOperation.customer.phonePeGetwayTest(data);
+      if (res?.success) {
+        if (title == 'PAY_PAGE') {
+          dispatch(setPhonePeGewat(res?.data?.data));
+          sheet.current.open();
+        } else {
+          const payIntent = res?.data?.data?.instrumentResponse?.intentUrl;
+          Linking.openURL(payIntent)
+            .then(supported => {
+              if (!supported) {
+                console.error('WhatsApp is not installed on your device.');
+              }
+            })
+            .catch(error => {
+              console.error('An error occurred while opening WhatsApp:', error);
+            });
+        }
+        // console.log(JSON.stringify(res), '==========');
       }
-      // console.log(JSON.stringify(res), '==========');
-    }
-  } catch (e) {
-    console.log(e, 'resresresres');
+    } catch (e) {
+      console.log(e, 'resresresres');
 
-    console.log(e);
-  } finally {
-    dispatch(setLoading(false));
-  }
-};
+      console.log(e);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
 export const setRemaning = data => async dispatch => {
   try {
     dispatch(setRemaningPlayer(data));
@@ -612,50 +628,23 @@ export const setRemaning = data => async dispatch => {
   }
 };
 
-
-export const shareTeam = (data) => async dispatch => {
+export const shareTeam = data => async dispatch => {
   try {
     const res = await appOperation.customer.share_Team(data);
     if (res?.success) {
-      dispatch(setShareTeam(res?.data))
+      dispatch(setShareTeam(res?.data));
       let matchesObject = res?.matchesData && res?.matchesData[0];
-      dispatch(setContestData(matchesObject))
+      dispatch(setContestData(matchesObject));
       let newData = [];
       res?.data[0]?.players?.forEach(player => {
-        let data = { ...player };
-        data['title'] = player?.primary_team?.title;
+        let data = {...player};
+        data.title = player?.primary_team?.title;
         newData.push(data);
       });
       NavigationService.navigate(SHARE_TEAM, {
         selectedPlayerDetails: newData,
-        useDetails: res?.data && res?.data[1]
-      })
-    }
-  } catch (e) {
-    console.log(e);
-  } finally {
-    dispatch(setLoading(false));
-  }
-};
-
-export const MycreateShareContest = (data, condition, category) => async dispatch => {
-  try {
-    dispatch(setLoading(true));
-    const res = await appOperation.customer.getMyShareCreateContest(data, category)
-    if (res.code == 200) {
-      const updatedData = res.data.map((dataItem) => {
-        const arrayfilter = res.arr.filter((e) => e?.contest_category_id === dataItem?.contest_category_id);
-        return { ...dataItem, teamDetails: arrayfilter };
+        useDetails: res?.data && res?.data[1],
       });
-      res.data = updatedData;
-      let datanew = {
-        first: res.data[0]?.match_id,
-        second: res.data[0]?.contest_category_id
-      }
-      dispatch(setMyCreateContest(res?.data));
-      dispatch(setSavematchDetails(res?.matchesdata));
-      dispatch(shareTeamSave(datanew))
-      condition ? NavigationService.navigate(PRIVATECONTESTLEADER) : null;
     }
   } catch (e) {
     console.log(e);
@@ -664,18 +653,54 @@ export const MycreateShareContest = (data, condition, category) => async dispatc
   }
 };
 
-export const shareTeamSave = (data) => async dispatch => {
+export const MycreateShareContest =
+  (data, condition, category) => async dispatch => {
+    try {
+      dispatch(setLoading(true));
+      const res = await appOperation.customer.getMyShareCreateContest(
+        data,
+        category,
+      );
+      if (res.code == 200) {
+        const updatedData = res.data.map(dataItem => {
+          const arrayfilter = res.arr.filter(
+            e => e?.contest_category_id === dataItem?.contest_category_id,
+          );
+          return {...dataItem, teamDetails: arrayfilter};
+        });
+        res.data = updatedData;
+        let datanew = {
+          first: res.data[0]?.match_id,
+          second: res.data[0]?.contest_category_id,
+        };
+        dispatch(setMyCreateContest(res?.data));
+        dispatch(setSavematchDetails(res?.matchesdata));
+        dispatch(shareTeamSave(datanew));
+        condition ? NavigationService.navigate(PRIVATECONTESTLEADER) : null;
+      }
+    } catch (e) {
+      console.log(e);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+export const shareTeamSave = data => async dispatch => {
   try {
     const res = await appOperation.customer.share_Team_Data(data);
     if (res?.success) {
       let matchesObject = res?.data && res?.data[0];
       dispatch(setdataContest(matchesObject));
-      const updatedData = res.contestdata.map((dataItem) => {
-        const arrayfilter = res.arr.filter((e) => e?.contest_category_id === dataItem?.usercontest_details[0]?.contest_category_id);
-        return { ...dataItem, teamDetails: arrayfilter };
+      const updatedData = res.contestdata.map(dataItem => {
+        const arrayfilter = res.arr.filter(
+          e =>
+            e?.contest_category_id ===
+            dataItem?.usercontest_details[0]?.contest_category_id,
+        );
+        return {...dataItem, teamDetails: arrayfilter};
       });
       res.contestdata = updatedData;
-      dispatch(setMathdetails(res?.contestdata[0]))
+      dispatch(setMathdetails(res?.contestdata[0]));
     }
   } catch (e) {
     console.log(e);
@@ -684,38 +709,39 @@ export const shareTeamSave = (data) => async dispatch => {
   }
 };
 
-export const addharVerifiy = (data, filterSheet, setIsTimerActive) => async dispatch => {
-  console.log(data,"Data aadhar")
-  dispatch(setLoading(true));
-  try {
-    const res = await appOperation.customer.addharSendOtp(data);
-    console.log(res,"response in verify aadhar")
-    if (res?.success) {
-      filterSheet?.current?.open();
-      dispatch(setAdharDetails(res.data))
-      toastAlert.showToastError(res.message)
-      setIsTimerActive(true)
-    } else {
-      toastAlert.showToastError(res.message)
-      dispatch(setAdharDetails([]))
+export const addharVerifiy =
+  (data, filterSheet, setIsTimerActive) => async dispatch => {
+    console.log(data, 'Data aadhar');
+    dispatch(setLoading(true));
+    try {
+      const res = await appOperation.customer.addharSendOtp(data);
+      console.log(res, 'response in verify aadhar');
+      if (res?.success) {
+        filterSheet?.current?.open();
+        dispatch(setAdharDetails(res.data));
+        toastAlert.showToastError(res.message);
+        setIsTimerActive(true);
+      } else {
+        toastAlert.showToastError(res.message);
+        dispatch(setAdharDetails([]));
+      }
+    } catch (e) {
+      console.log(e, 'aadhar verify error');
+    } finally {
+      dispatch(setLoading(false));
     }
-  } catch (e) {
-    console.log(e,"aadhar verify error");
-  } finally {
-    dispatch(setLoading(false));
-  }
-};
+  };
 
-export const emailVerifiyOtp = (data) => async dispatch => {
+export const emailVerifiyOtp = data => async dispatch => {
   dispatch(setLoading(true));
   try {
     const res = await appOperation.customer.emailOtpVerifiry(data);
     if (res?.success) {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
       dispatch(getKycDetails());
       NavigationService.navigate(KYC_SCREEN);
     } else {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
     console.log(e);
@@ -728,58 +754,57 @@ export const addharVerifiyOtp = (data, filterSheet) => async dispatch => {
   dispatch(setLoading(true));
   try {
     const res = await appOperation.customer.adhaarOtpVerifiry(data);
-    console.log(res,"response in submit addhar otp")
+    console.log(res, 'response in submit addhar otp');
     if (res?.success) {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
       filterSheet?.current?.close();
       dispatch(getKycDetails());
       // NavigationService.navigate(MY_BALANCE);
       // toastAlert.showToastError("")
-        NavigationService.navigate('AadharConfirmation')
+      NavigationService.navigate('AadharConfirmation');
     } else {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
-    console.log(e,"error in aadhar verify otp");
+    console.log(e, 'error in aadhar verify otp');
   } finally {
     dispatch(setLoading(false));
   }
 };
 
-export const panVerifiy = (data) => async dispatch => {
+export const panVerifiy = data => async dispatch => {
   dispatch(setLoading(true));
-  console.log(data,"Dataaaaa")
+  console.log(data, 'Dataaaaa');
   try {
     const res = await appOperation.customer.panVerifiyKyc(data);
-    console.log(res,"response in panverify")
+    console.log(res, 'response in panverify');
     if (res?.success) {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
       dispatch(getKycDetails());
-      // NavigationService.navigate(KYC_SCREEN);.
-      NavigationService.navigate('PanConfirmation');
+      NavigationService.goBack();
+      // NavigationService.navigate(KYC_SCREEN);
     } else {
-    console.log(res,"response in panverify111")
-      toastAlert.showToastError(res.message)
+      console.log(res, 'response in panverify111');
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
-    console.log(e,"error in panverify");
+    console.log(e, 'error in panverify');
     // toastAlert.showToastError(e.message)
-
   } finally {
     dispatch(setLoading(false));
   }
 };
 
-export const dlVerifiy = (data) => async dispatch => {
+export const dlVerifiy = data => async dispatch => {
   dispatch(setLoading(true));
   try {
     const res = await appOperation.customer.dlVerifiyKyc(data);
     if (res?.success) {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
       dispatch(getKycDetails());
       NavigationService.navigate(KYC_SCREEN);
     } else {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
     console.log(e);
@@ -788,16 +813,16 @@ export const dlVerifiy = (data) => async dispatch => {
   }
 };
 
-export const voterIDVerifiy = (data) => async dispatch => {
+export const voterIDVerifiy = data => async dispatch => {
   dispatch(setLoading(true));
   try {
     const res = await appOperation.customer.voterIDVerifiyKyc(data);
     if (res?.success) {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
       dispatch(getKycDetails());
       NavigationService.navigate(KYC_SCREEN);
     } else {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
     console.log(e);
@@ -806,33 +831,33 @@ export const voterIDVerifiy = (data) => async dispatch => {
   }
 };
 
-export const bankVerifiy = (data) => async dispatch => {
+export const bankVerifiy = data => async dispatch => {
   dispatch(setLoading(true));
   try {
     const res = await appOperation.customer.bankVerifiyKyc(data);
-    console.log(res,"result in bank verify")
+    console.log(res, 'result in bank verify');
     if (res?.success) {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
       dispatch(getKycDetails());
       NavigationService.navigate(KYC_SCREEN);
     } else {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
-    console.log(e,"error in bank verify");
+    console.log(e, 'error in bank verify');
   } finally {
     dispatch(setLoading(false));
   }
 };
 
-export const ifscVerifiy = (data) => async dispatch => {
+export const ifscVerifiy = data => async dispatch => {
   dispatch(setLoading(true));
   try {
     const res = await appOperation.customer.ifscVerifiyKyc(data);
     if (res?.success) {
-      dispatch(setifscDetails(res.data))
+      dispatch(setifscDetails(res.data));
     } else {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
     console.log(e);
@@ -841,15 +866,15 @@ export const ifscVerifiy = (data) => async dispatch => {
   }
 };
 
-export const deleteupi = (data) => async dispatch => {
+export const deleteupi = data => async dispatch => {
   dispatch(setLoading(true));
   try {
     const res = await appOperation.customer.delpayouteteUpi(data);
     if (res?.success) {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
       dispatch(getKycDetails());
     } else {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
     console.log(e);
@@ -858,16 +883,16 @@ export const deleteupi = (data) => async dispatch => {
   }
 };
 
-export const payoutWithdraw = (data) => async dispatch => {
+export const payoutWithdraw = data => async dispatch => {
   dispatch(setLoading(true));
   try {
     const res = await appOperation.customer.payout(data);
     if (res?.success) {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
       dispatch(getUserProfile(false, false));
-      NavigationService.navigate(MY_BALANCE)
+      NavigationService.navigate(MY_BALANCE);
     } else {
-      toastAlert.showToastError(res.message)
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
     console.log(e);

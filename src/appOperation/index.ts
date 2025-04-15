@@ -1,7 +1,7 @@
 import guest from './lib/guest';
 import customer from './lib/customer';
-import { GUEST_TYPE, CUSTOMER_TYPE } from './types';
-import { BaseUrl } from '../helper/utility';
+import {GUEST_TYPE, CUSTOMER_TYPE} from './types';
+import {BaseUrl} from '../helper/utility';
 
 class ApiError extends Error {
   constructor(m: string) {
@@ -72,7 +72,7 @@ export class AppOperation {
     };
 
     if (this.customerToken && type === CUSTOMER_TYPE) {
-      headers['Authorization'] = `${this.customerToken}`;
+      headers.Authorization = `${this.customerToken}`;
     }
 
     return new Promise((resolve, reject) => {
@@ -92,7 +92,7 @@ export class AppOperation {
         bodyData = JSON.stringify(data);
       }
 
-      fetch(uri, { method, headers, body: bodyData })
+      fetch(uri, {method, headers, body: bodyData})
         .then(response => {
           let status = response.status;
           if (response.ok) {
@@ -100,17 +100,17 @@ export class AppOperation {
               .text()
               .then(responseData => {
                 let jsonData: any = JSON.parse(responseData);
-                resolve({ ...jsonData, code: status });
+                resolve({...jsonData, code: status});
               })
               .catch(errorResponse =>
-                Promise.reject({ code: status, data: errorResponse }),
+                Promise.reject({code: status, data: errorResponse}),
               );
           }
           // Possible 401 or other network error
           return response
             .text()
             .then(errorResponse =>
-              reject({ code: status, ...JSON.parse(errorResponse) }),
+              reject({code: status, ...JSON.parse(errorResponse)}),
             );
         })
         .catch(error => {
@@ -122,7 +122,7 @@ export class AppOperation {
 
   getErrorMessageForResponse(data: any) {
     // console.log("data:::::::::", data);
-    let message = undefined;
+    let message;
     try {
       message = JSON.parse(data.data).message;
     } catch (e) {
