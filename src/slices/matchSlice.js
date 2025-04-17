@@ -11,7 +11,7 @@ import {
   PRIVATECONTESTLEADER,
   SHARE_TEAM,
 } from '../navigation/routes';
-import {getKycDetails, getUserProfile} from '../actions/profileAction';
+import {getKycDetails, getUserProfile, getUserWallet} from '../actions/profileAction';
 import {customSort} from '../screens/Selectsubstitute.js/SelectSubstitute';
 function expandData(data) {
   return data.map(item => {
@@ -559,25 +559,28 @@ export const getFilterSortby = data => async dispatch => {
     dispatch(setLoading(false));
   }
 };
-export const paymentGetwayPhonepe = (data, title, sheet) => async dispatch => {
+export const paymentGetwayPhonepe = data => async dispatch => {
   try {
     const res = await appOperation.customer.phonePeGetway(data);
+    console.log(res, 'paymentGetwayPhonepe');
     if (res?.success) {
-      if (title == 'PAY_PAGE') {
-        dispatch(setPhonePeGewat(res?.data?.data));
-        sheet.current.open();
-      } else {
-        const payIntent = res?.data?.data?.instrumentResponse?.intentUrl;
-        Linking.openURL(payIntent)
-          .then(supported => {
-            if (!supported) {
-              console.error('WhatsApp is not installed on your device.');
-            }
-          })
-          .catch(error => {
-            console.error('An error occurred while opening WhatsApp:', error);
-          });
-      }
+      dispatch(setPhonePeGewat(res?.data));
+      Linking.openURL(res?.data?.link_url);
+      // if (title == 'PAY_PAGE') {
+      //   dispatch(setPhonePeGewat(res?.data?.data));
+      //   sheet.current.open();
+      // } else {
+      //   const payIntent = res?.data?.data?.instrumentResponse?.intentUrl;
+      //   Linking.openURL(payIntent)
+      //     .then(supported => {
+      //       if (!supported) {
+      //         console.error('WhatsApp is not installed on your device.');
+      //       }
+      //     })
+      //     .catch(error => {
+      //       console.error('An error occurred while opening WhatsApp:', error);
+      //     });
+      // }
       // console.log(JSON.stringify(res), '==========');
     }
   } catch (e) {
@@ -588,6 +591,28 @@ export const paymentGetwayPhonepe = (data, title, sheet) => async dispatch => {
     dispatch(setLoading(false));
   }
 };
+
+export const getDepositStatus = id => async dispatch => {
+  try {
+    dispatch(setLoading(true));
+    const res = await appOperation.customer.deposit_status(id);
+    console.log(res, 'getDepositStatus');
+    if (res?.success) {
+      toastAlert.showToastError(res.message);
+      dispatch(getUserProfile(false, false));
+      // dispatch(setPhonePeGewat(undefined));
+      // NavigationService.navigate(MY_BALANCE);
+    } else {
+      toastAlert.showToastError(res.message);
+    }
+    dispatch(setLoading(false));
+  } catch (e) {
+    console.log(e);
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
+
 export const paymentGetwayPhonepeText =
   (data, title, sheet) => async dispatch => {
     try {

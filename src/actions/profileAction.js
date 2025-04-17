@@ -32,7 +32,7 @@ export const getUserProfile =
         isUpdate ? NavigationService.navigate(BOTTOM_TAB_PROFILE_SCREEN) : null;
         dispatch(setUserData(response?.data));
         dispatch(createWalletAPI(response?.data?._id));
-        dispatch(setActivite(response.activity))
+        dispatch(setActivite(response.activity));
         dispatch(updateDeviceToken());
       } else {
         toastAlert.showToastError(response?.message);

@@ -68,12 +68,19 @@ export default (appOperation: AppOperation) => ({
   upiVerifiy: (data: any) =>
     appOperation.post('user/upiverifcation', data, CUSTOMER_TYPE),
   phonePeGetway: (data: any) =>
-    appOperation.post('payment/gateway', data, CUSTOMER_TYPE),
+    appOperation.post('user/requestCashFree', data, CUSTOMER_TYPE),
   phonePeGetwayTest: (data: any) =>
     appOperation.post('paymenttest/gateway', data, CUSTOMER_TYPE),
 
   adharverify: (data: any) =>
     appOperation.post('user/verify_adhar', data, CUSTOMER_TYPE),
+  deposit_status: (id: any) =>
+    appOperation.get(
+      `user/cash-free-payment-status?link_id=${id}`,
+      undefined,
+      undefined,
+      CUSTOMER_TYPE,
+    ),
   share_url: (id: any) =>
     appOperation.get(
       `match/share-team/${id}`,

@@ -5,6 +5,7 @@ import {
   ScrollView,
   BackHandler,
   ImageBackground,
+  AppState,
 } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import Header from '../../common/Header';
@@ -43,6 +44,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import PrimaryButton from '../../common/primaryButton';
 import {Screen, universalPaddingHorizontal} from '../../theme/dimens';
 import {
+  getDepositStatus,
   paymentGetwayPhonepe,
   paymentGetwayPhonepeText,
 } from '../../slices/matchSlice';
@@ -58,11 +60,16 @@ import {poppinsBold} from '../../theme/typography';
 const AddMoney = () => {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(Number);
+  const [appState, setAppState] = useState(AppState.currentState);
+  const appStateRef = useRef(AppState.currentState);
   const userData = useSelector(state => {
     return state.profile.userData;
   });
   const kycDetails = useSelector(state => {
     return state.profile.kycDetails;
+  });
+  const phonePeGetway_Response = useSelector(state => {
+    return state.match.phonePeGetway_Response;
   });
   const {total_balance} = userData ?? '';
   const sheet = useRef();
@@ -76,25 +83,35 @@ const AddMoney = () => {
     {id: '4', rupay: '500'},
   ];
 
-  const bannerData = [
-    {
-      id: '1',
-      image: BannerLoop,
-    },
-    {
-      id: '2',
-      image: BannerLoop,
-    },
-    {
-      id: '3',
-      image: BannerLoop,
-    },
-  ];
+  console.log(phonePeGetway_Response, 'phonePeGetway_Response');
+
+  useEffect(() => {
+    const handleAppStateChange = nextAppState => {
+      if (
+        appStateRef.current.match(/inactive|background/) &&
+        nextAppState === 'active'
+      ) {
+        // App has come to foreground
+        dispatch(getDepositStatus(phonePeGetway_Response?.link_id));
+      }
+      appStateRef.current = nextAppState;
+      setAppState(nextAppState);
+    };
+
+    const subscription = AppState.addEventListener(
+      'change',
+      handleAppStateChange,
+    );
+
+    return () => {
+      subscription.remove(); // Clean up
+    };
+  }, []);
+
   console.log(kycDetails, 'kycDetailskycDetails');
   const isUserVerified =
     kycDetails?.pan_verified == 1 && kycDetails?.adhar_verified == 1;
   const AddMoney = () => {
-    // toastAlert.showToastError('Payment getway is not implemented')
     if (!isUserVerified) {
       NavigationService.navigate(ADDCASH_VERIFICATION);
     } else if (amount == '') {
@@ -105,27 +122,25 @@ const AddMoney = () => {
       let data = {
         amount: amount,
       };
-      toastAlert.showToastError('Payment Gateway is required');
-      // dispatch(paymentGetwayPhonepe(data))
-      // sheetTwo?.current.open()
+      dispatch(paymentGetwayPhonepe(data));
     }
   };
 
   const paywith = title => {
-    if (title == 'PAY_PAGE') {
-      let data = {
-        amount: amount,
-        type: 'PAY_PAGE',
-      };
-      dispatch(paymentGetwayPhonepe(data, title, sheet));
-      sheetTwo.current.close();
-    } else {
-      let data = {
-        amount: amount,
-        type: 'UPI_INTENT',
-      };
-      dispatch(paymentGetwayPhonepe(data, title, null));
-    }
+    // if (title == 'PAY_PAGE') {
+    //   let data = {
+    //     amount: amount,
+    //     type: 'PAY_PAGE',
+    //   };
+    //   dispatch(paymentGetwayPhonepe(data, title, sheet));
+    //   sheetTwo.current.close();
+    // } else {
+    //   let data = {
+    //     amount: amount,
+    //     type: 'UPI_INTENT',
+    //   };
+    //   dispatch(paymentGetwayPhonepe(data, title, null));
+    // }
   };
 
   let tdsamount = parseFloat((amount / 128) * 28).toFixed(2);
@@ -343,7 +358,7 @@ const AddMoney = () => {
         </View>
         {/* </CommonImageBackground> */}
       </KeyBoardAware>
-      <RBSheet
+      {/* <RBSheet
         ref={sheetTwo}
         closeOnDragDown={true}
         closeOnPressBack={true}
@@ -455,7 +470,7 @@ const AddMoney = () => {
           },
         }}>
         <WebViewComponent />
-      </RBSheet>
+      </RBSheet> */}
     </AppSafeAreaView>
   );
 };

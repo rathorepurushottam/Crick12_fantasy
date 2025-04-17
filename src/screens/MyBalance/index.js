@@ -112,7 +112,7 @@ const MyBalance = () => {
               }}>
               <ListingItem
                 title={'Cash Deposit'}
-                info={`INR ${Math.round(total_balance).toFixed(2)}`}
+                info={`INR ${fixedToTwo(total_balance)}`}
               />
               <ListingItem
                 title={'Winnings'}
