@@ -54,6 +54,8 @@ import {
 import {
   deleteAccount,
   deleteupi,
+  paymentGetwayPhonepe,
+  paymentGetwayWithdraw,
   payoutWithdraw,
 } from '../../slices/matchSlice';
 import {SpinnerSecond} from '../../common/SpinnerSecond';
@@ -77,7 +79,9 @@ const Withdraw = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [select, setSelect] = useState('');
   const onSubmit = () => {
-    toastAlert.showToastError('Payment get way is not implemented');
+    console.log(winning_amount,"winningamount")
+    // toastAlert.showToastError('Payment get way is not implemented');
+    
     // if (winning_amount <= amount) {
     //   toastAlert.showToastError('Please enter vaild amount')
     // } else if (!select) {
@@ -89,6 +93,21 @@ const Withdraw = () => {
     //   }
     //   dispatch(payoutWithdraw(data))
     // }
+    if(!amount){
+      toastAlert.showToastError('Plese Enter Amount')
+    }else if(winning_amount <= amount){
+      toastAlert.showToastError('Your entered amount is more than winning amount')
+    }else if (!select) {
+        toastAlert.showToastError('Please select Withdraw account')
+      }
+    else{
+      let data = {
+        amountowithdraw: amount,
+      };
+            console.log(data,"datataaa")
+          dispatch(paymentGetwayWithdraw(data));
+    }
+        
   };
   console.log(kycDetails, 'kycDetails');
   const tdsAmount = amount > 1000 ? amount - 1000 : 0.0;

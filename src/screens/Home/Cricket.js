@@ -27,6 +27,7 @@ import {universalPaddingHorizontal} from '../../theme/dimens';
 import {setMyMatchesHome, setUpComingMatches} from '../../slices/matchSlice';
 import {KeyBoardAware} from '../../common/KeyboardAware';
 import {BaseUrl} from '../../helper/utility';
+import { getUserProfile } from '../../actions/profileAction';
 
 const search = element => getDate(element).hour < 0;
 const Cricket = ({random, setRefreshingTwo}) => {
@@ -37,7 +38,10 @@ const Cricket = ({random, setRefreshingTwo}) => {
   const userData = useSelector(state => {
     return state.profile.userData;
   });
+  // console.log(userData,"useraDatata")
+  // const _id = userData?._id ?  userData?._id : {userData};
   const {_id} = userData ?? '';
+
   const [isMoadlVisible, setIsModalVisible] = useState(false);
   const [intro, setIntro] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -65,14 +69,19 @@ const Cricket = ({random, setRefreshingTwo}) => {
   });
   useEffect(() => {
     if (upcomingMatches?.length !== 0) {
+      // console.log(upcomingMatches,"upcomingMatchesupcomingMatches")
       dispatch(setUpComingMatches(upcomingMatches));
     }
   }, [upcomingMatches]);
+
+  // console.log(upcomingMatches,"upcomingMatchesupco22222222hes")
+
   const onRefresh = React.useCallback(
     _id => {
-      console.log(_id, 'idddddddd');
+      // console.log(_id, 'idddddddd');
       const URL = `${BaseUrl}upcoming-matches?limit=10&skip=0&userid=${_id}`;
-
+      // console.log(URL,"urelllllllll")
+      dispatch(getUserProfile(false,false))
       setRefreshing(true);
       setRefreshingTwo(true);
       if (isConnected && wsRef.current) {
@@ -82,6 +91,7 @@ const Cricket = ({random, setRefreshingTwo}) => {
       try {
         wsRef.current = new WebSocket(URL);
         wsRef.current.onopen = () => {
+          // console.log('connection',isConnected)
           setIsConnected(true);
         };
         if (!wsRef.current) {
@@ -109,13 +119,16 @@ const Cricket = ({random, setRefreshingTwo}) => {
   const getData = React.useCallback(
     _id => {
       const URL = `${BaseUrl}upcoming-matches?limit=10&skip=0&userid=${_id}`;
+      // console.log(URL,"url")
       if (isConnected && wsRef.current) {
         wsRef.current.close();
         setIsConnected(false);
       }
       try {
+        // console.log(isConnected,"connected")
         wsRef.current = new WebSocket(URL);
         wsRef.current.onopen = () => {
+          // console.log(" WebSocket connected");
           setIsConnected(true);
         };
         if (!wsRef.current) {
@@ -165,7 +178,7 @@ const Cricket = ({random, setRefreshingTwo}) => {
             </AppText>
             <ViewAll
               onPress={() => {
-                console.log('Pressed');
+                // console.log('Pressed');
                 NavigationService.navigate('Contest');
               }}
             />

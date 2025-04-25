@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
@@ -68,11 +68,17 @@ export const RenderTabBar = (props: any) => {
   );
 };
 
-const SlideSwiper = ({tabTitles, reverseData}: any) => {
+const SlideSwiper = ({tabTitles, dataMap,setType}: any) => {
   const [index, setIndex] = React.useState(0);
   const isLoading = useSelector((state: RootState) => {
     return state.auth.isLoading;
   });
+  const tabTypeMapping = ['ADDCASH', 'contests', 'withdrawl'];
+
+  useEffect(() => {
+    setType(tabTypeMapping[index]);
+    console.log(index,"index")
+  }, [index]);
   // const [routes] = React.useState([
   //   { key: 'first', title: 'Deposits' },
   //   { key: 'second', title: `Contests` },
@@ -100,7 +106,7 @@ const SlideSwiper = ({tabTitles, reverseData}: any) => {
   //   );
   // };
 
-  const renderItem = (item: any ) => {
+  const renderItem = ({ item }: any ) => {
     const { createdAt, message, transaction_id, amount, requestedamount } = item ?? '';
     return (
       <View style={styles.renderItemContainer}>
@@ -163,101 +169,130 @@ const SlideSwiper = ({tabTitles, reverseData}: any) => {
     );
   };
 
+  // const renderScene = SceneMap({
+  //   first: () => <FlatList
+  //   data={reverseData}
+  //   showsVerticalScrollIndicator={false}
+  //   renderItem={renderItem}
+  //   ListHeaderComponent={listheader}
+  //   keyExtractor={(item: { _id: any; }) => item._id}
+  //   contentContainerStyle={{
+  //     flexGrow: 1,
+  //   }}
+  //   ListEmptyComponent={isLoading ? <></> : <View
+  //   style={{
+  //     flex: 1,
+  //     alignItems: 'center',
+  //     justifyContent: 'center',
+  //   }}>
+  //   <AppText
+  //     color={WHITE}
+  //     style={{ textAlign: 'center' }}
+  //     type={FORTEEN}
+  //     weight={POPPINS_MEDIUM}>
+  //     {'Nothing to show.'}
+  //   </AppText>
+  // </View>}
+  //   // ListEmptyComponent={
+  //   //   isLoading ? (
+  //   //     <></>
+  //   //   ) : (
+  //   //     <ListEmptyComponent title={'Nothing to show.'} />
+  //   //   )
+  //   // }
+  // />,
+  //   second: () => <FlatList
+  //   data={reverseData}
+  //   showsVerticalScrollIndicator={false}
+  //   renderItem={renderItem}
+  //   ListHeaderComponent={listheader}
+  //   keyExtractor={(item: { _id: any; }) => item._id}
+  //   contentContainerStyle={{
+  //     flexGrow: 1,
+  //   }}
+  //   ListEmptyComponent={isLoading ? <></> : <View
+  //   style={{
+  //     flex: 1,
+  //     alignItems: 'center',
+  //     justifyContent: 'center',
+  //   }}>
+  //   <AppText
+  //     style={{ textAlign: 'center' }}
+  //     type={FORTEEN}
+  //     color={WHITE}
+  //     weight={POPPINS_MEDIUM}>
+  //     {'Nothing to show.'}
+  //   </AppText>
+  // </View>}
+  //   // ListEmptyComponent={
+  //   //   isLoading ? (
+  //   //     <></>
+  //   //   ) : (
+  //   //     <ListEmptyComponent title={'Nothing to show.'} />
+  //   //   )
+  //   // }
+  // />,
+  //   three: () => <FlatList
+  //   data={reverseData}
+  //   showsVerticalScrollIndicator={false}
+  //   renderItem={renderItem}
+  //   ListHeaderComponent={listheader}
+  //   keyExtractor={(item: { _id: any; }) => item._id}
+  //   contentContainerStyle={{
+  //     flexGrow: 1,
+  //   }}
+  //   ListEmptyComponent={isLoading ? <></> : <View
+  //   style={{
+  //     flex: 1,
+  //     alignItems: 'center',
+  //     justifyContent: 'center',
+  //   }}>
+  //   <AppText
+  //     style={{ textAlign: 'center' }}
+  //     type={FORTEEN}
+  //     color={WHITE}
+  //     weight={POPPINS_MEDIUM}>
+  //     {'Nothing to show.'}
+  //   </AppText>
+  // </View>}
+  //   // ListEmptyComponent={
+  //   //   isLoading ? (
+  //   //     <></>
+  //   //   ) : (
+  //   //     <ListEmptyComponent title={'Nothing to show.'} />
+  //   //   )
+  //   // }
+  // />
+  // });
   const renderScene = SceneMap({
-    first: () => <FlatList
-    data={reverseData}
-    showsVerticalScrollIndicator={false}
-    renderItem={renderItem}
-    ListHeaderComponent={listheader}
-    keyExtractor={(item: { _id: any; }) => item._id}
-    contentContainerStyle={{
-      flexGrow: 1,
-    }}
-    ListEmptyComponent={isLoading ? <></> : <View
-    style={{
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-    <AppText
-      color={WHITE}
-      style={{ textAlign: 'center' }}
-      type={FORTEEN}
-      weight={POPPINS_MEDIUM}>
-      {'Nothing to show.'}
-    </AppText>
-  </View>}
-    // ListEmptyComponent={
-    //   isLoading ? (
-    //     <></>
-    //   ) : (
-    //     <ListEmptyComponent title={'Nothing to show.'} />
-    //   )
-    // }
-  />,
-    second: () => <FlatList
-    data={reverseData}
-    showsVerticalScrollIndicator={false}
-    renderItem={renderItem}
-    ListHeaderComponent={listheader}
-    keyExtractor={(item: { _id: any; }) => item._id}
-    contentContainerStyle={{
-      flexGrow: 1,
-    }}
-    ListEmptyComponent={isLoading ? <></> : <View
-    style={{
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-    <AppText
-      style={{ textAlign: 'center' }}
-      type={FORTEEN}
-      color={WHITE}
-      weight={POPPINS_MEDIUM}>
-      {'Nothing to show.'}
-    </AppText>
-  </View>}
-    // ListEmptyComponent={
-    //   isLoading ? (
-    //     <></>
-    //   ) : (
-    //     <ListEmptyComponent title={'Nothing to show.'} />
-    //   )
-    // }
-  />,
-    three: () => <FlatList
-    data={reverseData}
-    showsVerticalScrollIndicator={false}
-    renderItem={renderItem}
-    ListHeaderComponent={listheader}
-    keyExtractor={(item: { _id: any; }) => item._id}
-    contentContainerStyle={{
-      flexGrow: 1,
-    }}
-    ListEmptyComponent={isLoading ? <></> : <View
-    style={{
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-    <AppText
-      style={{ textAlign: 'center' }}
-      type={FORTEEN}
-      color={WHITE}
-      weight={POPPINS_MEDIUM}>
-      {'Nothing to show.'}
-    </AppText>
-  </View>}
-    // ListEmptyComponent={
-    //   isLoading ? (
-    //     <></>
-    //   ) : (
-    //     <ListEmptyComponent title={'Nothing to show.'} />
-    //   )
-    // }
-  />
+    first: () => renderFlatList(dataMap['ADDCASH']),
+    second: () => renderFlatList(dataMap['withdrawl']),
+    three: () => renderFlatList(dataMap['withdrawl']),
   });
+
+  const renderFlatList = (data:any) => (
+    <FlatList
+      data={data}
+      showsVerticalScrollIndicator={false}
+      renderItem={renderItem}
+      ListHeaderComponent={listheader}
+      keyExtractor={(item: { _id: any }) => item._id}
+      contentContainerStyle={{ flexGrow: 1 }}
+      ListEmptyComponent={
+        isLoading ? null : (
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <AppText
+              style={{ textAlign: 'center' }}
+              type={FORTEEN}
+              color={WHITE}
+              weight={POPPINS_MEDIUM}>
+              {'Nothing to show.'}
+            </AppText>
+          </View>
+        )
+      }
+    />
+  );
 
   return (
     <TabView

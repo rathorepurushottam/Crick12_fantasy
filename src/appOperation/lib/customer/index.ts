@@ -67,8 +67,16 @@ export default (appOperation: AppOperation) => ({
     ),
   upiVerifiy: (data: any) =>
     appOperation.post('user/upiverifcation', data, CUSTOMER_TYPE),
+
+  upiVerifiyManual: (data: any) =>
+    appOperation.post('user/manualupi', data, CUSTOMER_TYPE),
+
   phonePeGetway: (data: any) =>
     appOperation.post('user/requestCashFree', data, CUSTOMER_TYPE),
+
+  phonePeGetwayWithdraw: (data: any) =>
+    appOperation.post('payment/withdraw', data, CUSTOMER_TYPE),
+
   phonePeGetwayTest: (data: any) =>
     appOperation.post('paymenttest/gateway', data, CUSTOMER_TYPE),
 

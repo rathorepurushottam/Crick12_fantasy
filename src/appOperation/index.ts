@@ -94,6 +94,7 @@ export class AppOperation {
 
       fetch(uri, {method, headers, body: bodyData})
         .then(response => {
+          console.log(response,"reponse")
           let status = response.status;
           if (response.ok) {
             return response
@@ -114,6 +115,7 @@ export class AppOperation {
             );
         })
         .catch(error => {
+          console.log(error,"errror")
           const customError = this.getErrorMessageForResponse(error);
           reject(new ApiError(customError));
         });

@@ -46,7 +46,6 @@ import {Screen, universalPaddingHorizontal} from '../../theme/dimens';
 import {
   getDepositStatus,
   paymentGetwayPhonepe,
-  paymentGetwayPhonepeText,
 } from '../../slices/matchSlice';
 import {fixedToTwo, toastAlert} from '../../helper/utility';
 import RBSheet from 'react-native-raw-bottom-sheet';
@@ -57,7 +56,9 @@ import RNUpiPayment from 'react-native-upi-payment';
 import NavigationService from '../../navigation/NavigationService';
 import {ADDCASH_VERIFICATION} from '../../navigation/routes';
 import {poppinsBold} from '../../theme/typography';
+import { useIsFocused } from '@react-navigation/native';
 const AddMoney = () => {
+  const focus = useIsFocused()
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(Number);
   const [appState, setAppState] = useState(AppState.currentState);
@@ -83,30 +84,44 @@ const AddMoney = () => {
     {id: '4', rupay: '500'},
   ];
 
-  console.log(phonePeGetway_Response, 'phonePeGetway_Response');
+  // console.log(phonePeGetway_Response, 'phonePeGetway_Response');
+
+  const latestLinkIdRef = useRef(null);
+  useEffect(() => {
+    latestLinkIdRef.current = phonePeGetway_Response;
+  }, [phonePeGetway_Response]);
+
 
   useEffect(() => {
-    const handleAppStateChange = nextAppState => {
-      if (
-        appStateRef.current.match(/inactive|background/) &&
-        nextAppState === 'active'
-      ) {
-        // App has come to foreground
-        dispatch(getDepositStatus(phonePeGetway_Response?.link_id));
-      }
-      appStateRef.current = nextAppState;
-      setAppState(nextAppState);
-    };
+    console.log(appStateRef.current, "Initial appStateRef.current");
+    // setTimeout(()=>{
+      const handleAppStateChange = nextAppState => {
+        console.log('AppState changed to:', nextAppState);
+        console.log('Previous appStateRef:', appStateRef.current);
+        console.log(latestLinkIdRef.current, 'latestLinkIdRef.current');
 
-    const subscription = AppState.addEventListener(
-      'change',
-      handleAppStateChange,
-    );
+        if (
+          appStateRef.current.match(/inactive|background/) &&
+          nextAppState === 'active'
+        ) {
+          console.log('App moved to foreground');
+          console.log(phonePeGetway_Response,"phonePeGetway_Response?.link_idphonePeGetway_Response?.link_id")
+          if (phonePeGetway_Response) {
+            dispatch(getDepositStatus(latestLinkIdRef?.current));
+          }
+        }
+        appStateRef.current = nextAppState;
+        setAppState(nextAppState);
+      };
+    
+      const subscription = AppState.addEventListener('change', handleAppStateChange);
+    
+      return () => {
+        subscription.remove();
+      };
+    // },3000)
+  }, []); 
 
-    return () => {
-      subscription.remove(); // Clean up
-    };
-  }, []);
 
   console.log(kycDetails, 'kycDetailskycDetails');
   const isUserVerified =
@@ -125,6 +140,8 @@ const AddMoney = () => {
       dispatch(paymentGetwayPhonepe(data));
     }
   };
+
+
 
   const paywith = title => {
     // if (title == 'PAY_PAGE') {
@@ -476,3 +493,4 @@ const AddMoney = () => {
 };
 
 export default AddMoney;
+

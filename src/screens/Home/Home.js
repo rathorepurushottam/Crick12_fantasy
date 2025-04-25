@@ -7,7 +7,7 @@ import Football from './Football';
 import Cricket from './Cricket';
 import Kabbadi from './Kabbadi';
 import NavigationService from '../../navigation/NavigationService';
-import { _createwallet, getKycDetails, getUserWallet } from '../../actions/profileAction';
+import { _createwallet, getKycDetails, getUserProfile, getUserWallet } from '../../actions/profileAction';
 import { KeyBoardAware } from '../../common/KeyboardAware';
 import { HomeTopHeader } from '../../common/HomeTopHeader';
 import { BannerLoop } from '../../helper/image';
@@ -50,6 +50,7 @@ useEffect(() => {
 useEffect(() => {
   dispatch(getUserWallet());
   dispatch(getKycDetails());
+  dispatch(getUserProfile(false,false))
   }, []);
  
 

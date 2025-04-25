@@ -52,7 +52,7 @@ const Login = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [permissionSave, setPermissionSave] = useState(false)
-  const isLoading = useSelector((state: RootState) => state.auth.isLoading);
+  const isLoading = useSelector((state) => state.auth.isLoading);
 
   // async function requestReadSmsPermission() {
   //   try {

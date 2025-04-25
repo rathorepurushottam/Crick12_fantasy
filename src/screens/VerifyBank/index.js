@@ -149,7 +149,7 @@ const VerifyBank = () => {
     setIfsc(kycDetails?.bank_details?.ifsc);
     setBank(kycDetails?.bank_details?.bank_name);
     setBranch(kycDetails?.bank_details?.branch_name);
-    setName(kycDetails?.bank_details?.account_holder_name);
+    setName(kycDetails?.bank_details?.benificiary_name);
   },[kycDetails])
 
 

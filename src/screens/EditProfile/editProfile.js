@@ -1,4 +1,4 @@
-import {View, Image, StyleSheet, StatusBar, Text} from 'react-native';
+import {View, Image, StyleSheet, StatusBar, Text, TextInput} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import moment from 'moment';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -51,6 +51,7 @@ export default function EditProfile() {
   const userData = useSelector(state => {
     return state.profile.userData;
   });
+  console.log(userData,"userr---------------------")
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
@@ -73,7 +74,7 @@ export default function EditProfile() {
     setDateOfBirth(moment(date).format('DD-MM-YYYY').toString());
     hideDatePicker();
   };
-  // console.log(userData, '====');
+  console.log(userData, '====');
 
   useState(() => {
     setDateOfBirth(userData?.dob ? userData?.dob : 'Date of birth');
@@ -116,6 +117,7 @@ export default function EditProfile() {
       mobile_number: userData?.mobile_number,
       dob: dateOfBirth,
       logo: imageUrl ? imageUrl : userData?.logo,
+      address:Address
     };
     // console.log(data,"Edit profile Data")
     dispatch(editProfile(data, userData?._id));
@@ -217,7 +219,7 @@ export default function EditProfile() {
             </TouchableOpacityView>
           </TouchableOpacityView>
           <View>
-            <AppText type={EIGHTEEN} color={WHITE} weight={POPPINS_SEMI_BOLD}>
+            <AppText type={EIGHTEEN} color={WHITE} weight={POPPINS_SEMI_BOLD} style={{alignSelf:"center"}}>
               {userData?.full_name ? userData?.full_name : 'My Profile'}
             </AppText>
 
@@ -348,7 +350,7 @@ export default function EditProfile() {
               </View>
             </TouchableOpacityView>
 
-            <AppText
+            {/* <AppText
               type={FORTEEN}
               color={WHITE}
               weight={POPPINS_MEDIUM}
@@ -370,11 +372,48 @@ export default function EditProfile() {
               ]}>
               <AppText style={{color: colors.white}} weight={POPPINS_MEDIUM}>
                 {Address ? Address : 'Address'}
+
               </AppText>
-            </View>
+            </View> */}
+            {/* <AppText
+  type={FORTEEN}
+  color={WHITE}
+  weight={POPPINS_MEDIUM}
+  style={[styles.label]}>
+  Address
+</AppText>
+
+<TextInput
+  multiline
+  numberOfLines={4}
+  value={Address}
+  onChangeText={text => setAddress(text)}
+  placeholder="Address"
+  placeholderTextColor="#aaa"
+  style={[
+    {
+      borderWidth: 1,
+      borderColor: '#2B2839',
+      borderRadius: 12,
+      backgroundColor: '#2B2839',
+      height: 80,
+      justifyContent: 'flex-start',
+      paddingHorizontal: 10,
+      paddingVertical: 10,
+      color: colors.white,
+      textAlignVertical: 'top', // important for Android multiline
+    },
+  ]}
+/> */}
+
           </View>
         </CommonContainer>
       </KeyBoardAware>
+{/* 
+      {
+        userData?.full_name && userData?.email && userData?.mobile_number && userData?.gender ?
+        
+      } */}
       <View
         style={{
           paddingHorizontal: universalPaddingHorizontal,

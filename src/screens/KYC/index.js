@@ -70,12 +70,12 @@ const KYC = () => {
       image: bankIcon,
       isVerified: kycDetails?.bank_verified,
     },
-    // {
-    //   id: 2,
-    //   title: 'UPI',
-    //   image: upiIcon,
-    //   isVerified: kycDetails?.upi_verified
-    // },
+    {
+      id: 2,
+      title: 'UPI',
+      image: upiIcon,
+      isVerified: kycDetails?.upi_verified
+    },
   ]
 
   const isVerified = id => {
@@ -105,7 +105,7 @@ const KYC = () => {
     }
   };
 
-  console.log(select, "selecteddddd")
+  // console.log(select, "selecteddddd")
   const renderItemTwo = (item) => {
     return (
       <TouchableOpacityView
@@ -128,9 +128,24 @@ const KYC = () => {
             source={checkAdhaar}
             resizeMode="contain"
             style={styles.checkIcon} /> :
+            item?.isVerified == 2 ?
+          <AppText type={THIRTEEN} weight={POPPINS_SEMI_BOLD} color={RED}>
+                In Progress
+          </AppText>         
+            :
           <View style={styles.tickContainer}>
             {select == item?.id ? <View style={styles.tick} /> : null}
           </View>}
+
+        {/* {item?.isVerified == 1 ?
+          <FastImage
+            key={item?.id}
+            source={checkAdhaar}
+            resizeMode="contain"
+            style={styles.checkIcon} /> :
+          <View style={styles.tickContainer}>
+            {select == item?.id ? <View style={styles.tick} /> : null}
+          </View>} */}
 
 
         {/* {
@@ -214,7 +229,7 @@ const KYC = () => {
                 <FastImage tintColor={'#fff'} source={panIcon} resizeMode="contain" style={styles.renderImage} />
               </View>
               <AppText color={WHITE} type={THIRTEEN} weight={POPPINS_MEDIUM} style={{ marginLeft: 10 }}>
-                Aadhar using OTP
+                Aadhar 
               </AppText>
 
             </View>
@@ -355,10 +370,27 @@ const KYC = () => {
           select === 1 && kycDetails?.bank_verified === 1 ? (
             NavigationService.navigate(VERIFY_BANK_SCREEN),
             setSelect('')
-          ) : select === 2 && kycDetails?.upi_verified === 1 ? (
-            NavigationService.navigate(VERIFY_UPI),
+          ) :
+          select === 1 && kycDetails?.bank_verified === 2 ? (
+            toastAlert.showToastError("Your bank verification is pending"),
             setSelect('')
-          ) : select && (
+          )
+          :
+          select === 2 && kycDetails?.upi_verified === 1 ? (
+            NavigationService.navigate(VERIFY_UPI),
+            // toastAlert.showToastError("Your upi have been Verified"),
+            setSelect('')
+          ) :
+          select === 2 && kycDetails?.upi_verified === 2 ? (
+            // NavigationService.navigate(VERIFY_UPI),
+            toastAlert.showToastError("Your upi verification is pending"),
+            setSelect('')
+          ):
+          // : select === 2 && kycDetails?.upi_verified === 1 ? (
+          //   NavigationService.navigate(VERIFY_UPI),
+          //   setSelect('')
+          // )
+            select && (
             <View style={{ paddingHorizontal: universalPaddingHorizontal }}>
               <PrimaryButton
                 buttonStyle={styles.buttonTwo}

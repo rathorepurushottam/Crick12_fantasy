@@ -13,7 +13,7 @@ import { fontFamilyPoppins } from '../theme/typography';
 import PrimaryButton from '../common/primaryButton';
 import { checkUPIDlNumber, toastAlert } from '../helper/utility';
 import { useDispatch, useSelector } from 'react-redux'
-import { getUpiVerifiy } from '../slices/matchSlice';
+import { getUpiVerifiy, getUpiVerifiyManual } from '../slices/matchSlice';
 import FastImage from 'react-native-fast-image';
 import { scanIcon } from '../helper/image';
 
@@ -32,7 +32,7 @@ const VerifyUPI = () => {
       upi_number: name,
     };
     console.log(data,"UpiDataaaa")
-    dispatch(getUpiVerifiy(data))
+    dispatch(getUpiVerifiyManual(data))
   };
   useEffect(()=>{
       setName(kycDetails?.upi_details?.upi_number ? kycDetails?.upi_details?.upi_number : '')

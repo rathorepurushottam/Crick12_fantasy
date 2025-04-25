@@ -386,11 +386,11 @@ const CommonHeader = ({
               </View>
               <View>
                 <AppText
-                  style={{ marginTop: -1, marginLeft: 7 }}
+                  style={{ marginTop: -1, marginLeft: 3 ,marginRight:3 }}
                   type={TWELVE}
                   weight={POPPINS_SEMI_BOLD}
                   color={WHITE}>
-                  ₹ {Math.round(totalbalance).toFixed(0)}
+                  ₹ {formatNumber(totalbalance)}
                 </AppText>
               </View>
             </View>

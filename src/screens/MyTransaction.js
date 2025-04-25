@@ -74,7 +74,7 @@ const MyTransaction = () => {
   const withdrawalsTransactions = useSelector(state => {
     return state.profile.withdrawalsTransactions;
   });
-  const isLoading = useSelector((state: RootState) => {
+  const isLoading = useSelector((state) => {
     return state.auth.isLoading;
   });
   const [activeTab, setActiveTab] = useState(1);
@@ -122,6 +122,9 @@ const MyTransaction = () => {
 
   useEffect(() => {
     dispatch(getTransactionsDeposit(type));
+    // dispatch(gettransactionContest('Contests'));
+    // dispatch(gettransactionContest('withdrawl'));
+
   }, [type]);
 
   const renderItem = ({ item, index }) => {
@@ -200,7 +203,62 @@ const MyTransaction = () => {
           title="Transaction"
           style={{ padding: universalPaddingHorizontal, }}
         />
-        {/* <View style={styles.containerHeader}>
+ 
+        <SlideSwiper tabTitles={titles} 
+         setType={setType}
+         dataMap={{
+           withdrawl: [...depositTransactions].reverse(),
+          ADDCASH: [...depositTransactions].reverse(),
+          contests: [...depositTransactions].reverse(),
+        }}
+        // reverseData={reverseData} setType={setType}
+        />
+        <SpinnerSecond loading={isLoading} />
+      {/* </CommonImageBackground> */}
+    </AppSafeAreaView>
+  );
+};
+
+export default MyTransaction;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: universalPaddingHorizontal,
+  },
+  containerHeader: {
+    height: 45,
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tabs: {
+    width: '33%',
+    height: 38,
+    borderRadius: 16,
+    justifyContent: 'center',
+    padding: 5,
+    alignItems: 'center',
+  },
+
+  renderItemContainer: {
+    flex: 1,
+  },
+  renderItemContainerSecond: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    paddingHorizontal: universalPaddingHorizontal,
+    borderBottomWidth: 1,
+    paddingBottom: 5,
+    marginTop: 5,
+    borderBottomColor: "#BEBEBE"
+  },
+});
+
+
+
+       {/* <View style={styles.containerHeader}>
           {data?.map(item => {
             return item.id == activeTab ? (
               <View
@@ -303,46 +361,3 @@ const MyTransaction = () => {
             />
           )}
         </View> */}
-        <SlideSwiper tabTitles={titles} reverseData={reverseData}/>
-        <SpinnerSecond loading={isLoading} />
-      {/* </CommonImageBackground> */}
-    </AppSafeAreaView>
-  );
-};
-
-export default MyTransaction;
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: universalPaddingHorizontal,
-  },
-  containerHeader: {
-    height: 45,
-    marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  tabs: {
-    width: '33%',
-    height: 38,
-    borderRadius: 16,
-    justifyContent: 'center',
-    padding: 5,
-    alignItems: 'center',
-  },
-
-  renderItemContainer: {
-    flex: 1,
-  },
-  renderItemContainerSecond: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-    paddingHorizontal: universalPaddingHorizontal,
-    borderBottomWidth: 1,
-    paddingBottom: 5,
-    marginTop: 5,
-    borderBottomColor: "#BEBEBE"
-  },
-});

@@ -37,6 +37,8 @@ const MyBalance = () => {
   const userData = useSelector(state => {
     return state.profile.userData;
   });
+
+  console.log(userData,"userDtaaa")
   const kycDetails = useSelector(state => {
     return state.profile.kycDetails;
   });
@@ -177,7 +179,7 @@ const MyBalance = () => {
               next
             />
           </CommonContainer> */}
-          <CommonContainer
+          {/* <CommonContainer
             style={{
               width: '100%',
               height: 50,
@@ -192,7 +194,7 @@ const MyBalance = () => {
               Name={'TDS Report'}
               next
             />
-          </CommonContainer>
+          </CommonContainer> */}
         </View>
         {kycDetails?.adahr_details == 2 ? (
           <View

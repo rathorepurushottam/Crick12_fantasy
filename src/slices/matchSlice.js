@@ -40,7 +40,7 @@ export const initialState = {
   SortbyFilterData: [],
   upiVerifiy: undefined,
   contestListTeam: [],
-  phonePeGetway_Response: undefined,
+  phonePeGetway_Response: [],
   allContestList: [],
   RemaningPlayer: [],
   substitute: [],
@@ -121,8 +121,15 @@ export const matchSlice = createSlice({
       state.contestListTeam = payload;
     },
     setPhonePeGewat: (state, {payload}) => {
+      console.log(payload,"payload")
       state.phonePeGetway_Response = payload;
     },
+
+    // setPhonepeGetway :(state,{payload})=>{
+    //   state.phone
+    // }
+
+
     setAllContest: (state, {payload}) => {
       state.allContestList = payload;
     },
@@ -402,8 +409,9 @@ export const getAllPlayerList =
   (id, data, subsitute, newData, navigate) => async dispatch => {
     try {
       dispatch(setLoading(true));
+      // console.log(id,data,"id in------------------ ")
       const res = await appOperation.customer.getAllPlayers(id, data);
-
+      // console.log(res,"reponseeeee")
       if (res.code == 200) {
         const players = [];
         res?.data?.forEach(items => {
@@ -435,9 +443,10 @@ export const getAllPlayerList =
           dispatch(setRemaning(RemaningPlayerNew));
         }
         dispatch(setAllPlayers(players));
+        // console.log(players,"playerssss")
       }
     } catch (e) {
-      console.log(e);
+      console.log(e,"error in matchslice");
     } finally {
       dispatch(setLoading(false));
     }
@@ -550,6 +559,27 @@ export const getUpiVerifiy = data => async dispatch => {
     dispatch(setLoading(false));
   }
 };
+
+
+export const getUpiVerifiyManual = data => async dispatch => {
+  try {
+    const res = await appOperation.customer.upiVerifiyManual(data);
+    console.log(res, 'reponse upi verificationmanual');
+    if (res?.success) {
+      toastAlert.showToastError(res.message);
+      dispatch(getKycDetails());
+      NavigationService.navigate(MY_BALANCE);
+    } else {
+      toastAlert.showToastError(res.message);
+    }
+  } catch (e) {
+    console.log(e, 'resresresres');
+
+    console.log(e);
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
 export const getFilterSortby = data => async dispatch => {
   try {
     dispatch(setSortByFilter(data));
@@ -564,7 +594,8 @@ export const paymentGetwayPhonepe = data => async dispatch => {
     const res = await appOperation.customer.phonePeGetway(data);
     console.log(res, 'paymentGetwayPhonepe');
     if (res?.success) {
-      dispatch(setPhonePeGewat(res?.data));
+      console.log(res?.data,"res?.datares?.data")
+      dispatch(setPhonePeGewat(res?.data?.link_id));
       Linking.openURL(res?.data?.link_url);
       // if (title == 'PAY_PAGE') {
       //   dispatch(setPhonePeGewat(res?.data?.data));
@@ -584,7 +615,7 @@ export const paymentGetwayPhonepe = data => async dispatch => {
       // console.log(JSON.stringify(res), '==========');
     }
   } catch (e) {
-    console.log(e, 'resresresres');
+    console.log(e, 'resresresres11111');
 
     console.log(e);
   } finally {
@@ -592,6 +623,26 @@ export const paymentGetwayPhonepe = data => async dispatch => {
   }
 };
 
+
+export const paymentGetwayWithdraw = data => async dispatch => {
+  try {
+    const res = await appOperation.customer.phonePeGetwayWithdraw(data);
+    console.log(res, 'paymentGetwayPhonepe withdraw');
+    if (res?.success) {
+      // dispatch(setPhonePeGewat(res?.data));
+      // Linking.openURL(res?.data?.link_url);
+      console.log(res,"response in withdraew")
+      toastAlert.showToastError(res.message);
+      NavigationService.navigate(MY_BALANCE);
+    }
+  } catch (e) {
+    console.log(e, 'resresresres');
+    
+    console.log(e);
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
 export const getDepositStatus = id => async dispatch => {
   try {
     dispatch(setLoading(true));
@@ -607,42 +658,42 @@ export const getDepositStatus = id => async dispatch => {
     }
     dispatch(setLoading(false));
   } catch (e) {
-    console.log(e);
+    console.log(e,"errrorrrrrrrr");
   } finally {
     dispatch(setLoading(false));
   }
 };
 
-export const paymentGetwayPhonepeText =
-  (data, title, sheet) => async dispatch => {
-    try {
-      const res = await appOperation.customer.phonePeGetwayTest(data);
-      if (res?.success) {
-        if (title == 'PAY_PAGE') {
-          dispatch(setPhonePeGewat(res?.data?.data));
-          sheet.current.open();
-        } else {
-          const payIntent = res?.data?.data?.instrumentResponse?.intentUrl;
-          Linking.openURL(payIntent)
-            .then(supported => {
-              if (!supported) {
-                console.error('WhatsApp is not installed on your device.');
-              }
-            })
-            .catch(error => {
-              console.error('An error occurred while opening WhatsApp:', error);
-            });
-        }
-        // console.log(JSON.stringify(res), '==========');
-      }
-    } catch (e) {
-      console.log(e, 'resresresres');
+// export const paymentGetwayPhonepeText =
+//   (data, title, sheet) => async dispatch => {
+//     try {
+//       const res = await appOperation.customer.phonePeGetwayTest(data);
+//       if (res?.success) {
+//         if (title == 'PAY_PAGE') {
+//           dispatch(setPhonePeGewat(res?.data?.data));
+//           sheet.current.open();
+//         } else {
+//           const payIntent = res?.data?.data?.instrumentResponse?.intentUrl;
+//           Linking.openURL(payIntent)
+//             .then(supported => {
+//               if (!supported) {
+//                 console.error('WhatsApp is not installed on your device.');
+//               }
+//             })
+//             .catch(error => {
+//               console.error('An error occurred while opening WhatsApp:', error);
+//             });
+//         }
+//         // console.log(JSON.stringify(res), '==========');
+//       }
+//     } catch (e) {
+//       console.log(e, 'resresresres');
 
-      console.log(e);
-    } finally {
-      dispatch(setLoading(false));
-    }
-  };
+//       console.log(e);
+//     } finally {
+//       dispatch(setLoading(false));
+//     }
+//   };
 export const setRemaning = data => async dispatch => {
   try {
     dispatch(setRemaningPlayer(data));

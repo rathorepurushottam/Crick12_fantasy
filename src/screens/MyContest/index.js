@@ -200,7 +200,7 @@ const MyContest = () => {
     );
   };
   const renderMyTeam = ({item}) => {
-    console.log('in myteam');
+    // console.log('in myteam');
     return <MyTeam item={item} tab={route?.params?.tab} />;
   };
   const renderMyContest = ({item}) => {
@@ -253,7 +253,7 @@ const MyContest = () => {
     );
   };
   const EmptyComponentTwo = () => {
-    console.log('Indier empty component');
+    // console.log('Indier empty component');
     return (
       <View
         style={{

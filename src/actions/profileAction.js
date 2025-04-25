@@ -77,6 +77,7 @@ export const getUserWallet = () => async dispatch => {
 export const getKycDetails = () => async dispatch => {
   try {
     const res = await appOperation.customer.getKycDetails();
+    console.log(res,"response in kycdetials")
     if (res?.code == 200) {
       dispatch(setKycDetails(res?.data));
     }
@@ -133,9 +134,11 @@ export const updateKyc = data => async dispatch => {
   }
 };
 export const getTransactionsDeposit = (type) => async (dispatch: Dispatch<any>) => {
+  console.log(type,"typeee----------------")
   try {
     dispatch(setLoading(true));
     const response = await appOperation.customer.alltransactions(type);
+    console.log(response,'response in profileaction')
     if (response?.success) {
       dispatch(setTransactionsDeposit(response?.data));
     }

@@ -248,7 +248,7 @@ const CustomDrawer = () => {
             }}
             style={styles.nameview}>
             <View>
-              <AppText type={FIFTEEN} weight={POPPINS_SEMI_BOLD} color={BLACK}>
+              <AppText type={FIFTEEN} weight={POPPINS_SEMI_BOLD} color={BLACK} style={{paddingLeft:10}}>
                 {userData?.full_name}
               </AppText>
 
