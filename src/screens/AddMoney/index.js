@@ -127,9 +127,11 @@ const AddMoney = () => {
   const isUserVerified =
     kycDetails?.pan_verified == 1 && kycDetails?.adhar_verified == 1;
   const AddMoney = () => {
-    if (!isUserVerified) {
-      NavigationService.navigate(ADDCASH_VERIFICATION);
-    } else if (amount == '') {
+    // if (!isUserVerified) {
+    //   NavigationService.navigate(ADDCASH_VERIFICATION);
+    // } 
+    // else
+     if (amount == '') {
       toastAlert.showToastError('Please enter amount');
     } else if (amount.charAt(0) === '0') {
       toastAlert.showToastError('Please enter vaild amount');
