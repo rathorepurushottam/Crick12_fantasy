@@ -84,13 +84,11 @@ export const fixedToTwo = (value: number) => {
   let temp = value?.toFixed(2);
   return temp;
 };
-export const BaseUrl = 'http://103.110.127.91:5122/';
-// export const BaseUrl = 'https://panel.crick12.in/';
-// export const BaseUrl = 'https://bf5d-2405-201-5c19-881b-f0cb-e406-1426-bf1d.ngrok-free.app/'
 
-// export const BaseUrl = 'https://edac-2405-201-5c19-881b-315f-4983-4c5-b51e.ngrok-free.app/';
+export const BaseUrl = 'https://panel.crick12.in/';
 
-export const IMAGE_BASE_URL = 'http://103.175.163.162:4009/';
+// export const IMAGE_BASE_URL = 'http://103.175.163.162:4009/';
+export const IMAGE_BASE_URL = 'https://panel.crick12.in/';
 
 export const toastAlert = {
   showToastSuccess: (message: any, duration = 2500) => {},

@@ -62,32 +62,32 @@ import {colors} from '../../../theme/color';
 import {formatDateTime, modifyName, shareToAny} from '../../../helper/utility';
 import LinearGradient from 'react-native-linear-gradient';
 import {universalPaddingHorizontal} from '../../../theme/dimens';
-import dynamicLinks from '@react-native-firebase/dynamic-links';
+// import dynamicLinks from '@react-native-firebase/dynamic-links';
 export const shareTeamMessage = (userName, s1, s2, series, id) => {
   let temp = `Pick Crick12 Fantasy Infinity team with just one tap!\n\n${userName}'s team for ${s1} VS ${s2} | ${series}\n Sport:Cricket\nhttps://www.battleinfinity.io/${id}`;
   return temp;
 };
-export const createLink = async (teamid, userId, matchId) => {
-  try {
-    const link = await dynamicLinks().buildShortLink(
-      {
-        link: `https://fs11.page.link/mVFa?teamId=${teamid}&userId=${userId}&matchID=${matchId}`,
-        domainUriPrefix: 'https://fs11.page.link',
-        android: {
-          packageName: 'com.game.fs11',
-        },
-        navigation: {
-          forcedRedirectEnabled: true,
-        },
-      },
-      dynamicLinks.ShortLinkType.DEFAULT,
-    );
-    console.log('link', link);
-    return link;
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const createLink = async (teamid, userId, matchId) => {
+//   try {
+//     const link = await dynamicLinks().buildShortLink(
+//       {
+//         link: `https://fs11.page.link/mVFa?teamId=${teamid}&userId=${userId}&matchID=${matchId}`,
+//         domainUriPrefix: 'https://fs11.page.link',
+//         android: {
+//           packageName: 'com.game.fs11',
+//         },
+//         navigation: {
+//           forcedRedirectEnabled: true,
+//         },
+//       },
+//       dynamicLinks.ShortLinkType.DEFAULT,
+//     );
+//     console.log('link', link);
+//     return link;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 export const shareLinkTeam = async (
   userName,
   s1,
@@ -100,8 +100,8 @@ export const shareLinkTeam = async (
   userId,
   matchId,
 ) => {
-  const link = await createLink(teamid, userId, matchId);
-  const message = `Pick my FS11 team with just one tap!\n\n${userName}'s team for ${s1} VS ${s2} | ${series}\nDate: ${date}\nTime: ${time}\n\n ${link}`;
+  // const link = await createLink(teamid, userId, matchId);
+  const message = `Pick my FS11 team with just one tap!\n\n${userName}'s team for ${s1} VS ${s2} | ${series}\nDate: ${date}\nTime: ${time}\n\n`;
   try {
     Share.share({
       message: message,

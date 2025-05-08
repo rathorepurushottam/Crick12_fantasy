@@ -11,27 +11,27 @@ import { universalPaddingHorizontal } from "../theme/dimens";
 import { LiveTime } from "../common/LiveTime";
 import { TouchableOpacityView } from "../common/TouchableOpacityView";
 import { formatDateTime } from "../helper/utility";
-import dynamicLinks from '@react-native-firebase/dynamic-links';
+// import dynamicLinks from '@react-native-firebase/dynamic-links';
 import NavigationService from "../navigation/NavigationService";
 import { MY_CONTEST } from "../navigation/routes";
 
-export const createLink = async (id: any, category: any) => {
-    try {
-        const link = await dynamicLinks().buildShortLink({
-            link: `https://fs11.page.link/mVFa?match_id=${id}&category=${category}`,
-            domainUriPrefix: 'https://fs11.page.link',
-            android: {
-                packageName: 'com.game.fs11'
-            },
-            navigation: {
-                forcedRedirectEnabled: true,
-            },
-        }, dynamicLinks.ShortLinkType.DEFAULT);
-        return link;
-    } catch (error) {
-        console.log(error);
-    }
-};
+// export const createLink = async (id: any, category: any) => {
+//     try {
+//         const link = await dynamicLinks().buildShortLink({
+//             link: `https://fs11.page.link/mVFa?match_id=${id}&category=${category}`,
+//             domainUriPrefix: 'https://fs11.page.link',
+//             android: {
+//                 packageName: 'com.game.fs11'
+//             },
+//             navigation: {
+//                 forcedRedirectEnabled: true,
+//             },
+//         }, dynamicLinks.ShortLinkType.DEFAULT);
+//         return link;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 export const shareLinkTeam = async (
     prize: any,
     enterfess: any,
@@ -42,8 +42,8 @@ export const shareLinkTeam = async (
     onlyDate: any,
     onlyTime: any,
 ) => {
-    const link = await createLink(id, category);
-    const message = `I have challenged you to a ₹${prize} private contest for the ${teamA} match! \n \nEnter: ₹${enterfess} \nSport: ${Contestsize} \n1st Prize: ₹${prize}\nDeadline: ${onlyDate} ${onlyTime}\n \nHere are two ways for you to join: ${link}`;
+    // const link = await createLink(id, category);
+    const message = `I have challenged you to a ₹${prize} private contest for the ${teamA} match! \n \nEnter: ₹${enterfess} \nSport: ${Contestsize} \n1st Prize: ₹${prize}\nDeadline: ${onlyDate} ${onlyTime}\n \nHere are two ways for you to join:`;
     try {
         Share.share({
             message: message,

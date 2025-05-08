@@ -613,11 +613,12 @@ export const paymentGetwayPhonepe = data => async dispatch => {
       //     });
       // }
       // console.log(JSON.stringify(res), '==========');
+    } else {
+      toastAlert.showToastError(res.message);
     }
   } catch (e) {
     console.log(e, 'resresresres11111');
-
-    console.log(e);
+    toastAlert.showToastError(e.message);
   } finally {
     dispatch(setLoading(false));
   }

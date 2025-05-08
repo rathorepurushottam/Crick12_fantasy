@@ -13,8 +13,6 @@ import {
   AgeIcon,
   MyBattleIcon,
   MyBattleScreen,
-  Nlglogo,
-  Nlglogo2,
   Referboxicon,
   backLogo,
   callIcon,
@@ -76,93 +74,98 @@ const MyBattleLogin = () => {
   };
   return (
     <AppSafeAreaView>
-      <StatusBar
-        barStyle={'light-content'}
-        backgroundColor={'#111019'}
-        translucent={true}
-        networkActivityIndicatorVisible={true}
-      />
-      <ImageBackground
-        source={backLogo}
-        resizeMode="cover"
-        style={styles.MyBattleScreen}>
-        <FastImage resizeMode="stretch" style={styles.logo} source={logomain} />
-      </ImageBackground>
-      <View
-        style={{
-          paddingHorizontal: universalPaddingHorizontal,
-          marginTop: 20,
-        }}>
-        <InputBox
-          label={'Login / Register'}
-          value={number}
-          keyboardType="numeric"
-          placeholder={'Enter you number'}
-          placeholderTextColor={'#999999'}
-          onChange={(value: any) => {
-            setNumber(value);
-          }}
-          textInputBox={styles.textInputBox}
-          labelStyle={styles.label}
-          image={callIcon}
-          maxLength={10}
+      <KeyBoardAware>
+        <StatusBar
+          barStyle={'light-content'}
+          backgroundColor={'#111019'}
+          translucent={true}
+          networkActivityIndicatorVisible={true}
         />
-        {referral && (
+        <ImageBackground
+          source={backLogo}
+          resizeMode="cover"
+          style={styles.MyBattleScreen}>
+          <FastImage
+            resizeMode="stretch"
+            style={styles.logo}
+            source={logomain}
+          />
+        </ImageBackground>
+        <View
+          style={{
+            paddingHorizontal: universalPaddingHorizontal,
+            marginTop: 20,
+          }}>
           <InputBox
+            label={'Login / Register'}
+            value={number}
+            keyboardType="numeric"
+            placeholder={'Enter you number'}
             placeholderTextColor={'#999999'}
-            value={code}
-            keyboardType="default"
-            placeholder={'Enter referral code (Optional)'}
             onChange={(value: any) => {
-              setCode(value);
+              setNumber(value);
             }}
             textInputBox={styles.textInputBox}
             labelStyle={styles.label}
-            image={Referboxicon}
-            top={true}
+            image={callIcon}
+            maxLength={10}
           />
-        )}
-        <TouchableOpacityView
-          onPress={() => setReferral(true)}
-          style={styles.textview}>
-          <AppText
-            type={TWELVE}
-            weight={NORMAL}
-            color={YellowText}
-            style={{
-              alignSelf: 'flex-end',
-              textDecorationLine: 'underline',
-              marginTop: 5,
-            }}>
-            Have a referral code?
-          </AppText>
-        </TouchableOpacityView>
-        <TouchableOpacityView
-          onPress={() => setIsSelected(!isSelected)}
-          style={styles.checkbox}>
-          <Checkbox
+          {referral && (
+            <InputBox
+              placeholderTextColor={'#999999'}
+              value={code}
+              keyboardType="default"
+              placeholder={'Enter referral code (Optional)'}
+              onChange={value => {
+                setCode(value);
+              }}
+              textInputBox={styles.textInputBox}
+              labelStyle={styles.label}
+              image={Referboxicon}
+              top={true}
+            />
+          )}
+          <TouchableOpacityView
+            onPress={() => setReferral(true)}
+            style={styles.textview}>
+            <AppText
+              type={TWELVE}
+              weight={NORMAL}
+              color={YellowText}
+              style={{
+                alignSelf: 'flex-end',
+                textDecorationLine: 'underline',
+                marginTop: 5,
+              }}>
+              Have a referral code?
+            </AppText>
+          </TouchableOpacityView>
+          <TouchableOpacityView
             onPress={() => setIsSelected(!isSelected)}
-            value={isSelected}
-          />
-          <AppText
-            type={TWELVE}
-            weight={POPPINS_MEDIUM}
-            style={{marginHorizontal: 10}}
-            color={WHITE}>
-            I confirm that I am 18+ years in age
-          </AppText>
-        </TouchableOpacityView>
+            style={styles.checkbox}>
+            <Checkbox
+              onPress={() => setIsSelected(!isSelected)}
+              value={isSelected}
+            />
+            <AppText
+              type={TWELVE}
+              weight={POPPINS_MEDIUM}
+              style={{marginHorizontal: 10}}
+              color={WHITE}>
+              I confirm that I am 18+ years in age
+            </AppText>
+          </TouchableOpacityView>
 
-        <View>
-          <PrimaryButton
-            disable={!isSelected ? true : false}
-            color={!isSelected ? '#858585' : ''}
-            onPress={onSubmit}
-            title="Continue"
-            buttonStyle={styles.button}
-          />
-        </View>
-        {/* <View style={styles.ageiconview}>
+          <View>
+            <PrimaryButton
+              disable={!isSelected ? true : false}
+              color={!isSelected ? '#858585' : ''}
+              onPress={onSubmit}
+              title="Continue"
+              buttonStyle={styles.button}
+            />
+          </View>
+          {/* <View style={styles.ageiconview}>
           <FastImage
             source={AgeIcon}
             resizeMode="contain"
@@ -180,41 +183,42 @@ const MyBattleLogin = () => {
           </AppText>
         </View> */}
 
-        <View style={styles.ageiconview}>
-          <FastImage
-            source={AgeIcon}
-            resizeMode="contain"
-            style={styles.AgeIcon}
-          />
-          <AppText type={ELEVEN} style={{marginHorizontal: 10}} color={WHITE}>
-            I have read and agree to Crick12 Fantasy{' '}
-            <AppText
-              type={ELEVEN}
-              color={WHITE}
-              onPress={() => {
-                NavigationService.navigate(MYBATTLETERM);
-              }}
-              style={{textDecorationLine: 'underline'}}>
-              Terms of Service
+          <View style={styles.ageiconview}>
+            <FastImage
+              source={AgeIcon}
+              resizeMode="contain"
+              style={styles.AgeIcon}
+            />
+            <AppText type={ELEVEN} style={{marginHorizontal: 10}} color={WHITE}>
+              I have read and agree to Crick12 Fantasy{' '}
+              <AppText
+                type={ELEVEN}
+                color={WHITE}
+                onPress={() => {
+                  NavigationService.navigate(MYBATTLETERM);
+                }}
+                style={{textDecorationLine: 'underline'}}>
+                Terms of Service
+              </AppText>
+              <AppText type={ELEVEN} color={WHITE}>
+                {' '}
+                and{' '}
+              </AppText>
+              <AppText
+                color={WHITE}
+                onPress={() => {
+                  NavigationService.navigate(MYBATTLEPOLICY);
+                }}
+                type={ELEVEN}
+                style={{textDecorationLine: 'underline'}}>
+                Privacy Policy
+              </AppText>
             </AppText>
-            <AppText type={ELEVEN} color={WHITE}>
-              {' '}
-              and{' '}
-            </AppText>
-            <AppText
-              color={WHITE}
-              onPress={() => {
-                NavigationService.navigate(MYBATTLEPOLICY);
-              }}
-              type={ELEVEN}
-              style={{textDecorationLine: 'underline'}}>
-              Privacy Policy
-            </AppText>
-          </AppText>
+          </View>
         </View>
-      </View>
-      <SpinnerSecond loading={isLoading} />
-      {/* </ImageBackground> */}
+        <SpinnerSecond loading={isLoading} />
+        {/* </ImageBackground> */}
+      </KeyBoardAware>
     </AppSafeAreaView>
   );
 };

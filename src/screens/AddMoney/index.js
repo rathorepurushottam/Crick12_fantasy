@@ -93,18 +93,18 @@ const AddMoney = () => {
 
 
   useEffect(() => {
-    console.log(appStateRef.current, "Initial appStateRef.current");
+    // console.log(appStateRef.current, "Initial appStateRef.current");
     // setTimeout(()=>{
       const handleAppStateChange = nextAppState => {
-        console.log('AppState changed to:', nextAppState);
-        console.log('Previous appStateRef:', appStateRef.current);
-        console.log(latestLinkIdRef.current, 'latestLinkIdRef.current');
+        // console.log('AppState changed to:', nextAppState);
+        // console.log('Previous appStateRef:', appStateRef.current);
+        // console.log(latestLinkIdRef.current, 'latestLinkIdRef.current');
 
         if (
           appStateRef.current.match(/inactive|background/) &&
-          nextAppState === 'active'
+          nextAppState === 'active' && phonePeGetway_Response
         ) {
-          console.log('App moved to foreground');
+          // console.log('App moved to foreground');
           console.log(phonePeGetway_Response,"phonePeGetway_Response?.link_idphonePeGetway_Response?.link_id")
           if (phonePeGetway_Response) {
             dispatch(getDepositStatus(latestLinkIdRef?.current));
