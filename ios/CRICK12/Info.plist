@@ -36,15 +36,17 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
-<string>This app requires access to the photo library.</string>
+<string>This app accesses your photo library to allow you to select a photo for your profile or share images in the app.</string>
 <key>NSMicrophoneUsageDescription</key>
 <string>This app does not require access to the microphone.</string>
 <key>NSCameraUsageDescription</key>
-<string>This app requires access to the camera.</string>
+<string>This app uses your camera to let you take profile pictures and upload them to your account.</string>
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>We use your location to enhance your experience with location-based services.</string>
 <key>NSLocationAlwaysUsageDescription</key>
 <string>We use your location to keep features running even when the app is in the background.</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>This app uses your location to provide a personalized experience, such as showing nearby events or services relevant to you.</string>
 
 	<key>UIAppFonts</key>
 	<array>
